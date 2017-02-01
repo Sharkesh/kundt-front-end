@@ -12,18 +12,24 @@ namespace kundt_front_end.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
+        public ActionResult Step2()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
-
-        public ActionResult Contact()
+        public ActionResult Step3()
         {
-            ViewBag.Message = "Your contact page.";
-
+            return View();
+        }
+        public ActionResult Step4()
+        {
+            return View();
+        }
+        public ActionResult Step5()
+        {
+            return View();
+        }
+        public ActionResult Step6()
+        {
             return View();
         }
     }
