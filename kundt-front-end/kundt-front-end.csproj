@@ -170,6 +170,7 @@
     <Content Include="Views\Home\Step6.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\img\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
