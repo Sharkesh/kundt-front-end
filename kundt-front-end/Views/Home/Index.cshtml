@@ -1,20 +1,65 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+   
+    .row{
+        margin: 3em;
+    } 
+    #searchmask{
+        background-color:lightgrey;
+        padding: 1em;
+    }
+    #label{
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        text-align: center;
+    }
+    #date_von, #date_bis, .buttonOrange{
+        font-size: 20px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        text-align: center;
+    }
+     .buttonOrange {
+         font-size:15px;
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
 
+        .buttonOrange:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .6px;
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+</style>
  <!-- Carousel-->
 <div id="myCarousel" class="carousel" data-ride="carousel">
 
     <!-- Datepicker -->
     <div class="carousel-caption">
-        @*Standort:
-        <input type="text" id="standort" />*@
-        Von:
-        <input type="text" id="date_von" placeholder="dd.mm.yyyy" />        
-        Bis:
-        <input type="text" id="date_bis" placeholder="dd.mm.yyyy"/>
-        <input type="button" value="Search" />
-        
+        <div id="searchmask">
+            @*Standort:
+            <input type="text" id="standort" />*@
+            <label id="label">Von:</label>
+            <input type="text" id="date_von" placeholder="dd.mm.yyyy" />        
+            <label id="label">Bis:</label>
+            <input type="text" id="date_bis" placeholder="dd.mm.yyyy"/>
+            <button class="buttonOrange">Search</button>
+        </div>
     </div>
     <!-- Punkte die anzeigen bei welchem bild ich bin-->
     <ol class="carousel-indicators">
