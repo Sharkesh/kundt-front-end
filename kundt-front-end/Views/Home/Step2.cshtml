@@ -3,46 +3,120 @@
     ViewBag.Title = "Step2";
 }
 
-<h2>Step2</h2>
+<style>
+    .buttonOrange {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        text-align: center;
+        text-transform: uppercase;
+    }
 
-<div class="row container">
-    <div>
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <img src="~/Content/img/images.png" class="img-responsive" />
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <p>Hier steht der supertolle Preis!</p>
+        .buttonOrange:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .6px;
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+    .centered {
+        text-align: center;
+        display: block;
+    }
+
+    img {
+        margin: auto;
+    }
+
+    li {
+        list-style: none;
+        display: table-row;
+        text-align: left;
+    }
+
+    ul {
+        text-align: left;
+        margin: auto;
+        display: table-row;
+    }
+</style>
+<div class="container">
+    <h2>Step2</h2>
+
+    <div class="row">
+        <div>
+            <div class="col-sm-12 col-md-12 invisible-lg visible-md visible-sm centered">
+                <h3 class="">Opel Astra</h3>
+                <h5>Limousine</h5>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <img src="~/Content/img/images.png" class="img-responsive" />
+            </div>
+            <div class="col-lg-6 visible-lg invisible-sm invisible-md">
+                <h3 class="">Opel Astra</h3>
+                <h5>Limousine</h5>
+                <p>Dieses Angebot enthält:</p>
+                <ul>
+                    <li>Alle Kilometer inkl.</li>
+                    <li>Testtext</li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-12 invisible-lg visible-md visible-sm centered">
+                <p>Dieses Angebot enthält:</p>
+                <ul>
+                    <li>Alle Kilometer inkl.</li>
+                    <li>Testtext</li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 centered">
+                <p>76,31 € pro Tag</p>
+                <p>Gesamtsumme</p>
+                <button class="buttonOrange">Fahrzeug wählen</button>
+            </div>
         </div>
     </div>
-</div>
-<div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-<div class="row container">
-    <div style="padding-top:40px">
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <img src="~/Content/img/images.png" class="img-responsive" />
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <p>Hier steht der supertolle Preis!</p>
+    <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
+    <div class="row">
+        <div style="padding-top:40px">
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <img src="~/Content/img/images.png" class="img-responsive" />
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 centered">
+                <p>76,31 € pro Tag</p>
+                <p>Gesamtsumme</p>
+                <button class="buttonOrange">Fahrzeug wählen</button>
+            </div>
         </div>
     </div>
-</div>
-<div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-<div class="row container">
-    <div style="padding-top:40px">
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <img src="~/Content/img/images.png" class="img-responsive" />
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-6">
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-        </div>
-        <div class="col-sm-12 col-md-12 col-lg-3">
-            <p>Hier steht der supertolle Preis!</p>
+    <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
+    <div class="row">
+        <div style="padding-top:40px">
+            <div class="col-sm-12 col-md-12 col-lg-3">
+                <img src="~/Content/img/images.png" class="img-responsive" />
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-3 centered">
+                <p>76,31 € pro Tag</p>
+                <p>Gesamtsumme</p>
+                <button class="buttonOrange">Fahrzeug wählen</button>
+            </div>
         </div>
     </div>
 </div>
