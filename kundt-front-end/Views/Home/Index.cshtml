@@ -5,12 +5,16 @@
  <!-- Carousel-->
 <div id="myCarousel" class="carousel" data-ride="carousel">
 
+    <!-- Datepicker -->
     <div class="carousel-caption">
-        <input type="text" id="date" />
-        <button id="button">Button</button>
-
-        <input type="text" id="date2" />
-        <button id="button2">Button2</button>
+        @*Standort:
+        <input type="text" id="standort" />*@
+        Von:
+        <input type="text" id="date_von" placeholder="dd.mm.yyyy" />        
+        Bis:
+        <input type="text" id="date_bis" placeholder="dd.mm.yyyy"/>
+        <input type="button" value="Search" />
+        
     </div>
     <!-- Punkte die anzeigen bei welchem bild ich bin-->
     <ol class="carousel-indicators">
@@ -23,19 +27,14 @@
         <!-- Jeweiliges bild (active sagt an bei welchem es startet)-->
         <div class="item active">
             <img src="~/Content/img/Bild1.jpg" alt="Bild1" style="width: 100%;" class="img-responsive" />
-
         </div>
         <div class="item">
             <img src="~/Content/img/Bild2.jpg" alt="Bild2" style="width: 100%;" class="img-responsive" />
-
         </div>
         <div class="item">
             <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
-
         </div>
     </div>
-
-
     <!-- Linke und rechte Pfeil (steuerung)-->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>

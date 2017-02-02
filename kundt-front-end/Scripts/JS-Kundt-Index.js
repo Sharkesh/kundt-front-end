@@ -11,13 +11,13 @@
     }
 });
 
+
+// Hier evtl Variablen anlegen für das Datum von/bis zur weitergabe für Step 1
 var $j = jQuery.noConflict();
-$j("#date").datepicker({
-    trigger: "#button"
+$j("#date_von").datepicker({    
 });
 
 
-$j("#date2").datepicker({
-    trigger: "#button2"
+$j("#date_bis").datepicker({    
 });
 
