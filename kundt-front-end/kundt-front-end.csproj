@@ -145,7 +145,6 @@
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
-    <Content Include="Content\style_carousel.css" />
     <Content Include="Content\img\images.png" />
     <Content Include="Content\img\kundt_logo.png" />
     <Content Include="Content\img\kundt_logo_with_slogan.png" />
