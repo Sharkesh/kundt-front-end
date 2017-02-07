@@ -3,11 +3,39 @@
     ViewBag.Title = "Step3";
 }
 <style>
-    .ÜberschriftStep3{
-        padding-top:5px;
+    .buttonOrange {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 40px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .6px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+        .buttonOrange:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 40px;
+            width: 150px;
+            font-weight: 700;
+            letter-spacing: .6px;
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+    .ÜberschriftStep3 {
+        padding-top: 5px;
         color: #002f41;
     }
-    .TextAufzählungStep3{
+
+    .TextAufzählungStep3 {
         color: #655d5d;
     }
 </style>
@@ -17,9 +45,9 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3" style="border-left:solid 3px; border-color:darkorange; padding-left:5px">
             <h2 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h2>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
-            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive"; style="max-width:250px"/>
+            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" ; style="max-width:250px" />
             @*<p><h3>Alfa Romeo Giulia</h3></p>*@
-            <article  class="TextAufzählungStep3">
+            <article class="TextAufzählungStep3">
                 <h4 class="ÜberschriftStep3">Abholung</h4>
                 <p>Wien</p>
                 <p>08.02.2017 um 12:00 Uhr </p>
@@ -30,15 +58,30 @@
                 <p>1 Tag oder so</p>
             </article>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-1">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-lg-offset-1" style="padding-left:0px">
             <article>
                 <h1 style="margin-top:0px; padding-bottom:10px">DetailanSICHST</h1>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             </article>
+            <center style="padding-top:75px">
+                <div class="block">
+                    <div class="hidden-xs col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                        <button class="buttonOrange">Zurück</button>
+                    </div>
+                    <div class="hidden-xs col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                        <button class="buttonOrange">Weiter</button>
+                    </div>
+
+                    <div class="hidden-sm hidden-md hidden-lg col-xs-6 col-sm-6 col-md-6 col-lg-4" style="padding-left:10px; width:100px; height:30px">
+                        <button class="buttonOrange" style="border-right:solid 1px">Zurück</button>
+                    </div>
+                    <div class="hidden-sm hidden-md hidden-lg col-xs-6 col-sm-6 col-md-6 col-lg-4" style="padding-right:10px; width:100px; height:30px">
+                        <button class="buttonOrange" style="border-left:solid 1px">Weiter</button>
+                    </div>
+                </div>
+            </center>
         </div>
     </div>
-    <div class="row">
-        <div class=""
-    </div>
+
 </div>
