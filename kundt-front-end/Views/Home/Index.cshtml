@@ -24,7 +24,7 @@
         font-size: 15px;
         font-weight: 700;
         width: 50px;
-        letter-spacing: 5px;
+        letter-spacing: 4.9px;
         text-align: center;
         width: auto;
         text-transform: uppercase;
@@ -116,18 +116,25 @@
 <!-- Carousel Ende -->
 <!-- Eyecatcher + Suchmaske Anfang -->
 <!-- Anfang Mobile Version -->
-<div id="searchMaskMobile" class="">
-    <div class="searchMask hidden-lg hidden-md">
+<div id="searchMaskMobile" class="hidden-lg hidden-md">
+    
+    <div class="searchMask row">
         @*Standort:
         <input type="text" id="standort" />*@
+        <div class="col-sm-5">
         <label id="label_von">Von:</label>
         <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
+        </div>
+        <div class="col-sm-5">
         <label id="label_bis">Bis:</label>
         <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
-        <button class="buttonOrange">Search</button>
+        </div>
+        <div class="col-sm-2">
+        <button class="buttonOrange glyphicon glyphicon-search" ></button>
+        </div>
     </div> 
     <div>
-        <img src="~/Content/img/images.png" class="img-responsive" />
+        <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
     </div>  
 </div>
 <!-- Ende Mobil Version -->
