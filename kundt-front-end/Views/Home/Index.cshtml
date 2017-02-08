@@ -6,7 +6,7 @@
         margin: 3em;
     }
 
-    #searchmask {
+    .searchMask {
         background-color: lightgrey;
         padding: 10px;
     }
@@ -24,7 +24,7 @@
         font-size: 15px;
         font-weight: 700;
         width: 50px;
-        letter-spacing: 5px;
+        letter-spacing: 4.9px;
         text-align: center;
         width: auto;
         text-transform: uppercase;
@@ -60,14 +60,16 @@
             text-transform: uppercase;
             opacity: 0.8;
         }
+       
+
 </style>
 <!-- Eyecatcher + Suchmaske Anfang -->
 <!-- Carousel Anfang-->
-<div id="myCarousel" class="carousel" data-ride="carousel">
+<div id="myCarousel" class="carousel hidden-sm hidden-xs" data-ride="carousel">
     <!-- Suchmaske Anfang -->
     <div class="container-fluid">
         <div class="carousel-caption">
-            <div id="searchmask">
+            <div class="searchMask">
                 @*Standort:
                     <input type="text" id="standort" />*@
                 <label  id="label_von">Von:</label>                
@@ -113,6 +115,29 @@
 </div>
 <!-- Carousel Ende -->
 <!-- Eyecatcher + Suchmaske Anfang -->
+<!-- Anfang Mobile Version -->
+<div id="searchMaskMobile" class="hidden-lg hidden-md">
+    
+    <div class="searchMask row">
+        @*Standort:
+        <input type="text" id="standort" />*@
+        <div class="col-sm-5">
+        <label id="label_von">Von:</label>
+        <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
+        </div>
+        <div class="col-sm-5">
+        <label id="label_bis">Bis:</label>
+        <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
+        </div>
+        <div class="col-sm-2">
+        <button class="buttonOrange glyphicon glyphicon-search" ></button>
+        </div>
+    </div> 
+    <div>
+        <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
+    </div>  
+</div>
+<!-- Ende Mobil Version -->
 <!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
 <div class="row" id="subbereich">
     <div id="angebot" class="col-lg-4">
