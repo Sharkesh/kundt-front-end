@@ -135,6 +135,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\icons.data.png.css" />
+    <Content Include="Content\icons.data.svg.css" />
+    <Content Include="Content\icons.fallback.css" />
+    <Content Include="Content\icons\car.png" />
     <Content Include="Content\icons\doors.png" />
     <Content Include="Content\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\images\ui-icons_555555_256x240.png" />
