@@ -6,7 +6,7 @@
         margin: 3em;
     }
 
-    #searchmask {
+    .searchMask {
         background-color: lightgrey;
         padding: 10px;
     }
@@ -69,7 +69,7 @@
     <!-- Suchmaske Anfang -->
     <div class="container-fluid">
         <div class="carousel-caption">
-            <div id="searchmask">
+            <div class="searchMask">
                 @*Standort:
                     <input type="text" id="standort" />*@
                 <label  id="label_von">Von:</label>                
@@ -115,6 +115,22 @@
 </div>
 <!-- Carousel Ende -->
 <!-- Eyecatcher + Suchmaske Anfang -->
+<!-- Anfang Mobile Version -->
+<div id="searchMaskMobile" class="">
+    <div class="searchMask hidden-lg hidden-md">
+        @*Standort:
+        <input type="text" id="standort" />*@
+        <label id="label_von">Von:</label>
+        <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
+        <label id="label_bis">Bis:</label>
+        <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
+        <button class="buttonOrange">Search</button>
+    </div> 
+    <div>
+        <img src="~/Content/img/images.png" class="img-responsive" />
+    </div>  
+</div>
+<!-- Ende Mobil Version -->
 <!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
 <div class="row" id="subbereich">
     <div id="angebot" class="col-lg-4">
