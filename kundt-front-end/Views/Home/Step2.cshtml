@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Step2";
 }
 
@@ -39,8 +38,9 @@
     .h2step2 {
         color: #002f41;
     }
-    .paddingSmallStep2{
-        padding-top:20px;
+
+    .paddingSmallStep2 {
+        padding-top: 20px;
     }
     .h3step2 {
         font-size: 32px;
@@ -48,29 +48,75 @@
         color: #002f41;
         display: block;
     }
-    .h5Step2{
-        font-size:18px;
+
+    .h5Step2 {
+        font-size: 18px;
     }
-    .fontsizeStep2{
-        font-size:18px;
-        font-weight:600;
-        color:#002f41;
-    } 
+
+    .fontsizeStep2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #002f41;
+    }
+
     .imgStep2 {
         margin: auto;
     }
-
-    .okZeichen {
+    .filterActive{
+        /*implementieren*/
+    }
+    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    li {
         list-style-image: url(../../Content/img/ok-sign.png);
     }
 
-    li {
+    #content > div > div > div > ul > li {
         list-style: none;
     }
 
+    #content > div > div > form > ul > li {
+        list-style: none;
+        position: relative;
+        float: left;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        text-decoration: none;
+    }
+
+    .filterStep2 {
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #CCC;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        color: darkgrey;
+    }
+
+        .filterStep2:hover {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #f99b1c;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            color: #f99b1c;
+        }
+
+    #content > div > div > form > ul > li > label > a:hover {
+        text-decoration: none;
+    }
+
+    #content > div > div > form > ul > li > label > a:focus {
+        text-decoration: none;
+    }
+
+    #content > div > div > form > ul > li > label > a:visited:focus {
+        color: #f99b1c;
+        border: 1px solid #f99b1c;
+    }
+    /*Ende*/
     .ulStep2 {
         margin: auto;
-        -webkit-padding-start:0px;
+        -webkit-padding-start: 0px;
     }
 
     .ulcenterStep2 {
@@ -85,7 +131,18 @@
 </style>
 <div class="container">
     <h2 class="h2step2">Wir haben folgende Angebote für Sie gefunden!</h2>
-
+    <div class="paddingSmallStep2" style="display:inline-block">
+        <form>
+            <ul class="ulStep2">
+                <li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>
+                <li><label><a href="#" class="filterStep2">Limousinen</a></label></li>
+                <li><label><a href="#" class="filterStep2">Kombis</a></label></li>
+                <li><label><a href="#" class="filterStep2">SUV</a></label></li>
+                <li><label><a href="#" class="filterStep2">Sitze</a></label></li>
+            </ul>
+        </form>
+    </div>
+    <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
     <div class="row">
         <div class="paddingtopStep2">
             <ul class="ulStep2">
@@ -102,14 +159,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -141,14 +198,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -180,14 +237,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -219,14 +276,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -258,14 +315,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -297,14 +354,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -336,14 +393,14 @@
                         <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -375,14 +432,14 @@
                         <h5 class="h5Step2">Kombi</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -414,14 +471,14 @@
                         <h5 class="h5Step2">SUV</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -453,14 +510,14 @@
                         <h5 class="h5Step2">Kombi</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -482,24 +539,24 @@
                 <li>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <h3 class="h3step2">Mini Cooper</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <img src="~/Content/img/mini-cooper-3d-schwarz-2014.png" class="img-responsive imgStep2" />
                     </div>
                     <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
                         <h3 class="h3step2">Mini Cooper</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -521,24 +578,24 @@
                 <li>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <h3 class="h3step2">Audi A6</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <img src="~/Content/img/audi-a6-4d-schwarz-2015.png" class="img-responsive imgStep2" />
                     </div>
                     <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
                         <h3 class="h3step2">Audi A6</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
@@ -560,24 +617,102 @@
                 <li>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <h3 class="h3step2">BMW 2er</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                         <img src="~/Content/img/bmw-2er-2d-weiss-2014.png" class="img-responsive imgStep2" />
                     </div>
                     <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
                         <h3 class="h3step2">BMW 2er</h3>
-                        <h5 class="h5Step2">SUV</h5>
+                        <h5 class="h5Step2">Limousine</h5>
                         <div>Dieses Angebot enthält:</div>
                         <ul>
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                         <ul class="ulcenterStep2 paddingSmallStep2">
-                            <li class="okZeichen">Alle Kilometer inkl.</li>
-                            <li class="okZeichen">Testtext</li>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
+                        </ul>
+                        <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
+                        <div class="fontsizeStep2">456,23 € Gesamt</div>
+                        <div class="paddingSmallStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                    </div>
+                    <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+                        <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
+                        <div class="fontsizeStep2">456,23 € Gesamt</div>
+                        <div class="paddingtopStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
+    <div class="row">
+        <div class="paddingtopStep2">
+            <ul class="ulStep2">
+                <li>
+                    <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
+                        <h3 class="h3step2">VW Golf 7</h3>
+                        <h5 class="h5Step2">Limousine</h5>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                        <img src="~/Content/img/vw-golf-7-5d-silber-2012.png" class="img-responsive imgStep2" />
+                    </div>
+                    <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
+                        <h3 class="h3step2">VW Golf 7</h3>
+                        <h5 class="h5Step2">Limousine</h5>
+                        <div>Dieses Angebot enthält:</div>
+                        <ul>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
+                        <ul class="ulcenterStep2 paddingSmallStep2">
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
+                        </ul>
+                        <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
+                        <div class="fontsizeStep2">456,23 € Gesamt</div>
+                        <div class="paddingSmallStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                    </div>
+                    <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+                        <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
+                        <div class="fontsizeStep2">456,23 € Gesamt</div>
+                        <div class="paddingtopStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
+    <div class="row">
+        <div class="paddingtopStep2">
+            <ul class="ulStep2">
+                <li>
+                    <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
+                        <h3 class="h3step2">Ford Focus</h3>
+                        <h5 class="h5Step2">Kombi</h5>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                        <img src="~/Content/img/ford-focus-kombi-blau-2015.png" class="img-responsive imgStep2" />
+                    </div>
+                    <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
+                        <h3 class="h3step2">Ford Focus</h3>
+                        <h5 class="h5Step2">Kombi</h5>
+                        <div>Dieses Angebot enthält:</div>
+                        <ul>
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
+                        <ul class="ulcenterStep2 paddingSmallStep2">
+                            <li>Alle Kilometer inkl.</li>
+                            <li>Testtext</li>
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
