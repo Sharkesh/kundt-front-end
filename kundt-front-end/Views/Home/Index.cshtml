@@ -11,6 +11,54 @@
         padding: 10px;
     }
 
+    #searchMaskMobile {
+        background-color: lightgrey;
+    }
+
+    .col-xs-12 > #date_von_mobile {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > #date_bis_mobile {
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > .buttonOrange_mobile {
+        width: 100%;
+        margin: auto;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .col-sm-5 > #date_von_mobile {
+        width: 80%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-sm-5 > #date_bis_mobile {
+        width: 80%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-sm-2 > .buttonOrange_mobile {
+        width: 100%;
+        margin: auto;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+
+
     #label_von {
         font-size: 15px;
         font-weight: 700;
@@ -19,7 +67,10 @@
         text-align: center;
         width: auto;
         text-transform: uppercase;
+        margin-left: 10px;
+        margin-right:10px;
     }
+
     #label_bis {
         font-size: 15px;
         font-weight: 700;
@@ -28,12 +79,27 @@
         text-align: center;
         width: auto;
         text-transform: uppercase;
+        margin-left: 10px;
+        margin-right:10px;
     }
 
     #date_von, #date_bis, .buttonOrange {
         font-size: 15px;
         height: 50px;
-        width: 200px;
+        width: 170px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        border: none;
+        letter-spacing: 6px;
+        margin-left: 10px;
+        margin-right:10px;
+    }
+
+    #date_von_mobile, #date_bis_mobile, .buttonOrange_mobile {
+        font-size: 15px;
+        height: 50px;
+        width: 170px;
         font-weight: 700;
         text-align: center;
         text-transform: uppercase;
@@ -41,6 +107,10 @@
         letter-spacing: 6px;
     }
 
+    .buttonOrange_mobile {
+        background-color: #f99b1c;
+        color: #ffffff;
+    }
 
     .buttonOrange {
         background-color: #f99b1c;
@@ -53,15 +123,13 @@
             color: #ffffff;
             font-size: 15px;
             height: 50px;
-            width: 200px;
+            width: 170px;
             font-weight: 700;
             letter-spacing: 6px;
             text-align: center;
             text-transform: uppercase;
             opacity: 0.8;
         }
-       
-
 </style>
 <!-- Eyecatcher + Suchmaske Anfang -->
 <!-- Carousel Anfang-->
@@ -72,9 +140,9 @@
             <div class="searchMask">
                 @*Standort:
                     <input type="text" id="standort" />*@
-                <label  id="label_von">Von:</label>                
+                <label id="label_von">Von:</label>
                 <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
-                <label id="label_bis">Bis:</label>                
+                <label id="label_bis">Bis:</label>
                 <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
                 <button class="buttonOrange">Search</button>
             </div>
@@ -117,25 +185,24 @@
 <!-- Eyecatcher + Suchmaske Anfang -->
 <!-- Anfang Mobile Version -->
 <div id="searchMaskMobile" class="hidden-lg hidden-md">
-    
-    <div class="searchMask row">
+    <div class="row col-sm-12">
         @*Standort:
-        <input type="text" id="standort" />*@
-        <div class="col-sm-5">
-        <label id="label_von">Von:</label>
-        <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
+            <input type="text" id="standort" />*@
+        <div class="col-sm-5 col-xs-12">
+            <label id="label_von">Von:</label>
+            <input type="text" id="date_von_mobile" placeholder="dd.mm.yyyy" />
         </div>
-        <div class="col-sm-5">
-        <label id="label_bis">Bis:</label>
-        <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
+        <div class="col-sm-5 col-xs-12">
+            <label id="label_bis">Bis:</label>
+            <input type="text" id="date_bis_mobile" placeholder="dd.mm.yyyy" />
         </div>
-        <div class="col-sm-2">
-        <button class="buttonOrange glyphicon glyphicon-search" ></button>
+        <div class="col-sm-2 col-xs-12">
+            <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
         </div>
-    </div> 
+    </div>
     <div>
         <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
-    </div>  
+    </div>
 </div>
 <!-- Ende Mobil Version -->
 <!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->

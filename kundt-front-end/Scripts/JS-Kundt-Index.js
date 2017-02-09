@@ -21,6 +21,12 @@ $j("#date_von").datepicker({
 $j("#date_bis").datepicker({    
 });
 
+$j("#date_von_mobile").datepicker({
+});
+
+
+$j("#date_bis_mobile").datepicker({
+});
 
 
 
