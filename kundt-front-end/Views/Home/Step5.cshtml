@@ -8,7 +8,16 @@
 
 <script>
     //Script Bereich Anfang
+    function BackToStep4() {
+        
+        window.location.href = "http://localhost:57095/Home/Step4";
+        
+    }
 
+    function ToStep5() {
+
+        window.location.href = "http://localhost:57095/Home/Step6";
+    }
 
 </script> @*Script Bereich Ende*@
 
@@ -99,12 +108,12 @@
         <div style="margin-top:50px">
             <div class="col-lg-offset-2 randnachoben">
                 <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="???">Zurück </button>
+                    <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
                 </div>
             </div>
             <div class="col-lg-offset-4">
                 <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="???">Bestätigen </button>
+                    <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
                 </div>
             </div>
         </div>
