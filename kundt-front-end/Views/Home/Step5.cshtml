@@ -2,16 +2,20 @@
 @{
     ViewBag.Title = "Step5";
 }
-<style>/*Style Bereich Anfang*/ 
+<style>
+    /*Style Bereich Anfang*/
+    .paddingSmallStep5 {
+        padding-top: 20px;
+    }
 
 </style> @*Style Bereich Ende*@
 
 <script>
     //Script Bereich Anfang
     function BackToStep4() {
-        
+
         window.location.href = "http://localhost:57095/Home/Step4";
-        
+
     }
 
     function ToStep5() {
@@ -22,80 +26,88 @@
 </script> @*Script Bereich Ende*@
 
 @*Header*@
-<h2>Step5</h2>
 <div class="container">
-    <div class="row">@*Erste Einteilung in 12 rows Anfang*@
-        <div class="col-lg-6">
-            <div class="row"> @*Zweite Reihe Rows ANFANG*@
-                @*Die ERSTEN 4 Reihen Anfang*@
-                <form>
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Vorname:</label>
-                            <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">Nachname:</label>
-                            <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
-                        </div>
-                    </div>
+    <div class="paddingSmallStep5">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:80%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+        </div>
+    </div>
 
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Ort:</label>
-                            <input type="text" class="form-control" id="Ort" placeholder="Ort">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">PLZ:</label>
-                            <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Adresse:</label>
-                            <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">Nummer:</label>
-                            <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Email:</label>
-                            <input type="text" class="form-control" id="Email" placeholder="Email">
-                        </div>
-                    </div>
-                  
-                    <div class="col-lg-offset-12">
-                        <div class="form-group ">
-                            <label for="exampleInputEmail1">Preis Details:</label>
-                            <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
-                        </div>
-                    </div>
-                    
-
+    <h2>Step5</h2>
+    <div class="row">
+        @*Erste Einteilung in 12 rows Anfang*@
+    <div class="col-lg-6">
+        <div class="row">
+            @*Zweite Reihe Rows ANFANG*@
+            @*Die ERSTEN 4 Reihen Anfang*@
+            <form>
+                <div>
                     <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Voller Preis:</label>
-                        <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
+                        <label for="exampleInputEmail1">Vorname:</label>
+                        <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
                     </div>
+                    <div class="form-group col-lg-offset-6">
+                        <label for="exampleInputEmail1">Nachname:</label>
+                        <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail1">Ort:</label>
+                        <input type="text" class="form-control" id="Ort" placeholder="Ort">
+                    </div>
+                    <div class="form-group col-lg-offset-6">
+                        <label for="exampleInputEmail1">PLZ:</label>
+                        <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail1">Adresse:</label>
+                        <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
+                    </div>
+                    <div class="form-group col-lg-offset-6">
+                        <label for="exampleInputEmail1">Nummer:</label>
+                        <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group col-lg-6">
+                        <label for="exampleInputEmail1">Email:</label>
+                        <input type="text" class="form-control" id="Email" placeholder="Email">
+                    </div>
+                </div>
+
+                <div class="col-lg-offset-12">
+                    <div class="form-group ">
+                        <label for="exampleInputEmail1">Preis Details:</label>
+                        <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
+                    </div>
+                </div>
+
+
+                <div class="form-group col-lg-6">
+                    <label for="exampleInputEmail1">Voller Preis:</label>
+                    <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
+                </div>
 
 
 
 
-                </form>
-            </div>@*Zweite Reihe Rows ENDE*@
+            </form>
+        </div>@*Zweite Reihe Rows ENDE*@
     </div> @*Die ERSTEN 8 Reihen Ende*@
-    
+
     <div class="col-lg-offset-2">
         <div class="col-lg-4">
             @*Die DRITTE Reihe Anfang*@
             <div>
-                <img src="~/Content/img/bmw-3er-kombi-grau-2015.png"/>
+                <img src="~/Content/img/bmw-3er-kombi-grau-2015.png" />
                 Hier die Vorschau für ihr Bestelltes Auto!
-                
+
                 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 
@@ -104,20 +116,20 @@
     </div> @*Die DRITTE Reihe Ende*@
 </div> @*Erste Einteilung in 12 rows Ende*@
 
-    <div style="margin-bottom:50px">
-        <div style="margin-top:50px">
-            <div class="col-lg-offset-2 randnachoben">
-                <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
-                </div>
+<div style="margin-bottom:50px">
+    <div style="margin-top:50px">
+        <div class="col-lg-offset-2 randnachoben">
+            <div class="col-lg-2">
+                <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
             </div>
-            <div class="col-lg-offset-4">
-                <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
-                </div>
+        </div>
+        <div class="col-lg-offset-4">
+            <div class="col-lg-2">
+                <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
             </div>
         </div>
     </div>
+</div>
 
 
 </div>
