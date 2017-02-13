@@ -107,7 +107,7 @@
             letter-spacing: .5px;
             text-align: center;
         }
-            /*Ende*/
+    /*Ende*/
     .h4Step3 {
         padding-top: 5px;
         color: #002f41;
@@ -134,16 +134,132 @@
         height: 20px;
         width: 20px;
     }
-        .paddingSmallStep3 {
-        padding-top: 20px;
+
+    .paddingSmallStep3 {
+        padding-top: 30px;
+    }
+    /*ProgressBar als Zähler*/
+    .myButton {
+        color:white; 
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButtonOp {
+        color:white; 
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        opacity: 0.3;
+        border-bottom: solid 1px;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButton:active {
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        font-size: 22px;
+        animation-name: anima01;
+        animation-iteration-count: infinite;
+        animation-duration: 2.5s;
+    }
+
+    .myButton:focus {
+        outline: none;
+    }
+
+    .myButtonOp:focus {
+        outline: none;
+    }
+
+    /*keyframes anima01 {
+            0% {
+                background-color: darkorange;
+            }
+
+            25% {
+                background-color: orange;
+            }
+
+            50% {
+                background-color: darkorange;
+            }
+
+            75% {
+                background-color: orange;
+            }
+
+            100% {
+                background-color: darkorange;
+            }
+        }*/
+
+    .myBorder {
+        
+        border-bottom: solid 1px;
+        border-color: darkorange;
+        padding: 15px 10px 5px 10px;
     }
 </style>
-
+<div class="container-fluid myBorder hidden-xs" style="text-align:center">
+    <div class="col-sm-2 col-sm-offset-1">
+        <button class="myButton">1</button>
+        <h5>Fahrzeug wählen</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButton">2</button>
+        <h5>Detailansicht</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButton">3</button>
+        <h5>Anmeldung</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButtonOp">4</button>
+        <h5>Buchung</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButtonOp">5</button>
+        <h5>Abschluss</h5>
+    </div>
+</div>
+<div class="container-fluid myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
+    <div class="col-xs-2 col-xs-offset-1">
+        <button class="myButton">1</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButton">2</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButton">3</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButtonOp">4</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButtonOp">5</button>        
+    </div>
+</div>
 <div class="container">
     <div class="paddingSmallStep3">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
-        </div>
+        @*<div class="progress">
+                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+            </div>*@
+
     </div>
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
