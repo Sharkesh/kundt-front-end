@@ -222,7 +222,41 @@
     .paddingtopStep2 {
         padding-top: 40px;
     }
+
+
+    .panel {
+        border: none;
+        background-color: white;
+        color: darkorange;
+    }
+
+        .panel:hover {
+            border: none;
+            background-color: orange;
+            color: white;
+        }
+
+
+    .panel-group {
+        border-top: solid 1px darkorange;
+        border-bottom: solid 1px darkorange;
+    }
+
+    .list-group {
+        border-color: orange;
+        color: darkorange;
+    }
+
+    .list-group-item:hover {
+        background-color: orange;
+        color: white;
+    }
+
+    .panel-collapse collapse {
+        border-color: darkorange;
+    }
 </style>
+
 <div class="container">
     <div class="paddingSmallStep2">
         <div class="progress">
@@ -253,6 +287,27 @@
             </ul>
         </form>
     </div>
+    <center>
+        <div class="panel-group">
+            <div class="panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#collapse1">Alle anzeigen</a>
+                    </h4>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <ul class="list-group">
+                        <li class="list-group-item"><label><a href="#" class="filterSmallStep2">Kleinwagen</a></label></li>
+                        <li class="list-group-item"><label><a href="#" class="filterSmallStep2">Mittelklasse</a></label></li>
+                        <li class="list-group-item"><label><a href="#" class="filterSmallStep2">Luxusklasse</a></label></li>
+                        <li class="list-group-item"><label><a href="#" class="filterSmallStep2">Sitze</a></label></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </center>
+
     @* Filterung Ende *@
 
     @* Auto auflistung *@
