@@ -3,6 +3,45 @@
 }
 
 <style>
+    .centeredStep2 {
+        text-align: center;
+        display: block;
+    }
+
+    .h2step2 {
+        color: #002f41;
+    }
+
+    .paddingSmallStep2 {
+        padding-top: 20px;
+    }
+
+    .h3step2 {
+        font-size: 32px;
+        font-weight: 400;
+        color: #002f41;
+        display: block;
+    }
+
+    .h5Step2 {
+        font-size: 18px;
+    }
+
+    .fontsizeStep2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #002f41;
+    }
+
+    .imgStep2 {
+        margin: auto;
+    }
+
+    .filterActive {
+        /*ajx implementieren*/
+    }
+    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+
     .buttonOrangeStep2 {
         background-color: #f99b1c;
         border: none;
@@ -55,44 +94,58 @@
             text-align: center;
         }
 
-    .centeredStep2 {
+    .buttonOrangeReturnStep2 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
         text-align: center;
-        display: block;
+        display: inline-block;
+        border-radius: 4px;
     }
 
-    .h2step2 {
-        color: #002f41;
-    }
+        .buttonOrangeReturnStep2 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
-    .paddingSmallStep2 {
-        padding-top: 20px;
-    }
+            .buttonOrangeReturnStep2 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
 
-    .h3step2 {
-        font-size: 32px;
-        font-weight: 400;
-        color: #002f41;
-        display: block;
-    }
+        .buttonOrangeReturnStep2:hover span {
+            padding-left: 15px;
+        }
 
-    .h5Step2 {
-        font-size: 18px;
-    }
+            .buttonOrangeReturnStep2:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
 
-    .fontsizeStep2 {
-        font-size: 18px;
-        font-weight: 600;
-        color: #002f41;
-    }
+        .buttonOrangeReturnStep2:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
 
-    .imgStep2 {
-        margin: auto;
-    }
-
-    .filterActive {
-        /*implementieren*/
-    }
-    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
     li {
         list-style-image: url(../../Content/img/ok-sign.png);
     }
@@ -128,6 +181,20 @@
             color: #f99b1c;
         }
 
+    .filterSmallStep2 {
+        background: #fff;
+        padding: 10px;
+        border: 1px solid #CCC;
+        color: darkgrey;
+    }
+
+        .filterSmallStep2:hover {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #f99b1c;
+            color: #f99b1c;
+        }
+
     #content > div > div > form > ul > li > label > a:hover {
         text-decoration: none;
     }
@@ -157,18 +224,38 @@
     }
 </style>
 <div class="container">
+    <div class="paddingSmallStep2">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width:20%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+        </div>
+    </div>
+    @* Filterung *@
     <h2 class="h2step2">Wir haben folgende Angebote für Sie gefunden!</h2>
-    <div class="paddingSmallStep2" style="display:inline-block">
+    <div class="paddingSmallStep2 hidden-xs hidden-sm" style="display:inline-block">
         <form>
             <ul class="ulStep2">
-                <li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>
-                <li><label><a href="#" class="filterStep2">Limousinen</a></label></li>
-                <li><label><a href="#" class="filterStep2">Kombis</a></label></li>
-                <li><label><a href="#" class="filterStep2">SUV</a></label></li>
-                <li><label><a href="#" class="filterStep2">Sitze</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Alle anzeigen</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Kleinwagen</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Mittelklasse</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Luxusklasse</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Sitze</a></label></li>
             </ul>
         </form>
     </div>
+    <div class="paddingSmallStep2 col-sm-12 col-xs-12 hidden-lg hidden-md" style="display:inline-block">
+        <form>
+            <ul class="ulStep2">
+                <li><label><a href="#" class="filterSmallStep2">Alle anzeigen</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Kleinwagen</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Mittelklasse</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Luxusklasse</a></label></li>
+                <li><label><a href="#" class="filterSmallStep2">Sitze</a></label></li>
+            </ul>
+        </form>
+    </div>
+    @* Filterung Ende *@
+
+    @* Auto auflistung *@
     <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
     <div class="row">
         <div class="paddingtopStep2">
@@ -236,12 +323,12 @@
                         </ul>
                         <div class="fontsizeStep2 paddingSmallStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
-                        <div class="paddingSmallStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                        <div class="paddingSmallStep2"><button class="buttonOrangeStep2"><span>Fahrzeug wählen</span></button></div>
                     </div>
                     <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
-                        <div class="paddingtopStep2"><button class="buttonOrangeStep2">Fahrzeug wählen</button></div>
+                        <div class="paddingtopStep2"><button class="buttonOrangeStep2"><span>Fahrzeug wählen</span></button></div>
                     </div>
                 </li>
             </ul>

@@ -3,33 +3,111 @@
     ViewBag.Title = "Step3";
 }
 <style>
-    .buttonOrangeStep3 {
+    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    .buttonOrangeForwardStep3 {
         background-color: #f99b1c;
         border: none;
         color: #ffffff;
         font-size: 15px;
-        height: 40px;
-        width: 150px;
+        height: 50px;
+        width: 200px;
         font-weight: 700;
-        letter-spacing: .6px;
+        letter-spacing: .5px;
         text-align: center;
-        text-transform: uppercase;
+        display: inline-block;
+        border-radius: 4px;
     }
 
-        .buttonOrangeStep3:hover {
+        .buttonOrangeForwardStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeForwardStep3 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeForwardStep3:hover span {
+            padding-right: 15px;
+        }
+
+            .buttonOrangeForwardStep3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+        .buttonOrangeForwardStep3:hover {
             background-color: #f99b1c;
             border: none;
             color: #ffffff;
             font-size: 15px;
-            height: 40px;
-            width: 150px;
+            height: 50px;
+            width: 200px;
             font-weight: 700;
-            letter-spacing: .6px;
+            letter-spacing: .5px;
             text-align: center;
-            text-transform: uppercase;
-            opacity: 0.8;
         }
 
+    .buttonOrangeReturnStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeReturnStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeReturnStep3 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeReturnStep3:hover span {
+            padding-left: 15px;
+        }
+
+            .buttonOrangeReturnStep3:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
+
+        .buttonOrangeReturnStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+            /*Ende*/
     .h4Step3 {
         padding-top: 5px;
         color: #002f41;
@@ -56,9 +134,17 @@
         height: 20px;
         width: 20px;
     }
+        .paddingSmallStep3 {
+        padding-top: 20px;
+    }
 </style>
 
 <div class="container">
+    <div class="paddingSmallStep3">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+        </div>
+    </div>
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:darkorange; margin-left:20px">
@@ -130,10 +216,11 @@
                     </div>*@
                 <div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
                     <div class="col-xs-6" style="padding-left:10px">
-                        <button class="buttonOrangeStep3" style="height:35px; width:120px">Zurück</button>
+
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
                     </div>
                     <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                        <button class="buttonOrangeStep3" style="height:35px; width:120px">Weiter</button>
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
                     </div>
                 </div>
             </center>
@@ -145,10 +232,10 @@
         <center>
             <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                    <button class="buttonOrangeStep3">Zurück</button>
+                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
-                    <button class="buttonOrangeStep3">Weiter</button>
+                    <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
                 </div>
             </div>
             @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
