@@ -6,58 +6,11 @@
         margin: 3em;
     }
 
+    /* CSS Suchmaske Desktop Anfang */
     .searchMask {
         background-color: lightgrey;
         padding: 10px;
     }
-
-    #searchMaskMobile {
-        background-color: lightgrey;
-    }
-
-    .col-xs-12 > #date_von_mobile {
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-        margin: auto;
-    }
-
-    .col-xs-12 > #date_bis_mobile {
-        width: 100%;
-        padding-right: 0px;
-        padding-left: 0px;
-        margin: auto;
-    }
-
-    .col-xs-12 > .buttonOrange_mobile {
-        width: 100%;
-        margin: auto;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-
-    .col-sm-5 > #date_von_mobile {
-        width: 70%;
-        padding-right: 0px;
-        padding-left: 0px;
-        margin: auto;
-    }
-
-    .col-sm-5 > #date_bis_mobile {
-        width: 70%;
-        padding-right: 0px;
-        padding-left: 0px;
-        margin: auto;
-    }
-
-    .col-sm-2 > .buttonOrange_mobile {
-        width: 100%;
-        margin: auto;
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-
-
 
     #label_von {
         font-size: 15px;
@@ -68,7 +21,7 @@
         width: auto;
         text-transform: uppercase;
         margin-left: 10px;
-        margin-right:10px;
+        margin-right: 10px;
     }
 
     #label_bis {
@@ -80,7 +33,7 @@
         width: auto;
         text-transform: uppercase;
         margin-left: 10px;
-        margin-right:10px;
+        margin-right: 10px;
     }
 
     #date_von, #date_bis, .buttonOrange {
@@ -93,23 +46,7 @@
         border: none;
         letter-spacing: 6px;
         margin-left: 10px;
-        margin-right:10px;
-    }
-
-    #date_von_mobile, #date_bis_mobile, .buttonOrange_mobile {
-        font-size: 15px;
-        height: 50px;
-        width: 170px;
-        font-weight: 700;
-        text-align: center;
-        text-transform: uppercase;
-        border: none;
-        letter-spacing: 6px;
-    }
-
-    .buttonOrange_mobile {
-        background-color: #f99b1c;
-        color: #ffffff;
+        margin-right: 10px;
     }
 
     .buttonOrange {
@@ -130,6 +67,145 @@
             text-transform: uppercase;
             opacity: 0.8;
         }
+    /* Ipad CSS Landscape Anfang */
+    @@media screen and (min-width: 1024px), screen and (max-width: 1024px) {
+        #label_von {
+            font-size: 15px;
+            font-weight: 700;
+            width: 50px;
+            letter-spacing: 3px;
+            text-align: center;
+            width: auto;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #label_bis {
+            font-size: 15px;
+            font-weight: 700;
+            width: 50px;
+            letter-spacing: 4.9px;
+            text-align: center;
+            width: auto;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #date_von, #date_bis, .buttonOrange {
+            font-size: 15px;
+            height: 50px;
+            width: 150px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 6px;
+            margin: 0px;
+        }
+
+            .buttonOrange:hover {
+                background-color: #f99b1c;
+                border: none;
+                color: #ffffff;
+                font-size: 15px;
+                height: 50px;
+                width: 150px;
+                font-weight: 700;
+                letter-spacing: 6px;
+                text-align: center;
+                text-transform: uppercase;
+                opacity: 0.8;
+                margin: 0px;
+            }
+    }
+    /* Ipad CSS Landscape Ende */
+
+    /* CSS Suchmaske Desktop Ende */
+
+
+    /* CSS Suchmaske Mobile Anfang */
+    #date_von_mobile, #date_bis_mobile, .buttonOrange_mobile {
+        font-size: 15px;
+        height: 50px;
+        width: 170px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        border: none;
+        letter-spacing: 6px;
+    }
+
+    .buttonOrange_mobile {
+        background-color: #f99b1c;
+        color: #ffffff;
+    }
+
+    #searchMaskMobile {
+        background-color: lightgrey;
+    }
+
+    .col-xs-12 > #date_von_mobile {
+        width: 90%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > #date_bis_mobile {
+        width: 90%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > .buttonOrange_mobile {
+        width: 100%;
+        margin: auto;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .col-sm-12 {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .col-sm-5, .col-sm-2 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+        .col-sm-5 > #date_von_mobile {
+            width: 70%;
+            padding-right: 0px;
+            padding-left: 0px;
+            margin: auto;
+            padding-right: 0px;
+        }
+
+        .col-sm-5 > #date_bis_mobile {
+            width: 70%;
+            padding-right: 0px;
+            padding-left: 0px;
+            margin: auto;
+            padding-right: 0px;
+        }
+
+        .col-sm-2 > .buttonOrange_mobile {
+            width: 100%;
+            margin: auto;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+    .glyphicon {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    /* CSS Suchmaske Mobile Ende */
 </style>
 <!-- Eyecatcher + Suchmaske Anfang -->
 <!-- Carousel Anfang-->
@@ -149,7 +225,7 @@
         </div>
     </div>
     <!-- Suchmaske Ende -->
-    <!-- Punkte die anzeigen bei welchem bild ich bin-->
+    <!-- Punkte die Anzeigen bei welchem Bild ich bin-->
     <div id="carousel">
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -158,7 +234,7 @@
 
         </ol>
         <div class="carousel-inner">
-            <!-- Jeweiliges bild (active sagt an bei welchem es startet)-->
+            <!-- jeweiliges Bild (active sagt an bei welchem es startet)-->
             <div class="item active">
                 <img src="~/Content/img/Bild1.jpg" alt="Bild1" style="width: 100%;" class="img-responsive" />
             </div>
@@ -169,7 +245,7 @@
                 <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
             </div>
         </div>
-        <!-- Linke und rechte Pfeil (steuerung) Anfang -->
+        <!-- Linke und Rechte Pfeil (steuerung) Anfang -->
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -182,13 +258,10 @@
     </div>
 </div>
 <!-- Carousel Ende -->
-<!-- Eyecatcher + Suchmaske Anfang -->
-<!-- Anfang Mobile Version -->
+<!-- Eyecatcher + Suchmaske Ende -->
+<!-- Anfang Mobile Version Eyecatcher + Suchmaske -->
 <div id="searchMaskMobile" class="hidden-lg hidden-md">
     <div class="row col-sm-12">
-        <div>
-            <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
-        </div>
         @*Standort:
             <input type="text" id="standort" />*@
         <div class="col-sm-5 col-xs-12">
@@ -203,11 +276,11 @@
             <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
         </div>
     </div>
-    @*<div>
+    <div>
         <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
-    </div>*@
+    </div>
 </div>
-<!-- Ende Mobil Version -->
+<!-- Ende Mobil Version Eyecatcher + Suchmaske -->
 <!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
 <div class="row" id="subbereich">
     <div id="angebot" class="col-lg-4">
