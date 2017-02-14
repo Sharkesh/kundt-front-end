@@ -1,31 +1,312 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    #subbereich {
+        margin: 3em;
+    }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+    /* CSS Suchmaske Desktop Anfang */
+    .searchMask {
+        background-color: lightgrey;
+        padding: 10px;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    #label_von {
+        font-size: 15px;
+        font-weight: 700;
+        width: 50px;
+        letter-spacing: 3px;
+        text-align: center;
+        width: auto;
+        text-transform: uppercase;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    #label_bis {
+        font-size: 15px;
+        font-weight: 700;
+        width: 50px;
+        letter-spacing: 4.9px;
+        text-align: center;
+        width: auto;
+        text-transform: uppercase;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    #date_von, #date_bis, .buttonOrange {
+        font-size: 15px;
+        height: 50px;
+        width: 170px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        border: none;
+        letter-spacing: 6px;
+        margin-left: 10px;
+        margin-right: 10px;
+        color:black;
+    }
+
+    .buttonOrange {
+        background-color: #f99b1c;
+        color: #ffffff;
+    }
+
+        .buttonOrange:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 170px;
+            font-weight: 700;
+            letter-spacing: 6px;
+            text-align: center;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+    /* Ipad CSS Landscape Anfang */
+    @@media screen and (min-width: 1024px), screen and (max-width: 1024px) {
+        #label_von {
+            font-size: 15px;
+            font-weight: 700;
+            width: 50px;
+            letter-spacing: 3px;
+            text-align: center;
+            width: auto;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #label_bis {
+            font-size: 15px;
+            font-weight: 700;
+            width: 50px;
+            letter-spacing: 4.9px;
+            text-align: center;
+            width: auto;
+            text-transform: uppercase;
+            margin: 0px;
+        }
+
+        #date_von, #date_bis, .buttonOrange {
+            font-size: 15px;
+            height: 50px;
+            width: 150px;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            border: none;
+            letter-spacing: 6px;
+            margin: 0px;
+        }
+
+        .buttonOrange{
+            margin-left:10px;
+        }
+
+            .buttonOrange:hover {
+                background-color: #f99b1c;
+                border: none;
+                color: #ffffff;
+                font-size: 15px;
+                height: 50px;
+                width: 150px;
+                font-weight: 700;
+                letter-spacing: 6px;
+                text-align: center;
+                text-transform: uppercase;
+                opacity: 0.8;
+                margin: 0px;
+                margin-left:10px;
+            }
+    }
+    /* Ipad CSS Landscape Ende */
+
+    /* CSS Suchmaske Desktop Ende */
+
+
+    /* CSS Suchmaske Mobile Anfang */
+    #date_von_mobile, #date_bis_mobile, .buttonOrange_mobile {
+        font-size: 15px;
+        height: 50px;
+        width: 170px;
+        font-weight: 700;
+        text-align: center;
+        text-transform: uppercase;
+        border: none;
+        letter-spacing: 6px;
+    }
+
+    .buttonOrange_mobile {
+        background-color: #f99b1c;
+        color: #ffffff;
+    }
+
+    #searchMaskMobile {
+        background-color: lightgrey;
+    }
+
+    .col-xs-12 > #date_von_mobile {
+        width: 90%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > #date_bis_mobile {
+        width: 90%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin: auto;
+    }
+
+    .col-xs-12 > .buttonOrange_mobile {
+        width: 100%;
+        margin: auto;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .col-sm-12 {
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .col-sm-5, .col-sm-2 {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+        .col-sm-5 > #date_von_mobile {
+            width: 70%;
+            padding-right: 0px;
+            padding-left: 0px;
+            margin: auto;
+            padding-right: 0px;
+        }
+
+        .col-sm-5 > #date_bis_mobile {
+            width: 70%;
+            padding-right: 0px;
+            padding-left: 0px;
+            margin: auto;
+            padding-right: 0px;
+        }
+
+        .col-sm-2 > .buttonOrange_mobile {
+            width: 100%;
+            margin: auto;
+            padding-right: 0px;
+            padding-left: 0px;
+        }
+
+    .glyphicon {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    /* CSS Suchmaske Mobile Ende */
+</style>
+<!-- Eyecatcher + Suchmaske Anfang -->
+<!-- Carousel Anfang-->
+<div id="myCarousel" class="carousel hidden-sm hidden-xs" data-ride="carousel">
+    <!-- Suchmaske Anfang -->
+    <div class="container-fluid">
+        <div class="carousel-caption">
+            <div class="searchMask">
+                <!--Standort:
+                <input type="text" id="standort" />
+                -->
+                <label id="label_von">Von:</label>
+                <input type="text" id="date_von" placeholder="dd.mm.yyyy" />
+                <label id="label_bis">Bis:</label>
+                <input type="text" id="date_bis" placeholder="dd.mm.yyyy" />
+                <button class="buttonOrange">Search</button>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    <!-- Suchmaske Ende -->
+    <!-- Punkte die Anzeigen bei welchem Bild ich bin-->
+    <div id="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+
+        </ol>
+        <div class="carousel-inner">
+            <!-- jeweiliges Bild (active sagt an bei welchem es startet)-->
+            <div class="item active">
+                <img src="~/Content/img/Bild1.jpg" alt="Bild1" style="width: 100%;" class="img-responsive" />
+            </div>
+            <div class="item">
+                <img src="~/Content/img/Bild2.jpg" alt="Bild2" style="width: 100%;" class="img-responsive" />
+            </div>
+            <div class="item">
+                <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
+            </div>
+        </div>
+        <!-- Linke und Rechte Pfeil (steuerung) Anfang -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!-- Linke und rechte Pfeil (steuerung) Ende -->
     </div>
 </div>
+<!-- Carousel Ende -->
+<!-- Eyecatcher + Suchmaske Ende -->
+<!-- Anfang Mobile Version Eyecatcher + Suchmaske -->
+<div id="searchMaskMobile" class="hidden-lg hidden-md">
+    <div class="row col-sm-12">
+        @*Standort:
+            <input type="text" id="standort" />*@
+        <div class="col-sm-5 col-xs-12">
+            <label id="label_von">Von:</label>
+            <input type="text" id="date_von_mobile" placeholder="dd.mm.yyyy" />
+        </div>
+        <div class="col-sm-5 col-xs-12">
+            <label id="label_bis">Bis:</label>
+            <input type="text" id="date_bis_mobile" placeholder="dd.mm.yyyy" />
+        </div>
+        <div class="col-sm-2 col-xs-12">
+            <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
+        </div>
+    </div>
+    <div>
+        <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
+    </div>
+</div>
+<!-- Ende Mobil Version Eyecatcher + Suchmaske -->
+<!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
+<div class="row" id="subbereich">
+    <div id="angebot" class="col-lg-4">
+        <h3>Angebot</h3>
+        <div>
+            <img src="~/Content/img/images.png" class="img-responsive" />
+        </div>
+    </div>
+    <div id="werbeflaeche" class="col-lg-4">
+        <h3>Werbefläche</h3>
+        <div>
+            <img src="~/Content/img/images.png" class="img-responsive" />
+        </div>
+    </div>
+    <div id="googlemaps" class="col-lg-4">
+        <h3>Hier findet ihr uns!</h3>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6327.522154799916!2d16.406683896074593!3d48.17973372399835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da9fc1292b1d7%3A0xd1448700672b6f2f!2sSimmeringer+Hauptstra%C3%9Fe+49%2C+1110+Wien%2C+%C3%96sterreich!5e0!3m2!1sde!2sde!4v1486033947947" width="100%" height="225px" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+<!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Ende -->

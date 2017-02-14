@@ -2,6 +2,366 @@
 @{
     ViewBag.Title = "Step3";
 }
+<style>
+    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    .buttonOrangeForwardStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
 
-<h2>Step3</h2>
+        .buttonOrangeForwardStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
+            .buttonOrangeForwardStep3 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeForwardStep3:hover span {
+            padding-right: 15px;
+        }
+
+            .buttonOrangeForwardStep3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+        .buttonOrangeForwardStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .buttonOrangeReturnStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeReturnStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeReturnStep3 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeReturnStep3:hover span {
+            padding-left: 15px;
+        }
+
+            .buttonOrangeReturnStep3:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
+
+        .buttonOrangeReturnStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+    /*Ende*/
+    .h4Step3 {
+        padding-top: 5px;
+        color: #002f41;
+    }
+
+    .TextAufzählungStep3 {
+        color: #655d5d;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .okZeichen1 {
+        list-style-image: url(../../../../Content/img/ok-sign.png);
+        padding-bottom: 10px;
+    }
+
+    .h3Step3 {
+        margin-top: 0px;
+    }
+
+    .CBStep3 {
+        height: 20px;
+        width: 20px;
+    }
+
+    .paddingSmallStep3 {
+        padding-top: 30px;
+    }
+    /*ProgressBar als Zähler*/
+    .myButton {
+        color:white; 
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButtonOp {
+        color:white; 
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        opacity: 0.3;
+        border-bottom: solid 1px;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButton:active {
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        font-size: 22px;
+        animation-name: anima01;
+        animation-iteration-count: infinite;
+        animation-duration: 2.5s;
+    }
+
+    .myButton:focus {
+        outline: none;
+    }
+
+    .myButtonOp:focus {
+        outline: none;
+    }
+
+    /*keyframes anima01 {
+            0% {
+                background-color: darkorange;
+            }
+
+            25% {
+                background-color: orange;
+            }
+
+            50% {
+                background-color: darkorange;
+            }
+
+            75% {
+                background-color: orange;
+            }
+
+            100% {
+                background-color: darkorange;
+            }
+        }*/
+
+    .myBorder {
+        
+        border-bottom: solid 1px;
+        border-color: darkorange;
+        padding: 15px 10px 5px 10px;
+    }
+</style>
+<div class="container-fluid myBorder hidden-xs" style="text-align:center">
+    <div class="col-sm-2 col-sm-offset-1">
+        <button class="myButton">1</button>
+        <h5>Fahrzeug wählen</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButton">2</button>
+        <h5>Detailansicht</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButton">3</button>
+        <h5>Anmeldung</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButtonOp">4</button>
+        <h5>Buchung</h5>
+    </div>
+    <div class="col-sm-2">
+        <button class="myButtonOp">5</button>
+        <h5>Abschluss</h5>
+    </div>
+</div>
+<div class="container-fluid myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
+    <div class="col-xs-2 col-xs-offset-1">
+        <button class="myButton">1</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButton">2</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButton">3</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButtonOp">4</button>        
+    </div>
+    <div class="col-xs-2">
+        <button class="myButtonOp">5</button>        
+    </div>
+</div>
+<div class="container">
+    <div class="paddingSmallStep3">
+        @*<div class="progress">
+                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+            </div>*@
+
+    </div>
+    <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
+    <div class="row">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:darkorange; margin-left:20px">
+            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
+            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
+
+            @*div-Bereich unterhalb img*@
+            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="h4Step3">Abholung</h4>
+                <p>Wien</p>
+                <p>08.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Rückgabe</h4>
+                <p>Wien</p>
+                <p>09.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Mietdauer</h4>
+                <p>1 Tag oder so</p>
+            </div>
+        </div>
+
+        @*sichtbar auf kleinem Format (xs)*@
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+            <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
+            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
+            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="h4Step3">Abholung</h4>
+                <p>Wien</p>
+                <p>08.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Rückgabe</h4>
+                <p>Wien</p>
+                <p>09.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Mietdauer</h4>
+                <p>1 Tag oder so</p>
+            </div>
+        </div>
+
+        @*Aufzählung rechts*@
+        <div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">
+            <div class="col-xs-12 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="h3Step3">Sonderausstattung</h3>
+                        <ul>
+                            <li class="okZeichen1">Klimaautomatik</li>
+                            <li class="okZeichen1">Sitzheizung</li>
+                            <li class="okZeichen1">Scheidenwaschanlage</li>
+                            <li class="okZeichen1">Zusatzausstattung</li>
+                            <li class="okZeichen1">Zusatzausstattung</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-12">
+                        <form>
+                            <h3 class="h3Step3">Rücktrittsversicherung <input class="CBStep3" type="checkbox" /></h3>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+            <center>
+                @*<div class="row col-sm-12 col-md-12 col-lg-12 col-xl-12 hidden-xs" style="padding-top:475px">
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 hidden-xs">
+                            <button class="buttonOrange">Zurück</button>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 xs-hidden">
+                            <button class="buttonOrange">Weiter</button>
+                        </div>
+                    </div>*@
+                <div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
+                    <div class="col-xs-6" style="padding-left:10px">
+
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </div>
+                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    </div>
+                </div>
+            </center>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <center>
+            <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+                <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
+                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
+                    <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                </div>
+            </div>
+            @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
+                    <div class="col-xs-6" style="padding-left:10px">
+                        <button class="buttonOrange" style="height:35px; width:120px">Zurück</button>
+                    </div>
+                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
+                        <button class="buttonOrange" style="height:35px; width:120px">Weiter</button>
+                    </div>
+                </div>*@
+        </center>
+    </div>
+</div>
