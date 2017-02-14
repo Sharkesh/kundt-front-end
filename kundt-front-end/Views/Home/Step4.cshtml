@@ -61,7 +61,7 @@
     .paddingSmallStep4 {
         padding-top: 20px;
     }
-        /* Progress-Bar */
+    /* Progress-Bar */
     .miniButton {
         color: white;
         height: 35px;
@@ -75,6 +75,22 @@
         border-left-color: antiquewhite;
         border-bottom-color: antiquewhite;
         margin: auto 0% auto 1%;
+    }
+
+    .miniButtonOp {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+        opacity: 0.3;
     }
 
     .myButton {
@@ -116,12 +132,12 @@
         animation-duration: 2.5s;
     }
 
-    .myButton:focus {
+    .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
 
-    .myButtonOp:focus {
-        outline: none;
+    .noCurs {
+        cursor: default;
     }
 
     @@keyframes anima01 {
@@ -148,7 +164,7 @@
 
     @@keyframes anima02 {
         from {
-            width: 70%;
+            width: 65%;
         }
 
         to {
@@ -231,13 +247,14 @@
             <h5>Anmeldung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">4</button>
+            <button class="myButtonOp noCurs">4</button>
             <h5>Buchung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">5</button>
+            <button class="myButtonOp noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
+
         <div class="row">
             <div class="container-fluid" style="width:50%; margin-left:0px">
                 <div class="myBar01"></div>
@@ -252,212 +269,213 @@
             <button class="miniButton">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">3</button>
+            <button class="miniButton ">3</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">4</button>
+            <button class="miniButtonOp noCurs">4</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">5</button>
+            <button class="miniButtonOp noCurs">5</button>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-md-4 autoAnsichtRechts">
 
-            <div class="row">
-                <div class="col-md-12 detailAnsichtAuto">
-                    <ul>
-                        @*Autobild hier*@
-                        <li class="noLiMarker">
-                            <img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive" />
-                        </li>
-                        @*Autoname hier*@
-                        <li class="noLiMarker">
-                            <h3>BMW X1</h3>
-                            <p>
-                                oder Opel Insignia, Mercedes-Benz GLA-Klasse oder ähnliche
-                                Premium-Limousine | SDMR
-                            </p>
-                        </li>
-                        @*Abholung hier*@
-                        <li class="noLiMarker">
-                            <h4>Abholung</h4>
-                            <p>
-                                Wien-Schwechat Flughafen
-                                08.02.2017 um 12:00 Uhr
-                            </p>
-                        </li>
-                        @*Rückgabe hier*@
-                        <li class="noLiMarker">
-                            <h4>Rückgabe</h4>
-                            <p>
-                                Wien-Schwechat Flughafen
-                                09.02.2017 um 09:00 Uhr
-                            </p>
-                        </li>
-                        @*Mietdauer hier*@
-                        <li class="noLiMarker">
-                            <h4>Mietdauer</h4>
-                            <p>
-                                1 Tag
-                            </p>
-                        </li>
+        <div class="row">
+            <div class="col-xs-12 col-md-4 autoAnsichtRechts">
 
-                        @*Preis hier*@
-                        <li class="noLiMarker">
-                            <h4>Preis</h4>
-                            <p>
-                                € 185,67
-                            </p>
-                        </li>
-                        @*Fahrzeugausstattung hier*@                @*margin-bottom unklar *@
-                        <li class="noLiMarker">
-                            <h4>Fahrzeugausstattung</h4>
-                            <div class="col-lg-1 fa fa-snowflake-o"></div>
-                            <div class="col-lg-10">Klimaanlage</div>
+                <div class="row">
+                    <div class="col-md-12 detailAnsichtAuto">
+                        <ul>
+                            @*Autobild hier*@
+                            <li class="noLiMarker">
+                                <img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive" />
+                            </li>
+                            @*Autoname hier*@
+                            <li class="noLiMarker">
+                                <h3>BMW X1</h3>
+                                <p>
+                                    oder Opel Insignia, Mercedes-Benz GLA-Klasse oder ähnliche
+                                    Premium-Limousine | SDMR
+                                </p>
+                            </li>
+                            @*Abholung hier*@
+                            <li class="noLiMarker">
+                                <h4>Abholung</h4>
+                                <p>
+                                    Wien-Schwechat Flughafen
+                                    08.02.2017 um 12:00 Uhr
+                                </p>
+                            </li>
+                            @*Rückgabe hier*@
+                            <li class="noLiMarker">
+                                <h4>Rückgabe</h4>
+                                <p>
+                                    Wien-Schwechat Flughafen
+                                    09.02.2017 um 09:00 Uhr
+                                </p>
+                            </li>
+                            @*Mietdauer hier*@
+                            <li class="noLiMarker">
+                                <h4>Mietdauer</h4>
+                                <p>
+                                    1 Tag
+                                </p>
+                            </li>
 
-                            <div class="col-lg-1 fa fa-cogs"></div>
-                            <div class="col-lg-10">Manuelle Schaltung</div>
+                            @*Preis hier*@
+                            <li class="noLiMarker">
+                                <h4>Preis</h4>
+                                <p>
+                                    € 185,67
+                                </p>
+                            </li>
+                            @*Fahrzeugausstattung hier*@                @*margin-bottom unklar *@
+                            <li class="noLiMarker">
+                                <h4>Fahrzeugausstattung</h4>
+                                <div class="col-lg-1 fa fa-snowflake-o"></div>
+                                <div class="col-lg-10">Klimaanlage</div>
 
-                            <div class="col-lg-1 fa fa-money"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">4 Türen</div>
-                        </li>
-                        @*Platzangebot hier*@
-                        <li class="noLiMarker">
+                                <div class="col-lg-1 fa fa-cogs"></div>
+                                <div class="col-lg-10">Manuelle Schaltung</div>
 
-                            <h4>Platzangebot</h4>
+                                <div class="col-lg-1 fa fa-money"></div>
+                                <div class="col-lg-10" style="margin-bottom:10px;">4 Türen</div>
+                            </li>
+                            @*Platzangebot hier*@
+                            <li class="noLiMarker">
+
+                                <h4>Platzangebot</h4>
 
 
-                            <div class="col-lg-1 fa fa-suitcase"></div>
-                            <div class="col-lg-10">2 große Koffer</div>
+                                <div class="col-lg-1 fa fa-suitcase"></div>
+                                <div class="col-lg-10">2 große Koffer</div>
 
-                            <div class="col-lg-1 fa fa-shopping-bag"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">2 Hangebäckstücke</div>
-                        </li>
-                        @*Mindestalter fahrer hier*@
-                        <li class="noLiMarker">
-                            <h4>Midestalter Fahrer</h4>
-                            <div class="col-lg-1 icon-car" style="width: 20px; height: 20px;"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">21 Jahre</div>
+                                <div class="col-lg-1 fa fa-shopping-bag"></div>
+                                <div class="col-lg-10" style="margin-bottom:10px;">2 Hangebäckstücke</div>
+                            </li>
+                            @*Mindestalter fahrer hier*@
+                            <li class="noLiMarker">
+                                <h4>Midestalter Fahrer</h4>
+                                <div class="col-lg-1 icon-car" style="width: 20px; height: 20px;"></div>
+                                <div class="col-lg-10" style="margin-bottom:10px;">21 Jahre</div>
 
-                        </li>
+                            </li>
 
-                        @*Inklusivleistungen und Exteras*@
-                        <li class="noLiMarker">
-                            <h4>Mindestdauer Führerscheinbesitz</h4>
-                            <p>
-                                2 Jahr(e)
-                            </p>
-                        </li>
-                        @*Rechte/Pflichten (AGB)*@
-                        <li class="noLiMarker">
-                            <h4>AGB</h4>
+                            @*Inklusivleistungen und Exteras*@
+                            <li class="noLiMarker">
+                                <h4>Mindestdauer Führerscheinbesitz</h4>
+                                <p>
+                                    2 Jahr(e)
+                                </p>
+                            </li>
+                            @*Rechte/Pflichten (AGB)*@
+                            <li class="noLiMarker">
+                                <h4>AGB</h4>
 
-                            <!-- Trigger/Open The Modal -->
-                            <button class="fa fa-file-text-o" id="myBtn" onclick="openModal()"></button>
+                                <!-- Trigger/Open The Modal -->
+                                <button class="fa fa-file-text-o" id="myBtn" onclick="openModal()"></button>
 
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal">
+                                <!-- The Modal -->
+                                <div id="myModal" class="modal">
 
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <p>Hier steht die AGB</p>
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p>Hier steht die AGB</p>
+                                    </div>
+
                                 </div>
 
-                            </div>
 
 
-
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+
+            @*Erste Box für Login Anfang*@
+            <div class="col-xs-12 col-md-8 formFeldLinks">
+                <form class="form-horizontal" style="padding: 20px;">
+                    <div class="form-group">
+                        @*E-Mail1*@
+                        <label for="inputMail" class="col-md-2 control-label">Email</label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" id="mailLogin" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @*Passwort1*@
+                        <label for="inputPasswort" class="col-md-2 control-label">Passwort</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-md-10">
+                            <div class="checkbox" style="margin-top: -10px;">
+                                <label>
+                                    <input type="checkbox"> Angemeldet bleiben
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            @*Buttons Zurück, Registieren, Login*@
+                            <button type="submit" class="btn btn-default">Zurück</button>
+                            <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;">Registrieren</button>
+                            <button type="submit" class="btn btn-default" style="position: relative; right: -40px;">Login</button>
+                        </div>
+                    </div>
+                    @*Erste Box für Login Ende*@
+                </form>
+
+                @*Zweite Box für Regestrieren Anfang*@
+                <form class="form-horizontal" style="margin-left: 15px;">
+                    <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
+
+
+                        <div class="form-group" style="margin-top: 35px;">
+                            <label for="prename" class="col-md-2 control-label collapseForm">Vorname</label>
+                            <div class="col-md-10">
+                                @*Box Vorname*@
+                                <input type="text" class="form-control collapseForm" id="prename" placeholder="Vorname">
+                            </div>
+                            <label for="sirname" class="col-md-2 control-label collapseForm">Nachname</label>
+                            <div class="col-md-10">
+                                @*Box Nachname*@
+                                <input type="text" class="form-control collapseForm" id="sirname" placeholder="Nachname">
+                            </div>
+                            <label for="mailRegister" class="col-md-2 control-label collapseForm">Email</label>
+                            <div class="col-md-10">
+                                @*Box Email2*@
+                                <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="Email">
+                            </div>
+                            <label for="adress" class="col-md-2 control-label collapseForm">Adresse</label>
+                            <div class="col-md-10">
+                                @*Box Adresse*@
+                                <input type="text" class="form-control collapseForm" id="adress" placeholder="Adresse">
+                            </div>
+                            <label for="city" class="col-md-2 control-label collapseForm">Ort</label>
+                            <div class="col-md-10">
+                                @*Box Ort*@
+                                <input type="text" class="form-control collapseForm" id="city" placeholder="Ort">
+                            </div>
+                            <label for="postcode" class="col-md-2 control-label collapseForm">PLZ</label>
+                            <div class="col-md-10">
+                                @*Box PLZ*@
+                                <input type="text" class="form-control collapseForm" id="postcode" placeholder="PLZ">
+                            </div>
+                            @*Button Regestieren2*@
+                            <div class="col-md-offset-2" style="position: relative; left: 194px;">
+                                <button type="submit" class="btn btn-default">Registrieren</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                @*Zweite Box für Regestrieren Ende*@
+            </div>
         </div>
-
-
-        @*Erste Box für Login Anfang*@
-        <div class="col-xs-12 col-md-8 formFeldLinks">
-            <form class="form-horizontal" style="padding: 20px;">
-                <div class="form-group">
-                    @*E-Mail1*@
-                    <label for="inputMail" class="col-md-2 control-label">Email</label>
-                    <div class="col-md-10">
-                        <input type="email" class="form-control" id="mailLogin" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    @*Passwort1*@
-                    <label for="inputPasswort" class="col-md-2 control-label">Passwort</label>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-md-10">
-                        <div class="checkbox" style="margin-top: -10px;">
-                            <label>
-                                <input type="checkbox"> Angemeldet bleiben
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        @*Buttons Zurück, Registieren, Login*@
-                        <button type="submit" class="btn btn-default">Zurück</button>
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;">Registrieren</button>
-                        <button type="submit" class="btn btn-default" style="position: relative; right: -40px;">Login</button>
-                    </div>
-                </div>
-                @*Erste Box für Login Ende*@
-            </form>
-
-            @*Zweite Box für Regestrieren Anfang*@
-            <form class="form-horizontal" style="margin-left: 15px;">
-                <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
-
-
-                    <div class="form-group" style="margin-top: 35px;">
-                        <label for="prename" class="col-md-2 control-label collapseForm">Vorname</label>
-                        <div class="col-md-10">
-                            @*Box Vorname*@
-                            <input type="text" class="form-control collapseForm" id="prename" placeholder="Vorname">
-                        </div>
-                        <label for="sirname" class="col-md-2 control-label collapseForm">Nachname</label>
-                        <div class="col-md-10">
-                            @*Box Nachname*@
-                            <input type="text" class="form-control collapseForm" id="sirname" placeholder="Nachname">
-                        </div>
-                        <label for="mailRegister" class="col-md-2 control-label collapseForm">Email</label>
-                        <div class="col-md-10">
-                            @*Box Email2*@
-                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="Email">
-                        </div>
-                        <label for="adress" class="col-md-2 control-label collapseForm">Adresse</label>
-                        <div class="col-md-10">
-                            @*Box Adresse*@
-                            <input type="text" class="form-control collapseForm" id="adress" placeholder="Adresse">
-                        </div>
-                        <label for="city" class="col-md-2 control-label collapseForm">Ort</label>
-                        <div class="col-md-10">
-                            @*Box Ort*@
-                            <input type="text" class="form-control collapseForm" id="city" placeholder="Ort">
-                        </div>
-                        <label for="postcode" class="col-md-2 control-label collapseForm">PLZ</label>
-                        <div class="col-md-10">
-                            @*Box PLZ*@
-                            <input type="text" class="form-control collapseForm" id="postcode" placeholder="PLZ">
-                        </div>
-                        @*Button Regestieren2*@
-                        <div class="col-md-offset-2" style="position: relative; left: 194px;">
-                            <button type="submit" class="btn btn-default">Registrieren</button>
-
-                        </div>
-                    </div>
-                </div>
-            </form>
-            @*Zweite Box für Regestrieren Ende*@
-        </div>        
     </div>
 </div>

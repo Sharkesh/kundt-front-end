@@ -276,6 +276,22 @@
         margin: auto 0% auto 1%;
     }
 
+    .miniButtonOp {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+        opacity: 0.3;
+    }
+
     .myButton {
         color: white;
         height: 45px;
@@ -315,12 +331,12 @@
         animation-duration: 2.5s;
     }
 
-    .myButton:focus {
+    .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
 
-    .myButtonOp:focus {
-        outline: none;
+    .noCurs {
+        cursor: default;
     }
 
     @@keyframes anima01 {
@@ -378,21 +394,22 @@
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">2</button>
+            <button class="myButtonOp noCurs">2</button>
             <h5>Detailansicht</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">3</button>
+            <button class="myButtonOp noCurs">3</button>
             <h5>Anmeldung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">4</button>
+            <button class="myButtonOp noCurs">4</button>
             <h5>Buchung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButtonOp">5</button>
+            <button class="myButtonOp noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
+
         <div class="row">
             <div class="container-fluid" style="width:20%; margin-left:0px">
                 <div class="myBar01"></div>
@@ -407,14 +424,15 @@
             <button class="miniButton">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">3</button>
+            <button class="miniButtonOp noCurs">3</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">4</button>
+            <button class="miniButtonOp noCurs">4</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">5</button>
+            <button class="miniButtonOp noCurs">5</button>
         </div>
+
     </div>
 
     <div class="paddingSmallBotStep2">
