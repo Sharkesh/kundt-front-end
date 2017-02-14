@@ -140,7 +140,7 @@
     }
     /*ProgressBar als Zähler*/
     .miniButton {
-    color: white;
+        color: white;
         height: 35px;
         width: 35px;
         background-color: #f99b1c;
@@ -153,6 +153,23 @@
         border-bottom-color: antiquewhite;
         margin: auto 0% auto 1%;
     }
+
+    .miniButtonOp {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+        opacity: 0.3;
+    }
+
     .myButton {
         color: white;
         height: 45px;
@@ -192,12 +209,11 @@
         animation-duration: 2.5s;
     }
 
-    .myButton:focus {
+    .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
-
-    .myButtonOp:focus {
-        outline: none;
+    .noCurs {
+    cursor:default;
     }
 
     @@keyframes anima01 {
@@ -233,62 +249,65 @@
     }
 
     .myBorder {
-        
         /*border-color: darkorange;*/
         padding: 15px 10px 5px 10px;
     }
 
     .myBar01 {
-        height:7px;
+        height: 7px;
         margin-top: 18px;
-        background-color:#f99b1c;
+        background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
         border-radius: 2px;
     }
 </style>
-<div class="container-fluid myBorder hidden-xs" style="text-align:center">
-    <div class="col-sm-2 col-sm-offset-1">
-        <button class="myButton">1</button>
-        <h5>Fahrzeug wählen</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButton">2</button>
-        <h5>Detailansicht</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButtonOp">3</button>
-        <h5>Anmeldung</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButtonOp">4</button>
-        <h5>Buchung</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButtonOp">5</button>
-        <h5>Abschluss</h5>
-    </div>
-    <div class="row" style="text-align:left">
-        <div class="container-fluid" style="width:35%; margin-left:0px">
-            <div class="myBar01"></div>
+<div class="container">
+    <div class="myBorder hidden-xs" style="text-align:center">
+        <div class="col-sm-2 col-sm-offset-1">
+            <button class="myButton">1</button>
+            <h5>Fahrzeug wählen</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButton">2</button>
+            <h5>Detailansicht</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">3</button>
+            <h5>Anmeldung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">4</button>
+            <h5>Buchung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">5</button>
+            <h5>Abschluss</h5>
+        </div>
+
+        <div class="row">
+            <div class="container-fluid" style="width:35%; margin-left:0px">
+                <div class="myBar01"></div>
+            </div>
         </div>
     </div>
-</div>
-<div class="container-fluid myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
-    <div class="col-xs-2 col-xs-offset-1">
-        <button class="miniButton">1</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="miniButton">2</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="miniButton">3</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="miniButton">4</button>
-    </div>
-    <div class="col-xs-2">
-        <button class="miniButton">5</button>
+    <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
+        <div class="col-xs-2 col-xs-offset-1">
+            <button class="miniButton">1</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButton">2</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">3</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">4</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">5</button>
+        </div>
+
     </div>
 </div>
 <div class="container">
