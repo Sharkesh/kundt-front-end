@@ -8,6 +8,115 @@
         padding-top: 20px;
     }
 
+    /* Progress-Bar */
+    .miniButton {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButton {
+        color: white;
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButtonOp {
+        color: white;
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        opacity: 0.3;
+        border-bottom: solid 1px;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .myButton:active {
+        height: 40px;
+        width: 40px;
+        border-radius: 40px;
+        font-size: 22px;
+        animation-name: anima01;
+        animation-iteration-count: infinite;
+        animation-duration: 2.5s;
+    }
+
+    .myButton:focus {
+        outline: none;
+    }
+
+    .myButtonOp:focus {
+        outline: none;
+    }
+
+    @@keyframes anima01 {
+        0% {
+            background-color: darkorange;
+        }
+
+        25% {
+            background-color: orange;
+        }
+
+        50% {
+            background-color: darkorange;
+        }
+
+        75% {
+            background-color: orange;
+        }
+
+        100% {
+            background-color: darkorange;
+        }
+    }
+
+    @@keyframes anima02 {
+        from {
+            width: 75%;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
+
+    .myBorder {
+        /*border-color: darkorange;*/
+        padding: 15px 10px 5px 10px;
+    }
+
+    .myBar01 {
+        height: 7px;
+        margin-top: 18px;
+        background-color: #f99b1c;
+        animation-name: anima02;
+        animation-duration: 3s;
+        border-radius: 2px;
+    }
+    /* Progress-Bar Ende */
 </style> @*Style Bereich Ende*@
 
 <script>
@@ -27,109 +136,148 @@
 
 @*Header*@
 <div class="container">
-    <div class="paddingSmallStep5">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:80%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
+    <div class="myBorder hidden-xs" style="text-align:center">
+        <div class="col-sm-2 col-sm-offset-1">
+            <button class="myButton">1</button>
+            <h5>Fahrzeug wählen</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButton">2</button>
+            <h5>Detailansicht</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButton">3</button>
+            <h5>Anmeldung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButton">4</button>
+            <h5>Buchung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp">5</button>
+            <h5>Abschluss</h5>
+        </div>
+        <div class="row">
+            <div class="container-fluid" style="width:67%; margin-left:0px">
+                <div class="myBar01"></div>
+            </div>
+        </div>
+    </div>
+    <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
+        <div class="col-xs-2 col-xs-offset-1">
+            <button class="miniButton">1</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButton">2</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButton">3</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButton">4</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButton">5</button>
         </div>
     </div>
 
     <h2>Step5</h2>
     <div class="row">
         @*Erste Einteilung in 12 rows Anfang*@
-    <div class="col-lg-6">
-        <div class="row">
-            @*Zweite Reihe Rows ANFANG*@
-            @*Die ERSTEN 4 Reihen Anfang*@
-            <form>
-                <div>
+        <div class="col-lg-6">
+            <div class="row">
+                @*Zweite Reihe Rows ANFANG*@
+                @*Die ERSTEN 4 Reihen Anfang*@
+                <form>
+                    <div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputEmail1">Vorname:</label>
+                            <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
+                        </div>
+                        <div class="form-group col-lg-offset-6">
+                            <label for="exampleInputEmail1">Nachname:</label>
+                            <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputEmail1">Ort:</label>
+                            <input type="text" class="form-control" id="Ort" placeholder="Ort">
+                        </div>
+                        <div class="form-group col-lg-offset-6">
+                            <label for="exampleInputEmail1">PLZ:</label>
+                            <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputEmail1">Adresse:</label>
+                            <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
+                        </div>
+                        <div class="form-group col-lg-offset-6">
+                            <label for="exampleInputEmail1">Nummer:</label>
+                            <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="form-group col-lg-6">
+                            <label for="exampleInputEmail1">Email:</label>
+                            <input type="text" class="form-control" id="Email" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-offset-12">
+                        <div class="form-group ">
+                            <label for="exampleInputEmail1">Preis Details:</label>
+                            <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
+                        </div>
+                    </div>
+
+
                     <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Vorname:</label>
-                        <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
+                        <label for="exampleInputEmail1">Voller Preis:</label>
+                        <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
                     </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">Nachname:</label>
-                        <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
-                    </div>
-                </div>
 
+
+
+
+                </form>
+            </div>@*Zweite Reihe Rows ENDE*@
+        </div> @*Die ERSTEN 8 Reihen Ende*@
+
+        <div class="col-lg-offset-2">
+            <div class="col-lg-4">
+                @*Die DRITTE Reihe Anfang*@
                 <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Ort:</label>
-                        <input type="text" class="form-control" id="Ort" placeholder="Ort">
-                    </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">PLZ:</label>
-                        <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
-                    </div>
+                    <img src="~/Content/img/bmw-3er-kombi-grau-2015.png" />
+                    Hier die Vorschau für ihr Bestelltes Auto!
+
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
                 </div>
-
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Adresse:</label>
-                        <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
-                    </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">Nummer:</label>
-                        <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
-                    </div>
-                </div>
-
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Email:</label>
-                        <input type="text" class="form-control" id="Email" placeholder="Email">
-                    </div>
-                </div>
-
-                <div class="col-lg-offset-12">
-                    <div class="form-group ">
-                        <label for="exampleInputEmail1">Preis Details:</label>
-                        <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
-                    </div>
-                </div>
-
-
-                <div class="form-group col-lg-6">
-                    <label for="exampleInputEmail1">Voller Preis:</label>
-                    <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
-                </div>
-
-
-
-
-            </form>
-        </div>@*Zweite Reihe Rows ENDE*@
-    </div> @*Die ERSTEN 8 Reihen Ende*@
-
-    <div class="col-lg-offset-2">
-        <div class="col-lg-4">
-            @*Die DRITTE Reihe Anfang*@
-            <div>
-                <img src="~/Content/img/bmw-3er-kombi-grau-2015.png" />
-                Hier die Vorschau für ihr Bestelltes Auto!
-
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-
             </div>
-        </div>
-    </div> @*Die DRITTE Reihe Ende*@
-</div> @*Erste Einteilung in 12 rows Ende*@
+        </div> @*Die DRITTE Reihe Ende*@
+    </div> @*Erste Einteilung in 12 rows Ende*@
 
-<div style="margin-bottom:50px">
-    <div style="margin-top:50px">
-        <div class="col-lg-offset-2 randnachoben">
-            <div class="col-lg-2">
-                <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
+    <div style="margin-bottom:50px">
+        <div style="margin-top:50px">
+            <div class="col-lg-offset-2 randnachoben">
+                <div class="col-lg-2">
+                    <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
+                </div>
             </div>
-        </div>
-        <div class="col-lg-offset-4">
-            <div class="col-lg-2">
-                <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
+            <div class="col-lg-offset-4">
+                <div class="col-lg-2">
+                    <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </div>
