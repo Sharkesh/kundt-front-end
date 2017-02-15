@@ -200,25 +200,27 @@
     }
 
     .myButton:active {
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
+        height: 42px;
+        width: 42px;
+        border-radius: 42px;
         font-size: 22px;
         animation-name: anima01;
         animation-iteration-count: infinite;
         animation-duration: 2.5s;
+        margin: 1% 0% auto 1%;
     }
 
     .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
+
     .noCurs {
-    cursor:default;
+        cursor: default;
     }
 
     @@keyframes anima01 {
         0% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
 
         25% {
@@ -226,7 +228,7 @@
         }
 
         50% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
 
         75% {
@@ -234,7 +236,7 @@
         }
 
         100% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
     }
 
@@ -249,7 +251,7 @@
     }
 
     .myBorder {
-        /*border-color: darkorange;*/
+        /*border-color: #f99b1c;*/
         padding: 15px 10px 5px 10px;
     }
 
@@ -259,9 +261,10 @@
         background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
-        border-radius: 2px;
+        border-top-right-radius: 2px;
     }
 </style>
+@*ProgressBar Implementation Begin*@
 <div class="container">
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
@@ -286,7 +289,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid" style="width:35%; margin-left:0px">
+            <div class="container-fluid" style="width:35%; margin-left:0px; border-left:solid 3px; border-left-color:#f99b1c; padding-left:0px; height:43px; border-radius:1px; margin-left:10px">
                 <div class="myBar01"></div>
             </div>
         </div>
@@ -310,16 +313,12 @@
 
     </div>
 </div>
+@*ProgressBar Implementation End*@
 <div class="container">
-    <div class="paddingSmallStep3">
-        @*<div class="progress">
-                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
-            </div>*@
-
-    </div>
+    <div class="paddingSmallStep3"></div>
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
-        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:darkorange; margin-left:20px">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
             <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
             <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
