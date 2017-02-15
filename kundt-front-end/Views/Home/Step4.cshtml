@@ -3,6 +3,124 @@
     ViewBag.Title = "Step4";
 }
 <style>
+    .buttonOrangeForwardStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+    .buttonOrangeForwardStep3OhneAnimation {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeForwardStep3 span {
+            
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeForwardStep3 span:after {
+                
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeForwardStep3:hover span {
+            padding-right: 15px;
+        }
+
+            .buttonOrangeForwardStep3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+        .buttonOrangeForwardStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 1em;
+            height: 37.5px;
+            width: 150px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .buttonOrangeReturnStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+         font-size: 1em;
+            height: 37.5px;
+            width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeReturnStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeReturnStep3 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeReturnStep3:hover span {
+            padding-left: 15px;
+        }
+
+            .buttonOrangeReturnStep3:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
+
+        .buttonOrangeReturnStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+              font-size: 1em;
+            height: 37.5px;
+            width: 150px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
     .collapseForm {
         margin-bottom: 15px;
     }
@@ -422,9 +540,9 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         @*Buttons Zurück, Registieren, Login*@
-                        <button type="submit" class="btn btn-default">Zurück</button>
-                        <button type="button" class="btn btn-default" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;">Registrieren</button>
-                        <button type="submit" class="btn btn-default" style="position: relative; right: -40px;">Login</button>
+                        <button type="submit" class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                        <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;"><span>Registrieren</span></button>
+                        <button type="submit" class="buttonOrangeForwardStep3" style="position: relative; right: -40px;"><span>Login</span></button>
                     </div>
                 </div>
                 @*Erste Box für Login Ende*@
@@ -468,7 +586,8 @@
                         </div>
                         @*Button Regestieren2*@
                         <div class="col-md-offset-2" style="position: relative; left: 194px;">
-                            <button type="submit" class="btn btn-default">Registrieren</button>
+                            
+                            <button type="submit" class="buttonOrangeForwardStep3"><span>Registrieren</span></button>
 
                         </div>
                     </div>
