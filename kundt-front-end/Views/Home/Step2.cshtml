@@ -10,6 +10,7 @@
 
     .h2step2 {
         color: #002f41;
+        padding-top:20px;
     }
 
     .paddingSmallTopStep2 {
@@ -44,7 +45,7 @@
     .filterActive {
         /*ajx implementieren*/
     }
-    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    /*Bis zum Kommentar "Bis hierhin drin lassen bitte!", die nächsten Zeilen bitte hier im Style-Tag lassen*/
 
     .buttonOrangeStep2 {
         background-color: #f99b1c;
@@ -167,12 +168,11 @@
         text-decoration: none;
     }
 
+    /*Filter Formatierung*/
     .filterStep2 {
         background: #fff;
         padding: 10px;
         border: 1px solid #CCC;
-        margin-right: 8px;
-        margin-bottom: 8px;
         color: darkgrey;
     }
 
@@ -180,24 +180,49 @@
             background: #fff;
             padding: 10px;
             border: 1px solid #f99b1c;
-            margin-right: 8px;
-            margin-bottom: 8px;
             color: #f99b1c;
         }
 
     .filterSmallStep2 {
-        background: #fff;
-        padding: 10px;
-        border: 1px solid #CCC;
         color: darkgrey;
     }
 
         .filterSmallStep2:hover {
-            background: #fff;
-            padding: 10px;
-            border: 1px solid #f99b1c;
             color: #f99b1c;
         }
+
+    .panel {
+        border: none;
+        background-color: white;
+        color: #f99b1c;
+    }
+
+        .panel:hover {
+            border: none;
+            background-color: #f99b1c;
+            color: white;
+        }
+
+
+    .panel-group {
+        border-top: solid 1px #CCC;
+        border-bottom: solid 1px #CCC;
+    }
+
+    .list-group {
+        border-color: #CCC;
+        color: darkgrey;
+    }
+
+    .list-group-item:hover {
+        background-color: #FFF;
+        color: white;
+    }
+
+    .panel-collapse collapse {
+        border-color: #f99b1c;
+    }
+
 
     #content > div > div > form > ul > li > label > a:hover {
         text-decoration: none;
@@ -211,7 +236,35 @@
         color: #f99b1c;
         border: 1px solid #f99b1c;
     }
-    /*Ende*/
+    /*Filter Small*/
+    #content > div > center > div > div > div > div > ul > li > label > a:hover {
+        text-decoration: none;
+    }
+
+    #content > div > center > div > div > div > div > ul > li > label > a:focus {
+        text-decoration: none;
+    }
+
+    #content > div > center > div > div > div > div > ul > li > label > a:visited:focus {
+        color: darkgray;
+        border: 1px solid #f99b1c;
+    }
+
+    #content > div > center > div > div > div > div > h4 > a:hover {
+        text-decoration: none;
+    }
+
+    #content > div > center > div > div > div > div > h4 > a:focus {
+        text-decoration: none;
+    }
+
+    #content > div > center > div > div > div > div > h4 > a:visited:focus {
+        color: #f99b1c;
+        border: 1px solid #f99b1c;
+    }
+    /*Filter Small Ende*/
+    /*Filter Formatierung Ende*/
+    /*Bis hierhin drin lassen bitte!*/
     .ulStep2 {
         margin: auto;
         -webkit-padding-start: 0px;
@@ -228,37 +281,6 @@
     }
 
 
-    .panel {
-        border: none;
-        background-color: white;
-        color: #f99b1c;
-    }
-
-        .panel:hover {
-            border: none;
-            background-color: #f99b1c;
-            color: white;
-        }
-
-
-    .panel-group {
-        border-top: solid 1px #f99b1c;
-        border-bottom: solid 1px #f99b1c;
-    }
-
-    .list-group {
-        border-color: orange;
-        color: #f99b1c;
-    }
-
-    .list-group-item:hover {
-        background-color: #f99b1c;
-        color: white;
-    }
-
-    .panel-collapse collapse {
-        border-color: #f99b1c;
-    }
 
     /* Progress-Bar */
     .miniButton {
@@ -432,7 +454,6 @@
         <div class="col-xs-2">
             <button class="miniButtonOp noCurs">5</button>
         </div>
-
     </div>
 
     <div class="paddingSmallBotStep2">
@@ -442,11 +463,11 @@
     <div class=" hidden-xs hidden-sm hidden-md" style="display:inline-block">
         <form>
             <ul class="ulStep2">
-                <li><label><a href="#" class="filterSmallStep2">Alle anzeigen</a></label></li>
-                <li><label><a href="#" class="filterSmallStep2">Kleinwagen</a></label></li>
-                <li><label><a href="#" class="filterSmallStep2">Mittelklasse</a></label></li>
-                <li><label><a href="#" class="filterSmallStep2">Luxusklasse</a></label></li>
-                <li><label><a href="#" class="filterSmallStep2">Sitze</a></label></li>
+                <li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>
+                <li><label><a href="#" class="filterStep2">Kleinwagen</a></label></li>
+                <li><label><a href="#" class="filterStep2">Mittelklasse</a></label></li>
+                <li><label><a href="#" class="filterStep2">Luxusklasse</a></label></li>
+                <li><label><a href="#" class="filterStep2">Sitze</a></label></li>
             </ul>
         </form>
     </div>
@@ -477,15 +498,18 @@
                 <div class="panel">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse1">Sitze</a>
+                            <a data-toggle="collapse" href="#collapse2">Sitze</a>
                         </h4>
                     </div>
-                    <div id="collapse1" class="panel-collapse collapse">
+                    <div id="collapse2" class="panel-collapse collapse">
                         <ul class="list-group">
                             <li class="list-group-item"><label><a href="#" class="filterSmallStep2">2 Sitze</a></label></li>
                             <li class="list-group-item"><label><a href="#" class="filterSmallStep2">3 Sitze</a></label></li>
                             <li class="list-group-item"><label><a href="#" class="filterSmallStep2">4 Sitze</a></label></li>
                             <li class="list-group-item"><label><a href="#" class="filterSmallStep2">5 Sitze</a></label></li>
+                            <li class="list-group-item"><label><a href="#" class="filterSmallStep2">6 Sitze</a></label></li>
+                            <li class="list-group-item"><label><a href="#" class="filterSmallStep2">7 Sitze</a></label></li>
+                            <li class="list-group-item"><label><a href="#" class="filterSmallStep2">8 Sitze</a></label></li>
                         </ul>
                     </div>
                 </div>
