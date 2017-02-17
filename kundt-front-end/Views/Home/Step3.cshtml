@@ -207,7 +207,7 @@
         animation-name: anima01;
         animation-iteration-count: infinite;
         animation-duration: 2.5s;
-        margin: 1% 0% auto 1%;
+        margin: 2% 0% auto 1%;
     }
 
     .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
@@ -256,19 +256,31 @@
     }
 
     .myBar01 {
-        height: 7px;
+        height: 6px;
         margin-top: 18px;
         background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
         border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .containerBar {
+        width: 35%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
     }
 
 
     /* .Checkbox */
     .squaredTwo {
         padding: 0px;
-        margin-top:6px;
+        margin-top: 6px;
         width: 28px;
         height: 28px;
         position: relative;
@@ -289,11 +301,11 @@
 
             .squaredTwo label:after {
                 content: '';
-                width: 9px;
-                height: 5px;
+                width: 14px;
+                height: 8px;
                 position: absolute;
                 top: 5px;
-                left: 4px;
+                left: 3px;
                 border: 3px solid #f99b1c;
                 border-top: none;
                 border-right: none;
@@ -341,7 +353,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid" style="width:35%; margin-left:0px; border-left:solid 3px; border-left-color:#f99b1c; padding-left:0px; height:43px; border-radius:1px; margin-left:10px">
+            <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
             </div>
         </div>
@@ -418,7 +430,7 @@
                             <li class="okZeichen1">Zusatzausstattung</li>
                             <li class="okZeichen1">Zusatzausstattung</li>
                         </ul>
-                        <form style="float:left; margin-right:5px">
+                        <form style="float:left; margin-right:7px">
                             <h4>Rücktrittsversicherung</h4>
                         </form>
                         <div class="squaredTwo col-xs-1">
@@ -438,7 +450,7 @@
                         <button class="buttonOrange">Weiter</button>
                     </div>
                 </div>*@
-            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
+            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
 
                     <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
@@ -450,7 +462,7 @@
         </center>
     </div>
 </div>
-</div>
+
 <div class="container">
     <div class="row">
         <center>
