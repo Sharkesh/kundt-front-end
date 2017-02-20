@@ -13,9 +13,9 @@
         font-weight: 700;
         letter-spacing: .5px;
         text-align: center;
-        display: inline-block;
         border-radius: 4px;
     }
+
     .buttonOrangeForwardStep3OhneAnimation {
         background-color: #f99b1c;
         border: none;
@@ -30,53 +30,51 @@
         border-radius: 4px;
     }
 
-        .buttonOrangeForwardStep3 span {
-            
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
+    .buttonOrangeForwardStep3 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .buttonOrangeForwardStep3 span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -30px;
             transition: 0.5s;
+            font-size: 15px;
         }
 
-            .buttonOrangeForwardStep3 span:after {
-                
-                content: '\00bb';
-                position: absolute;
-                opacity: 0;
-                top: 0;
-                right: -30px;
-                transition: 0.5s;
-                font-size: 15px;
-            }
+    .buttonOrangeForwardStep3:hover span {
+        padding-right: 15px;
+    }
 
-        .buttonOrangeForwardStep3:hover span {
-            padding-right: 15px;
+        .buttonOrangeForwardStep3:hover span:after {
+            opacity: 1;
+            right: 0;
         }
 
-            .buttonOrangeForwardStep3:hover span:after {
-                opacity: 1;
-                right: 0;
-            }
-
-        .buttonOrangeForwardStep3:hover {
-            background-color: #f99b1c;
-            border: none;
-            color: #ffffff;
-            font-size: 1em;
-            height: 37.5px;
-            width: 150px;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-align: center;
-        }
+    .buttonOrangeForwardStep3:hover {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+    }
 
     .buttonOrangeReturnStep3 {
         background-color: #f99b1c;
         border: none;
         color: #ffffff;
-         font-size: 1em;
-            height: 37.5px;
-            width: 150px;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
         font-weight: 700;
         letter-spacing: .5px;
         text-align: center;
@@ -114,13 +112,14 @@
             background-color: #f99b1c;
             border: none;
             color: #ffffff;
-              font-size: 1em;
+            font-size: 1em;
             height: 37.5px;
             width: 150px;
             font-weight: 700;
             letter-spacing: .5px;
             text-align: center;
         }
+
     .collapseForm {
         margin-bottom: 15px;
     }
@@ -296,13 +295,27 @@
     }
 
     .myBar01 {
-        height: 7px;
+        height: 6px;
         margin-top: 18px;
         background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
-        border-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
     }
+
+    .containerBar {
+        width: 50%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
+    }
+
+
     /* Progress-Bar Ende */
 </style>
 
@@ -361,7 +374,7 @@
             <h5>Detailansicht</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">3</button>
+            <button class="myButton noCurs">3</button>
             <h5>Anmeldung</h5>
         </div>
         <div class="col-sm-2">
@@ -374,7 +387,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid" style="width:50%; margin-left:0px">
+            <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
             </div>
         </div>
@@ -387,7 +400,7 @@
             <button class="miniButton">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton ">3</button>
+            <button class="miniButton noCurs">3</button>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp noCurs">4</button>
@@ -586,7 +599,7 @@
                         </div>
                         @*Button Regestieren2*@
                         <div class="col-md-offset-2" style="position: relative; left: 194px;">
-                            
+
                             <button type="submit" class="buttonOrangeForwardStep3"><span>Registrieren</span></button>
 
                         </div>

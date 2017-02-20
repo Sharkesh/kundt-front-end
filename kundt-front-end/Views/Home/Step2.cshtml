@@ -400,12 +400,24 @@
     }
 
     .myBar01 {
-        height: 7px;
+        height: 6px;
         margin-top: 18px;
         background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
-        border-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .containerBar {
+        width: 18%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
     }
     /* Progress-Bar Ende */
 </style>
@@ -413,7 +425,7 @@
 <div class="container">
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <button class="myButton">1</button>
+            <button class="myButton noCurs">1</button>
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
@@ -434,7 +446,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid" style="width:20%; margin-left:0px">
+            <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
             </div>
         </div>
