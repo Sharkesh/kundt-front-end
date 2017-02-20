@@ -28,6 +28,7 @@ namespace kundt_front_end
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-select.css",
                       "~/Content/bootstrap-theme.css",
                       "~/Content/jquery-ui.min.css",
                       "~/Content/jquery-ui.structure.min.css",
