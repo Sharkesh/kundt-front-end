@@ -3,11 +3,6 @@
     ViewBag.Title = "Step5";
 }
 <style>
-    /*Style Bereich Anfang*/
-    .paddingSmallStep5 {
-        padding-top: 20px;
-    }
-
     /* Progress-Bar */
     .miniButton {
         color: white;
@@ -133,25 +128,119 @@
         border-radius: 2px;
     }
     /* Progress-Bar Ende */
-</style> @*Style Bereich Ende*@
 
-<script>
-    //Script Bereich Anfang
-    function BackToStep4() {
-
-        window.location.href = "http://localhost:57095/Home/Step4";
-
+    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    .buttonOrangeForwardStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
     }
 
-    function ToStep5() {
+        .buttonOrangeForwardStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
-        window.location.href = "http://localhost:57095/Home/Step6";
+            .buttonOrangeForwardStep3 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeForwardStep3:hover span {
+            padding-right: 15px;
+        }
+
+            .buttonOrangeForwardStep3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+        .buttonOrangeForwardStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .buttonOrangeReturnStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
     }
 
-</script> @*Script Bereich Ende*@
+        .buttonOrangeReturnStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
 
-@*Header*@
+            .buttonOrangeReturnStep3 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeReturnStep3:hover span {
+            padding-left: 15px;
+        }
+
+            .buttonOrangeReturnStep3:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
+
+        .buttonOrangeReturnStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .col-lg-6 > p > span {
+        float: right;
+    }
+</style>
+
 <div class="container">
+    @* Progress Bar *@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
             <button class="myButton">1</button>
@@ -198,102 +287,91 @@
         </div>
         <h2>Step5</h2>
     </div>
+    @* Progressbar Ende *@
+
+    <div class="paddingSmallStep3"></div>
+    <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
-        @*Erste Einteilung in 12 rows Anfang*@
-        <div class="col-lg-6">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
+            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
+            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
+
+            @*div-Bereich unterhalb img*@
+            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="h4Step3">Abholung</h4>
+                <p>Wien</p>
+                <p>08.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Rückgabe</h4>
+                <p>Wien</p>
+                <p>09.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Mietdauer</h4>
+                <p>1 Tag oder so</p>
+            </div>
+        </div>
+
+        @*sichtbar auf kleinem Format (xs)*@
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+            <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
+            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
+            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="h4Step3">Abholung</h4>
+                <p>Wien</p>
+                <p>08.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Rückgabe</h4>
+                <p>Wien</p>
+                <p>09.02.2017 um 12:00 Uhr </p>
+                <h4 class="h4Step3">Mietdauer</h4>
+                <p>1 Tag oder so</p>
+            </div>
+        </div>
+
+        @*Aufzählung rechts*@
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
             <div class="row">
-                @*Zweite Reihe Rows ANFANG*@
-                @*Die ERSTEN 4 Reihen Anfang*@
-                <form>
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Vorname:</label>
-                            <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">Nachname:</label>
-                            <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Ort:</label>
-                            <input type="text" class="form-control" id="Ort" placeholder="Ort">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">PLZ:</label>
-                            <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Adresse:</label>
-                            <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
-                        </div>
-                        <div class="form-group col-lg-offset-6">
-                            <label for="exampleInputEmail1">Nummer:</label>
-                            <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="form-group col-lg-6">
-                            <label for="exampleInputEmail1">Email:</label>
-                            <input type="text" class="form-control" id="Email" placeholder="Email">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-offset-12">
-                        <div class="form-group ">
-                            <label for="exampleInputEmail1">Preis Details:</label>
-                            <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
-                        </div>
-                    </div>
-
-
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Voller Preis:</label>
-                        <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
-                    </div>
-
-
-
-
-                </form>
-            </div>@*Zweite Reihe Rows ENDE*@
-        </div> @*Die ERSTEN 8 Reihen Ende*@
-
-        <div class="col-lg-offset-2">
-            <div class="col-lg-4">
-                @*Die DRITTE Reihe Anfang*@
-                <div>
-                    <img src="~/Content/img/bmw-3er-kombi-grau-2015.png" />
-                    Hier die Vorschau für ihr Bestelltes Auto!
-
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <h2>Ihre Daten</h2>
                 </div>
-            </div>
-        </div> @*Die DRITTE Reihe Ende*@
-    </div> @*Erste Einteilung in 12 rows Ende*@
-
-    <div style="margin-bottom:50px">
-        <div style="margin-top:50px">
-            <div class="col-lg-offset-2 randnachoben">
-                <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <p><b>Anrede: </b><span>Herr</span></p>
+                    <p><b>Vorname: </b><span>ksafoaohpjp</span></p>
+                    <p><b>Nachname: </b><span>aoshoahsfohfh</span></p>
+                    <p><b>Geb. Datum: </b><span>12.12.1241</span></p>
+                    <p><b>Reisepassnr.: </b><span>P1234567</span></p>
                 </div>
-            </div>
-            <div class="col-lg-offset-4">
-                <div class="col-lg-2">
-                    <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
+                @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
+
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <p><br /></p>
+                    <p><b>Straße: </b><span>askfjhkajjhfha 23</span></p>
+                    <p><b>PLZ: </b><span>1241 Wien</span></p>
+                    <p><b>Telefon: </b><span>98798 8768698</span></p>
                 </div>
             </div>
         </div>
-    </div>
 
+        <center>
+            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
+                <div class="col-xs-6" style="padding-left:10px">
+
+                    <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                </div>
+                <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
+                    <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+                    <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
+                        <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
+                        <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                    </div>
+                </div>
+
+            </div>
+        </center>
+    </div>
 </div>
-@*Footer*@
