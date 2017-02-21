@@ -217,7 +217,9 @@
     .noCurs {
         cursor: default;
     }
-
+     .opacity{
+        opacity:1.0;
+    }
     @@keyframes anima01 {
         0% {
             background-color: #f99b1c;
@@ -329,15 +331,16 @@
     /* end .Checkbox */
 </style>
 
-@*ProgressBar Implementation Begin*@
+
 <div class="container" style="margin-top:20px">
+    @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
             <button class="myButton">1</button>
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton noCurs">2</button>
+            <button class="myButtonOp opacity noCurs">2</button>
             <h5>Detailansicht</h5>
         </div>
         <div class="col-sm-2">
@@ -364,7 +367,7 @@
             <button class="miniButton">1</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">2</button>
+            <button class="miniButtonOp opacity noCurs">2</button>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp noCurs">3</button>

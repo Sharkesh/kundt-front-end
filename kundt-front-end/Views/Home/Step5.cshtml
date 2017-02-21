@@ -65,13 +65,14 @@
     }
 
     .myButton:active {
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
+        height: 42px;
+        width: 42px;
+        border-radius: 42px;
         font-size: 22px;
         animation-name: anima01;
         animation-iteration-count: infinite;
         animation-duration: 2.5s;
+        margin: 2% 0% auto 1%;
     }
 
     .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
@@ -82,9 +83,13 @@
         cursor: default;
     }
 
+    .opacity {
+        opacity: 1.0;
+    }
+
     @@keyframes anima01 {
         0% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
 
         25% {
@@ -92,7 +97,7 @@
         }
 
         50% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
 
         75% {
@@ -100,13 +105,13 @@
         }
 
         100% {
-            background-color: darkorange;
+            background-color: #f99b1c;
         }
     }
 
     @@keyframes anima02 {
         from {
-            width: 77%;
+            width: 75%;
         }
 
         to {
@@ -115,17 +120,29 @@
     }
 
     .myBorder {
-        /*border-color: darkorange;*/
+        /*border-color: #f99b1c;*/
         padding: 15px 10px 5px 10px;
     }
 
     .myBar01 {
-        height: 7px;
+        height: 6px;
         margin-top: 18px;
         background-color: #f99b1c;
         animation-name: anima02;
         animation-duration: 3s;
-        border-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .containerBar {
+        width: 35%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
     }
     /* Progress-Bar Ende */
 
@@ -255,7 +272,7 @@
             <h5>Anmeldung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">4</button>
+            <button class="myButtonOp opacity noCurs">4</button>
             <h5>Buchung</h5>
         </div>
         <div class="col-sm-2">
@@ -264,7 +281,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid" style="width:67%; margin-left:0px">
+            <div class="container-fluid containerBar" style="width:67%; margin-left:0px">
                 <div class="myBar01"></div>
             </div>
         </div>
@@ -277,15 +294,14 @@
             <button class="miniButton">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">3</button>
+            <button class="miniButtonOp noCurs">3</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">4</button>
+            <button class="miniButtonOp noCurs">4</button>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp noCurs">5</button>
         </div>
-        <h2>Step5</h2>
     </div>
     @* Progressbar Ende *@
 
