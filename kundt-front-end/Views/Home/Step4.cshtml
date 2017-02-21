@@ -543,7 +543,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-md-10">
-                        <div class="checkbox" style="margin-top: -10px;">
+                        <div class="checkbox" style="margin-top: -10px; ">
                             <label>
                                 <input type="checkbox"> Angemeldet bleiben
                             </label>
@@ -552,10 +552,28 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        @*Buttons Zurück, Registieren, Login*@
-                        <button type="submit" class="buttonOrangeReturnStep3"><span>Zurück</span></button>
-                        <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;"><span>Registrieren</span></button>
-                        <button type="submit" class="buttonOrangeForwardStep3" style="position: relative; right: -40px;"><span>Login</span></button>
+                        <div class="row">
+                            <div class="hidden-sm hidden-xs">
+                                @*Buttons Zurück, Registieren, Login*@
+                                <button type="submit" class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                                <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;"><span>Registrieren</span></button>
+                                <button type="submit" class="buttonOrangeForwardStep3" style="position: relative; right: -40px;"><span>Login</span></button>
+                            </div>
+                            <div class="hidden-lg hidden-md">
+                                @*Buttons Zurück, Registieren, Login*@
+                                <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+                                    <button type="submit" class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
+                                </div>
+                                <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+                                    <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;"><span>Registrieren</span></button>
+                                </div>
+                                <div class="col-sm-12 col-xs-12">
+                                    <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Login</span></button>
+                                </div>
+
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @*Erste Box für Login Ende*@
@@ -598,13 +616,20 @@
                             <input type="text" class="form-control collapseForm" id="postcode" placeholder="PLZ">
                         </div>
                         @*Button Regestieren2*@
-                        <div class="col-md-offset-2" style="position: relative; left: 194px;">
+                        <div class="row">
 
-                            <button type="submit" class="buttonOrangeForwardStep3"><span>Registrieren</span></button>
+                            <div class="hidden-md hidden-lg" style="position: relative; left: 31px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
+                            <div class="hidden-sm hidden-xs hidden-lg" style="position: relative; left: 136px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
+                            <div class="hidden-sm hidden-xs hidden-md" style="position: relative; left: 158px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
 
                         </div>
                     </div>
-                </div>
             </form>
             @*Zweite Box für Regestrieren Ende*@
         </div>
