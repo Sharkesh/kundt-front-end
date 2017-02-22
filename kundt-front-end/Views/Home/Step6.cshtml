@@ -8,7 +8,7 @@
     }
 
     /* Progress-Bar */
-  /*ProgressBar als Zähler*/
+    /*ProgressBar als Zähler*/
     .miniButton {
         color: white;
         height: 35px;
@@ -80,6 +80,8 @@
         margin: 2% 0% auto 1%;
     }
 
+
+
     .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
@@ -87,9 +89,11 @@
     .noCurs {
         cursor: default;
     }
-     .opacity{
-        opacity:1.0;
+
+    .opacity {
+        opacity: 1.0;
     }
+
     @@keyframes anima01 {
         0% {
             background-color: #f99b1c;
@@ -97,18 +101,22 @@
 
         25% {
             background-color: orange;
+            transform: rotate(90deg);
         }
 
         50% {
             background-color: #f99b1c;
+            transform: rotate(180deg);
         }
 
         75% {
             background-color: orange;
+            transform: scale(30,50);
         }
 
         100% {
             background-color: #f99b1c;
+            transform: scale(130,150);
         }
     }
 
@@ -121,6 +129,62 @@
             width: 100%;
         }
     }
+
+    /*@@keyframes anima03 {
+        0% {
+
+            transform:rotate(0deg)
+
+        }
+
+
+
+        100% {
+            transform:rotate(359deg)
+        }
+    }
+
+    .testAnima {
+        animation-name: anima03;
+        animation-iteration-count: infinite;
+        animation-duration: 1s;
+        animation-timing-function:linear;
+        animation-delay:3s;
+    }*/
+
+    .abschlussGebucht {
+        max-height: 45px;
+        max-width:45px;
+       
+        background-color: white;
+        color: #f99b1c;
+        animation-name: anima03;
+        animation-duration: 2s;
+        animation-iteration-count:1;      
+         
+        margin: auto;
+        display: inline-block;
+        /*line-height: 45px;*/
+        top:0px;
+        
+        
+    }
+
+    @@keyframes anima03 {
+
+        from {
+            color:white;
+            transform:rotate(180deg);
+            font-size:250px;
+            
+        }
+        to{
+            color: #f99b1c;
+            transform:rotate(360deg);
+            font-size:45px;
+        }
+    }
+
 
     .myBorder {
         /*border-color: #f99b1c;*/
@@ -150,7 +214,7 @@
 
     /* CSS Progress-Bar Ende */
 </style>
-<div class="container" style="margin-top: 20px;">
+<div class="container" style="margin-top: 20px">
     @*Progress Bar*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
@@ -173,12 +237,17 @@
             <button class="myButtonOp opacity noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
-
+        <div class="col-xs-1 abschlussGebucht glyphicon glyphicon-ok-circle" style="font-size:45px">
+            
+        </div>
         <div class="row">
-            <div class="container-fluid containerBar" style="width:85%; margin-left:0px">
+            <div class="container-fluid containerBar" style="width:84%; margin-left:5px">
                 <div class="myBar01"></div>
             </div>
         </div>
+
+
+
     </div>
     <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
         <div class="col-xs-2 col-xs-offset-1">
@@ -188,13 +257,13 @@
             <button class="miniButton">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButtonOp noCurs">3</button>
+            <button class="miniButton">3</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButtonOp noCurs">4</button>
+            <button class="miniButton">4</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButtonOp noCurs">5</button>
+            <button class="miniButtonOp opacity noCurs">5</button>
         </div>
     </div>
     @*Progress Bar Ende*@
