@@ -1,4 +1,4 @@
-﻿
+﻿@model kundt_front_end.Models.tblKunde
 @{
     ViewBag.Title = "Step5";
 }
@@ -350,10 +350,11 @@
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6">
                     <p><b>Anrede: </b><span>Herr</span></p>
-                    <p><b>Vorname: </b><span>ksafoaohpjp</span></p>
+                    <p><b>@Html.DisplayNameFor(model => model.Vorname): </b><span>@Html.DisplayFor(model => model.Vorname)</span></p> @*Testweise*@
                     <p><b>Nachname: </b><span>aoshoahsfohfh</span></p>
                     <p><b>Geb. Datum: </b><span>12.12.1241</span></p>
                     <p><b>Reisepassnr.: </b><span>P1234567</span></p>
+                    @Html.DisplayNameFor(model => model.Vorname)
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
@@ -362,6 +363,7 @@
                     <p><b>Straße: </b><span>askfjhkajjhfha 23</span></p>
                     <p><b>PLZ: </b><span>1241 Wien</span></p>
                     <p><b>Telefon: </b><span>98798 8768698</span></p>
+                    
                 </div>
             </div>
         </div>

@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="it22AutoverleihModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAusstattung">
+          <Key>
+            <PropertyRef Name="IDAusstattung" />
+          </Key>
+          <Property Name="IDAusstattung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ausstattung" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAuto">
+          <Key>
+            <PropertyRef Name="IDAuto" />
+          </Key>
+          <Property Name="IDAuto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baujahr" Type="smallint" Nullable="false" />
+          <Property Name="PS" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="Getriebe" Type="varchar" MaxLength="9" Nullable="false" />
+          <Property Name="Tueren" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Sitze" Type="tinyint" Nullable="false" />
+          <Property Name="MietPreis" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="VerkaufPreis" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Kilometerstand" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="AutoBild" Type="varbinary(max)" />
+          <Property Name="Anzeigen" Type="bit" Nullable="false" />
+          <Property Name="FKTreibstoff" Type="int" Nullable="false" />
+          <Property Name="FKTyp" Type="int" Nullable="false" />
+          <Property Name="FKKategorie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblAutodetail">
+          <Key>
+            <PropertyRef Name="FKAuto" />
+            <PropertyRef Name="FKAusstattung" />
+          </Key>
+          <Property Name="FKAuto" Type="int" Nullable="false" />
+          <Property Name="FKAusstattung" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBuchung">
+          <Key>
+            <PropertyRef Name="IDBuchung" />
+          </Key>
+          <Property Name="IDBuchung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuchungAm" Type="smalldatetime" Nullable="false" />
+          <Property Name="BuchungVon" Type="date" Nullable="false" />
+          <Property Name="BuchungBis" Type="date" Nullable="false" />
+          <Property Name="Versicherung" Type="bit" Nullable="false" />
+          <Property Name="FKKunde" Type="int" Nullable="false" />
+          <Property Name="FKAuto" Type="int" Nullable="false" />
+          <Property Name="Tage" Type="int" StoreGeneratedPattern="Computed" />
+          <Property Name="BuchungStatus" Type="varchar" MaxLength="10" />
+          <Property Name="Storno" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEyecatcher">
+          <Key>
+            <PropertyRef Name="IDEyecatcher" />
+          </Key>
+          <Property Name="IDEyecatcher" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GUIDBild" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Eyecatcher" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblHistorie">
+          <Key>
+            <PropertyRef Name="IDHistorie" />
+          </Key>
+          <Property Name="IDHistorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FKMitarbeiter" Type="int" Nullable="false" />
+          <Property Name="FKBuchung" Type="int" Nullable="false" />
+          <Property Name="AenderungsDatum" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tblKategorie">
+          <Key>
+            <PropertyRef Name="IDKategorie" />
+          </Key>
+          <Property Name="IDKategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kategorie" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblKunde">
+          <Key>
+            <PropertyRef Name="IDKunde" />
+          </Key>
+          <Property Name="IDKunde" Type="int" Nullable="false" />
+          <Property Name="Vorname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nachname" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Strasse" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Anrede" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="GebDatum" Type="date" Nullable="false" />
+          <Property Name="ReisepassNr" Type="varchar" MaxLength="50" />
+          <Property Name="FKPLZOrt" Type="int" />
+        </EntityType>
+        <EntityType Name="tblLand">
+          <Key>
+            <PropertyRef Name="IDLand" />
+          </Key>
+          <Property Name="IDLand" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="Land" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="IDLogin" />
+          </Key>
+          <Property Name="IDLogin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Passwort" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Rolle" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="Deaktiviert" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMarke">
+          <Key>
+            <PropertyRef Name="IDMarke" />
+          </Key>
+          <Property Name="IDMarke" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marke" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblMitarbeiter">
+          <Key>
+            <PropertyRef Name="IDMitarbeiter" />
+          </Key>
+          <Property Name="IDMitarbeiter" Type="int" Nullable="false" />
+          <Property Name="MAVorname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MANachname" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MAAnrede" Type="char" MaxLength="4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblPLZOrt">
+          <Key>
+            <PropertyRef Name="IDPLZOrt" />
+          </Key>
+          <Property Name="IDPLZOrt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PLZ" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ort" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FKLand" Type="char" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="tblTreibstoff">
+          <Key>
+            <PropertyRef Name="IDTreibstoff" />
+          </Key>
+          <Property Name="IDTreibstoff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Treibstoff" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTyp">
+          <Key>
+            <PropertyRef Name="IDTyp" />
+          </Key>
+          <Property Name="IDTyp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Typ" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FKMarke" Type="int" />
+        </EntityType>
+        <Association Name="FK__tblAuto__FKKateg__628FA481">
+          <End Role="tblKategorie" Type="Self.tblKategorie" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKategorie">
+              <PropertyRef Name="IDKategorie" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKKategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAuto__FKTreib__60A75C0F">
+          <End Role="tblTreibstoff" Type="Self.tblTreibstoff" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTreibstoff">
+              <PropertyRef Name="IDTreibstoff" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKTreibstoff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAuto__FKTyp__619B8048">
+          <End Role="tblTyp" Type="Self.tblTyp" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTyp">
+              <PropertyRef Name="IDTyp" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKTyp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAutode__FKAus__66603565">
+          <End Role="tblAusstattung" Type="Self.tblAusstattung" Multiplicity="1" />
+          <End Role="tblAutodetail" Type="Self.tblAutodetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAusstattung">
+              <PropertyRef Name="IDAusstattung" />
+            </Principal>
+            <Dependent Role="tblAutodetail">
+              <PropertyRef Name="FKAusstattung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAutode__FKAut__656C112C">
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="1" />
+          <End Role="tblAutodetail" Type="Self.tblAutodetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAuto">
+              <PropertyRef Name="IDAuto" />
+            </Principal>
+            <Dependent Role="tblAutodetail">
+              <PropertyRef Name="FKAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuchun__FKAut__6D0D32F4">
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="1" />
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAuto">
+              <PropertyRef Name="IDAuto" />
+            </Principal>
+            <Dependent Role="tblBuchung">
+              <PropertyRef Name="FKAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuchun__FKKun__6C190EBB">
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="1" />
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKunde">
+              <PropertyRef Name="IDKunde" />
+            </Principal>
+            <Dependent Role="tblBuchung">
+              <PropertyRef Name="FKKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblHistor__FKBuc__72C60C4A">
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="1" />
+          <End Role="tblHistorie" Type="Self.tblHistorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuchung">
+              <PropertyRef Name="IDBuchung" />
+            </Principal>
+            <Dependent Role="tblHistorie">
+              <PropertyRef Name="FKBuchung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblHistor__FKMit__71D1E811">
+          <End Role="tblMitarbeiter" Type="Self.tblMitarbeiter" Multiplicity="1" />
+          <End Role="tblHistorie" Type="Self.tblHistorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMitarbeiter">
+              <PropertyRef Name="IDMitarbeiter" />
+            </Principal>
+            <Dependent Role="tblHistorie">
+              <PropertyRef Name="FKMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKunde__FKPLZO__47DBAE45">
+          <End Role="tblPLZOrt" Type="Self.tblPLZOrt" Multiplicity="0..1" />
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPLZOrt">
+              <PropertyRef Name="IDPLZOrt" />
+            </Principal>
+            <Dependent Role="tblKunde">
+              <PropertyRef Name="FKPLZOrt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKunde__IDKund__44FF419A">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="1" />
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="IDLogin" />
+            </Principal>
+            <Dependent Role="tblKunde">
+              <PropertyRef Name="IDKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblMitarb__IDMit__3B75D760">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="1" />
+          <End Role="tblMitarbeiter" Type="Self.tblMitarbeiter" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="IDLogin" />
+            </Principal>
+            <Dependent Role="tblMitarbeiter">
+              <PropertyRef Name="IDMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPLZOrt__FKLan__4222D4EF">
+          <End Role="tblLand" Type="Self.tblLand" Multiplicity="0..1" />
+          <End Role="tblPLZOrt" Type="Self.tblPLZOrt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLand">
+              <PropertyRef Name="IDLand" />
+            </Principal>
+            <Dependent Role="tblPLZOrt">
+              <PropertyRef Name="FKLand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTyp__FKMarke__4E88ABD4">
+          <End Role="tblMarke" Type="Self.tblMarke" Multiplicity="0..1" />
+          <End Role="tblTyp" Type="Self.tblTyp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMarke">
+              <PropertyRef Name="IDMarke" />
+            </Principal>
+            <Dependent Role="tblTyp">
+              <PropertyRef Name="FKMarke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fBuchungProblem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="idBuchung" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fBuchungStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="idBuchung" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="it22AutoverleihModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAusstattung" EntityType="Self.tblAusstattung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAuto" EntityType="Self.tblAuto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAutodetail" EntityType="Self.tblAutodetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBuchung" EntityType="Self.tblBuchung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEyecatcher" EntityType="Self.tblEyecatcher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHistorie" EntityType="Self.tblHistorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKategorie" EntityType="Self.tblKategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblKunde" EntityType="Self.tblKunde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLand" EntityType="Self.tblLand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMarke" EntityType="Self.tblMarke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMitarbeiter" EntityType="Self.tblMitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPLZOrt" EntityType="Self.tblPLZOrt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTreibstoff" EntityType="Self.tblTreibstoff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTyp" EntityType="Self.tblTyp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tblAuto__FKKateg__628FA481" Association="Self.FK__tblAuto__FKKateg__628FA481">
+            <End Role="tblKategorie" EntitySet="tblKategorie" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAuto__FKTreib__60A75C0F" Association="Self.FK__tblAuto__FKTreib__60A75C0F">
+            <End Role="tblTreibstoff" EntitySet="tblTreibstoff" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAuto__FKTyp__619B8048" Association="Self.FK__tblAuto__FKTyp__619B8048">
+            <End Role="tblTyp" EntitySet="tblTyp" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAutode__FKAus__66603565" Association="Self.FK__tblAutode__FKAus__66603565">
+            <End Role="tblAusstattung" EntitySet="tblAusstattung" />
+            <End Role="tblAutodetail" EntitySet="tblAutodetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAutode__FKAut__656C112C" Association="Self.FK__tblAutode__FKAut__656C112C">
+            <End Role="tblAuto" EntitySet="tblAuto" />
+            <End Role="tblAutodetail" EntitySet="tblAutodetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuchun__FKAut__6D0D32F4" Association="Self.FK__tblBuchun__FKAut__6D0D32F4">
+            <End Role="tblAuto" EntitySet="tblAuto" />
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuchun__FKKun__6C190EBB" Association="Self.FK__tblBuchun__FKKun__6C190EBB">
+            <End Role="tblKunde" EntitySet="tblKunde" />
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblHistor__FKBuc__72C60C4A" Association="Self.FK__tblHistor__FKBuc__72C60C4A">
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+            <End Role="tblHistorie" EntitySet="tblHistorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblHistor__FKMit__71D1E811" Association="Self.FK__tblHistor__FKMit__71D1E811">
+            <End Role="tblMitarbeiter" EntitySet="tblMitarbeiter" />
+            <End Role="tblHistorie" EntitySet="tblHistorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKunde__FKPLZO__47DBAE45" Association="Self.FK__tblKunde__FKPLZO__47DBAE45">
+            <End Role="tblPLZOrt" EntitySet="tblPLZOrt" />
+            <End Role="tblKunde" EntitySet="tblKunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKunde__IDKund__44FF419A" Association="Self.FK__tblKunde__IDKund__44FF419A">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblKunde" EntitySet="tblKunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblMitarb__IDMit__3B75D760" Association="Self.FK__tblMitarb__IDMit__3B75D760">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblMitarbeiter" EntitySet="tblMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPLZOrt__FKLan__4222D4EF" Association="Self.FK__tblPLZOrt__FKLan__4222D4EF">
+            <End Role="tblLand" EntitySet="tblLand" />
+            <End Role="tblPLZOrt" EntitySet="tblPLZOrt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTyp__FKMarke__4E88ABD4" Association="Self.FK__tblTyp__FKMarke__4E88ABD4">
+            <End Role="tblMarke" EntitySet="tblMarke" />
+            <End Role="tblTyp" EntitySet="tblTyp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="it22AutoverleihModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAusstattung">
+          <Key>
+            <PropertyRef Name="IDAusstattung" />
+          </Key>
+          <Property Name="IDAusstattung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ausstattung" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAuto" Relationship="Self.tblAutodetail" FromRole="tblAusstattung" ToRole="tblAuto" />
+        </EntityType>
+        <EntityType Name="tblAuto">
+          <Key>
+            <PropertyRef Name="IDAuto" />
+          </Key>
+          <Property Name="IDAuto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baujahr" Type="Int16" Nullable="false" />
+          <Property Name="PS" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Getriebe" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tueren" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sitze" Type="Byte" Nullable="false" />
+          <Property Name="MietPreis" Type="Decimal" Precision="6" Scale="2" Nullable="false" />
+          <Property Name="VerkaufPreis" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Kilometerstand" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="AutoBild" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Anzeigen" Type="Boolean" Nullable="false" />
+          <Property Name="FKTreibstoff" Type="Int32" Nullable="false" />
+          <Property Name="FKTyp" Type="Int32" Nullable="false" />
+          <Property Name="FKKategorie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblKategorie" Relationship="Self.FK__tblAuto__FKKateg__628FA481" FromRole="tblAuto" ToRole="tblKategorie" />
+          <NavigationProperty Name="tblTreibstoff" Relationship="Self.FK__tblAuto__FKTreib__60A75C0F" FromRole="tblAuto" ToRole="tblTreibstoff" />
+          <NavigationProperty Name="tblTyp" Relationship="Self.FK__tblAuto__FKTyp__619B8048" FromRole="tblAuto" ToRole="tblTyp" />
+          <NavigationProperty Name="tblBuchung" Relationship="Self.FK__tblBuchun__FKAut__6D0D32F4" FromRole="tblAuto" ToRole="tblBuchung" />
+          <NavigationProperty Name="tblAusstattung" Relationship="Self.tblAutodetail" FromRole="tblAuto" ToRole="tblAusstattung" />
+        </EntityType>
+        <EntityType Name="tblBuchung">
+          <Key>
+            <PropertyRef Name="IDBuchung" />
+          </Key>
+          <Property Name="IDBuchung" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuchungAm" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BuchungVon" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="BuchungBis" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Versicherung" Type="Boolean" Nullable="false" />
+          <Property Name="FKKunde" Type="Int32" Nullable="false" />
+          <Property Name="FKAuto" Type="Int32" Nullable="false" />
+          <Property Name="Tage" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="BuchungStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Storno" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblAuto" Relationship="Self.FK__tblBuchun__FKAut__6D0D32F4" FromRole="tblBuchung" ToRole="tblAuto" />
+          <NavigationProperty Name="tblKunde" Relationship="Self.FK__tblBuchun__FKKun__6C190EBB" FromRole="tblBuchung" ToRole="tblKunde" />
+          <NavigationProperty Name="tblHistorie" Relationship="Self.FK__tblHistor__FKBuc__72C60C4A" FromRole="tblBuchung" ToRole="tblHistorie" />
+        </EntityType>
+        <EntityType Name="tblEyecatcher">
+          <Key>
+            <PropertyRef Name="IDEyecatcher" />
+          </Key>
+          <Property Name="IDEyecatcher" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GUIDBild" Type="Guid" Nullable="false" />
+          <Property Name="Eyecatcher" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblHistorie">
+          <Key>
+            <PropertyRef Name="IDHistorie" />
+          </Key>
+          <Property Name="IDHistorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FKMitarbeiter" Type="Int32" Nullable="false" />
+          <Property Name="FKBuchung" Type="Int32" Nullable="false" />
+          <Property Name="AenderungsDatum" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="tblBuchung" Relationship="Self.FK__tblHistor__FKBuc__72C60C4A" FromRole="tblHistorie" ToRole="tblBuchung" />
+          <NavigationProperty Name="tblMitarbeiter" Relationship="Self.FK__tblHistor__FKMit__71D1E811" FromRole="tblHistorie" ToRole="tblMitarbeiter" />
+        </EntityType>
+        <EntityType Name="tblKategorie">
+          <Key>
+            <PropertyRef Name="IDKategorie" />
+          </Key>
+          <Property Name="IDKategorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAuto" Relationship="Self.FK__tblAuto__FKKateg__628FA481" FromRole="tblKategorie" ToRole="tblAuto" />
+        </EntityType>
+        <EntityType Name="tblKunde">
+          <Key>
+            <PropertyRef Name="IDKunde" />
+          </Key>
+          <Property Name="IDKunde" Type="Int32" Nullable="false" />
+          <Property Name="Vorname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nachname" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Strasse" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Anrede" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="GebDatum" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ReisepassNr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FKPLZOrt" Type="Int32" />
+          <NavigationProperty Name="tblBuchung" Relationship="Self.FK__tblBuchun__FKKun__6C190EBB" FromRole="tblKunde" ToRole="tblBuchung" />
+          <NavigationProperty Name="tblPLZOrt" Relationship="Self.FK__tblKunde__FKPLZO__47DBAE45" FromRole="tblKunde" ToRole="tblPLZOrt" />
+          <NavigationProperty Name="tblLogin" Relationship="Self.FK__tblKunde__IDKund__44FF419A" FromRole="tblKunde" ToRole="tblLogin" />
+        </EntityType>
+        <EntityType Name="tblLand">
+          <Key>
+            <PropertyRef Name="IDLand" />
+          </Key>
+          <Property Name="IDLand" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Land" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblPLZOrt" Relationship="Self.FK__tblPLZOrt__FKLan__4222D4EF" FromRole="tblLand" ToRole="tblPLZOrt" />
+        </EntityType>
+        <EntityType Name="tblLogin">
+          <Key>
+            <PropertyRef Name="IDLogin" />
+          </Key>
+          <Property Name="IDLogin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passwort" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rolle" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Deaktiviert" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblKunde" Relationship="Self.FK__tblKunde__IDKund__44FF419A" FromRole="tblLogin" ToRole="tblKunde" />
+          <NavigationProperty Name="tblMitarbeiter" Relationship="Self.FK__tblMitarb__IDMit__3B75D760" FromRole="tblLogin" ToRole="tblMitarbeiter" />
+        </EntityType>
+        <EntityType Name="tblMarke">
+          <Key>
+            <PropertyRef Name="IDMarke" />
+          </Key>
+          <Property Name="IDMarke" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marke" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTyp" Relationship="Self.FK__tblTyp__FKMarke__4E88ABD4" FromRole="tblMarke" ToRole="tblTyp" />
+        </EntityType>
+        <EntityType Name="tblMitarbeiter">
+          <Key>
+            <PropertyRef Name="IDMitarbeiter" />
+          </Key>
+          <Property Name="IDMitarbeiter" Type="Int32" Nullable="false" />
+          <Property Name="MAVorname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MANachname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MAAnrede" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblHistorie" Relationship="Self.FK__tblHistor__FKMit__71D1E811" FromRole="tblMitarbeiter" ToRole="tblHistorie" />
+          <NavigationProperty Name="tblLogin" Relationship="Self.FK__tblMitarb__IDMit__3B75D760" FromRole="tblMitarbeiter" ToRole="tblLogin" />
+        </EntityType>
+        <EntityType Name="tblPLZOrt">
+          <Key>
+            <PropertyRef Name="IDPLZOrt" />
+          </Key>
+          <Property Name="IDPLZOrt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PLZ" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ort" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FKLand" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="tblKunde" Relationship="Self.FK__tblKunde__FKPLZO__47DBAE45" FromRole="tblPLZOrt" ToRole="tblKunde" />
+          <NavigationProperty Name="tblLand" Relationship="Self.FK__tblPLZOrt__FKLan__4222D4EF" FromRole="tblPLZOrt" ToRole="tblLand" />
+        </EntityType>
+        <EntityType Name="tblTreibstoff">
+          <Key>
+            <PropertyRef Name="IDTreibstoff" />
+          </Key>
+          <Property Name="IDTreibstoff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Treibstoff" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblAuto" Relationship="Self.FK__tblAuto__FKTreib__60A75C0F" FromRole="tblTreibstoff" ToRole="tblAuto" />
+        </EntityType>
+        <EntityType Name="tblTyp">
+          <Key>
+            <PropertyRef Name="IDTyp" />
+          </Key>
+          <Property Name="IDTyp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Typ" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FKMarke" Type="Int32" />
+          <NavigationProperty Name="tblAuto" Relationship="Self.FK__tblAuto__FKTyp__619B8048" FromRole="tblTyp" ToRole="tblAuto" />
+          <NavigationProperty Name="tblMarke" Relationship="Self.FK__tblTyp__FKMarke__4E88ABD4" FromRole="tblTyp" ToRole="tblMarke" />
+        </EntityType>
+        <Association Name="FK__tblAuto__FKKateg__628FA481">
+          <End Role="tblKategorie" Type="Self.tblKategorie" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKategorie">
+              <PropertyRef Name="IDKategorie" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKKategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAuto__FKTreib__60A75C0F">
+          <End Role="tblTreibstoff" Type="Self.tblTreibstoff" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTreibstoff">
+              <PropertyRef Name="IDTreibstoff" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKTreibstoff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblAuto__FKTyp__619B8048">
+          <End Role="tblTyp" Type="Self.tblTyp" Multiplicity="1" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTyp">
+              <PropertyRef Name="IDTyp" />
+            </Principal>
+            <Dependent Role="tblAuto">
+              <PropertyRef Name="FKTyp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuchun__FKAut__6D0D32F4">
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="1" />
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAuto">
+              <PropertyRef Name="IDAuto" />
+            </Principal>
+            <Dependent Role="tblBuchung">
+              <PropertyRef Name="FKAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblBuchun__FKKun__6C190EBB">
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="1" />
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblKunde">
+              <PropertyRef Name="IDKunde" />
+            </Principal>
+            <Dependent Role="tblBuchung">
+              <PropertyRef Name="FKKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblHistor__FKBuc__72C60C4A">
+          <End Role="tblBuchung" Type="Self.tblBuchung" Multiplicity="1" />
+          <End Role="tblHistorie" Type="Self.tblHistorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblBuchung">
+              <PropertyRef Name="IDBuchung" />
+            </Principal>
+            <Dependent Role="tblHistorie">
+              <PropertyRef Name="FKBuchung" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblHistor__FKMit__71D1E811">
+          <End Role="tblMitarbeiter" Type="Self.tblMitarbeiter" Multiplicity="1" />
+          <End Role="tblHistorie" Type="Self.tblHistorie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMitarbeiter">
+              <PropertyRef Name="IDMitarbeiter" />
+            </Principal>
+            <Dependent Role="tblHistorie">
+              <PropertyRef Name="FKMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKunde__FKPLZO__47DBAE45">
+          <End Role="tblPLZOrt" Type="Self.tblPLZOrt" Multiplicity="0..1" />
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblPLZOrt">
+              <PropertyRef Name="IDPLZOrt" />
+            </Principal>
+            <Dependent Role="tblKunde">
+              <PropertyRef Name="FKPLZOrt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblKunde__IDKund__44FF419A">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="1" />
+          <End Role="tblKunde" Type="Self.tblKunde" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="IDLogin" />
+            </Principal>
+            <Dependent Role="tblKunde">
+              <PropertyRef Name="IDKunde" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblPLZOrt__FKLan__4222D4EF">
+          <End Role="tblLand" Type="Self.tblLand" Multiplicity="0..1" />
+          <End Role="tblPLZOrt" Type="Self.tblPLZOrt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblLand">
+              <PropertyRef Name="IDLand" />
+            </Principal>
+            <Dependent Role="tblPLZOrt">
+              <PropertyRef Name="FKLand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblMitarb__IDMit__3B75D760">
+          <End Role="tblLogin" Type="Self.tblLogin" Multiplicity="1" />
+          <End Role="tblMitarbeiter" Type="Self.tblMitarbeiter" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tblLogin">
+              <PropertyRef Name="IDLogin" />
+            </Principal>
+            <Dependent Role="tblMitarbeiter">
+              <PropertyRef Name="IDMitarbeiter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tblTyp__FKMarke__4E88ABD4">
+          <End Role="tblMarke" Type="Self.tblMarke" Multiplicity="0..1" />
+          <End Role="tblTyp" Type="Self.tblTyp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblMarke">
+              <PropertyRef Name="IDMarke" />
+            </Principal>
+            <Dependent Role="tblTyp">
+              <PropertyRef Name="FKMarke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="tblAutodetail">
+          <End Role="tblAusstattung" Type="Self.tblAusstattung" Multiplicity="*" />
+          <End Role="tblAuto" Type="Self.tblAuto" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="it22AutoverleihEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblAusstattung" EntityType="Self.tblAusstattung" />
+          <EntitySet Name="tblAuto" EntityType="Self.tblAuto" />
+          <EntitySet Name="tblBuchung" EntityType="Self.tblBuchung" />
+          <EntitySet Name="tblEyecatcher" EntityType="Self.tblEyecatcher" />
+          <EntitySet Name="tblHistorie" EntityType="Self.tblHistorie" />
+          <EntitySet Name="tblKategorie" EntityType="Self.tblKategorie" />
+          <EntitySet Name="tblKunde" EntityType="Self.tblKunde" />
+          <EntitySet Name="tblLand" EntityType="Self.tblLand" />
+          <EntitySet Name="tblLogin" EntityType="Self.tblLogin" />
+          <EntitySet Name="tblMarke" EntityType="Self.tblMarke" />
+          <EntitySet Name="tblMitarbeiter" EntityType="Self.tblMitarbeiter" />
+          <EntitySet Name="tblPLZOrt" EntityType="Self.tblPLZOrt" />
+          <EntitySet Name="tblTreibstoff" EntityType="Self.tblTreibstoff" />
+          <EntitySet Name="tblTyp" EntityType="Self.tblTyp" />
+          <AssociationSet Name="FK__tblAuto__FKKateg__628FA481" Association="Self.FK__tblAuto__FKKateg__628FA481">
+            <End Role="tblKategorie" EntitySet="tblKategorie" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAuto__FKTreib__60A75C0F" Association="Self.FK__tblAuto__FKTreib__60A75C0F">
+            <End Role="tblTreibstoff" EntitySet="tblTreibstoff" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblAuto__FKTyp__619B8048" Association="Self.FK__tblAuto__FKTyp__619B8048">
+            <End Role="tblTyp" EntitySet="tblTyp" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuchun__FKAut__6D0D32F4" Association="Self.FK__tblBuchun__FKAut__6D0D32F4">
+            <End Role="tblAuto" EntitySet="tblAuto" />
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblBuchun__FKKun__6C190EBB" Association="Self.FK__tblBuchun__FKKun__6C190EBB">
+            <End Role="tblKunde" EntitySet="tblKunde" />
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblHistor__FKBuc__72C60C4A" Association="Self.FK__tblHistor__FKBuc__72C60C4A">
+            <End Role="tblBuchung" EntitySet="tblBuchung" />
+            <End Role="tblHistorie" EntitySet="tblHistorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblHistor__FKMit__71D1E811" Association="Self.FK__tblHistor__FKMit__71D1E811">
+            <End Role="tblMitarbeiter" EntitySet="tblMitarbeiter" />
+            <End Role="tblHistorie" EntitySet="tblHistorie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKunde__FKPLZO__47DBAE45" Association="Self.FK__tblKunde__FKPLZO__47DBAE45">
+            <End Role="tblPLZOrt" EntitySet="tblPLZOrt" />
+            <End Role="tblKunde" EntitySet="tblKunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblKunde__IDKund__44FF419A" Association="Self.FK__tblKunde__IDKund__44FF419A">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblKunde" EntitySet="tblKunde" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblPLZOrt__FKLan__4222D4EF" Association="Self.FK__tblPLZOrt__FKLan__4222D4EF">
+            <End Role="tblLand" EntitySet="tblLand" />
+            <End Role="tblPLZOrt" EntitySet="tblPLZOrt" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblMitarb__IDMit__3B75D760" Association="Self.FK__tblMitarb__IDMit__3B75D760">
+            <End Role="tblLogin" EntitySet="tblLogin" />
+            <End Role="tblMitarbeiter" EntitySet="tblMitarbeiter" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tblTyp__FKMarke__4E88ABD4" Association="Self.FK__tblTyp__FKMarke__4E88ABD4">
+            <End Role="tblMarke" EntitySet="tblMarke" />
+            <End Role="tblTyp" EntitySet="tblTyp" />
+          </AssociationSet>
+          <AssociationSet Name="tblAutodetail" Association="Self.tblAutodetail">
+            <End Role="tblAusstattung" EntitySet="tblAusstattung" />
+            <End Role="tblAuto" EntitySet="tblAuto" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="it22AutoverleihModelStoreContainer" CdmEntityContainer="it22AutoverleihEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAusstattung">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblAusstattung">
+              <MappingFragment StoreEntitySet="tblAusstattung">
+                <ScalarProperty Name="IDAusstattung" ColumnName="IDAusstattung" />
+                <ScalarProperty Name="Ausstattung" ColumnName="Ausstattung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAuto">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblAuto">
+              <MappingFragment StoreEntitySet="tblAuto">
+                <ScalarProperty Name="IDAuto" ColumnName="IDAuto" />
+                <ScalarProperty Name="Baujahr" ColumnName="Baujahr" />
+                <ScalarProperty Name="PS" ColumnName="PS" />
+                <ScalarProperty Name="Getriebe" ColumnName="Getriebe" />
+                <ScalarProperty Name="Tueren" ColumnName="Tueren" />
+                <ScalarProperty Name="Sitze" ColumnName="Sitze" />
+                <ScalarProperty Name="MietPreis" ColumnName="MietPreis" />
+                <ScalarProperty Name="VerkaufPreis" ColumnName="VerkaufPreis" />
+                <ScalarProperty Name="Kilometerstand" ColumnName="Kilometerstand" />
+                <ScalarProperty Name="AutoBild" ColumnName="AutoBild" />
+                <ScalarProperty Name="Anzeigen" ColumnName="Anzeigen" />
+                <ScalarProperty Name="FKTreibstoff" ColumnName="FKTreibstoff" />
+                <ScalarProperty Name="FKTyp" ColumnName="FKTyp" />
+                <ScalarProperty Name="FKKategorie" ColumnName="FKKategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBuchung">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblBuchung">
+              <MappingFragment StoreEntitySet="tblBuchung">
+                <ScalarProperty Name="IDBuchung" ColumnName="IDBuchung" />
+                <ScalarProperty Name="BuchungAm" ColumnName="BuchungAm" />
+                <ScalarProperty Name="BuchungVon" ColumnName="BuchungVon" />
+                <ScalarProperty Name="BuchungBis" ColumnName="BuchungBis" />
+                <ScalarProperty Name="Versicherung" ColumnName="Versicherung" />
+                <ScalarProperty Name="FKKunde" ColumnName="FKKunde" />
+                <ScalarProperty Name="FKAuto" ColumnName="FKAuto" />
+                <ScalarProperty Name="Tage" ColumnName="Tage" />
+                <ScalarProperty Name="BuchungStatus" ColumnName="BuchungStatus" />
+                <ScalarProperty Name="Storno" ColumnName="Storno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEyecatcher">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblEyecatcher">
+              <MappingFragment StoreEntitySet="tblEyecatcher">
+                <ScalarProperty Name="IDEyecatcher" ColumnName="IDEyecatcher" />
+                <ScalarProperty Name="GUIDBild" ColumnName="GUIDBild" />
+                <ScalarProperty Name="Eyecatcher" ColumnName="Eyecatcher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHistorie">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblHistorie">
+              <MappingFragment StoreEntitySet="tblHistorie">
+                <ScalarProperty Name="IDHistorie" ColumnName="IDHistorie" />
+                <ScalarProperty Name="FKMitarbeiter" ColumnName="FKMitarbeiter" />
+                <ScalarProperty Name="FKBuchung" ColumnName="FKBuchung" />
+                <ScalarProperty Name="AenderungsDatum" ColumnName="AenderungsDatum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKategorie">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblKategorie">
+              <MappingFragment StoreEntitySet="tblKategorie">
+                <ScalarProperty Name="IDKategorie" ColumnName="IDKategorie" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblKunde">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblKunde">
+              <MappingFragment StoreEntitySet="tblKunde">
+                <ScalarProperty Name="IDKunde" ColumnName="IDKunde" />
+                <ScalarProperty Name="Vorname" ColumnName="Vorname" />
+                <ScalarProperty Name="Nachname" ColumnName="Nachname" />
+                <ScalarProperty Name="Strasse" ColumnName="Strasse" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Anrede" ColumnName="Anrede" />
+                <ScalarProperty Name="GebDatum" ColumnName="GebDatum" />
+                <ScalarProperty Name="ReisepassNr" ColumnName="ReisepassNr" />
+                <ScalarProperty Name="FKPLZOrt" ColumnName="FKPLZOrt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLand">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblLand">
+              <MappingFragment StoreEntitySet="tblLand">
+                <ScalarProperty Name="IDLand" ColumnName="IDLand" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLogin">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblLogin">
+              <MappingFragment StoreEntitySet="tblLogin">
+                <ScalarProperty Name="IDLogin" ColumnName="IDLogin" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Passwort" ColumnName="Passwort" />
+                <ScalarProperty Name="Rolle" ColumnName="Rolle" />
+                <ScalarProperty Name="Deaktiviert" ColumnName="Deaktiviert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMarke">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblMarke">
+              <MappingFragment StoreEntitySet="tblMarke">
+                <ScalarProperty Name="IDMarke" ColumnName="IDMarke" />
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMitarbeiter">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblMitarbeiter">
+              <MappingFragment StoreEntitySet="tblMitarbeiter">
+                <ScalarProperty Name="IDMitarbeiter" ColumnName="IDMitarbeiter" />
+                <ScalarProperty Name="MAVorname" ColumnName="MAVorname" />
+                <ScalarProperty Name="MANachname" ColumnName="MANachname" />
+                <ScalarProperty Name="MAAnrede" ColumnName="MAAnrede" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPLZOrt">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblPLZOrt">
+              <MappingFragment StoreEntitySet="tblPLZOrt">
+                <ScalarProperty Name="IDPLZOrt" ColumnName="IDPLZOrt" />
+                <ScalarProperty Name="PLZ" ColumnName="PLZ" />
+                <ScalarProperty Name="Ort" ColumnName="Ort" />
+                <ScalarProperty Name="FKLand" ColumnName="FKLand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTreibstoff">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblTreibstoff">
+              <MappingFragment StoreEntitySet="tblTreibstoff">
+                <ScalarProperty Name="IDTreibstoff" ColumnName="IDTreibstoff" />
+                <ScalarProperty Name="Treibstoff" ColumnName="Treibstoff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTyp">
+            <EntityTypeMapping TypeName="it22AutoverleihModel.tblTyp">
+              <MappingFragment StoreEntitySet="tblTyp">
+                <ScalarProperty Name="IDTyp" ColumnName="IDTyp" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="FKMarke" ColumnName="FKMarke" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="tblAutodetail" TypeName="it22AutoverleihModel.tblAutodetail" StoreEntitySet="tblAutodetail">
+            <EndProperty Name="tblAusstattung">
+              <ScalarProperty Name="IDAusstattung" ColumnName="FKAusstattung" />
+            </EndProperty>
+            <EndProperty Name="tblAuto">
+              <ScalarProperty Name="IDAuto" ColumnName="FKAuto" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

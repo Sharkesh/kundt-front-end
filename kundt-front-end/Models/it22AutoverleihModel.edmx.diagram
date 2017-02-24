@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8baadc063f854508a57096b21a398b18" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="it22AutoverleihModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblAusstattung" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblAuto" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblBuchung" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblEyecatcher" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblHistorie" Width="1.5" PointX="9.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblKategorie" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblKunde" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblLand" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblLogin" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblMarke" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblMitarbeiter" Width="1.5" PointX="7.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblPLZOrt" Width="1.5" PointX="3" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblTreibstoff" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="it22AutoverleihModel.tblTyp" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblAuto__FKKateg__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblAuto__FKTreib__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblAuto__FKTyp__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblBuchun__FKAut__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblBuchun__FKKun__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblHistor__FKBuc__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblHistor__FKMit__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblKunde__FKPLZO__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblKunde__IDKund__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblPLZOrt__FKLan__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblMitarb__IDMit__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.FK__tblTyp__FKMarke__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="it22AutoverleihModel.tblAutodetail" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

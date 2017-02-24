@@ -60,6 +60,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -131,6 +133,66 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\it22AutoverleihModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>it22AutoverleihModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\it22AutoverleihModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\it22AutoverleihModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>it22AutoverleihModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAusstattung.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblAuto.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblBuchung.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblEyecatcher.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblHistorie.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblKategorie.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblKunde.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLand.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblLogin.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblMarke.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblMitarbeiter.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPLZOrt.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTreibstoff.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTyp.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -214,6 +276,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\it22AutoverleihModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>it22AutoverleihModel.Context.cs</LastGenOutput>
+      <DependentUpon>it22AutoverleihModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\it22AutoverleihModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>it22AutoverleihModel.edmx</DependentUpon>
+      <LastGenOutput>it22AutoverleihModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -230,6 +302,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <EntityDeploy Include="Models\it22AutoverleihModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>it22AutoverleihModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\it22AutoverleihModel.edmx.diagram">
+      <DependentUpon>it22AutoverleihModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
@@ -335,14 +414,15 @@
     <Content Include="Views\Home\Step5.cshtml" />
     <Content Include="Views\Home\Step6.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
