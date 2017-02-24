@@ -154,34 +154,35 @@
 
     .abschlussGebucht {
         max-height: 45px;
-        max-width:45px;
-       
+        max-width: 45px;
+        font-size: 70px;
         background-color: white;
         color: #f99b1c;
         animation-name: anima03;
-        animation-duration: 2s;
-        animation-iteration-count:1;      
-         
+        animation-duration: 1.5s;
+        animation-iteration-count: 1;
         margin: auto;
         display: inline-block;
         /*line-height: 45px;*/
-        top:0px;
-        
-        
+        top: 0px;
+        position: relative;
     }
 
     @@keyframes anima03 {
-
-        from {
-            color:white;
-            transform:rotate(180deg);
-            font-size:250px;
+        0% {
+            color: white;
+            font-size: 200px;
+            transform: rotate(180deg);
             
+            position:relative;
         }
-        to{
+
+        100% {
             color: #f99b1c;
-            transform:rotate(360deg);
-            font-size:45px;
+            transform: rotate(0deg);
+            font-size: 70px;
+            
+            position:relative;
         }
     }
 
@@ -237,9 +238,9 @@
             <button class="myButtonOp opacity noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
-        <div class="col-xs-1 abschlussGebucht glyphicon glyphicon-ok-circle" style="font-size:45px">
-            
-        </div>
+        <label class="col-xs-1 abschlussGebucht glyphicon glyphicon-ok-circle">
+
+        </label>
         <div class="row">
             <div class="container-fluid containerBar" style="width:84%; margin-left:5px">
                 <div class="myBar01"></div>
