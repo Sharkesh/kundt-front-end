@@ -7,13 +7,15 @@
     }
 
     /* nötig um die Kalenderanzeige in den Vordergrund zu bringen */
-    .ui-datepicker{z-index: 99 !important} 
+    .ui-datepicker {
+        z-index: 99 !important;
+    }
 
     /* CSS Suchmaske Desktop Anfang */
     .searchMask {
         background-color: lightgrey;
         padding: 10px;
-        border-radius:5px;
+        border-radius: 5px;
     }
 
     #label_von {
@@ -25,7 +27,7 @@
         width: auto;
         text-transform: uppercase;
         margin-left: 10px;
-        margin-right: 10px;        
+        margin-right: 10px;
     }
 
     #label_bis {
@@ -51,8 +53,8 @@
         letter-spacing: 6px;
         margin-left: 10px;
         margin-right: 10px;
-        color:black;
-        border-radius:4px;
+        color: black;
+        border-radius: 4px;
     }
 
     .buttonOrange {
@@ -109,8 +111,8 @@
             margin: 0px;
         }
 
-        .buttonOrange{
-            margin-left:10px;
+        .buttonOrange {
+            margin-left: 10px;
         }
 
             .buttonOrange:hover {
@@ -126,7 +128,7 @@
                 text-transform: uppercase;
                 opacity: 0.8;
                 margin: 0px;
-                margin-left:10px;
+                margin-left: 10px;
             }
     }
     /* Ipad CSS Landscape Ende */
@@ -149,6 +151,7 @@
     .buttonOrange_mobile {
         background-color: #f99b1c;
         color: #ffffff;
+        top: 0px;
     }
 
     #searchMaskMobile {
@@ -276,14 +279,18 @@
     <div class="row col-sm-12">
         @*Standort:
             <input type="text" id="standort" />*@
-        <div class="col-sm-5 col-xs-12">
-            <label id="label_von">Von:</label>
-            <input type="text" id="date_von_mobile" placeholder="dd.mm.yyyy" />
-        </div>
-        <div class="col-sm-5 col-xs-12">
-            <label id="label_bis">Bis:</label>
-            <input type="text" id="date_bis_mobile" placeholder="dd.mm.yyyy" />
-        </div>
+        <center class="hidden-lg hidden-md">
+            <div class="col-sm-5 col-xs-12">
+                <label id="label_von">Von:</label>
+                <input type="text" id="date_von_mobile" placeholder="dd.mm.yyyy" />
+            </div>
+        </center>
+        <center class="hidden-lg hidden-md">
+            <div class="col-sm-5 col-xs-12">
+                <label id="label_bis">Bis:</label>
+                <input type="text" id="date_bis_mobile" placeholder="dd.mm.yyyy" />
+            </div>
+        </center>
         <div class="col-sm-2 col-xs-12">
             <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
         </div>
