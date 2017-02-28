@@ -13,12 +13,10 @@
 
 
 // Hier evtl Variablen anlegen für das Datum von/bis zur weitergabe für Step 1
-var $j = jQuery.noConflict();
-$j("#date_von").datepicker({
+$("#date_bis").datepicker({
     numberOfMonths: 2,
-    showButtonPanel: true,
-    altField: "#datepicker_input",
-    dateFormat: "dd.mm.yy",
+    dateFormat: 'dd.mm.yy',
+    minDate: 'dateToday',
     currentText: 'heute', currentStatus: '',
     todayText: 'heute', todayStatus: '',
     clearText: '-', clearStatus: '',
@@ -30,15 +28,35 @@ $j("#date_von").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-},
-$j.datepicker.regional['de-AT']);
+    minDate: new Date(),
+},$.datepicker.regional['de-AT']);
 
 
-
-$j("#date_bis").datepicker({
+$("#date_von").datepicker({
     numberOfMonths: 2,
-    showButtonPanel: true,
-    altField: "#datepicker_input",
+    dateFormat: 'dd.mm.yy',
+    minDate: 'dateToday',
+    currentText: 'heute', currentStatus: '',
+    todayText: 'heute', todayStatus: '',
+    clearText: '-', clearStatus: '',
+    closeText: 'schließen', closeStatus: '',
+    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+    monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+    dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+    dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    onSelect: function () {
+        $('#date_bis').datepicker('option', 'minDate', $("#date_von").datepicker("getDate"));
+    }
+    
+},$.datepicker.regional['de-AT']);
+
+
+
+
+$("#date_von_mobile").datepicker({
     dateFormat: "dd.mm.yy",
     currentText: 'heute', currentStatus: '',
     todayText: 'heute', todayStatus: '',
@@ -51,10 +69,11 @@ $j("#date_bis").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-}, $j.datepicker.regional['de-AT']);
+}, $.datepicker.regional['de-AT']);
 
 
-$j("#date_von_mobile").datepicker({
+
+$("#date_bis_mobile").datepicker({
     dateFormat: "dd.mm.yy",
     currentText: 'heute', currentStatus: '',
     todayText: 'heute', todayStatus: '',
@@ -67,24 +86,7 @@ $j("#date_von_mobile").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-}, $j.datepicker.regional['de-AT']);
-
-
-
-$j("#date_bis_mobile").datepicker({
-    dateFormat: "dd.mm.yy",
-    currentText: 'heute', currentStatus: '',
-    todayText: 'heute', todayStatus: '',
-    clearText: '-', clearStatus: '',
-    closeText: 'schließen', closeStatus: '',
-    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-    monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-    dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-    dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-    dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-}, $j.datepicker.regional['de-AT']);
+}, $.datepicker.regional['de-AT']);
 
 
 
