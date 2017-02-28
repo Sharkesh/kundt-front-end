@@ -54,25 +54,6 @@ $("#date_von").datepicker({
 },$.datepicker.regional['de-AT']);
 
 
-
-
-$("#date_von_mobile").datepicker({
-    dateFormat: "dd.mm.yy",
-    currentText: 'heute', currentStatus: '',
-    todayText: 'heute', todayStatus: '',
-    clearText: '-', clearStatus: '',
-    closeText: 'schließen', closeStatus: '',
-    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
-    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
-    monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
-    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
-    dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
-    dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-    dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-}, $.datepicker.regional['de-AT']);
-
-
-
 $("#date_bis_mobile").datepicker({
     dateFormat: "dd.mm.yy",
     currentText: 'heute', currentStatus: '',
@@ -86,7 +67,31 @@ $("#date_bis_mobile").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    minDate: new Date(),
 }, $.datepicker.regional['de-AT']);
+
+$("#date_von_mobile").datepicker({
+    dateFormat: "dd.mm.yy",
+    minDate: 'dateToday',
+    currentText: 'heute', currentStatus: '',
+    todayText: 'heute', todayStatus: '',
+    clearText: '-', clearStatus: '',
+    closeText: 'schließen', closeStatus: '',
+    monthNames: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni',
+    'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+    monthNamesShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun',
+    'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+    dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+    dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    onSelect: function () {
+        $('#date_bis_mobile').datepicker('option', 'minDate', $("#date_von_mobile").datepicker("getDate"));
+    }
+}, $.datepicker.regional['de-AT']);
+
+
+
+
 
 
 
