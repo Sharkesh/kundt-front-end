@@ -11,7 +11,6 @@
     }
 });
 
-
 // Hier evtl Variablen anlegen für das Datum von/bis zur weitergabe für Step 1
 
 //$("#date_bis").prop('readonly', true);
@@ -35,6 +34,9 @@ $("#date_bis").datepicker({
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     minDate: new Date(),
+    onSelect: function () {
+        var dataObject_bis = $(this).datepicker('getDate');
+    }
 },$.datepicker.regional['de-AT']);
 
 
@@ -55,8 +57,9 @@ $("#date_von").datepicker({
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     onSelect: function () {
         $('#date_bis').datepicker('option', 'minDate', $("#date_von").datepicker("getDate"));
-    }
-    
+        var dataObject_von = $(this).datepicker('getDate');
+    },
+
 },$.datepicker.regional['de-AT']);
 
 
@@ -74,6 +77,9 @@ $("#date_bis_mobile").datepicker({
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     minDate: new Date(),
+    onSelect: function () {
+        var dataObject_mobile_bis = $(this).datepicker('getDate');
+    }
 }, $.datepicker.regional['de-AT']);
 
 $("#date_von_mobile").datepicker({
@@ -92,6 +98,7 @@ $("#date_von_mobile").datepicker({
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     onSelect: function () {
         $('#date_bis_mobile').datepicker('option', 'minDate', $("#date_von_mobile").datepicker("getDate"));
+        var dataObject_moblie_von = $(this).datepicker('getDate');
     }
 }, $.datepicker.regional['de-AT']);
 
