@@ -13,6 +13,12 @@
 
 
 // Hier evtl Variablen anlegen für das Datum von/bis zur weitergabe für Step 1
+
+//$("#date_bis").prop('readonly', true);
+//$("#date_von").prop('readonly', true);
+//$("#date_bis_mobile").prop('readonly', true);
+//$("#date_von_mobile").prop('readonly', true);
+
 $("#date_bis").datepicker({
     numberOfMonths: 2,
     dateFormat: 'dd.mm.yy',
