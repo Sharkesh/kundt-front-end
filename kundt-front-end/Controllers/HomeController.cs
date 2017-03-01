@@ -14,6 +14,15 @@ namespace kundt_front_end.Controllers
         }
         public ActionResult Step2()
         {
+
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Step2(string date_von, string date_bis)
+        {
+            ViewBag.date_von = date_von;
+            ViewBag.date_bis = date_bis;
             return View();
         }
         public ActionResult Step3()

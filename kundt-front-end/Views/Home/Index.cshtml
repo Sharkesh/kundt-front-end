@@ -234,11 +234,13 @@
                 <!--Standort:
                 <input type="text" id="standort" />
                 -->
-                <label id="label_von">Von:</label>
-                <input type="text" id="date_von" placeholder="dd.mm.jjjj" />
-                <label id="label_bis">Bis:</label>
-                <input type="text" id="date_bis" placeholder="dd.mm.jjjj" />
-                <button class="buttonOrange">Search</button>
+                <form action="@Url.Action("Step2","Home")" method="post">
+                    <label id="label_von">Von:</label>
+                    <input type="text" id="date_von" name="date_von" placeholder="dd.mm.jjjj" />
+                    <label id="label_bis">Bis:</label>
+                    <input type="text" id="date_bis" name="date_bis" placeholder="dd.mm.jjjj" />
+                    <a href="@Url.Action("Step2","Home")"><button id="buttonOrange" class="buttonOrange">Search</button></a>
+                </form>
             </div>
         </div>
     </div>
@@ -283,7 +285,7 @@
         @*Standort:
             <input type="text" id="standort" />*@
 
-  
+
         <center class="hidden-lg hidden-md">
             <div class="col-sm-5 col-xs-12">
                 <label id="label_von">Von:</label>

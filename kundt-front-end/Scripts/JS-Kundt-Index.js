@@ -18,6 +18,9 @@
 //$("#date_bis_mobile").prop('readonly', true);
 //$("#date_von_mobile").prop('readonly', true);
 
+
+
+
 $("#date_bis").datepicker({
     numberOfMonths: 2,
     dateFormat: 'dd.mm.yy',
@@ -103,9 +106,10 @@ $("#date_von_mobile").datepicker({
 }, $.datepicker.regional['de-AT']);
 
 
+function getDateVon() {
+    return $('#date_von').datepicker('getDate');
+}
 
-
-
-
-
-
+function getDateBis() {
+    return $('#date_bis').datepicker('getDate');
+}

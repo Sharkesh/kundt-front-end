@@ -429,7 +429,11 @@
     }
     /* Progress-Bar Ende */
 </style>
+<p>Von:
+@ViewBag.date_von</p>
 
+Bis:
+@ViewBag.date_bis
 <div class="container" style="margin-top:20px">
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
@@ -478,14 +482,6 @@
         </div>
     </div>
 
-
-    @*Colorpicker*@
-
-    <form action="/action_page.php">
-        Wählen Sie ihre Lieblingsfarbe:
-        <input type="color" name="favcolor" value="#ff0000">
-        <input type="submit">
-    </form>
 
 
 
