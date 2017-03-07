@@ -23,7 +23,15 @@ namespace kundt_front_end.Controllers
         {
             ViewBag.date_von = date_von;
             ViewBag.date_bis = date_bis;
-            return View();
+
+            if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
         public ActionResult Step3()
         {
