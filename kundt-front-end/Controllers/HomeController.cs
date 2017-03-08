@@ -1,4 +1,5 @@
-﻿using System;
+﻿using kundt_front_end.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace kundt_front_end.Controllers
 {
     public class HomeController : Controller
     {
+        private it22AutoverleihEntities db = new it22AutoverleihEntities();
         public ActionResult Index()
         {
             return View();
@@ -15,7 +17,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Step2()
         {
 
-            
+
             return View();
         }
         [HttpPost]
@@ -23,11 +25,45 @@ namespace kundt_front_end.Controllers
         {
             ViewBag.date_von = date_von;
             ViewBag.date_bis = date_bis;
-            return View();
+
+            if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
-        public ActionResult Step3()
+        public ActionResult Step3(int? id)
         {
-            return View();
+            tblAutoFrontEndController afec = new tblAutoFrontEndController();
+            return View(afec.Step3b(id));
+        }
+
+        [HttpPost, ActionName("Rücktrittsversicherung")]
+        public void Insurance(int? id) //Versicherung CheckBox
+        {
+            tblBuchung bu = db.tblBuchung.Find(id);
+            if (bu.Versicherung == true)
+            {
+                bu.Versicherung = false;
+            }
+            else 
+            {
+                bu.Versicherung = true;
+            }
+
+            if (ViewBag.VersStatus == true)
+            {
+                ViewBag.VersStatus = "Oh Noez...";
+            }
+            else
+            {
+                ViewBag.VersStatus = "blöd gelaufen...";
+            }
+            db.SaveChanges();
+            ViewBag.VersStatus = bu.Versicherung;
         }
         public ActionResult Step4()
         {

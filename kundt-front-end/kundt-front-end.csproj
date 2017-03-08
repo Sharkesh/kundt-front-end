@@ -131,6 +131,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\tblAutoFrontEndController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -415,6 +416,11 @@
     <Content Include="Views\Home\Step6.cshtml" />
     <Content Include="Views\Home\Impressum.cshtml" />
     <Content Include="Views\Home\AGB.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Create.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Delete.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Details.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Edit.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

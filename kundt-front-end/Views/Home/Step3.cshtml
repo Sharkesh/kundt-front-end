@@ -1,4 +1,5 @@
-﻿
+﻿@model kundt_front_end.Models.tblAuto
+
 @{
     ViewBag.Title = "Step3";
 }
@@ -386,7 +387,7 @@
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
-            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(model => model.tblTyp.tblMarke.Marke) @Html.DisplayFor(model => model.tblTyp.Typ)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
             <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
 
@@ -405,7 +406,7 @@
 
         @*sichtbar auf kleinem Format (xs)*@
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <h3 style="margin-top:0px; margin-bottom:0px">@Html.DisplayFor(model => model.tblTyp.tblMarke.Marke) @Html.DisplayFor(model => model.tblTyp.Typ)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
             <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -427,17 +428,18 @@
                     <div class="col-xs-12">
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
-                            <li class="okZeichen1">Klimaautomatik</li>
-                            <li class="okZeichen1">Sitzheizung</li>
-                            <li class="okZeichen1">Scheibenwaschanlage</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
+                            @for (int i = 0; i < Model.tblAusstattung.Count; i++)
+                            {                                                            
+                                <li class="okZeichen1">@Model.tblAusstattung.ElementAt(i).Ausstattung</li>
+                            }
+                            
+                            
                         </ul>
                         <form style="float:left; margin-right:7px">
-                            <h4>Rücktrittsversicherung</h4>
+                            <h4>@ViewBag.VersStatus Rücktrittsversicherung</h4>
                         </form>
                         <div class="squaredTwo col-xs-1">
-                            <input type="checkbox" value="None" id="squaredTwo" name="check" checked />
+                            <input formmethod="post" type="checkbox" value="Rücktrittsversicherung" id="squaredTwo" name="check" checked />
                             <label for="squaredTwo"></label>
                         </div>
                     </div>
@@ -486,3 +488,6 @@
         </center>
     </div>
 </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
