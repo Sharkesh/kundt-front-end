@@ -429,13 +429,7 @@
     }
     /* Progress-Bar Ende */
 </style>
-<p>
-    Von:
-    @ViewBag.date_von
-</p>
 
-Bis:
-@ViewBag.date_bis
 <div class="container" style="margin-top:20px">
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
@@ -485,10 +479,8 @@ Bis:
     </div>
 
 
-
-
     <div class="paddingSmallBotStep2">
-        <h2 class="h2step2">Wir haben folgende Angebote für Sie gefunden!</h2>
+        <h2 class="h2step2">Für den zeitraum von @ViewBag.date_von bis @ViewBag.date_bis gibt es folgende Angebote!</h2>
     </div>
     @*ProgressBar Implementation End*@
     @* Filterung *@
