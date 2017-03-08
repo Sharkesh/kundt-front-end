@@ -187,7 +187,7 @@
 
     .filterSmallStep2 {
         color: darkgrey;
-        font-weight:bold;
+        font-weight: bold;
     }
 
         .filterSmallStep2:hover {
@@ -429,8 +429,10 @@
     }
     /* Progress-Bar Ende */
 </style>
-<p>Von:
-@ViewBag.date_von</p>
+<p>
+    Von:
+    @ViewBag.date_von
+</p>
 
 Bis:
 @ViewBag.date_bis
@@ -497,16 +499,34 @@ Bis:
                 <li><label><a href="#" class="filterStep2">Kleinwagen</a></label></li>
                 <li><label><a href="#" class="filterStep2">Mittelklasse</a></label></li>
                 <li><label><a href="#" class="filterStep2">Luxusklasse</a></label></li>
-                <li><label><a href="#" class="filterStep2">Sitzanzahl</a></label></li>
             </ul>
         </form>
+        <div class="btn-group bootstrap-select open">
+            <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="Sitzanzahl" aria-expanded="true">
+                <span class="filter-option pull-left">Sitzanzahl</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span>
+            </button>
+            <div class="dropdown-menu open" role="combobox" style="max-height: 237px; overflow: hidden; min-height: 0px;">
+                <ul class="dropdown-menu inner" role="listbox" aria-expanded="true" style="max-height: 225px; overflow-y: auto; min-height: 0px;">
+                    <li data-original-index="1" class="selected">
+                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true">
+                            <span class="text">2 Sitze</span>
+                        </a>
+                    </li>
+                    <li data-original-index="2" class="">
+                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                            <span class="text">3 Sitze</span>
+                        </a>
+                    </li>
+                    <li data-original-index="3" class="">
+                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
+                            <span class="text">4 Sitze</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="selectpicker">
-        <select >
-            <option>2 Sitze</option>
-        </select>
 
-    </div>
     <center>
         <div class="hidden-lg">
             <div class="panel-group">

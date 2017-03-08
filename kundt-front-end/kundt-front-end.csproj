@@ -413,6 +413,8 @@
     <Content Include="Views\Home\Step4.cshtml" />
     <Content Include="Views\Home\Step5.cshtml" />
     <Content Include="Views\Home\Step6.cshtml" />
+    <Content Include="Views\Home\Impressum.cshtml" />
+    <Content Include="Views\Home\AGB.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

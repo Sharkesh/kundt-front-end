@@ -41,5 +41,13 @@ namespace kundt_front_end.Controllers
         {
             return View();
         }
+        public ActionResult Impressum()
+        {
+            return View();
+        }
+        public ActionResult AGB()
+        {
+            return View();
+        }
     }
 }
