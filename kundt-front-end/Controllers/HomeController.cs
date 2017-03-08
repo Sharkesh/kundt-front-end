@@ -16,8 +16,6 @@ namespace kundt_front_end.Controllers
         }
         public ActionResult Step2()
         {
-
-
             return View();
         }
         [HttpPost]
@@ -41,33 +39,34 @@ namespace kundt_front_end.Controllers
             return View(afec.Step3b(id));
         }
 
-        [HttpPost, ActionName("Rücktrittsversicherung")]
-        public void Insurance(int? id) //Versicherung CheckBox
-        {
-            tblBuchung bu = db.tblBuchung.Find(id);
-            if (bu.Versicherung == true)
-            {
-                bu.Versicherung = false;
-            }
-            else 
-            {
-                bu.Versicherung = true;
-            }
+        //[HttpPost, ActionName("Rücktrittsversicherung")]
+        //public void Insurance(int? id) //Versicherung CheckBox
+        //{
+        //    tblBuchung bu = db.tblBuchung.Find(id);
+        //    if (bu.Versicherung == true)
+        //    {
+        //        bu.Versicherung = false;
+        //    }
+        //    else
+        //    {
+        //        bu.Versicherung = true;
+        //    }
 
-            if (ViewBag.VersStatus == true)
-            {
-                ViewBag.VersStatus = "Oh Noez...";
-            }
-            else
-            {
-                ViewBag.VersStatus = "blöd gelaufen...";
-            }
-            db.SaveChanges();
-            ViewBag.VersStatus = bu.Versicherung;
-        }
-        public ActionResult Step4()
+        //    if (ViewBag.VersStatus == true)
+        //    {
+        //        ViewBag.VersStatus = "Oh Noez...";
+        //    }
+        //    else
+        //    {
+        //        ViewBag.VersStatus = "blöd gelaufen...";
+        //    }
+        //    db.SaveChanges();
+        //    ViewBag.VersStatus = bu.Versicherung;
+        //}
+        public ActionResult Step4(int? id)
         {
-            return View();
+            tblAutoFrontEndController afec2 = new tblAutoFrontEndController();
+            return View(afec2.Step3b(id));
         }
         public ActionResult Step5()
         {

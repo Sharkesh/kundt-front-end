@@ -1,4 +1,4 @@
-﻿
+﻿@model kundt_front_end.Models.tblAuto
 @{
     ViewBag.Title = "Step4";
 }
@@ -423,11 +423,8 @@
                         </li>
                         @*Autoname hier*@
                         <li class="noLiMarker">
-                            <h3>BMW X1</h3>
-                            <p>
-                                oder Opel Insignia, Mercedes-Benz GLA-Klasse oder ähnliche
-                                Premium-Limousine | SDMR
-                            </p>
+                            <h3>@Html.DisplayFor(model => model.tblTyp.tblMarke.Marke) @Html.DisplayFor(model => model.tblTyp.Typ)</h3>
+                            <p>@Html.DisplayFor(model => model.tblKategorie.Kategorie)</p>
                         </li>
                         @*Abholung hier*@
                         <li class="noLiMarker">
@@ -445,15 +442,15 @@
                                 09.02.2017 um 09:00 Uhr
                             </p>
                         </li>
-                        @*Mietdauer hier*@
-                        <li class="noLiMarker">
-                            <h4>Mietdauer</h4>
-                            <p>
-                                1 Tag
-                            </p>
-                        </li>
+                        @*Mietdauer hier
+                            <li class="noLiMarker">
+                                <h4>Mietdauer</h4>
+                                <p>
+                                    1 Tag
+                                </p>
+                            </li>*@
 
-                        @*Preis hier*@
+                        @*Preis*@
                         <li class="noLiMarker">
                             <h4>Preis</h4>
                             <p>
@@ -463,14 +460,18 @@
                         @*Fahrzeugausstattung hier*@                @*margin-bottom unklar *@
                         <li class="noLiMarker">
                             <h4>Fahrzeugausstattung</h4>
-                            <div class="col-lg-1 fa fa-snowflake-o"></div>
-                            <div class="col-lg-10">Klimaanlage</div>
+                            @*<div class="col-lg-1 fa fa-snowflake-o"></div>
+                                <div class="col-lg-10">Klimaanlage</div>
 
-                            <div class="col-lg-1 fa fa-cogs"></div>
-                            <div class="col-lg-10">Manuelle Schaltung</div>
+                                <div class="col-lg-1 fa fa-cogs"></div>
+                                <div class="col-lg-10">Manuelle Schaltung</div>
 
-                            <div class="col-lg-1 fa fa-money"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">4 Türen</div>
+                                <div class="col-lg-1 fa fa-money"></div>
+                                <div class="col-lg-10" style="margin-bottom:10px;">4 Türen</div>*@
+                            @for (int i = 0; i < Model.tblAusstattung.Count; i++)
+                            {
+                                <p>@Html.DisplayFor(model => model.tblAusstattung.ElementAt(i).Ausstattung)</p>
+                            }
                         </li>
                         @*Platzangebot hier*@
                         <li class="noLiMarker">
@@ -499,23 +500,23 @@
                                 2 Jahr(e)
                             </p>
                         </li>
-                        @*Rechte/Pflichten (AGB)*@
-                        <li class="noLiMarker">
-                            <h4>AGB</h4>
+                        @*Rechte/Pflichten (AGB)
+                            <li class="noLiMarker">
+                                <h4>AGB</h4>
 
-                            <!-- Trigger/Open The Modal -->
-                            <button class="fa fa-file-text-o" id="myBtn" onclick="openModal()"></button>
+                                <!-- Trigger/Open The Modal -->
+                                <button class="fa fa-file-text-o" id="myBtn" onclick="openModal()"></button>
 
-                            <!-- The Modal -->
-                            <div id="myModal" class="modal">
+                                <!-- The Modal -->
+                                <div id="myModal" class="modal">
 
-                                <!-- Modal content -->
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <p>Hier steht die AGB</p>
+                                    <!-- Modal content -->
+                                    <div class="modal-content">
+                                        <span class="close">&times;</span>
+                                        <p>Hier steht die AGB</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>*@
                     </ul>
                 </div>
             </div>
@@ -524,7 +525,7 @@
 
         @*Erste Box für Login Anfang*@
         <div class="col-xs-12 col-md-8 formFeldLinks">
-            <form class="form-horizontal" style="padding: 20px;">
+            <div class="form-horizontal" style="padding: 20px;">
                 <div class="form-group">
                     @*E-Mail1*@
                     <label for="inputMail" class="col-md-2 control-label">Email</label>
@@ -551,16 +552,22 @@
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="row">
-                            <div class="hidden-sm hidden-xs">
+                            <div class="hidden-sm hidden-xs col-md-12">
                                 @*Buttons Zurück, Registieren, Login*@
-                                <button type="submit" class="buttonOrangeReturnStep3"><span>Zurück</span></button>
-                                <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="position: relative; right: -20px;"><span>Registrieren</span></button>
-                                <button type="submit" class="buttonOrangeForwardStep3" style="position: relative; right: -40px;"><span>Login</span></button>
+                                <form action="@Url.Action("Step3","Home", new { id = Model.IDAuto})" method="post">
+                                    <button type="submit" class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
+                                </form>
+                                <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren"><span>Registrieren</span></button>
+                                <form action="@Url.Action("Step5","Home", new { id = Model.IDAuto})" method="post">
+                                    <button type="submit" class="buttonOrangeForwardStep3" style="float:left; margin-left:10px"><span>Login</span></button>
+                                </form>
                             </div>
                             <div class="hidden-lg hidden-md">
                                 @*Buttons Zurück, Registieren, Login*@
                                 <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
-                                    <button type="submit" class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
+                                    <form action="@Url.Action("Step3", "Home", new { id = Model.IDAuto})" method="post">
+                                        <button type="submit" class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
+                                    </form>
                                 </div>
                                 <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
                                     <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;"><span>Registrieren</span></button>
@@ -568,14 +575,12 @@
                                 <div class="col-sm-12 col-xs-12">
                                     <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Login</span></button>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
                 @*Erste Box für Login Ende*@
-            </form>
+            </div>
 
             @*Zweite Box für Regestrieren Anfang*@
             <form class="form-horizontal" style="margin-left: 15px;">
@@ -638,4 +643,3 @@
         @*Zweite Box für Regestrieren Ende*@
     </div>
 </div>
-    

@@ -20,11 +20,14 @@ namespace kundt_front_end.Controllers
         public tblAuto Step3b(int? id)
         {
             tblAuto auto = db.tblAuto.Find(1);
-
-            if (auto != null) return auto;
-            else return null;
+            return auto;
         }
-
+        public ActionResult Step4b(int? id)
+        {
+            var auto = db.tblAuto.Include(x => x.tblBuchung).Include(x => x.tblAusstattung).Where(x => x.IDAuto == id);
+            return View(auto);
+            
+        }
         public ActionResult Index()
         {
             var tblAuto = db.tblAuto.Include(t => t.tblKategorie).Include(t => t.tblTreibstoff).Include(t => t.tblTyp);

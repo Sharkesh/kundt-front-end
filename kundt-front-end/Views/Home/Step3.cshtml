@@ -339,8 +339,10 @@
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <button class="myButton">1</button>
-            <h5>Fahrzeug wählen</h5>
+            <form action="@Url.Action("Step2","Home")" method="post">
+                <button class="myButton">1</button>
+                <h5>Fahrzeug wählen</h5>
+            </form>
         </div>
         <div class="col-sm-2">
             <button class="myButtonOp opacity noCurs">2</button>
@@ -382,7 +384,7 @@
             <button class="miniButtonOp noCurs">5</button>
         </div>
     </div>
-@*ProgressBar Implementation End*@
+    @*ProgressBar Implementation End*@
     <div class="paddingSmallStep3"></div>
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
@@ -429,11 +431,11 @@
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
                             @for (int i = 0; i < Model.tblAusstattung.Count; i++)
-                            {                                                            
+                            {
                                 <li class="okZeichen1">@Model.tblAusstattung.ElementAt(i).Ausstattung</li>
                             }
-                            
-                            
+
+
                         </ul>
                         <form style="float:left; margin-right:7px">
                             <h4>@ViewBag.VersStatus Rücktrittsversicherung</h4>
@@ -457,24 +459,30 @@
                 </div>*@
             <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
-
-                    <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
                 </div>
                 <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                    <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    <form action="@Url.Action("Step4", "Home")" method="post">
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    </form>
                 </div>
             </div>
         </center>
     </div>
-
     <div class="row">
         <center>
             <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    </form>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
-                    <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                    <form action="@Url.Action("Step4", "Home", new { id = Model.IDAuto})" method="post">
+                        <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                    </form>
                 </div>
             </div>
             @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
@@ -488,6 +496,6 @@
         </center>
     </div>
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
