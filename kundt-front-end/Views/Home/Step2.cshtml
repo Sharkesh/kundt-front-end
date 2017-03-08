@@ -265,6 +265,10 @@
         color: #f99b1c;
         border: 1px solid #f99b1c;
     }
+    /*Filter Dropdown*/
+
+
+    /*Filter Dropdown Ende*/
     /*Filter Small Ende*/
     /*Filter Formatierung Ende*/
     /*Bis hierhin drin lassen bitte!*/
@@ -484,7 +488,7 @@
     </div>
     @*ProgressBar Implementation End*@
     @* Filterung *@
-    <div class="hidden-xs hidden-sm hidden-md" style="display:inline-block">
+    <div class="hidden-xs hidden-sm hidden-md col-lg-8" style="display:inline-block">
         <form>
             <ul class="ulStep2">
                 <li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>
@@ -493,32 +497,21 @@
                 <li><label><a href="#" class="filterStep2">Luxusklasse</a></label></li>
             </ul>
         </form>
-        <div class="btn-group bootstrap-select open">
-            <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="Sitzanzahl" aria-expanded="true">
-                <span class="filter-option pull-left">Sitzanzahl</span>&nbsp;<span class="bs-caret"><span class="caret"></span></span>
-            </button>
-            <div class="dropdown-menu open" role="combobox" style="max-height: 237px; overflow: hidden; min-height: 0px;">
-                <ul class="dropdown-menu inner" role="listbox" aria-expanded="true" style="max-height: 225px; overflow-y: auto; min-height: 0px;">
-                    <li data-original-index="1" class="selected">
-                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true">
-                            <span class="text">2 Sitze</span>
-                        </a>
-                    </li>
-                    <li data-original-index="2" class="">
-                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
-                            <span class="text">3 Sitze</span>
-                        </a>
-                    </li>
-                    <li data-original-index="3" class="">
-                        <a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="false">
-                            <span class="text">4 Sitze</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
-
+    <div class="hidden-xs hidden-sm hidden-md col-lg-4">
+        <form class="form-inline">
+            <div class="form-group">
+                <select id="lunch" class="selectpicker" @*data-live-search="true"*@ title="Sitzanzahl">
+                    <option>Alle anzeigen</option>
+                    <option>2 Sitze</option>
+                    <option>3 Sitze</option>
+                    <option>4 Sitze</option>
+                    <option>5 Sitze</option>
+                    <option>Mehr als 5</option>
+                </select>
+            </div>
+        </form>
+    </div>
     <center>
         <div class="hidden-lg">
             <div class="panel-group">
