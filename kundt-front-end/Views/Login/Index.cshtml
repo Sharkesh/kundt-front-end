@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-5">
+        @if (ViewBag.registerResult > 0)
+        {
+            <p class="text-danger">Eine Bestätigungs Email wurde verschickt! Bitte klicken Sie auf den Link in dieser Email um die Registrierung abzuschließen.</p>
+        }
+        else if (ViewBag.activationResult == -1)
+        {
+            <p class="text-danger">Aktivierungs Code ist ungültig oder wurde bereits Verwendet!</p>
+        }
+        else if (ViewBag.activationResult == 0)
+        {
+            <p class="text-danger">Aktivierung erfolgreich! Sie können sich nun einloggen.</p>
+        }
+
+        <form action="@Url.Action("Index", "Login")" method="post">
+            <table class="table-condensed" style="margin-top:30px">
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" id="email" name="email" placeholder="example@kundt.at" onkeyup="ValidateEmail(), ValidateInput()" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" id="password" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck(), ValidateInput()" /></td>
+                </tr>
+                @{
+                    if (ViewBag.loginResult == -1)
+                    {
+                        <tr>
+                            <td colspan="2"><p class="text-danger">Email oder Password ist Falsch!</p></td>
+                        </tr>
+                    }
+                    else if (ViewBag.loginResult == -2)
+                    {
+                        <tr>
+                            <td colspan="2"><p class="text-danger">Bitte Aktivieren Sie ihre Email bevor Sie sich einloggen!</p></td>
+                        </tr>
+                    }
+                }
+                <tr>
+                    <td><input id="submit" name="submit" type="submit" @*disabled*@ /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
