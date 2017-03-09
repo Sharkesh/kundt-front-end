@@ -484,7 +484,7 @@
 
 
     <div class="paddingSmallBotStep2">
-        <h2 class="h2step2">Für den zeitraum von @ViewBag.date_von bis @ViewBag.date_bis gibt es folgende Angebote!</h2>
+        <h2 class="h2step2">Für den zeitraum von @System.Web.HttpContext.Current.Session["sessionDate_von"] bis @System.Web.HttpContext.Current.Session["sessionDate_bis"] gibt es folgende Angebote!</h2>
     </div>
     @*ProgressBar Implementation End*@
     @* Filterung *@
@@ -583,8 +583,10 @@
                         </ul>
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
-                        <div class="paddingSmallTopStep2"><button class="buttonOrangeStep2"><span>Fahrzeug wählen</span></button></div>
-                    </div>
+                        <a href="@Url.Action("Step3","Home")" method="post">
+                            <div class="paddingSmallTopStep2"><button class="buttonOrangeStep2"><span>Fahrzeug wählen</span></button></div>
+                        </a>
+                            </div>
                     <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>

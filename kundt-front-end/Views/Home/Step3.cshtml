@@ -339,7 +339,7 @@
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <form action="@Url.Action("Step2","Home")" method="post">
+            <form action="@Url.Action("Step2", "Home")" method="post">
                 <button class="myButton">1</button>
                 <h5>Fahrzeug wählen</h5>
             </form>
@@ -397,10 +397,10 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionDate_von"]</p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionDate_bis"]</p>
                 <h4 class="h4Step3">Mietdauer</h4>
                 <p>1 Tag oder so</p>
             </div>

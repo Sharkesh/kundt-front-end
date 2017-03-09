@@ -21,8 +21,12 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         public ActionResult Step2(string date_von, string date_bis)
         {
-            ViewBag.date_von = date_von;
-            ViewBag.date_bis = date_bis;
+            //ViewBag.date_von = date_von;
+            //ViewBag.date_bis = date_bis;
+            System.Web.HttpContext.Current.Session["sessionDate_von"] = date_von;
+            System.Web.HttpContext.Current.Session["sessionDate_bis"] = date_bis;
+            //ViewBag.dateVon = System.Web.HttpContext.Current.Session["sessionDate_von"];
+            //ViewBag.dateBis = System.Web.HttpContext.Current.Session["sessionDate_bis"];
 
             if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
             {
@@ -35,6 +39,9 @@ namespace kundt_front_end.Controllers
         }
         public ActionResult Step3(int? id)
         {
+            //ViewBag.dateVon = System.Web.HttpContext.Current.Session["sessionDate_von"];
+            //ViewBag.dateBis = System.Web.HttpContext.Current.Session["sessionDate_bis"];
+
             tblAutoFrontEndController afec = new tblAutoFrontEndController();
             return View(afec.Step3b(id));
         }
