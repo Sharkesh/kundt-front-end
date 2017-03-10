@@ -1,50 +1,146 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .buttonOrangeForwardStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        border-radius: 4px;
+    }
 
-<div class="row">
-    <div class="col-md-5">
-        @if (ViewBag.registerResult > 0)
-        {
-            <p class="text-danger">Eine Bestätigungs Email wurde verschickt! Bitte klicken Sie auf den Link in dieser Email um die Registrierung abzuschließen.</p>
-        }
-        else if (ViewBag.activationResult == -1)
-        {
-            <p class="text-danger">Aktivierungs Code ist ungültig oder wurde bereits Verwendet!</p>
-        }
-        else if (ViewBag.activationResult == 0)
-        {
-            <p class="text-danger">Aktivierung erfolgreich! Sie können sich nun einloggen.</p>
+    .buttonOrangeForwardStep3OhneAnimation {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+    .buttonOrangeForwardStep3 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .buttonOrangeForwardStep3 span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -30px;
+            transition: 0.5s;
+            font-size: 15px;
         }
 
-        <form action="@Url.Action("Index", "Login")" method="post">
-            <table class="table-condensed" style="margin-top:30px">
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="text" id="email" name="email" placeholder="example@kundt.at" onkeyup="ValidateEmail(), ValidateInput()" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" id="password" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck(), ValidateInput()" /></td>
-                </tr>
-                @{
-                    if (ViewBag.loginResult == -1)
-                    {
-                        <tr>
-                            <td colspan="2"><p class="text-danger">Email oder Password ist Falsch!</p></td>
-                        </tr>
+    .buttonOrangeForwardStep3:hover span {
+        padding-right: 15px;
+    }
+
+        .buttonOrangeForwardStep3:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+    .buttonOrangeForwardStep3:hover {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 1em;
+        height: 37.5px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 formFeldLinks">
+            @if (ViewBag.registerResult > 0)
+            {
+                <p class="text-danger">Eine Bestätigungs Email wurde verschickt! Bitte klicken Sie auf den Link in dieser Email um die Registrierung abzuschließen.</p>
+            }
+            else if (ViewBag.activationResult == -1)
+            {
+                <p class="text-danger">Aktivierungs Code ist ungültig oder wurde bereits Verwendet!</p>
+            }
+            else if (ViewBag.activationResult == 0)
+            {
+                <p class="text-danger">Aktivierung erfolgreich! Sie können sich nun einloggen.</p>
+            }
+
+            <div class="form-horizontal" style="padding: 20px;">
+                <form action="@Url.Action("Index", "Login")" method="post">
+                    <div class="form-group">
+                        @*E-Mail1*@
+                        <label for="email" class="col-md-2 control-label">Email</label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail(), ValidateInput('login')">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @*Passwort1*@
+                        <label for="password" class="col-md-2 control-label">Passwort</label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="ValidateEmail(), ValidateInput('login')">
+                        </div>
+                    </div>
+                    @{
+                        if (TempData["loginResult"] != null)
+                        {
+                            ViewBag.loginResult = TempData["loginResult"];
+                            if (ViewBag.loginResult == -1)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-8">
+                                        <p class="text-danger">Email oder Password ist Falsch!</p>
+                                    </div>
+                                </div>
+                            }
+                            else if (ViewBag.loginResult == -2)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-8">
+                                        <p class="text-danger">Bitte Aktivieren Sie ihre Email bevor Sie sich einloggen!</p>
+                                    </div>
+                                </div>
+                            }
+                        }
                     }
-                    else if (ViewBag.loginResult == -2)
-                    {
-                        <tr>
-                            <td colspan="2"><p class="text-danger">Bitte Aktivieren Sie ihre Email bevor Sie sich einloggen!</p></td>
-                        </tr>
-                    }
-                }
-                <tr>
-                    <td><input id="submit" name="submit" type="submit" @*disabled*@ /></td>
-                </tr>
-            </table>
-        </form>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="row">
+                                <div class="hidden-sm hidden-xs col-md-12">
+                                    @*Button Login*@
+                                    <button type="submit" id="loginSubmit" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
+                                </div>
+                                <div class="hidden-lg hidden-md">
+                                    @*Button Login*@
+                                    <div class="col-sm-12 col-xs-12">
+                                        <button type="submit" id="loginSubmitMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Login</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
     </div>
 </div>

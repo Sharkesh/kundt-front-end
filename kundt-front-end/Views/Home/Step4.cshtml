@@ -253,9 +253,11 @@
     .noCurs {
         cursor: default;
     }
-         .opacity{
-        opacity:1.0;
+
+    .opacity {
+        opacity: 1.0;
     }
+
     @@keyframes anima01 {
         0% {
             background-color: darkorange;
@@ -526,99 +528,134 @@
         @*Erste Box für Login Anfang*@
         <div class="col-xs-12 col-md-8 formFeldLinks">
             <div class="form-horizontal" style="padding: 20px;">
-                <div class="form-group">
-                    @*E-Mail1*@
-                    <label for="inputMail" class="col-md-2 control-label">Email</label>
-                    <div class="col-md-10">
-                        <input type="email" class="form-control" id="mailLogin" placeholder="Email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    @*Passwort1*@
-                    <label for="inputPasswort" class="col-md-2 control-label">Passwort</label>
-                    <div class="col-md-10">
-                        <input type="password" class="form-control" id="inputPasswort" placeholder="Passwort">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox" style="margin-top: -10px;">
-                            <label>
-                                <input type="checkbox"> Angemeldet bleiben
-                            </label>
+                <form action="@Url.Action("Index", "Login")" method="post">
+                    <div class="form-group">
+                        @*E-Mail1*@
+                        <label for="email" class="col-md-3 control-label">Email:</label>
+                        <div class="col-md-9">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail(), ValidateInput('login')">
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="row">
-                            <div class="hidden-sm hidden-xs col-md-12">
-                                @*Buttons Zurück, Registieren, Login*@
-                                <form action="@Url.Action("Step3","Home", new { id = Model.IDAuto})" method="post">
-                                    <button type="submit" class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
-                                </form>
-                                <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren"><span>Registrieren</span></button>
-                                <form action="@Url.Action("Step5","Home", new { id = Model.IDAuto})" method="post">
-                                    <button type="submit" class="buttonOrangeForwardStep3" style="float:left; margin-left:10px"><span>Login</span></button>
-                                </form>
+                    <div class="form-group">
+                        @*Passwort1*@
+                        <label for="password" class="col-md-3 control-label">Passwort:</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="ValidateEmail(), ValidateInput('login')">
+                        </div>
+                    </div>
+                    @{
+                        //Anzeigen der Fehlermeldung.
+                        if (TempData["loginResult"] != null)
+                        {
+                            ViewBag.loginResult = TempData["loginResult"];
+                            if (ViewBag.loginResult == -1)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-md-8">
+                                        <p class="text-danger">Email oder Password ist Falsch!</p>
+                                    </div>
+                                </div>
+                            }
+                            else if (ViewBag.loginResult == -2)
+                            {
+                                <div class="form-group">
+                                    <div class="col-md-offset-3 col-md-8">
+                                        <p class="text-danger">Bitte Aktivieren Sie ihre Email bevor Sie sich einloggen!</p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                    @*<div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox" style="margin-top: -10px;">
+                                    <label>
+                                        <input type="checkbox"> Angemeldet bleiben
+                                    </label>
+                                </div>
                             </div>
-                            <div class="hidden-lg hidden-md">
-                                @*Buttons Zurück, Registieren, Login*@
-                                <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
-                                    <form action="@Url.Action("Step3", "Home", new { id = Model.IDAuto})" method="post">
-                                        <button type="submit" class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
-                                    </form>
+                        </div>*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="row">
+                                <div class="hidden-sm hidden-xs col-md-12">
+                                    @*Buttons Zurück, Registieren, Login*@
+                                    @*<form action="@Url.Action("Step3","Home", new { id = Model.IDAuto})" method="post">*@
+                                    <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
+                                    @*</form>*@
+                                    <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren"><span>Registrieren</span></button>
+                                    <button type="submit" id="loginSubmit" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
                                 </div>
-                                <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
-                                    <button type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;"><span>Registrieren</span></button>
-                                </div>
-                                <div class="col-sm-12 col-xs-12">
-                                    <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Login</span></button>
+                                <div class="hidden-lg hidden-md">
+                                    @*Buttons Zurück, Registieren, Login*@
+                                    <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+                                        @*<form action="@Url.Action("Step3", "Home", new { id = Model.IDAuto})" method="post">*@
+                                        <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
+                                        @*</form>*@
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
+                                        <input type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;" value="Registrieren" />
+                                    </div>
+                                    <div class="col-sm-12 col-xs-12">
+                                        <button type="submit" id="loginSubmitMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Login</span></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+
                 @*Erste Box für Login Ende*@
             </div>
 
             @*Zweite Box für Regestrieren Anfang*@
-            <form class="form-horizontal" style="margin-left: 15px;">
+            <form class="form-horizontal" style="margin-left: 15px;" action="@Url.Action("Registrierung", "Login")" method="post">
                 <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
-
-
-
-
                     <div class="form-group" style="margin-top: 35px;">
-                        <label for="prename" class="col-md-2 control-label collapseForm">Vorname</label>
-                        <div class="col-md-10">
+                        <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
+                        <div class="col-md-9">
                             @*Box Vorname*@
                             <input type="text" class="form-control collapseForm" id="prename" placeholder="Vorname">
                         </div>
-                        <label for="sirname" class="col-md-2 control-label collapseForm">Nachname</label>
-                        <div class="col-md-10">
+                        <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
+                        <div class="col-md-9">
                             @*Box Nachname*@
                             <input type="text" class="form-control collapseForm" id="sirname" placeholder="Nachname">
                         </div>
-                        <label for="mailRegister" class="col-md-2 control-label collapseForm">Email</label>
-                        <div class="col-md-10">
-                            @*Box Email2*@
-                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="Email">
-                        </div>
-                        <label for="adress" class="col-md-2 control-label collapseForm">Adresse</label>
-                        <div class="col-md-10">
+                        <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
+                        <div class="col-md-9">
                             @*Box Adresse*@
                             <input type="text" class="form-control collapseForm" id="adress" placeholder="Adresse">
                         </div>
-                        <label for="city" class="col-md-2 control-label collapseForm">Ort</label>
-                        <div class="col-md-10">
+                        <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
+                        <div class="col-md-9">
                             @*Box Ort*@
                             <input type="text" class="form-control collapseForm" id="city" placeholder="Ort">
                         </div>
-                        <label for="postcode" class="col-md-2 control-label collapseForm">PLZ</label>
-                        <div class="col-md-10">
+                        <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
+                        <div class="col-md-9">
                             @*Box PLZ*@
                             <input type="text" class="form-control collapseForm" id="postcode" placeholder="PLZ">
+                        </div>
+                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Email:</label>
+                        <div class="col-md-9">
+                            @*Box Email*@
+                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="max.mustermann@kundt.at">
+                        </div>
+                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
+                        <div class="col-md-9">
+                            @*Box Email bestätigen*@
+                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="max.mustermann@kundt.at">
+                        </div>
+                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
+                        <div class="col-md-9">
+                            @*Box Passwort*@
+                            <input type="password" class="form-control collapseForm" id="mailRegister" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅">
+                        </div>
+                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
+                        <div class="col-md-9">
+                            @*Box Passwort bestätigen*@
+                            <input type="password" class="form-control collapseForm" id="mailRegister" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅">
                         </div>
                     </div>
                     @*Button Regestieren2*@

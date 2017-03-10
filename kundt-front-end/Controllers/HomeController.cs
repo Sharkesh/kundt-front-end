@@ -72,6 +72,11 @@ namespace kundt_front_end.Controllers
         //}
         public ActionResult Step4(int? id)
         {
+            //Wenn eingeloggt dann diesen Step überspringen
+            if (System.Web.HttpContext.Current.Session["IDUser"]  != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
+            {
+                return RedirectToAction("Step5");
+            }
             tblAutoFrontEndController afec2 = new tblAutoFrontEndController();
             return View(afec2.Step3b(id));
         }
