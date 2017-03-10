@@ -432,16 +432,16 @@
                         <li class="noLiMarker">
                             <h4>Abholung</h4>
                             <p>
-                                Wien-Schwechat Flughafen
-                                08.02.2017 um 12:00 Uhr
+                                Wien
+                                @System.Web.HttpContext.Current.Session["sessionVon"]
                             </p>
                         </li>
                         @*Rückgabe hier*@
                         <li class="noLiMarker">
                             <h4>Rückgabe</h4>
                             <p>
-                                Wien-Schwechat Flughafen
-                                09.02.2017 um 09:00 Uhr
+                                Wien
+                                @System.Web.HttpContext.Current.Session["sessionBis"]
                             </p>
                         </li>
                         @*Mietdauer hier

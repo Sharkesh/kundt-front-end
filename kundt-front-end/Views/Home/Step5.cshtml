@@ -316,12 +316,12 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"] </p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"]</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
@@ -333,12 +333,12 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"]  </p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"] </p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
