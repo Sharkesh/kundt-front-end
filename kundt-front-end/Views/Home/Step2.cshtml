@@ -276,6 +276,7 @@
         border-color: #dbdbdb;
         border-color: #ccc;
         box-shadow: none;
+        border-radius:0px;
     }
 
         #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-4 > form > div > div > button:hover {
@@ -291,8 +292,54 @@
             border: 1px solid #f99b1c;
             background-color: #FFF;
             box-shadow: none;
+            border-radius:0px;
         }
 
+        #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-4 > form > div > div > button:focus {
+            text-shadow: 0 1px 0 #fff;
+            background-image: -webkit-linear-gradient(top, #fff 100%, #fff 100%);
+            background-image: -o-linear-gradient(top, #fff 100%, #fff 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, (#fff));
+            background-image: linear-gradient(to bottom, #fff 100%, #fff 100%);
+            background-repeat: repeat-x;
+            border-color: #dbdbdb;
+            border-color: #ccc;
+            color: #f99b1c;
+            border: 1px solid #f99b1c;
+            background-color: #FFF;
+            box-shadow: none;
+            border-radius:0px;
+        }
+
+        #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-4 > form > div > div > button:visited:focus {
+            text-shadow: 0 1px 0 #fff;
+            background-image: -webkit-linear-gradient(top, #fff 100%, #fff 100%);
+            background-image: -o-linear-gradient(top, #fff 100%, #fff 100%);
+            background-image: -webkit-gradient(linear, left top, left bottom, (#fff));
+            background-image: linear-gradient(to bottom, #fff 100%, #fff 100%);
+            background-repeat: repeat-x;
+            border-color: #dbdbdb;
+            border-color: #ccc;
+            color: #f99b1c;
+            border: 1px solid #f99b1c;
+            background-color: #FFF;
+            box-shadow: none;
+            border-radius:0px;
+        }
+
+    #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-4 > form > div > div > div > ul > li > a:hover {
+        color: orange;
+        box-shadow: none;
+    }
+
+    .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+        background-color: black;
+        color: orange;
+        background-image: -webkit-linear-gradient(top, #fff 100%, #fff 100%);
+        background-image: -o-linear-gradient(top, #fff 100%, #fff 100%);
+        background-image: -webkit-gradient(linear, left top, left bottom, (#fff));
+        background-image: linear-gradient(to bottom, #fff 100%, #fff 100%);
+    }
     /*Filter Dropdown Ende*/
     /*Filter Small Ende*/
     /*Filter Formatierung Ende*/
@@ -526,7 +573,7 @@
     <div class="hidden-xs hidden-sm hidden-md col-lg-4">
         <form class="form-inline">
             <div class="form-group">
-                <select id="lunch" class="selectpicker" @*data-live-search="true"*@ title="Sitzanzahl">
+                <select id="lunch" class="selectpicker" @*data-live-search="true" *@ title="Sitzanzahl">
                     <option>Alle anzeigen</option>
                     <option>2 Sitze</option>
                     <option>3 Sitze</option>
@@ -610,7 +657,7 @@
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
 
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -621,7 +668,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingtopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -661,7 +708,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -672,7 +719,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingtopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -712,7 +759,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -723,7 +770,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -763,7 +810,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -774,7 +821,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -814,7 +861,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -825,7 +872,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -865,7 +912,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -876,7 +923,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -916,7 +963,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -927,7 +974,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -967,7 +1014,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -978,7 +1025,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1018,7 +1065,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1029,7 +1076,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1069,7 +1116,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1080,7 +1127,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1120,7 +1167,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1131,7 +1178,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1171,7 +1218,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1182,7 +1229,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1222,7 +1269,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1233,7 +1280,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1273,7 +1320,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1284,7 +1331,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1324,7 +1371,7 @@
                         <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
@@ -1335,7 +1382,7 @@
                         <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
                         <div class="fontsizeStep2">456,23 € Gesamt</div>
                         <div class="paddingSmallTopStep2">
-                            <form action="@Url.Action("Step3","Home")" method="post">
+                            <form action="@Url.Action(" Step3","Home")" method="post">
                                 <button class="buttonOrangeStep2">
                                     <span>Fahrzeug wählen</span>
                                 </button>
