@@ -612,6 +612,15 @@
             <form class="form-horizontal" style="margin-left: 15px;" action="@Url.Action("Registrierung", "Login")" method="post">
                 <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
                     <div class="form-group" style="margin-top: 35px;">
+                        <label for="anrede" class="col-md-3 control-label collapseForm">Anrede:</label>
+                        <div class="col-md-9">
+                            @*Box Anrede*@
+                            @*<input type="text" class="form-control collapseForm" id="anrede" placeholder="Anrede">*@
+                            <select id="anrede" class="form-control collapseForm" size="1">
+                                <option>Herr</option>
+                                <option>Frau</option>
+                            </select>
+                        </div>
                         <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
                         <div class="col-md-9">
                             @*Box Vorname*@

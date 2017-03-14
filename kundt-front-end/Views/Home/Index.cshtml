@@ -280,52 +280,54 @@
 <!-- Carousel Ende -->
 <!-- Eyecatcher + Suchmaske Ende -->
 <!-- Anfang Mobile Version Eyecatcher + Suchmaske -->
-<div id="searchMaskMobile" class="hidden-lg hidden-md">
-    <div class="row col-sm-12">
-        @*Standort:
-            <input type="text" id="standort" />*@
+<div class="container">
+    <div id="searchMaskMobile" class="hidden-lg hidden-md">
+        <div class="row col-sm-12">
+            @*Standort:
+                <input type="text" id="standort" />*@
 
 
-        <center class="hidden-lg hidden-md">
-            <div class="col-sm-5 col-xs-12">
-                <label id="label_von">Von:</label>
-                <input type="text" id="date_von_mobile" placeholder="dd.mm.jjjj" />
+            <center class="hidden-lg hidden-md">
+                <div class="col-sm-5 col-xs-12">
+                    <label id="label_von">Von:</label>
+                    <input type="text" id="date_von_mobile" placeholder="dd.mm.jjjj" />
+                </div>
+            </center>
+            <center class="hidden-lg hidden-md">
+                <div class="col-sm-5 col-xs-12">
+                    <label id="label_bis">Bis:</label>
+                    <input type="text" id="date_bis_mobile" placeholder="dd.mm.jjjj" />
+                </div>
+            </center>
+
+            <div class="col-sm-2 col-xs-12">
+                <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
             </div>
-        </center>
-        <center class="hidden-lg hidden-md">
-            <div class="col-sm-5 col-xs-12">
-                <label id="label_bis">Bis:</label>
-                <input type="text" id="date_bis_mobile" placeholder="dd.mm.jjjj" />
+        </div>
+        <div>
+            <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
+        </div>
+    </div>
+    <!-- Ende Mobil Version Eyecatcher + Suchmaske -->
+    <!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
+    <div class="row" id="subbereich">
+        <div id="angebot" class="col-lg-4">
+            <h3>Angebot</h3>
+            <div>
+                <img src="~/Content/img/images.png" class="img-responsive" />
             </div>
-        </center>
-
-        <div class="col-sm-2 col-xs-12">
-            <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
         </div>
-    </div>
-    <div>
-        <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />
-    </div>
-</div>
-<!-- Ende Mobil Version Eyecatcher + Suchmaske -->
-<!-- Subbereich mit Content(Angebote,Werbeflächen,Googlemaps.....) Anfang -->
-<div class="row" id="subbereich">
-    <div id="angebot" class="col-lg-4">
-        <h3>Angebot</h3>
-        <div>
-            <img src="~/Content/img/images.png" class="img-responsive" />
+        <div id="Werbefläche" class="col-lg-4">
+            <h3>Werbefläche</h3>
+            <div>
+                <img src="~/Content/img/images.png" class="img-responsive" />
+            </div>
         </div>
-    </div>
-    <div id="Werbefläche" class="col-lg-4">
-        <h3>Werbefläche</h3>
-        <div>
-            <img src="~/Content/img/images.png" class="img-responsive" />
-        </div>
-    </div>
-    <div id="googlemaps" class="col-lg-4">
-        <h3>Hier findet ihr uns!</h3>
-        <div>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6327.522154799916!2d16.406683896074593!3d48.17973372399835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da9fc1292b1d7%3A0xd1448700672b6f2f!2sSimmeringer+Hauptstra%C3%9Fe+49%2C+1110+Wien%2C+%C3%96sterreich!5e0!3m2!1sde!2sde!4v1486033947947" width="100%" height="225px" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div id="googlemaps" class="col-lg-4">
+            <h3>Hier findet ihr uns!</h3>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6327.522154799916!2d16.406683896074593!3d48.17973372399835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476da9fc1292b1d7%3A0xd1448700672b6f2f!2sSimmeringer+Hauptstra%C3%9Fe+49%2C+1110+Wien%2C+%C3%96sterreich!5e0!3m2!1sde!2sde!4v1486033947947" width="100%" height="225px" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </div>

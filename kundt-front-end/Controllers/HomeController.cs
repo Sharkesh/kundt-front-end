@@ -10,14 +10,28 @@ namespace kundt_front_end.Controllers
     public class HomeController : Controller
     {
         private it22AutoverleihEntities db = new it22AutoverleihEntities();
+        /// <summary>
+        /// GET: Home/Index
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();
         }
+        /// <summary>
+        /// GET: Home/Step2
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Step2()
         {
             return View();
         }
+        /// <summary>
+        /// POST: Home/Step2
+        /// </summary>
+        /// <param name="date_von"></param>
+        /// <param name="date_bis"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Step2(DateTime ? date_von, DateTime ? date_bis)
         {
@@ -48,6 +62,11 @@ namespace kundt_front_end.Controllers
             //    return RedirectToAction("Index");
             //}
         }
+        /// <summary>
+        /// POST: Home/Step3
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Step3(int? id)
         {
@@ -82,6 +101,11 @@ namespace kundt_front_end.Controllers
         //    db.SaveChanges();
         //    ViewBag.VersStatus = bu.Versicherung;
         //}
+        /// <summary>
+        /// GET: Home/Step4
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ActionResult Step4(int? id)
         {
             //Wenn eingeloggt dann diesen Step überspringen
@@ -92,14 +116,26 @@ namespace kundt_front_end.Controllers
             tblAutoFrontEndController afec2 = new tblAutoFrontEndController();
             return View(afec2.Step3b(id));
         }
+        /// <summary>
+        /// GET: Home/Step5
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Step5()
         {
             return View();
         }
+        /// <summary>
+        /// GET: Home/Step6
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Step6()
         {
             return View();
         }
+        /// <summary>
+        /// GET: Home/Impressum
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Impressum()
         {
             return View();
