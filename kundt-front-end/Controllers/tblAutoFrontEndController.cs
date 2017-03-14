@@ -19,7 +19,7 @@ namespace kundt_front_end.Controllers
 
         public tblAuto Step3b(int? id)
         {
-            tblAuto auto = db.tblAuto.Find(1);
+            tblAuto auto = db.tblAuto.Find(id);
             return auto;
         }
         public ActionResult Step4b(int? id)
@@ -33,7 +33,20 @@ namespace kundt_front_end.Controllers
             var tblAuto = db.tblAuto.Include(t => t.tblKategorie).Include(t => t.tblTreibstoff).Include(t => t.tblTyp);
             return View(tblAuto.ToList());
         }
-
+        //public ActionResult Step5b(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    else
+        //    {
+        //        var tblauto = db.tblAuto.Find(id);
+        //        var kunde = db.tblKunde.Find(tblauto);
+        //        return View(kunde);
+        //    }
+            
+        //}
         // GET: tblAutoFrontEnd/Details/5
         public ActionResult Details(int? id)
         {
