@@ -22,7 +22,7 @@
 
 
 $("#date_bis").datepicker({
-    numberOfMonths: 2,
+    numberOfMonths: 1,
     dateFormat: 'dd.mm.yy',
     minDate: 'dateToday',
     currentText: 'heute', currentStatus: '',
@@ -44,7 +44,7 @@ $("#date_bis").datepicker({
 
 
 $("#date_von").datepicker({
-    numberOfMonths: 2,
+    numberOfMonths: 1,
     dateFormat: 'dd.mm.yy',
     minDate: 'dateToday',
     currentText: 'heute', currentStatus: '',
