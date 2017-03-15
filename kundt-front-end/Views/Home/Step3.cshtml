@@ -1,7 +1,11 @@
-﻿
+﻿@model kundt_front_end.Models.tblAuto
+
 @{
     ViewBag.Title = "Step3";
 }
+
+
+
 <style>
     /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
     .buttonOrangeForwardStep3 {
@@ -19,11 +23,11 @@
     }
 
         .buttonOrangeForwardStep3 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
+                    cursor: pointer;
+                    display: inline-block;
+                    position: relative;
+                    transition: 0.5s;
+                }
 
             .buttonOrangeForwardStep3 span:after {
                 content: '\00bb';
@@ -36,8 +40,8 @@
             }
 
         .buttonOrangeForwardStep3:hover span {
-            padding-right: 15px;
-        }
+                padding-right: 15px;
+            }
 
             .buttonOrangeForwardStep3:hover span:after {
                 opacity: 1;
@@ -71,11 +75,11 @@
     }
 
         .buttonOrangeReturnStep3 span {
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            transition: 0.5s;
-        }
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
 
             .buttonOrangeReturnStep3 span:after {
                 content: '\00ab';
@@ -88,8 +92,8 @@
             }
 
         .buttonOrangeReturnStep3:hover span {
-            padding-left: 15px;
-        }
+                padding-left: 15px;
+            }
 
             .buttonOrangeReturnStep3:hover span:after {
                 opacity: 1;
@@ -123,7 +127,7 @@
 
     .okZeichen1 {
         list-style-image: url(../../../../Content/img/ok-sign.png);
-        padding-bottom: 10px;
+            padding-bottom: 10px;
     }
 
     .h3Step3 {
@@ -224,35 +228,35 @@
     }
     @@keyframes anima01 {
         0% {
-            background-color: #f99b1c;
+                    background-color: #f99b1c;
         }
 
         25% {
-            background-color: orange;
-        }
+                    background-color: orange;
+                }
 
         50% {
-            background-color: #f99b1c;
+                    background-color: #f99b1c;
         }
 
         75% {
-            background-color: orange;
-        }
+                    background-color: orange;
+                }
 
         100% {
-            background-color: #f99b1c;
+                    background-color: #f99b1c;
         }
-    }
+            }
 
     @@keyframes anima02 {
-        from {
-            width: 50%;
-        }
+                from {
+                width: 50%;
+                }
 
-        to {
-            width: 100%;
-        }
-    }
+                to {
+                width: 100%;
+                }
+            }
 
     .myBorder {
         /*border-color: #f99b1c;*/
@@ -293,15 +297,15 @@
     }
 
         .squaredTwo label {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            background: #FFFFFF;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                position: absolute;
+                left: 4px;
+                top: 4px;
+                background: #FFFFFF;
             border-radius: 2px;
-        }
+            }
 
             .squaredTwo label:after {
                 content: '';
@@ -316,7 +320,7 @@
                 background: transparent;
                 opacity: 0;
                 -webkit-transform: rotate(-45deg);
-                transform: rotate(-45deg);
+            transform: rotate(-45deg);
             }
 
             .squaredTwo label:hover::after {
@@ -338,8 +342,10 @@
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <button class="myButton">1</button>
-            <h5>Fahrzeug wählen</h5>
+            <form action="@Url.Action("Step2", "Home")" method="post">
+                <button class="myButton">1</button>
+                <h5>Fahrzeug wählen</h5>
+            </form>
         </div>
         <div class="col-sm-2">
             <button class="myButtonOp opacity noCurs">2</button>
@@ -381,12 +387,12 @@
             <button class="miniButtonOp noCurs">5</button>
         </div>
     </div>
-@*ProgressBar Implementation End*@
+    @*ProgressBar Implementation End*@
     <div class="paddingSmallStep3"></div>
     <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
     <div class="row">
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
-            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(model => model.tblTyp.tblMarke.Marke) @Html.DisplayFor(model => model.tblTyp.Typ)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
             <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
 
@@ -394,29 +400,29 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"]</p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"]</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
         @*sichtbar auf kleinem Format (xs)*@
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
+            <h3 style="margin-top:0px; margin-bottom:0px">@Html.DisplayFor(model => model.tblTyp.tblMarke.Marke) @Html.DisplayFor(model => model.tblTyp.Typ)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
             <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"]</p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"]</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
@@ -427,17 +433,18 @@
                     <div class="col-xs-12">
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
-                            <li class="okZeichen1">Klimaautomatik</li>
-                            <li class="okZeichen1">Sitzheizung</li>
-                            <li class="okZeichen1">Scheibenwaschanlage</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
+                            @for (int i = 0; i < Model.tblAusstattung.Count; i++)
+                            {
+                                <li class="okZeichen1">@Model.tblAusstattung.ElementAt(i).Ausstattung</li>
+                            }
+
+
                         </ul>
                         <form style="float:left; margin-right:7px">
-                            <h4>Rücktrittsversicherung</h4>
+                            <h4>@ViewBag.VersStatus Rücktrittsversicherung</h4>
                         </form>
                         <div class="squaredTwo col-xs-1">
-                            <input type="checkbox" value="None" id="squaredTwo" name="check" checked />
+                            <input formmethod="post" type="checkbox" value="Rücktrittsversicherung" id="squaredTwo" name="check" checked />
                             <label for="squaredTwo"></label>
                         </div>
                     </div>
@@ -455,24 +462,30 @@
                 </div>*@
             <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
-
-                    <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
                 </div>
                 <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                    <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    <form action="@Url.Action("Step4", "Home")" method="post">
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    </form>
                 </div>
             </div>
         </center>
     </div>
-
     <div class="row">
         <center>
             <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    </form>
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
-                    <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                    <form action="@Url.Action("Step4", "Home", new { id = Model.IDAuto})" method="post">
+                        <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                    </form>
                 </div>
             </div>
             @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
@@ -486,3 +499,6 @@
         </center>
     </div>
 </div>
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@

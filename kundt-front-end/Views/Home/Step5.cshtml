@@ -1,4 +1,5 @@
 ﻿@model kundt_front_end.Models.tblKunde
+    
 @{
     ViewBag.Title = "Step5";
 }
@@ -260,15 +261,21 @@
     @* Progress Bar *@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <button class="myButton">1</button>
+            <form action="@Url.Action("Step2","Home")">
+                <button class="myButton">1</button>
+            </form>
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">2</button>
+            <form action="@Url.Action("Step3","Home")">
+                <button class="myButton">2</button>
+            </form>
             <h5>Detailansicht</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">3</button>
+            <form action="@Url.Action("Step4","Home")">
+                <button class="myButton">3</button>
+            </form>
             <h5>Anmeldung</h5>
         </div>
         <div class="col-sm-2">
@@ -288,13 +295,19 @@
     </div>
     <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center;padding-bottom:20px;height:45px;">
         <div class="col-xs-2 col-xs-offset-1">
-            <button class="miniButton">1</button>
+            <form action="@Url.Action("Step2","Home")">
+                <button class="miniButton">1</button>
+            </form>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">2</button>
+            <form action="@Url.Action("Step3","Home")">
+                <button class="miniButton">2</button>
+            </form>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">3</button>
+            <form action="@Url.Action("Step4","Home")">
+                <button class="miniButton">3</button>
+            </form>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp opacity noCurs">4</button>
@@ -316,12 +329,12 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"] </p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"]</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
@@ -333,12 +346,12 @@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
                 <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionVon"]  </p>
                 <h4 class="h4Step3">Rückgabe</h4>
                 <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>@System.Web.HttpContext.Current.Session["sessionBis"] </p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
             </div>
         </div>
 
@@ -363,7 +376,7 @@
                     <p><b>Straße: </b><span>askfjhkajjhfha 23</span></p>
                     <p><b>PLZ: </b><span>1241 Wien</span></p>
                     <p><b>Telefon: </b><span>98798 8768698</span></p>
-                    
+
                 </div>
             </div>
         </div>
@@ -371,20 +384,27 @@
         <center>
             <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
-
-                    <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step3","Home")">
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
                 </div>
                 <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                    <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
+                    <form action="@Url.Action("Step6","Home")">
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
+                    </form>
                 </div>
             </div>
             <div class="row">
                 <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                     <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                        <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                        <form action="@Url.Action("Step3", "Home", new { id = System.Web.HttpContext.Current.Session["IDAuto"] })">
+                            <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                        </form>
                     </div>
                     <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
-                        <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                        <form action="@Url.Action("Step6","Home")">
+                            <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                        </form>
                     </div>
                 </div>
 
