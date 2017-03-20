@@ -18,7 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44322</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -131,7 +131,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\tblAutoController.cs" />
+    <Compile Include="Controllers\tblAutoFrontEndController.cs" />
+    <Compile Include="Controllers\tblKundeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,10 +201,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\kundt.mdf" />
-    <Content Include="App_Data\kundt_log.ldf">
-      <DependentUpon>kundt.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -385,13 +384,13 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
-    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\JS-Kundt-Index.js" />
+    <Content Include="Scripts\LoginScript.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
@@ -414,13 +413,27 @@
     <Content Include="Views\Home\Step4.cshtml" />
     <Content Include="Views\Home\Step5.cshtml" />
     <Content Include="Views\Home\Step6.cshtml" />
+    <Content Include="Views\Home\Impressum.cshtml" />
+    <Content Include="Views\Home\AGB.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Create.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Delete.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Details.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Edit.cshtml" />
+    <Content Include="Views\tblAutoFrontEnd\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Registrierung.cshtml" />
     <Content Include="Views\tblAuto\Create.cshtml" />
     <Content Include="Views\tblAuto\Delete.cshtml" />
     <Content Include="Views\tblAuto\Details.cshtml" />
     <Content Include="Views\tblAuto\Edit.cshtml" />
     <Content Include="Views\tblAuto\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Views\tblAusstattung\" />
+    <Folder Include="Views\tblBuchungs\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -444,11 +457,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57095</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57095/</IISUrl>
+          <IISUrl>https://localhost:44322/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

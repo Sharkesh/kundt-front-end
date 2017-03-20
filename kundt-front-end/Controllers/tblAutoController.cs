@@ -18,7 +18,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Index()
         {
             var tblAuto = db.tblAuto.Include(t => t.tblKategorie).Include(t => t.tblTreibstoff).Include(t => t.tblTyp);
-            var Auto = db.tblAuto.Where(Typ == "Luxusklasse");
+            //var Auto = db.tblAuto.Where(Typ == "Luxusklasse");
 
 
             return View(tblAuto.ToList());
