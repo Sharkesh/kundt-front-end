@@ -24,6 +24,7 @@ namespace kundt_front_end.Controllers
         /// <returns></returns>
         public ActionResult Step2()
         {
+            
             return View();
         }
         /// <summary>
@@ -33,20 +34,27 @@ namespace kundt_front_end.Controllers
         /// <param name="date_bis"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Step2(DateTime? date_von, DateTime? date_bis)
+        public ActionResult Step2(string date_von, string date_bis)
         {
 
             //ViewBag.date_von = date_von;
             //ViewBag.date_bis = date_bis;
-            if (date_von != null && date_bis != null)
+            if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
             {
-                System.Web.HttpContext.Current.Session["sessionDate_von"] = date_von;
-                System.Web.HttpContext.Current.Session["sessionDate_bis"] = date_bis;
-                ViewBag.Dauer = System.Web.HttpContext.Current.Session["sessionDate_bis"];
-                ViewBag.Dauer2 = System.Web.HttpContext.Current.Session["sessionDate_von"];
-                System.Web.HttpContext.Current.Session["sessionErgebnis"] = Convert.ToInt32(((ViewBag.Dauer - ViewBag.Dauer2).TotalDays) + 1);
-                System.Web.HttpContext.Current.Session["sessionVon"] = Convert.ToString(date_von.ToString().Substring(0, 10));
-                System.Web.HttpContext.Current.Session["sessionBis"] = Convert.ToString(date_bis.ToString().Substring(0, 10));
+                //alte Variante mit Date to String Convert
+                System.Web.HttpContext.Current.Session["sessionDate_von"] = Convert.ToDateTime(date_von);
+                System.Web.HttpContext.Current.Session["sessionDate_bis"] = Convert.ToDateTime(date_bis);
+                //ViewBag.Dauer = System.Web.HttpContext.Current.Session["sessionDate_bis"];
+                //ViewBag.Dauer2 = System.Web.HttpContext.Current.Session["sessionDate_von"];
+                //System.Web.HttpContext.Current.Session["sessionErgebnis"] = Convert.ToInt32(((ViewBag.Dauer - ViewBag.Dauer2).TotalDays) + 1);
+                //System.Web.HttpContext.Current.Session["sessionVon"] = Convert.ToString(date_von.ToString().Substring(0, 10));
+                //System.Web.HttpContext.Current.Session["sessionBis"] = Convert.ToString(date_bis.ToString().Substring(0, 10));
+                
+                var date1 = Convert.ToDateTime(date_bis);
+                var date2 = Convert.ToDateTime(date_von);
+                System.Web.HttpContext.Current.Session["sessionDate_dauer"] = (date1 - date2).Days;
+
+
             }
             return View();
         }
