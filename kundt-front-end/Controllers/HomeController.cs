@@ -18,7 +18,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Index()
         {
             ModelStepClass msc = new ModelStepClass();
-           // msc.StepID = 1;
+            // msc.StepID = 1;
             msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
             return View(msc);
         }
@@ -42,20 +42,9 @@ namespace kundt_front_end.Controllers
             //
 
             msc.Mietdauer = Convert.ToInt32((msc.date_bis - msc.date_von).TotalDays) + 1;
-           // msc.StepID = 2;
+            // msc.StepID = 2;
             //ViewBag.date_von = date_von;
             //ViewBag.date_bis = date_bis;
-            if (msc.date_von != null && msc.date_bis != null)
-            {
-
-                //System.Web.HttpContext.Current.Session["sessionDate_von"] = msc.date_von;
-                //System.Web.HttpContext.Current.Session["sessionDate_bis"] = msc.date_bis;
-                //ViewBag.Dauer = System.Web.HttpContext.Current.Session["sessionDate_bis"];
-                //ViewBag.Dauer2 = System.Web.HttpContext.Current.Session["sessionDate_von"];
-                //System.Web.HttpContext.Current.Session["sessionErgebnis"] = Convert.ToInt32(((ViewBag.Dauer - ViewBag.Dauer2).TotalDays) + 1);
-                //System.Web.HttpContext.Current.Session["sessionVon"] = Convert.ToString(msc.date_von.ToString().Substring(0, 10));
-                //System.Web.HttpContext.Current.Session["sessionBis"] = Convert.ToString(msc.date_bis.ToString().Substring(0, 10));
-            }
 
             //ModelStepClass ViewModel = new ModelStepClass();
             //ViewModel.autoListe = msc.autoListe;
@@ -70,7 +59,7 @@ namespace kundt_front_end.Controllers
             //msc.StepID = 3;
 
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            
+
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             return View(/*afec.Step3b(id)*/msc);
@@ -94,15 +83,15 @@ namespace kundt_front_end.Controllers
                 return RedirectToAction("Step5");
             }
             //Deprecated
-            tblAutoFrontEndController afec = new tblAutoFrontEndController();
-            if (afec.Step3b(msc.userID) != null)
+            if (TempData["registerResult"] != null)
             {
-                return View(afec.Step3b(msc.userID));
+                ViewBag.registerResult = TempData["registerResult"];
             }
-            else
+            if (TempData["activationResult"] != null)
             {
-                return RedirectToAction("Error", "Shared");
+                ViewBag.activationResult = TempData["activationResult"];
             }
+            return View(msc);
         }
 
         public ActionResult Step5()
