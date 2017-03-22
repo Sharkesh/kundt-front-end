@@ -528,19 +528,31 @@
         @*Erste Box für Login Anfang*@
         <div class="col-xs-12 col-md-8 formFeldLinks">
             <div class="form-horizontal" style="padding: 20px;">
+                @if (ViewBag.registerResult > 0)
+                {
+                    <p class="text-danger">Eine Bestätigungs Email wurde verschickt! Bitte klicken Sie auf den Link in dieser Email um die Registrierung abzuschließen.</p>
+                }
+                else if (ViewBag.activationResult == -1)
+                {
+                    <p class="text-danger">Aktivierungs Code ist ungültig oder wurde bereits Verwendet!</p>
+                }
+                else if (ViewBag.activationResult == 0)
+                {
+                    <p class="text-danger">Aktivierung erfolgreich! Sie können sich nun einloggen.</p>
+                }
                 <form action="@Url.Action("Index", "Login")" method="post">
                     <div class="form-group">
                         @*E-Mail1*@
-                        <label for="email" class="col-md-3 control-label">Email:</label>
+                        <label for="emailLogin" class="col-md-3 control-label">Email:</label>
                         <div class="col-md-9">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail(), ValidateInput('login')">
+                            <input type="email" class="form-control" id="emailLogin" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Login'), ValidateInput('Login')">
                         </div>
                     </div>
                     <div class="form-group">
                         @*Passwort1*@
-                        <label for="password" class="col-md-3 control-label">Passwort:</label>
+                        <label for="passwordLogin" class="col-md-3 control-label">Passwort:</label>
                         <div class="col-md-9">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="ValidateEmail(), ValidateInput('login')">
+                            <input type="password" class="form-control" id="passwordLogin" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Login'), ValidateInput('Login')">
                         </div>
                     </div>
                     @{
@@ -583,8 +595,8 @@
                                     @*<form action="@Url.Action("Step3","Home", new { id = Model.IDAuto})" method="post">*@
                                     <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
                                     @*</form>*@
-                                    <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren"><span>Registrieren</span></button>
-                                    <button type="submit" id="loginSubmit" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
+                                    <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren" onclick="Bottom()"><span>Registrieren</span></button>
+                                    <button type="submit" id="submitLogin" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
                                 </div>
                                 <div class="hidden-lg hidden-md">
                                     @*Buttons Zurück, Registieren, Login*@
@@ -594,10 +606,10 @@
                                         @*</form>*@
                                     </div>
                                     <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
-                                        <input type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;" value="Registrieren" />
+                                        <input type="button" class="buttonOrangeForwardStep3OhneAnimation" data-toggle="collapse" data-target="#registrieren" style="width: 280px;" value="Registrieren" onclick="Bottom()" />
                                     </div>
                                     <div class="col-sm-12 col-xs-12">
-                                        <button type="submit" id="loginSubmitMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Login</span></button>
+                                        <button type="submit" id="submitLoginMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Login</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -612,59 +624,117 @@
             <form class="form-horizontal" style="margin-left: 15px;" action="@Url.Action("Registrierung", "Login")" method="post">
                 <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
                     <div class="form-group" style="margin-top: 35px;">
-                        <label for="anrede" class="col-md-3 control-label collapseForm">Anrede:</label>
+                        @if (ViewBag.registerResult == -1)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p class="text-danger" id="errorMessage">Es existiert bereits ein Account mit dieser Email!</p>
+                                </div>
+                            </div>
+                        }
+                        <label for="sex" class="col-md-3 control-label collapseForm">Anrede:</label>
                         <div class="col-md-9">
                             @*Box Anrede*@
-                            @*<input type="text" class="form-control collapseForm" id="anrede" placeholder="Anrede">*@
-                            <select id="anrede" class="form-control collapseForm" size="1">
-                                <option>Herr</option>
-                                <option>Frau</option>
+                            <select id="sex" name="sex" class="form-control collapseForm">
+                                <option value="" selected disabled hidden>Anrede</option>
+                                <option value="Herr">Herr</option>
+                                <option value="Frau">Frau</option>
                             </select>
                         </div>
                         <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
                         <div class="col-md-9">
                             @*Box Vorname*@
-                            <input type="text" class="form-control collapseForm" id="prename" placeholder="Vorname">
+                            <input type="text" class="form-control collapseForm" id="prename" name="prename" placeholder="Max">
                         </div>
                         <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
                         <div class="col-md-9">
                             @*Box Nachname*@
-                            <input type="text" class="form-control collapseForm" id="sirname" placeholder="Nachname">
+                            <input type="text" class="form-control collapseForm" id="sirname" name="sirname" placeholder="Mustermann">
                         </div>
+                        @if (ViewBag.registerResult == -2)
+                        {
+                            <div class="col-md-offset-3 col-md-9">
+                                <p class="text-danger" id="errorMessage">Die eingegebene PLZ oder der eingegebene Ort ist nicht korrekt.</p>
+                            </div>
+                        }
                         <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
                         <div class="col-md-9">
                             @*Box Adresse*@
-                            <input type="text" class="form-control collapseForm" id="adress" placeholder="Adresse">
+                            <input type="text" class="form-control collapseForm" id="adress" name="adress" placeholder="Musterstraße 23">
                         </div>
                         <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
                         <div class="col-md-9">
                             @*Box Ort*@
-                            <input type="text" class="form-control collapseForm" id="city" placeholder="Ort">
+                            <input type="text" class="form-control collapseForm" id="city" name="city" placeholder="Wien">
                         </div>
                         <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
                         <div class="col-md-9">
                             @*Box PLZ*@
-                            <input type="text" class="form-control collapseForm" id="postcode" placeholder="PLZ">
+                            <input type="text" class="form-control collapseForm" id="postcode" name="postcode" placeholder="1234">
                         </div>
-                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Email:</label>
+                        <label for="telephone" class="col-md-3 control-label collapseForm">Telefon:</label>
+                        <div class="col-md-9">
+                            @*Box Telefon*@
+                            <input type="text" class="form-control collapseForm" id="telephone" name="telephone" placeholder="0123 4567890">
+                        </div>
+                        <label for="bDay" class="col-md-3 control-label collapseForm">Geburtstag:</label>
+                        <div class="col-md-9 form-inline">
+                            @*Box Telefon*@
+                            <select class="form-control collapseForm" id="bDay" name="bDay">
+                                <option value="" selected disabled hidden>Tag</option>
+                                @{
+                                    for (int i = 1; i < 32; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                            <select class="form-control collapseForm" id="bMonth" name="bMonth">
+                                <option value="" selected disabled hidden>Monat</option>
+                                @{
+                                    string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+                                    for (int i = 0; i <= months.Length - 2; i++)
+                                    {
+                                        <option value="@(i+1)">@months[i]</option>
+                                    }
+                                }
+                            </select>
+                            <select class="form-control collapseForm" id="bYear" name="bYear">
+                                <option value="" selected disabled hidden>Jahr</option>
+                                @{
+                                    DateTime today = new DateTime();
+                                    today = DateTime.Today;
+                                    for (int i = today.Year - 17; i > today.Year - 130; i--)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <label for="pass" class="col-md-3 control-label collapseForm">Reisepassnummer::</label>
+                        <div class="col-md-9">
+                            @*Box ReisepassNr*@
+                            <input type="text" class="form-control collapseForm" id="pass" name="pass" placeholder="012345">
+                        </div>
+                        <label for="emailRegister" class="col-md-3 control-label collapseForm">Email:</label>
                         <div class="col-md-9">
                             @*Box Email*@
-                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="max.mustermann@kundt.at">
+                            <input type="email" class="form-control collapseForm" id="emailRegister" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Register'), ValidateInput('Register')">
                         </div>
-                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
+                        <label for="emailConfirmation" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
                         <div class="col-md-9">
                             @*Box Email bestätigen*@
-                            <input type="email" class="form-control collapseForm" id="mailRegister" placeholder="max.mustermann@kundt.at">
+                            <input type="email" class="form-control collapseForm" id="emailConfirmation" placeholder="max.mustermann@kundt.at">
                         </div>
-                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
+                        <label for="passwordRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
                         <div class="col-md-9">
                             @*Box Passwort*@
-                            <input type="password" class="form-control collapseForm" id="mailRegister" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅">
+                            <input type="password" class="form-control collapseForm" id="passwordRegister" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Register'), ValidateInput('Register')">
                         </div>
-                        <label for="mailRegister" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
+                        <label for="passwordConfirmation" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
                         <div class="col-md-9">
                             @*Box Passwort bestätigen*@
-                            <input type="password" class="form-control collapseForm" id="mailRegister" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅">
+                            <input type="password" class="form-control collapseForm" id="passwordConfirmation" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordConfirmationCheck('Register'), ValidateInput('Register')">
                         </div>
                     </div>
                     @*Button Regestieren2*@
@@ -685,7 +755,6 @@
                 </div>
             </form>
         </div>
-
         @*Zweite Box für Regestrieren Ende*@
     </div>
 </div>

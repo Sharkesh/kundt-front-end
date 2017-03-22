@@ -91,8 +91,8 @@
                                 }
                                 else if ((int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
                                 {
-                                    <li></li>
-                                    <li>@Html.ActionLink("Logout", "Logout", "Login", new { id = (int)System.Web.HttpContext.Current.Session["IDUser"]}, null)</li> @*KORREKTE WEITERLEITUNG FEHLT NOCH*@
+                                    <li><a>&lt;Email&gt;</a></li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "Login", new { id = (int)System.Web.HttpContext.Current.Session["IDUser"] }, null)</li>
                                 }
                             }
                         </ul>

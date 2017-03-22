@@ -113,6 +113,14 @@ namespace kundt_front_end.Controllers
             {
                 return RedirectToAction("Step5");
             }
+            if (TempData["registerResult"] != null)
+            {
+                ViewBag.registerResult = TempData["registerResult"];
+            }
+            if (TempData["activationResult"] != null)
+            {
+                ViewBag.activationResult = TempData["activationResult"];
+            }
             tblAutoFrontEndController afec2 = new tblAutoFrontEndController();
             return View(afec2.Step3b(id));
         }
