@@ -24,6 +24,7 @@ namespace kundt_front_end.Controllers
         /// <returns></returns>
         public ActionResult Step2()
         {
+            
             return View();
         }
         /// <summary>
@@ -33,42 +34,33 @@ namespace kundt_front_end.Controllers
         /// <param name="date_bis"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Step2(DateTime ? date_von, DateTime ? date_bis)
+        public ActionResult Step2(string date_von, string date_bis)
         {
 
             //ViewBag.date_von = date_von;
             //ViewBag.date_bis = date_bis;
-            if (date_von != null && date_bis != null)
+            if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
             {
-                System.Web.HttpContext.Current.Session["sessionDate_von"] = date_von;
-                System.Web.HttpContext.Current.Session["sessionDate_bis"] = date_bis;
-                ViewBag.Dauer = System.Web.HttpContext.Current.Session["sessionDate_bis"];
-                ViewBag.Dauer2 = System.Web.HttpContext.Current.Session["sessionDate_von"];
-                System.Web.HttpContext.Current.Session["sessionErgebnis"] = Convert.ToInt32(((ViewBag.Dauer - ViewBag.Dauer2).TotalDays) + 1);
-                System.Web.HttpContext.Current.Session["sessionVon"] = Convert.ToString(date_von.ToString().Substring(0,10));
-                System.Web.HttpContext.Current.Session["sessionBis"] = Convert.ToString(date_bis.ToString().Substring(0,10));
+                //alte Variante mit Date to String Convert
+                System.Web.HttpContext.Current.Session["sessionDate_von"] = Convert.ToDateTime(date_von);
+                System.Web.HttpContext.Current.Session["sessionDate_bis"] = Convert.ToDateTime(date_bis);
+                //ViewBag.Dauer = System.Web.HttpContext.Current.Session["sessionDate_bis"];
+                //ViewBag.Dauer2 = System.Web.HttpContext.Current.Session["sessionDate_von"];
+                //System.Web.HttpContext.Current.Session["sessionErgebnis"] = Convert.ToInt32(((ViewBag.Dauer - ViewBag.Dauer2).TotalDays) + 1);
+                //System.Web.HttpContext.Current.Session["sessionVon"] = Convert.ToString(date_von.ToString().Substring(0, 10));
+                //System.Web.HttpContext.Current.Session["sessionBis"] = Convert.ToString(date_bis.ToString().Substring(0, 10));
+                
+                var date1 = Convert.ToDateTime(date_bis);
+                var date2 = Convert.ToDateTime(date_von);
+                System.Web.HttpContext.Current.Session["sessionDate_dauer"] = (date1 - date2).Days;
+
+
             }
-            
-
-            //ViewBag.dateVon = System.Web.HttpContext.Current.Session["sessionDate_von"];
-            //ViewBag.dateBis = System.Web.HttpContext.Current.Session["sessionDate_bis"];
-
-            //if (!string.IsNullOrEmpty(date_von) && !string.IsNullOrEmpty(date_bis))
-            //{
             return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("Index");
-            //}
         }
-        /// <summary>
-        /// POST: Home/Step3
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Step3(int? id)
+
+
+        public ActionResult Step3(int? id) //Get Object with ID
         {
             //ViewBag.dateVon = System.Web.HttpContext.Current.Session["sessionDate_von"];
             //ViewBag.dateBis = System.Web.HttpContext.Current.Session["sessionDate_bis"];
@@ -77,40 +69,12 @@ namespace kundt_front_end.Controllers
             return View(afec.Step3b(id));
         }
 
-        //[HttpPost, ActionName("Rücktrittsversicherung")]
-        //public void Insurance(int? id) //Versicherung CheckBox
-        //{
-        //    tblBuchung bu = db.tblBuchung.Find(id);
-        //    if (bu.Versicherung == true)
-        //    {
-        //        bu.Versicherung = false;
-        //    }
-        //    else
-        //    {
-        //        bu.Versicherung = true;
-        //    }
-
-        //    if (ViewBag.VersStatus == true)
-        //    {
-        //        ViewBag.VersStatus = "Oh Noez...";
-        //    }
-        //    else
-        //    {
-        //        ViewBag.VersStatus = "blöd gelaufen...";
-        //    }
-        //    db.SaveChanges();
-        //    ViewBag.VersStatus = bu.Versicherung;
-        //}
-        /// <summary>
-        /// GET: Home/Step4
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult Step4(int? id)
+        public ActionResult Step4(int? id) //Get Object with ID
         {
             //Wenn eingeloggt dann diesen Step überspringen
-            if (System.Web.HttpContext.Current.Session["IDUser"]  != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
+            if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
+                System.Web.HttpContext.Current.Session["IDAuto"] = (int)id;
                 return RedirectToAction("Step5");
             }
             if (TempData["registerResult"] != null)
@@ -121,29 +85,35 @@ namespace kundt_front_end.Controllers
             {
                 ViewBag.activationResult = TempData["activationResult"];
             }
-            tblAutoFrontEndController afec2 = new tblAutoFrontEndController();
-            return View(afec2.Step3b(id));
+
+            tblAutoFrontEndController afec = new tblAutoFrontEndController();
+            if (afec.Step3b(id) != null)
+            {
+                return View(afec.Step3b(id));
+            }
+            else
+            {
+                return RedirectToAction("Error", "Shared");
+            }
         }
-        /// <summary>
-        /// GET: Home/Step5
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Step5()
+
+        
+        public ActionResult Step5(int? id)
         {
-            return View();
+            if (System.Web.HttpContext.Current.Session["IDAuto"] != null)
+            {
+                id = (int)System.Web.HttpContext.Current.Session["IDAuto"];
+            }
+            tblKundeController kuco = new tblKundeController();
+            return View(kuco.Step5b(id)); //Get Object with ID
         }
-        /// <summary>
-        /// GET: Home/Step6
-        /// </summary>
-        /// <returns></returns>
+
+
         public ActionResult Step6()
         {
             return View();
         }
-        /// <summary>
-        /// GET: Home/Impressum
-        /// </summary>
-        /// <returns></returns>
+
         public ActionResult Impressum()
         {
             return View();

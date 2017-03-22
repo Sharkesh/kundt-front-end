@@ -10,44 +10,21 @@ using kundt_front_end.Models;
 
 namespace kundt_front_end.Controllers
 {
-    public class tblAutoFrontEndController : Controller
+    public class tblAutoController : Controller
     {
         private it22AutoverleihEntities db = new it22AutoverleihEntities();
 
-        // GET: tblAutoFrontEnd
-
-
-        public tblAuto Step3b(int? id)
-        {
-            tblAuto auto = db.tblAuto.Find(id);
-            return auto;
-        }
-        public ActionResult Step4b(int? id)
-        {
-            var auto = db.tblAuto.Include(x => x.tblBuchung).Include(x => x.tblAusstattung).Where(x => x.IDAuto == id);
-            return View(auto);
-            
-        }
+        // GET: tblAuto
         public ActionResult Index()
         {
             var tblAuto = db.tblAuto.Include(t => t.tblKategorie).Include(t => t.tblTreibstoff).Include(t => t.tblTyp);
+            //var Auto = db.tblAuto.Where(Typ == "Luxusklasse");
+
+
             return View(tblAuto.ToList());
         }
-        //public ActionResult Step5b(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    else
-        //    {
-        //        var tblauto = db.tblAuto.Find(id);
-        //        var kunde = db.tblKunde.Find(tblauto);
-        //        return View(kunde);
-        //    }
-            
-        //}
-        // GET: tblAutoFrontEnd/Details/5
+
+        // GET: tblAuto/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,7 +39,7 @@ namespace kundt_front_end.Controllers
             return View(tblAuto);
         }
 
-        // GET: tblAutoFrontEnd/Create
+        // GET: tblAuto/Create
         public ActionResult Create()
         {
             ViewBag.FKKategorie = new SelectList(db.tblKategorie, "IDKategorie", "Kategorie");
@@ -71,7 +48,9 @@ namespace kundt_front_end.Controllers
             return View();
         }
 
-        // POST: tblAutoFrontEnd/Create
+        
+
+        // POST: tblAuto/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,7 +70,7 @@ namespace kundt_front_end.Controllers
             return View(tblAuto);
         }
 
-        // GET: tblAutoFrontEnd/Edit/5
+        // GET: tblAuto/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,7 +88,7 @@ namespace kundt_front_end.Controllers
             return View(tblAuto);
         }
 
-        // POST: tblAutoFrontEnd/Edit/5
+        // POST: tblAuto/Edit/5
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -128,7 +107,7 @@ namespace kundt_front_end.Controllers
             return View(tblAuto);
         }
 
-        // GET: tblAutoFrontEnd/Delete/5
+        // GET: tblAuto/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -143,7 +122,7 @@ namespace kundt_front_end.Controllers
             return View(tblAuto);
         }
 
-        // POST: tblAutoFrontEnd/Delete/5
+        // POST: tblAuto/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
