@@ -33,13 +33,14 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         public ActionResult Step2(ModelStepClass msc)
         {
-            var autoListe = db.tblAuto.ToList(); // später auf Eager Loading ändern ?
-            msc.autoListe = autoListe;
+            var autoListe = db.fCarAvailable(msc.date_von_string, msc.date_bis_string); // später auf Eager Loading ändern ?
+            msc.carTable = autoListe.ToList();
 
             //dt string in dt objekt umwandeln
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             //
+            
 
             msc.Mietdauer = Convert.ToInt32((msc.date_bis - msc.date_von).TotalDays) + 1;
             // msc.StepID = 2;
@@ -51,6 +52,8 @@ namespace kundt_front_end.Controllers
             //ViewModel.date_bis = msc.date_bis;
             //ViewModel.date_von = msc.date_von;
             //ViewModel.StepID = msc.StepID;
+
+            
             return View(msc);
         }
 
