@@ -152,6 +152,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>it22AutoverleihModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelStepClass.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
     </Compile>

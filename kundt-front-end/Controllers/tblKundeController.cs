@@ -19,6 +19,8 @@ namespace kundt_front_end.Controllers
         {
             tblAuto omg = new tblAuto();
             tblKunde kunde = db.tblKunde.Find(id);
+            //ModelStepClass msc = new ModelStepClass();
+            //msc.kunde = kunde;
             return kunde;
         }
 

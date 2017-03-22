@@ -12,6 +12,8 @@ namespace kundt_front_end.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class it22AutoverleihEntities : DbContext
     {
@@ -40,5 +42,34 @@ namespace kundt_front_end.Models
         public virtual DbSet<tblPLZOrt> tblPLZOrt { get; set; }
         public virtual DbSet<tblTreibstoff> tblTreibstoff { get; set; }
         public virtual DbSet<tblTyp> tblTyp { get; set; }
+    
+        public virtual int pBuchungAnlegen(Nullable<int> varIDKunde, Nullable<int> varIDAuto, string varBuchungVon, string varBuchungBis, Nullable<bool> varVersicherung, Nullable<bool> varStorno)
+        {
+            var varIDKundeParameter = varIDKunde.HasValue ?
+                new ObjectParameter("varIDKunde", varIDKunde) :
+                new ObjectParameter("varIDKunde", typeof(int));
+    
+            var varIDAutoParameter = varIDAuto.HasValue ?
+                new ObjectParameter("varIDAuto", varIDAuto) :
+                new ObjectParameter("varIDAuto", typeof(int));
+    
+            var varBuchungVonParameter = varBuchungVon != null ?
+                new ObjectParameter("varBuchungVon", varBuchungVon) :
+                new ObjectParameter("varBuchungVon", typeof(string));
+    
+            var varBuchungBisParameter = varBuchungBis != null ?
+                new ObjectParameter("varBuchungBis", varBuchungBis) :
+                new ObjectParameter("varBuchungBis", typeof(string));
+    
+            var varVersicherungParameter = varVersicherung.HasValue ?
+                new ObjectParameter("varVersicherung", varVersicherung) :
+                new ObjectParameter("varVersicherung", typeof(bool));
+    
+            var varStornoParameter = varStorno.HasValue ?
+                new ObjectParameter("varStorno", varStorno) :
+                new ObjectParameter("varStorno", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pBuchungAnlegen", varIDKundeParameter, varIDAutoParameter, varBuchungVonParameter, varBuchungBisParameter, varVersicherungParameter, varStornoParameter);
+        }
     }
 }

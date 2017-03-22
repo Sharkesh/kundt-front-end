@@ -1,5 +1,5 @@
-﻿@model kundt_front_end.Models.tblKunde
-    
+﻿@model kundt_front_end.Models.ModelStepClass
+
 @{
     ViewBag.Title = "Step5";
 }
@@ -321,37 +321,45 @@
     <div class="paddingSmallStep3"></div>
     <div class="row">
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
-            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
-            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
-            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m=> m.gebuchtesAuto.tblTyp.Typ)</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="width:350px" />
 
             @*div-Bereich unterhalb img*@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="h4Step3">Abholung</h4>
-                <p>Wien</p>
-                <p>@System.Web.HttpContext.Current.Session["sessionVon"] </p>
-                <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien</p>
-                <p>@System.Web.HttpContext.Current.Session["sessionBis"]</p>
-                <h4 class="h4Step3">Mietdauer</h4>
-                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von_string</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis_string</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
             </div>
         </div>
 
         @*sichtbar auf kleinem Format (xs)*@
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
             <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
-            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
-            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
-                <p>Wien</p>
-                <p>@System.Web.HttpContext.Current.Session["sessionVon"]  </p>
+                <p>Wien am @Model.date_von_string</p>
                 <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien</p>
-                <p>@System.Web.HttpContext.Current.Session["sessionBis"] </p>
+                <p>Wien am @Model.date_bis_string</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>@System.Web.HttpContext.Current.Session["sessionErgebnis"] Tage</p>
+                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                <h4 class="h4Step3">Preis</h4>
+                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
             </div>
         </div>
 
@@ -362,21 +370,19 @@
                     <h2>Ihre Daten</h2>
                 </div>
                 <div class="col-xs-6 col-sm-6 col-lg-6">
-                    <p><b>Anrede: </b><span>Herr</span></p>
-                    <p><b>@Html.DisplayNameFor(model => model.Vorname): </b><span>@Html.DisplayFor(model => model.Vorname)</span></p> @*Testweise*@
-                    <p><b>Nachname: </b><span>aoshoahsfohfh</span></p>
-                    <p><b>Geb. Datum: </b><span>12.12.1241</span></p>
-                    <p><b>Reisepassnr.: </b><span>P1234567</span></p>
-                    @Html.DisplayNameFor(model => model.Vorname)
+                    <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
+                    <p><b>@Html.DisplayNameFor(model => model.kunde.Vorname): </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p> @*Testweise*@
+                    <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
+                    <p><b>Geb. Datum: </b><span> @(Model.kunde.GebDatum.ToShortDateString()) </ span ></ p >
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
                 <div class="col-xs-6 col-sm-6 col-lg-6">
                     <p><br /></p>
-                    <p><b>Straße: </b><span>askfjhkajjhfha 23</span></p>
-                    <p><b>PLZ: </b><span>1241 Wien</span></p>
-                    <p><b>Telefon: </b><span>98798 8768698</span></p>
-
+                    <p><b>Straße: </b><span>@Html.DisplayFor(model => model.kunde.Strasse)</span></p>
+                    <p><b>PLZ: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
+                    <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>
+                    <p><b>Reisepassnr.: </b><span>@Html.DisplayFor(model => model.kunde.ReisepassNr)</span></p>
                 </div>
             </div>
         </div>
@@ -390,6 +396,13 @@
                 </div>
                 <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
                     <form action="@Url.Action("Step6","Home")">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                         <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
                     </form>
                 </div>
@@ -401,9 +414,16 @@
                             <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
                         </form>
                     </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
+                    <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                         <form action="@Url.Action("Step6","Home")">
-                            <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                            <input type="hidden" value="@Model.userID" name="userID" />
+                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                            <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                            <button class="buttonOrangeForwardStep3"><span>Buchen</span></button>
                         </form>
                     </div>
                 </div>

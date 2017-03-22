@@ -1,4 +1,6 @@
-﻿@{
+﻿@model kundt_front_end.Models.ModelStepClass
+
+@{
     ViewBag.Title = "Home Page";
 }
 <style>
@@ -235,10 +237,12 @@
                 <input type="text" id="standort" />
                 -->
                 <form action="@Url.Action("Step2","Home")" method="post">
+                   
+                    <input type="hidden" id="UserID" name="userID" value="@Model.userID" />
                     <label id="label_von">Von:</label>
-                    <input type="text" id="date_von" name="date_von" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_von" name="date_von_string" placeholder="dd.mm.jjjj" />
                     <label id="label_bis">Bis:</label>
-                    <input type="text" id="date_bis" name="date_bis" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_bis" name="date_bis_string" placeholder="dd.mm.jjjj" />
                     <button id="buttonOrange" class="buttonOrange">Search</button>
                 </form>
             </div>
@@ -251,7 +255,6 @@
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
             <li data-target="#myCarousel" data-slide-to="2"></li>
-
         </ol>
         <div class="carousel-inner">
             <!-- jeweiliges Bild (active sagt an bei welchem es startet)-->

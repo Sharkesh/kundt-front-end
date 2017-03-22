@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="it22AutoverleihModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="it22AutoverleihModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -333,6 +333,14 @@
         <Function Name="fBuchungStatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
           <Parameter Name="idBuchung" Type="int" Mode="In" />
         </Function>
+        <Function Name="pBuchungAnlegen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="varIDKunde" Type="int" Mode="In" />
+          <Parameter Name="varIDAuto" Type="int" Mode="In" />
+          <Parameter Name="varBuchungVon" Type="varchar" Mode="In" />
+          <Parameter Name="varBuchungBis" Type="varchar" Mode="In" />
+          <Parameter Name="varVersicherung" Type="bit" Mode="In" />
+          <Parameter Name="varStorno" Type="bit" Mode="In" />
+        </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAusstattung" EntityType="Self.tblAusstattung" Schema="dbo" store:Type="Tables" />
@@ -407,8 +415,7 @@
             <End Role="tblTyp" EntitySet="tblTyp" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="it22AutoverleihModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -800,6 +807,14 @@
             <End Role="tblAusstattung" EntitySet="tblAusstattung" />
             <End Role="tblAuto" EntitySet="tblAuto" />
           </AssociationSet>
+          <FunctionImport Name="pBuchungAnlegen">
+            <Parameter Name="varIDKunde" Mode="In" Type="Int32" />
+            <Parameter Name="varIDAuto" Mode="In" Type="Int32" />
+            <Parameter Name="varBuchungVon" Mode="In" Type="String" />
+            <Parameter Name="varBuchungBis" Mode="In" Type="String" />
+            <Parameter Name="varVersicherung" Mode="In" Type="Boolean" />
+            <Parameter Name="varStorno" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -976,6 +991,7 @@
               <ScalarProperty Name="IDAuto" ColumnName="FKAuto" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="pBuchungAnlegen" FunctionName="it22AutoverleihModel.Store.pBuchungAnlegen" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

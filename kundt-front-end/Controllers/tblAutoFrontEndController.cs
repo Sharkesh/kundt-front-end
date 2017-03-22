@@ -26,7 +26,7 @@ namespace kundt_front_end.Controllers
         {
             var auto = db.tblAuto.Include(x => x.tblBuchung).Include(x => x.tblAusstattung).Where(x => x.IDAuto == id);
             return View(auto);
-            
+
         }
         public ActionResult Index()
         {
@@ -45,7 +45,6 @@ namespace kundt_front_end.Controllers
         //        var kunde = db.tblKunde.Find(tblauto);
         //        return View(kunde);
         //    }
-            
         //}
         // GET: tblAutoFrontEnd/Details/5
         public ActionResult Details(int? id)
