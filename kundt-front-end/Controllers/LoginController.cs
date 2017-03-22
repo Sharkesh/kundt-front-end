@@ -109,6 +109,7 @@ namespace kundt_front_end.Controllers
                 if (ViewBag.role == 'K')
                 {
                     System.Web.HttpContext.Current.Session["IDUser"] = ViewBag.loginResult;
+                    System.Web.HttpContext.Current.Session["Email"] = email;
                 }
                 else if (ViewBag.role == 'M')
                 {
@@ -196,6 +197,7 @@ namespace kundt_front_end.Controllers
             {
                 //Löscht die Session Variable
                 System.Web.HttpContext.Current.Session["IDUser"] = null;
+                System.Web.HttpContext.Current.Session["Email"] = null;
             }
 
             return RedirectToAction("Index", "Home");

@@ -8,7 +8,7 @@ namespace kundt_front_end.Models
 {
     public class ModelStepClass
     {
-       // public int StepID { get; set; }
+        // public int StepID { get; set; }
         public DateTime date_von { get; set; }
         public DateTime date_bis { get; set; }
 
@@ -29,16 +29,5 @@ namespace kundt_front_end.Models
         public tblKunde kunde { get; set; }
 
         public List<fCarAvailable_Result> carTable { get; set; }
-        //public int IDAuto { get; set; }
-        //public int PS { get; set; }
-        //public int Tueren { get; set; }
-        //public int Sitze { get; set; }
-        //public decimal Mietpreis{ get; set; }
-        //public  byte[] Autobild { get; set; }
-        //public int MyProperty { get; set; }
-
-        
-
-
     }
 }

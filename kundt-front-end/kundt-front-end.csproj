@@ -132,7 +132,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\tblAutoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,12 +215,6 @@
     <Content Include="Content\icons.fallback.css" />
     <Content Include="Content\icons\car.png" />
     <Content Include="Content\icons\doors.png" />
-    <Content Include="Content\images\ui-icons_444444_256x240.png" />
-    <Content Include="Content\images\ui-icons_555555_256x240.png" />
-    <Content Include="Content\images\ui-icons_777620_256x240.png" />
-    <Content Include="Content\images\ui-icons_777777_256x240.png" />
-    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\img\Bild1.jpg" />
     <Content Include="Content\img\Bild2.jpg" />
     <Content Include="Content\img\Bild3.jpg" />
@@ -417,24 +410,11 @@
     <Content Include="Views\Home\Step6.cshtml" />
     <Content Include="Views\Home\Impressum.cshtml" />
     <Content Include="Views\Home\AGB.cshtml" />
-    <Content Include="Views\tblAutoFrontEnd\Create.cshtml" />
-    <Content Include="Views\tblAutoFrontEnd\Delete.cshtml" />
-    <Content Include="Views\tblAutoFrontEnd\Details.cshtml" />
-    <Content Include="Views\tblAutoFrontEnd\Edit.cshtml" />
-    <Content Include="Views\tblAutoFrontEnd\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Registrierung.cshtml" />
-    <Content Include="Views\tblAuto\Create.cshtml" />
-    <Content Include="Views\tblAuto\Delete.cshtml" />
-    <Content Include="Views\tblAuto\Details.cshtml" />
-    <Content Include="Views\tblAuto\Edit.cshtml" />
-    <Content Include="Views\tblAuto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Error\" />
-    <Folder Include="Views\tblAusstattung\" />
-    <Folder Include="Views\tblBuchungs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

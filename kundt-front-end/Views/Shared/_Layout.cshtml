@@ -85,13 +85,13 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            @{if (System.Web.HttpContext.Current.Session["IDUser"] == null)
+                            @{if (System.Web.HttpContext.Current.Session["IDUser"] == null || System.Web.HttpContext.Current.Session["Email"] == null)
                                 {
                                     <li>@Html.ActionLink("Login", "Index", "Login")</li>
                                 }
                                 else if ((int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
                                 {
-                                    <li><a>&lt;Email&gt;</a></li>
+                                    <li><a style="font-size:1.5em;">@System.Web.HttpContext.Current.Session["Email"]</a></li>
                                     <li>@Html.ActionLink("Logout", "Logout", "Login", new { id = (int)System.Web.HttpContext.Current.Session["IDUser"] }, null)</li>
                                 }
                             }
