@@ -27,22 +27,5 @@ namespace kundt_front_end.Models
 
         public int userID { get; set; }
         public tblKunde kunde { get; set; }
-
-
-
-        //public tblAusstattung ausstattung;
-        //public tblAuto auto;
-        //public tblBuchung buchung;
-        //public tblEyecatcher eyecatcher;
-        //public tblHistorie historie;
-        //public tblKategorie kategorie;
-        //public tblKunde kunde;
-        //public tblLand land;
-        //public tblLogin login;
-        //public tblMarke marke;
-        //public tblMitarbeiter mitarbeiter;
-        //public tblPLZOrt plzort;
-        //public tblTreibstoff treibstoff;
-        //public tblTyp typ;
     }
 }
