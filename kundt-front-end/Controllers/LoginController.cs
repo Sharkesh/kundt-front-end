@@ -75,7 +75,7 @@ namespace kundt_front_end.Controllers
         /// POST: Login
         /// </summary>
         [HttpPost]
-        public ActionResult Index(string email, string password)
+        public ActionResult Index(/*ModelStepClass msc,*/string email, string password)
         {
             //PasswordConverter hashed das eingegebene Passwort im SHA256 Format
             password = Helpers.Login.PasswordConverter(password);
@@ -121,7 +121,20 @@ namespace kundt_front_end.Controllers
                 TempData.Add("loginResult", ViewBag.loginResult);
                 //Bei fehler zurück zum Login
             }
-            return Redirect(Convert.ToString(Request.UrlReferrer));
+
+            string source = parseUrl(Convert.ToString(Request.UrlReferrer));
+
+            //TempData["fromLogin"] = msc;
+            return RedirectToAction(source, "Home", null);
+
+            //return Redirect(Convert.ToString(Request.UrlReferrer));
+        }
+
+        private string parseUrl(string url)
+        {
+            return "Index";
+            //liefert urpsrung in form 'view' mit
+            //return view
         }
 
         /// <summary>
@@ -179,6 +192,8 @@ namespace kundt_front_end.Controllers
 
             //Bei einem Redirect funktioniert ViewBag NICHT! Deshalb TempData.
             TempData["registerResult"] = userId;
+
+            //Theoretisch einfach das Selbe wie beim Login(?)
             return Redirect(Convert.ToString(Request.UrlReferrer));
         }
 

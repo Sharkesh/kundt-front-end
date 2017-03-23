@@ -33,6 +33,7 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         public ActionResult Step2(ModelStepClass msc)
         {
+            //Sobald sproc steht, nur entsprechende Autos laden
             var autoListe = db.tblAuto.ToList(); // später auf Eager Loading ändern ?
             msc.autoListe = autoListe;
 
@@ -71,13 +72,6 @@ namespace kundt_front_end.Controllers
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
                 System.Web.HttpContext.Current.Session["IDAuto"] = (int)msc.gebuchtesAutoID;
-
-                //TempDataDictionary finalStepVDD = new TempDataDictionary();
-                // finalStepVDD.Add("userID",msc.userID);
-                // finalStepVDD.Add("gebuchtesAutoID", msc.gebuchtesAutoID);
-                // finalStepVDD.Add("datum_von_string", msc.date_von_string);
-                // finalStepVDD.Add("datum_bis_string", msc.date_bis_string);
-                // return RedirectToAction("Step5", finalStepVDD);
 
                 TempData["msc"] = msc;
                 return RedirectToAction("Step5");
@@ -118,9 +112,9 @@ namespace kundt_front_end.Controllers
             db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
 
-            //Email verschicken
-
             //PDF erstellen
+
+            //Email verschicken
 
             return View();
         }
