@@ -29,5 +29,8 @@ namespace kundt_front_end.Models
         public tblKunde kunde { get; set; }
 
         public List<fCarAvailable_Result> carTable { get; set; }
+        public List<pCarAvailableFinal_Result> carTableFilter { get; set; }
+        public string SitzanzahlFilter { get; set; }
+        public string KlasseFilter { get; set; }
     }
 }

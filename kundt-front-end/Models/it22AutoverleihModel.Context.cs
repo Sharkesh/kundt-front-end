@@ -85,5 +85,26 @@ namespace kundt_front_end.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailable_Result>("[it22AutoverleihEntities].[fCarAvailable](@vonDate, @bisDate)", vonDateParameter, bisDateParameter);
         }
+    
+        public virtual ObjectResult<pCarAvailableFinal_Result> pCarAvailableFinal(string vonDate, string bisDate, string klasse, Nullable<int> sitzanzahl)
+        {
+            var vonDateParameter = vonDate != null ?
+                new ObjectParameter("vonDate", vonDate) :
+                new ObjectParameter("vonDate", typeof(string));
+    
+            var bisDateParameter = bisDate != null ?
+                new ObjectParameter("bisDate", bisDate) :
+                new ObjectParameter("bisDate", typeof(string));
+    
+            var klasseParameter = klasse != null ?
+                new ObjectParameter("klasse", klasse) :
+                new ObjectParameter("klasse", typeof(string));
+    
+            var sitzanzahlParameter = sitzanzahl.HasValue ?
+                new ObjectParameter("sitzanzahl", sitzanzahl) :
+                new ObjectParameter("sitzanzahl", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pCarAvailableFinal_Result>("pCarAvailableFinal", vonDateParameter, bisDateParameter, klasseParameter, sitzanzahlParameter);
+        }
     }
 }

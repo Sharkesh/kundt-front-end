@@ -365,6 +365,12 @@
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
           <Parameter Name="bisDate" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="pCarAvailableFinal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vonDate" Type="varchar" Mode="In" />
+          <Parameter Name="bisDate" Type="varchar" Mode="In" />
+          <Parameter Name="klasse" Type="varchar" Mode="In" />
+          <Parameter Name="sitzanzahl" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblAusstattung" EntityType="Self.tblAusstattung" Schema="dbo" store:Type="Tables" />
@@ -843,8 +849,26 @@
             <Parameter Name="vonDate" Mode="In" Type="String" />
             <Parameter Name="bisDate" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="pCarAvailableFinal" ReturnType="Collection(it22AutoverleihModel.pCarAvailableFinal_Result)">
+            <Parameter Name="vonDate" Mode="In" Type="String" />
+            <Parameter Name="bisDate" Mode="In" Type="String" />
+            <Parameter Name="klasse" Mode="In" Type="String" />
+            <Parameter Name="sitzanzahl" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="fCarAvailable_Result">
+          <Property Type="Int32" Name="IDAuto" Nullable="true" />
+          <Property Type="Int32" Name="PS" Nullable="true" />
+          <Property Type="Int32" Name="Tueren" Nullable="true" />
+          <Property Type="Int32" Name="Sitze" Nullable="true" />
+          <Property Type="Decimal" Name="Mietpreis" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Binary" Name="Autobild" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Kategorie" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Typ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Marke" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ausstattung" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="pCarAvailableFinal_Result">
           <Property Type="Int32" Name="IDAuto" Nullable="true" />
           <Property Type="Int32" Name="PS" Nullable="true" />
           <Property Type="Int32" Name="Tueren" Nullable="true" />
@@ -1035,6 +1059,22 @@
           <FunctionImportMapping FunctionImportName="fCarAvailable" FunctionName="it22AutoverleihModel.Store.fCarAvailable">
             <ResultMapping>
               <ComplexTypeMapping TypeName="it22AutoverleihModel.fCarAvailable_Result">
+                <ScalarProperty Name="IDAuto" ColumnName="IDAuto" />
+                <ScalarProperty Name="PS" ColumnName="PS" />
+                <ScalarProperty Name="Tueren" ColumnName="Tueren" />
+                <ScalarProperty Name="Sitze" ColumnName="Sitze" />
+                <ScalarProperty Name="Mietpreis" ColumnName="Mietpreis" />
+                <ScalarProperty Name="Autobild" ColumnName="Autobild" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
+                <ScalarProperty Name="Ausstattung" ColumnName="Ausstattung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="pCarAvailableFinal" FunctionName="it22AutoverleihModel.Store.pCarAvailableFinal">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="it22AutoverleihModel.pCarAvailableFinal_Result">
                 <ScalarProperty Name="IDAuto" ColumnName="IDAuto" />
                 <ScalarProperty Name="PS" ColumnName="PS" />
                 <ScalarProperty Name="Tueren" ColumnName="Tueren" />
