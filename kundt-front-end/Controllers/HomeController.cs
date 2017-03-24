@@ -38,6 +38,7 @@ namespace kundt_front_end.Controllers
             var autoListe = db.fCarAvailable(msc.date_von_string, msc.date_bis_string).ToList(); // später auf Eager Loading ändern ?
             msc.carTable = autoListe.ToList();
 
+
             //dt string in dt objekt umwandeln
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
