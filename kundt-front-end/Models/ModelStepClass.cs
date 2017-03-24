@@ -8,7 +8,7 @@ namespace kundt_front_end.Models
 {
     public class ModelStepClass
     {
-       // public int StepID { get; set; }
+        // public int StepID { get; set; }
         public DateTime date_von { get; set; }
         public DateTime date_bis { get; set; }
 
@@ -27,5 +27,7 @@ namespace kundt_front_end.Models
 
         public int userID { get; set; }
         public tblKunde kunde { get; set; }
+
+        public List<fCarAvailable_Result> carTable { get; set; }
     }
 }

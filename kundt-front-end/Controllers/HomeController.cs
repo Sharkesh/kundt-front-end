@@ -22,7 +22,6 @@ namespace kundt_front_end.Controllers
             msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
             return View(msc);
         }
-
         /// <summary>
         /// POST: Home/Step2
         /// </summary>
@@ -33,9 +32,11 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         public ActionResult Step2(ModelStepClass msc)
         {
+            // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
+
             //Sobald sproc steht, nur entsprechende Autos laden
-            var autoListe = db.tblAuto.ToList(); // später auf Eager Loading ändern ?
-            msc.autoListe = autoListe;
+            var autoListe = db.fCarAvailable(msc.date_von_string, msc.date_bis_string).ToList(); // später auf Eager Loading ändern ?
+            msc.carTable = autoListe.ToList();
 
             //dt string in dt objekt umwandeln
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -54,7 +55,6 @@ namespace kundt_front_end.Controllers
             //ViewModel.StepID = msc.StepID;
             return View(msc);
         }
-
         public ActionResult Step3(/*int? id,*/ModelStepClass msc/*, DateTime? date_von, DateTime? date_bis*//*, int Ergebnis*/) //Get Object with ID
         {
             //msc.StepID = 3;
@@ -65,7 +65,6 @@ namespace kundt_front_end.Controllers
 
             return View(/*afec.Step3b(id)*/msc);
         }
-
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
             //Wenn eingeloggt dann diesen Step überspringen
@@ -76,6 +75,7 @@ namespace kundt_front_end.Controllers
                 TempData["msc"] = msc;
                 return RedirectToAction("Step5");
             }
+
             //Deprecated
             if (TempData["registerResult"] != null)
             {
@@ -87,7 +87,6 @@ namespace kundt_front_end.Controllers
             }
             return View(msc);
         }
-
         public ActionResult Step5()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
@@ -114,7 +113,7 @@ namespace kundt_front_end.Controllers
 
             //PDF erstellen
 
-            //Email verschicken
+            //Email mit pdf verschicken
 
             return View();
         }

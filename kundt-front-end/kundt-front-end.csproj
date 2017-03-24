@@ -135,6 +135,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\fCarAvailable_Result.cs">
+      <DependentUpon>it22AutoverleihModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\it22AutoverleihModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

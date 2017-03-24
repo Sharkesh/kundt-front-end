@@ -1,0 +1,128 @@
+﻿@model kundt_front_end.Models.tblAuto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblAuto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Baujahr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baujahr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Getriebe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Getriebe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tueren)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tueren)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sitze)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sitze)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MietPreis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MietPreis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VerkaufPreis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VerkaufPreis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kilometerstand)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kilometerstand)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AutoBild)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AutoBild)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Anzeigen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anzeigen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblKategorie.Kategorie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblKategorie.Kategorie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblTreibstoff.Treibstoff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTreibstoff.Treibstoff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tblTyp.Typ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblTyp.Typ)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

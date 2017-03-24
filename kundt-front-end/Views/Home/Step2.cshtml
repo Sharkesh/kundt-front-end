@@ -641,7 +641,7 @@
 
     @* Auto auflistung *@
 
-    @foreach (var auto in Model.autoListe)
+    @foreach (var auto in Model.carTable)
     {
         <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
         <div class="row">
@@ -649,15 +649,15 @@
                 <ul class="ulStep2">
                     <li>
                         <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">@Html.DisplayFor(m => auto.tblKategorie.Kategorie) @Html.DisplayFor(m => auto.tblTyp.Typ)</h3>
-                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.tblKategorie.Kategorie)</h5>
+                            <h3 class="h3step2">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
+                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
                             <img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive imgStep2" />
                         </div>
                         <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">@Html.DisplayFor(m => auto.tblTyp.tblMarke.Marke) @Html.DisplayFor(m => auto.tblTyp.Typ)</h3>
-                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.tblKategorie.Kategorie)</h5>
+                            <h3 class="h3step2">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
+                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
                             <div>Dieses Angebot enthält:</div>
                             <ul>
                                 <li>Alle Kilometer inkl.</li>
@@ -669,8 +669,8 @@
                                 <li>Alle Kilometer inkl.</li>
                                 <li>Testtext</li>
                             </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">@Html.DisplayFor(m => auto.MietPreis) pro Tag</div>
-                            <div class="fontsizeStep2">@(Model.Mietdauer * auto.MietPreis) € Gesamt</div>
+                            <div class="fontsizeStep2 paddingSmallTopStep2">@Html.DisplayFor(m => auto.Mietpreis) pro Tag</div>
+                            <div class="fontsizeStep2">@(Model.Mietdauer * auto.Mietpreis) € Gesamt</div>
                             <div class="paddingSmallTopStep2">
                                 
                                 <form action="@Url.Action("Step3","Home", Model)" method="post">
@@ -683,8 +683,8 @@
                             </div>
                         </div>
                         <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">@Html.DisplayFor(m => auto.MietPreis) pro Tag</div>
-                            <div class="fontsizeStep2">@(Convert.ToInt32(((Model.date_bis - Model.date_von).TotalDays) + 1) * auto.MietPreis) € Gesamt</div>
+                            <div class="fontsizeStep2 paddingtopStep2">@Html.DisplayFor(m => auto.Mietpreis) pro Tag</div>
+                            <div class="fontsizeStep2">@(Convert.ToInt32(((Model.date_bis - Model.date_von).TotalDays) + 1) * auto.Mietpreis) € Gesamt</div>
                             <div class="paddingtopStep2">                                
                                 <form action="@Url.Action("Step3","Home", Model)"  method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />

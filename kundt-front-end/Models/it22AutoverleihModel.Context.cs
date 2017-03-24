@@ -71,5 +71,19 @@ namespace kundt_front_end.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pBuchungAnlegen", varIDKundeParameter, varIDAutoParameter, varBuchungVonParameter, varBuchungBisParameter, varVersicherungParameter, varStornoParameter);
         }
+    
+        [DbFunction("it22AutoverleihEntities", "fCarAvailable")]
+        public virtual IQueryable<fCarAvailable_Result> fCarAvailable(string vonDate, string bisDate)
+        {
+            var vonDateParameter = vonDate != null ?
+                new ObjectParameter("vonDate", vonDate) :
+                new ObjectParameter("vonDate", typeof(string));
+    
+            var bisDateParameter = bisDate != null ?
+                new ObjectParameter("bisDate", bisDate) :
+                new ObjectParameter("bisDate", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailable_Result>("[it22AutoverleihEntities].[fCarAvailable](@vonDate, @bisDate)", vonDateParameter, bisDateParameter);
+        }
     }
 }
