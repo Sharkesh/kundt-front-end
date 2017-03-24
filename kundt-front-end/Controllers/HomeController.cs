@@ -36,37 +36,17 @@ namespace kundt_front_end.Controllers
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             //procs und Validierung der übergebenen Daten
-            int sitze = 5;
+            string sitze = null;
             string klasse = null;
 
-            try
-            {
-                if (!string.IsNullOrEmpty(msc.SitzanzahlFilter))
-                {
-                    sitze = Convert.ToInt32(msc.SitzanzahlFilter);
-                }
-                if (msc.KlasseFilter.Length <= 12 && msc.KlasseFilter.Length > 1)
-                {
-                    klasse = msc.KlasseFilter;
-                }
-            }
-            catch (Exception)
-            {
-                // get exc for error log?
-            }
-            finally
-            {
-                if (sitze > 1 && sitze < 7)
-                {
-                    var autoListe = db.pCarAvailableFinal(msc.date_von_string, msc.date_bis_string, klasse, sitze).ToList(); // später auf Eager Loading ändern ?
-                    msc.carTableFilter = autoListe.ToList(); //Filtert verf. Autos mit Filteroptionen
-                }
-                else
-                {
-                    RedirectToAction("Home", "Index");
-                }
-            }
-           
+            sitze = msc.SitzanzahlFilter;
+            klasse = msc.KlasseFilter;
+
+            
+                var autoListe = db.pCarAvailableFinal(msc.date_von_string, msc.date_bis_string, klasse, sitze).ToList(); // später auf Eager Loading ändern ?
+                msc.carTableFilter = autoListe.ToList(); //Filtert verf. Autos mit Filteroptionen
+            
+
             msc.Mietdauer = Convert.ToInt32((msc.date_bis - msc.date_von).TotalDays) + 1;
             // msc.StepID = 2;
             //ViewBag.date_von = date_von;

@@ -369,7 +369,7 @@
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
           <Parameter Name="bisDate" Type="varchar" Mode="In" />
           <Parameter Name="klasse" Type="varchar" Mode="In" />
-          <Parameter Name="sitzanzahl" Type="int" Mode="In" />
+          <Parameter Name="sitzanzahl" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -853,7 +853,7 @@
             <Parameter Name="vonDate" Mode="In" Type="String" />
             <Parameter Name="bisDate" Mode="In" Type="String" />
             <Parameter Name="klasse" Mode="In" Type="String" />
-            <Parameter Name="sitzanzahl" Mode="In" Type="Int32" />
+            <Parameter Name="sitzanzahl" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="fCarAvailable_Result">
