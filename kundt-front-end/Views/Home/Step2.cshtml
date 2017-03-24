@@ -48,8 +48,7 @@
     .filterActive {
         /*ajx implementieren*/
     }
-    /*Bis zum Kommentar "Bis hierhin drin lassen bitte!", die nächsten Zeilen bitte hier im Style-Tag lassen*/
-
+    /*#region Buttons*/
     .buttonOrangeStep2 {
         background-color: #f99b1c;
         border: none;
@@ -170,8 +169,8 @@
         margin-bottom: 8px;
         text-decoration: none;
     }
-
-    /*Filter Formatierung*/
+    /*#endregion*/
+    /*#region Filter Formatierung*/
     .filterStep2 {
         background: #fff;
         padding: 10px;
@@ -185,6 +184,7 @@
             padding: 10px;
             border: 1px solid #f99b1c;
             color: #f99b1c;
+            cursor: pointer;
         }
 
     .filterSmallStep2 {
@@ -196,7 +196,23 @@
             color: #f99b1c;
         }
 
-    .panel {
+    #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-9 {
+        top: -8px;
+    }
+
+        #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-9 > form > ul > li {
+            height: 38px;
+            padding-top: 8px;
+        }
+
+            #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-9 > form > ul > li > label > span:hover {
+                cursor: pointer;
+            }
+
+            #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-9 > form > ul > li > label:hover {
+                cursor: pointer;
+            }
+    /*.panel {
         border: none;
         background-color: white;
         color: #f99b1c;
@@ -240,8 +256,8 @@
     #content > div > div > form > ul > li > label > a:visited:focus {
         color: #f99b1c;
         border: 1px solid #f99b1c;
-    }
-    /*Filter Small*/
+    }*/
+    /*#region Filter Small*/
     #content > div > center > div > div > div > div > ul > li > a:hover {
         text-decoration: none;
     }
@@ -267,7 +283,9 @@
         color: #f99b1c;
         border: 1px solid #f99b1c;
     }
-    /*Filter Dropdown*/
+    /*Filter Small Ende*/
+    /*#endregion*/
+    /*#region Filter Dropdown*/
     #content > div > div.hidden-xs.hidden-sm.hidden-md.col-lg-3 > form > div > div > button {
         text-shadow: 0 1px 0 #fff;
         background-image: -webkit-linear-gradient(top, #fff 100%, #fff 100%);
@@ -355,9 +373,9 @@
                 font-weight: bold;
             }
     /*Filter Dropdown Ende*/
-    /*Filter Small Ende*/
+    /*#endregion*/
     /*Filter Formatierung Ende*/
-    /*Bis hierhin drin lassen bitte!*/
+    /*#endregion Filter Ende*/
     .ulStep2 {
         margin: auto;
         -webkit-padding-start: 0px;
@@ -373,7 +391,7 @@
         padding-top: 40px;
     }
 
-    /* Progress-Bar */
+    /*#region Progress-Bar */
     .miniButton {
         color: white;
         height: 35px;
@@ -515,8 +533,31 @@
         border-radius: 1px;
         margin-left: 10px;
     }
-    /* Progress-Bar Ende */
+    /*#endregion Progress-Bar Ende */
 </style>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#name").autocomplete({
+            source: function (request, response) { // source muss array of strings oder array of objects mit label/value sein, bei uns function die array of objects erzeugt
+                $.ajax({
+                    url: "/Home/Step2", // wo soll hin gepostet werden
+                    type: "POST", //wie soll gepostet werden
+                    dataType: "json", // welcher datentyp
+                    data: { searchTerm: request.term }, // was soll an den server gepostet werden?
+                    success: function (data) { // wird bei erfolg aufgerufen
+                        response($.map(data, function (item) { // mapt die names der pets auf label/value schema
+                            return { label: item.filterAll, value: item.alle };
+                        }))
+                    }
+                })
+            },
+            messages: { // nicht abgeben
+                noResults: "", results: "" // nicht angeben
+            } // nicht angeben
+        });
+    })
+</script>
 
 <div class="container" style="margin-top:20px">
     @*ProgressBar Implementation Begin*@
@@ -566,27 +607,54 @@
         </div>
     </div>
 
-
     <div class="paddingSmallBotStep2">
-        @*<h2 class="h2step2">Für den Zeitraum von @System.Web.HttpContext.Current.Session["sessionVon"] bis @System.Web.HttpContext.Current.Session["sessionBis"] TestErgebnis @System.Web.HttpContext.Current.Session["sessionErgebnis"] gibt es folgende Angebote!</h2>*@
         <h2 class="h2step2">Für den Zeitraum von @(Model.date_von.ToShortDateString()) bis @(Model.date_bis.ToShortDateString()) gibt es folgende Angebote!</h2>
     </div>
     @*ProgressBar Implementation End*@
     @* Filterung *@
     <div class="hidden-xs hidden-sm hidden-md col-lg-9" style="display:inline-block">
-        <form>
+        <form method="post">
             <ul class="ulStep2">
-                <li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>
-                <li><label><a href="#" class="filterStep2">Kleinwagen</a></label></li>
-                <li><label><a href="#" class="filterStep2">Mittelklasse</a></label></li>
-                <li><label><a href="#" class="filterStep2">Luxusklasse</a></label></li>
+                @*<li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>*@
+                <li id="" class="filterStep2">
+                    <input id="filterAll" type="checkbox" class="" value="alle" checked="checked" style="">
+                    <label for="filterAll">
+                        <span class="">
+                            Alle anzeigen
+                        </span>
+                    </label>
+                </li>
+                <li id="" class="filterStep2">
+                    <input id="filter-small" type="checkbox" class="" value="kleinwagen" checked="" style="display:none">
+                    <label for="filter-small">
+                        <span class="">
+                            Kleinwagen
+                        </span>
+                    </label>
+                </li>
+                <li id="" class="filterStep2">
+                    <input id="filter-middle" type="checkbox" class="" value="mittelklasse" checked="" style="display:none">
+                    <label for="filter-middle">
+                        <span class="">
+                            Mittelklasse
+                        </span>
+                    </label>
+                </li>
+                <li id="" class="filterStep2">
+                    <input id="filter-luxus" type="checkbox" class="" value="luxusklasse" checked="" style="display:none">
+                    <label for="filter-luxus">
+                        <span class="">
+                            Luxusklasse
+                        </span>
+                    </label>
+                </li>
             </ul>
         </form>
     </div>
     <div class="hidden-xs hidden-sm hidden-md col-lg-3">
         <form class="form-inline">
             <div class="form-group">
-                <select id="lunch" class="selectpicker" @*data-live-search="true" *@ title="Sitzanzahl">
+                <select id="lunch" class="selectpicker" title="Sitzanzahl">
                     <option>Alle anzeigen</option>
                     <option>2 Sitze</option>
                     <option>3 Sitze</option>
@@ -661,18 +729,18 @@
                             <div>Dieses Angebot enthält:</div>
                             <ul>
                                 <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
+                                <li>Wintertaugliche Bereifung inkl.</li>
                             </ul>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
                             <ul class="ulcenterStep2 paddingSmallTopStep2">
                                 <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
+                                <li>Wintertaugliche Bereifung inkl.</li>
                             </ul>
                             <div class="fontsizeStep2 paddingSmallTopStep2">@Html.DisplayFor(m => auto.Mietpreis) pro Tag</div>
                             <div class="fontsizeStep2">@(Model.Mietdauer * auto.Mietpreis) € Gesamt</div>
                             <div class="paddingSmallTopStep2">
-                                
+
                                 <form action="@Url.Action("Step3","Home", Model)" method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />
@@ -685,8 +753,8 @@
                         <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
                             <div class="fontsizeStep2 paddingtopStep2">@Html.DisplayFor(m => auto.Mietpreis) pro Tag</div>
                             <div class="fontsizeStep2">@(Convert.ToInt32(((Model.date_bis - Model.date_von).TotalDays) + 1) * auto.Mietpreis) € Gesamt</div>
-                            <div class="paddingtopStep2">                                
-                                <form action="@Url.Action("Step3","Home", Model)"  method="post">
+                            <div class="paddingtopStep2">
+                                <form action="@Url.Action("Step3","Home", Model)" method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />
                                     <button class="buttonOrangeStep2">
@@ -701,773 +769,3 @@
         </div>
     }
 </div>
-
-
-@*Alter, hardgecodeter Inhalt*@
-@*<div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Opel Astra</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Opel Astra</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingtopStep2">
-                                <form action="@Url.Action("Step3","Home", new {id = 2 })">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Jaguar XE</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/jaguar-xe-4d-rot-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Jaguar XE</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingtopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">BMW 5er GT</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/bmw-5er-gt-5d-schwarz-2013.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">BMW 5er GT</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">BMW 3er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/bmw-3er-4d-blau-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">BMW 3er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Alfa Romeo</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Alfa Romeo</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Mercedes-Benz E-Klasse</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/mb-e-klasse-4d-schwarz-2016.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Mercedes-Benz E-Klasse</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">BMW 7er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/bmw-7er-4d-grau-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">BMW 7er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Mazda 6</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/mazda-6-kombi-blau-2013.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Mazda 6</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">BMW X1</h3>
-                            <h5 class="h5Step2">SUV</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/bmw-x1-5d-weiss-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">BMW X1</h3>
-                            <h5 class="h5Step2">SUV</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">VW Polp</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/vw-polo-5d-schwarz-2016.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">VW Polo</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Mini Cooper</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/mini-cooper-3d-schwarz-2014.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Mini Cooper</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Audi A6</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/audi-a6-4d-schwarz-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Audi A6</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">BMW 2er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/bmw-2er-2d-weiss-2014.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">BMW 2er</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">VW Golf 7</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/vw-golf-7-5d-silber-2012.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">VW Golf 7</h3>
-                            <h5 class="h5Step2">Limousine</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
-        <div class="row">
-            <div class="paddingtopStep2">
-                <ul class="ulStep2">
-                    <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <h3 class="h3step2">Ford Focus</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/ford-focus-kombi-blau-2015.png" class="img-responsive imgStep2" />
-                        </div>
-                        <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
-                            <h3 class="h3step2">Ford Focus</h3>
-                            <h5 class="h5Step2">Kombi</h5>
-                            <div>Dieses Angebot enthält:</div>
-                            <ul>
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
-                            <ul class="ulcenterStep2 paddingSmallTopStep2">
-                                <li>Alle Kilometer inkl.</li>
-                                <li>Testtext</li>
-                            </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
-                            <div class="fontsizeStep2 paddingtopStep2">76,31 € pro Tag</div>
-                            <div class="fontsizeStep2">456,23 € Gesamt</div>
-                            <div class="paddingSmallTopStep2">
-                                <form action="@Url.Action("Step3","Home")" method="post">
-                                    <button class="buttonOrangeStep2">
-                                        <span>Fahrzeug wählen</span>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>*@
