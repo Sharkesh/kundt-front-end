@@ -267,23 +267,23 @@ namespace kundt_front_end.Helpers
                     con.Close();
                 }
             }
-            using (MailMessage mm = new MailMessage("test.sharkesh@gmail.com", email)) //FILLER
+            using (MailMessage mm = new MailMessage(/*"noreply@sharkesh.com"*/"test.sharkesh@gmail.com", email))
             {
                 mm.Subject = "Account Aktivierung";
                 //Nachrichten Text wird "zusammengebaut".
                 string body = "<p>Hallo,";
                 body += "<br /><br />Bitte klicke auf den folgenden Link um die Registrierung abzuschließen.";
-                body += "<br /><a href='https://localhost:44322/Login?ActivationCode=" + activationCode + "'>Klicke hier um deinen Account zu Aktivieren.</a>"; //TEMP
+                body += "<br /><a href='https://localhost:44322/Login?ActivationCode=" + activationCode + "'>Klicke hier um deinen Account zu Aktivieren.</a>";
                 body += "<br /><br />Danke!</p>";
                 //Nachrichten Text wird an das MailMessage Objekt gehängt.
                 mm.Body = body;
                 mm.IsBodyHtml = true;
                 //Logindaten für den SmtpClient weiter unten.
-                NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!"); //FILLER
+                NetworkCredential NetworkCred = new NetworkCredential(/*"noreply"*/"test.sharkesh@gmail.com", /*"~S[%a(1<`(eN"*/"123user!");
                 //Verbindungs Variablen werden gesetzt.
-                SmtpClient smtp = new SmtpClient() //FILLER
+                SmtpClient smtp = new SmtpClient()
                 {
-                    Host = "smtp.gmail.com",
+                    Host = "smtp.gmail.com"/*"cloud.sharkesh.com"*/,
                     EnableSsl = true,
                     UseDefaultCredentials = true,
                     Credentials = NetworkCred,
