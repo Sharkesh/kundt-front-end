@@ -63,7 +63,7 @@
         border-radius: 4px;
     }
 
-    .buttonOrangeStep2filter {
+    .filterButton {
         background-color: white;
         border: #dbdbdb;
         color: #dbdbdb;
@@ -77,14 +77,14 @@
         border-radius: 4px;
     }
 
-        .buttonOrangeStep2filter span {
+        .filterButton span {
             cursor: pointer;
             display: inline-block;
             position: relative;
             transition: 0.3s;
         }
 
-            .buttonOrangeStep2filter span:after {
+            .filterButton span:after {
                 
                 position: absolute;
                 opacity: 0;
@@ -93,16 +93,16 @@
                 font-size: 15px;
             }
 
-        .buttonOrangeStep2filter:hover span {
+        .filterButton:hover span {
             font-size: 18px;
         }
 
-            .buttonOrangeStep2filter:hover span:after {
+            .filterButton:hover span:after {
                 opacity: 1;
                 bottom: 0;
             }
 
-        .buttonOrangeStep2filter:hover {
+        .filterButton:hover {
             background-color: white;
             border: #f99b1c;
             color: #f99b1c;
@@ -145,8 +145,8 @@
         border: none;
         color: #ffffff;
         font-size: 15px;
-        height: 40px;
-        width: 150px;
+        height: 50px;
+        width: 200px;
         font-weight: 700;
         letter-spacing: .5px;
         text-align: center;
@@ -704,25 +704,25 @@
         @*Testing post with filter*@
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="" name="KlasseFilter" />
-            <button class="buttonOrangeStep2filter" style="float:left">
+            <button class="filterButton" style="float:left">
                 <span>Alle anzeigen</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="kleinwagen" name="KlasseFilter" />
-            <button class="buttonOrangeStep2filter" style="float:left">
+            <button class="filterButton" style="float:left">
                 <span>Kleinwagen</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="mittelklasse" name="KlasseFilter" />
-            <button class="buttonOrangeStep2filter" style="float:left">
+            <button class="filterButton" style="float:left">
                 <span>Mittelklasse</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="luxusklasse" name="KlasseFilter" />
-            <button class="buttonOrangeStep2filter" style="float:left">
+            <button class="filterButton" style="float:left">
                 <span>Luxusklasse</span>
             </button>
         </form>

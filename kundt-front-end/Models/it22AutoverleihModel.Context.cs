@@ -106,5 +106,27 @@ namespace kundt_front_end.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pCarAvailableFinal_Result>("pCarAvailableFinal", vonDateParameter, bisDateParameter, klasseParameter, sitzanzahlParameter);
         }
+    
+        [DbFunction("it22AutoverleihEntities", "fCarAvailableFilterIncluded")]
+        public virtual IQueryable<fCarAvailableFilterIncluded_Result> fCarAvailableFilterIncluded(string vonDate, string bisDate, string klasse, string sitzanzahl)
+        {
+            var vonDateParameter = vonDate != null ?
+                new ObjectParameter("vonDate", vonDate) :
+                new ObjectParameter("vonDate", typeof(string));
+    
+            var bisDateParameter = bisDate != null ?
+                new ObjectParameter("bisDate", bisDate) :
+                new ObjectParameter("bisDate", typeof(string));
+    
+            var klasseParameter = klasse != null ?
+                new ObjectParameter("klasse", klasse) :
+                new ObjectParameter("klasse", typeof(string));
+    
+            var sitzanzahlParameter = sitzanzahl != null ?
+                new ObjectParameter("sitzanzahl", sitzanzahl) :
+                new ObjectParameter("sitzanzahl", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailableFilterIncluded_Result>("[it22AutoverleihEntities].[fCarAvailableFilterIncluded](@vonDate, @bisDate, @klasse, @sitzanzahl)", vonDateParameter, bisDateParameter, klasseParameter, sitzanzahlParameter);
+        }
     }
 }

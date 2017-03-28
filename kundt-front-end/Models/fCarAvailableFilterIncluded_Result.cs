@@ -11,7 +11,7 @@ namespace kundt_front_end.Models
 {
     using System;
     
-    public partial class pCarAvailableFinal_Result
+    public partial class fCarAvailableFilterIncluded_Result
     {
         public Nullable<int> IDAuto { get; set; }
         public Nullable<int> PS { get; set; }
