@@ -353,6 +353,27 @@
             </CollectionType>
           </ReturnType>
         </Function>
+        <Function Name="fCarAvailableFilterIncluded" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="vonDate" Type="varchar" Mode="In" />
+          <Parameter Name="bisDate" Type="varchar" Mode="In" />
+          <Parameter Name="klasse" Type="varchar" Mode="In" />
+          <Parameter Name="sitzanzahl" Type="varchar" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="IDAuto" Type="int" />
+                <Property Name="PS" Type="int" />
+                <Property Name="Tueren" Type="int" />
+                <Property Name="Sitze" Type="int" />
+                <Property Name="Mietpreis" Type="decimal" Precision="10" Scale="2" />
+                <Property Name="Autobild" Type="varbinary" MaxLength="1" />
+                <Property Name="Kategorie" Type="varchar" MaxLength="50" />
+                <Property Name="Typ" Type="varchar" MaxLength="50" />
+                <Property Name="Marke" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <Function Name="pBuchungAnlegen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="varIDKunde" Type="int" Mode="In" />
           <Parameter Name="varIDAuto" Type="int" Mode="In" />
@@ -369,7 +390,7 @@
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
           <Parameter Name="bisDate" Type="varchar" Mode="In" />
           <Parameter Name="klasse" Type="varchar" Mode="In" />
-          <Parameter Name="sitzanzahl" Type="int" Mode="In" />
+          <Parameter Name="sitzanzahl" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -853,7 +874,13 @@
             <Parameter Name="vonDate" Mode="In" Type="String" />
             <Parameter Name="bisDate" Mode="In" Type="String" />
             <Parameter Name="klasse" Mode="In" Type="String" />
-            <Parameter Name="sitzanzahl" Mode="In" Type="Int32" />
+            <Parameter Name="sitzanzahl" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="fCarAvailableFilterIncluded" IsComposable="true" ReturnType="Collection(it22AutoverleihModel.fCarAvailableFilterIncluded_Result)">
+            <Parameter Name="vonDate" Mode="In" Type="String" />
+            <Parameter Name="bisDate" Mode="In" Type="String" />
+            <Parameter Name="klasse" Mode="In" Type="String" />
+            <Parameter Name="sitzanzahl" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="fCarAvailable_Result">
@@ -878,7 +905,17 @@
           <Property Type="String" Name="Kategorie" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Typ" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Marke" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Ausstattung" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="fCarAvailableFilterIncluded_Result">
+          <Property Type="Int32" Name="IDAuto" Nullable="true" />
+          <Property Type="Int32" Name="PS" Nullable="true" />
+          <Property Type="Int32" Name="Tueren" Nullable="true" />
+          <Property Type="Int32" Name="Sitze" Nullable="true" />
+          <Property Type="Decimal" Name="Mietpreis" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Binary" Name="Autobild" Nullable="true" MaxLength="1" />
+          <Property Type="String" Name="Kategorie" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Typ" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Marke" Nullable="true" MaxLength="50" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1084,7 +1121,21 @@
                 <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
                 <ScalarProperty Name="Typ" ColumnName="Typ" />
                 <ScalarProperty Name="Marke" ColumnName="Marke" />
-                <ScalarProperty Name="Ausstattung" ColumnName="Ausstattung" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="fCarAvailableFilterIncluded" FunctionName="it22AutoverleihModel.Store.fCarAvailableFilterIncluded">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="it22AutoverleihModel.fCarAvailableFilterIncluded_Result">
+                <ScalarProperty Name="IDAuto" ColumnName="IDAuto" />
+                <ScalarProperty Name="PS" ColumnName="PS" />
+                <ScalarProperty Name="Tueren" ColumnName="Tueren" />
+                <ScalarProperty Name="Sitze" ColumnName="Sitze" />
+                <ScalarProperty Name="Mietpreis" ColumnName="Mietpreis" />
+                <ScalarProperty Name="Autobild" ColumnName="Autobild" />
+                <ScalarProperty Name="Kategorie" ColumnName="Kategorie" />
+                <ScalarProperty Name="Typ" ColumnName="Typ" />
+                <ScalarProperty Name="Marke" ColumnName="Marke" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

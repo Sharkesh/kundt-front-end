@@ -587,123 +587,121 @@
                                     <p class="text-danger" id="errorMessage">Es existiert bereits ein Account mit dieser Email!</p>
                                 </div>
                             </div>
-                            }
-                            <label for="sex" class="col-md-3 control-label collapseForm">Anrede:</label>
-                            <div class="col-md-9">
-                                @*Box Anrede*@
-                                <select id="sex" name="sex" class="form-control collapseForm">
-                                    <option value="" selected disabled hidden>Anrede</option>
-                                    <option value="Herr">Herr</option>
-                                    <option value="Frau">Frau</option>
-                                </select>
-                            </div>
-                            <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
-                            <div class="col-md-9">
-                                @*Box Vorname*@
-                                <input type="text" class="form-control collapseForm" id="prename" name="prename" placeholder="Max">
-                            </div>
-                            <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
-                            <div class="col-md-9">
-                                @*Box Nachname*@
-                                <input type="text" class="form-control collapseForm" id="sirname" name="sirname" placeholder="Mustermann">
-                            </div>
-                            @if (ViewBag.registerResult == -2)
-                            {
+                        }
+                        <label for="sex" class="col-md-3 control-label collapseForm">Anrede:</label>
+                        <div class="col-md-9">
+                            @*Box Anrede*@
+                            <select id="sex" name="sex" class="form-control collapseForm" required>
+                                <option value="" selected disabled hidden>Anrede</option>
+                                <option value="Herr">Herr</option>
+                                <option value="Frau">Frau</option>
+                            </select>
+                        </div>
+                        <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
+                        <div class="col-md-9">
+                            @*Box Vorname*@
+                            <input type="text" class="form-control collapseForm" id="prename" name="prename" placeholder="Max" required>
+                        </div>
+                        <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
+                        <div class="col-md-9">
+                            @*Box Nachname*@
+                            <input type="text" class="form-control collapseForm" id="sirname" name="sirname" placeholder="Mustermann" required>
+                        </div>
+                        <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
+                        <div class="col-md-9">
+                            @*Box Adresse*@
+                            <input type="text" class="form-control collapseForm" id="adress" name="adress" placeholder="Musterstraße 23" required>
+                        </div>
+                        @if (ViewBag.registerResult == -2)
+                        {
                             <div class="col-md-offset-3 col-md-9">
                                 <p class="text-danger" id="errorMessage">Die eingegebene PLZ oder der eingegebene Ort ist nicht korrekt.</p>
                             </div>
-                            }
-                            <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
-                            <div class="col-md-9">
-                                @*Box Adresse*@
-                                <input type="text" class="form-control collapseForm" id="adress" name="adress" placeholder="Musterstraße 23">
-                            </div>
-                            <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
-                            <div class="col-md-9">
-                                @*Box Ort*@
-                                <input type="text" class="form-control collapseForm" id="city" name="city" placeholder="Wien">
-                            </div>
-                            <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
-                            <div class="col-md-9">
-                                @*Box PLZ*@
-                                <input type="text" class="form-control collapseForm" id="postcode" name="postcode" placeholder="1234">
-                            </div>
-                            <label for="telephone" class="col-md-3 control-label collapseForm">Telefon:</label>
-                            <div class="col-md-9">
-                                @*Box Telefon*@
-                                <input type="text" class="form-control collapseForm" id="telephone" name="telephone" placeholder="0123 4567890">
-                            </div>
-                            <label for="bDay" class="col-md-3 control-label collapseForm">Geburtstag:</label>
-                            <div class="col-md-9 form-inline">
-                                @*Box Telefon*@
-                                <select class="form-control collapseForm" id="bDay" name="bDay">
-                                    <option value="" selected disabled hidden>Tag</option>
-                                    @{
-                                        for (int i = 1; i < 32; i++)
-                                        {
-                                    <option value="@i">@i</option>
-                                        }
-                                    }
-                                </select>
-                                <select class="form-control collapseForm" id="bMonth" name="bMonth">
-                                    <option value="" selected disabled hidden>Monat</option>
-                                    @{
-                                        string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-                                        for (int i = 0; i <= months.Length - 2; i++)
-                                        {
-                                    <option value="@(i+1)">@months[i]</option>
-                                        }
-                                    }
-                                </select>
-                                <select class="form-control collapseForm" id="bYear" name="bYear">
-                                    <option value="" selected disabled hidden>Jahr</option>
-                                    @{
-                                        DateTime today = new DateTime();
-                                        today = DateTime.Today;
-                                        for (int i = today.Year - 17; i > today.Year - 130; i--)
-                                        {
-                                    <option value="@i">@i</option>
-                                        }
-                                    }
-                                </select>
-                            </div>
-                            <label for="pass" class="col-md-3 control-label collapseForm">Reisepassnummer:</label>
-                            <div class="col-md-9">
-                                @*Box ReisepassNr*@
-                                <input type="text" class="form-control collapseForm" id="pass" name="pass" placeholder="012345">
-                            </div>
-                            <label for="emailRegister" class="col-md-3 control-label collapseForm">Email:</label>
-                            <div class="col-md-9">
-                                @*Box Email*@
-                                <input type="email" class="form-control collapseForm" id="emailRegister" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Register'), ValidateInput('Register')">
-                            </div>
-                            <label for="emailConfirmation" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
-                            <div class="col-md-9">
-                                @*Box Email bestätigen*@
-                                <input type="email" class="form-control collapseForm" id="emailConfirmation" placeholder="max.mustermann@kundt.at">
-                            </div>
-                            <label for="passwordRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
-                            <div class="col-md-9">
-                                @*Box Passwort*@
-                                <input type="password" class="form-control collapseForm" id="passwordRegister" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Register'), ValidateInput('Register')">
-                            </div>
-                            <label for="passwordConfirmation" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
-                            <div class="col-md-9">
-                                @*Box Passwort bestätigen*@
-                                <input type="password" class="form-control collapseForm" id="passwordConfirmation" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordConfirmationCheck('Register'), ValidateInput('Register')">
-                            </div>
+                        }
+                        <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
+                        <div class="col-md-9">
+                            @*Box Ort*@
+                            <input type="text" class="form-control collapseForm" id="city" name="city" placeholder="Wien" required>
                         </div>
-                        @*Button Regestieren2*@
-                        <div class="row">
-                            <div class="hidden-md hidden-lg" style="position: relative; left: 15px;">
-                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                            </div>
-                            <div class="hidden-sm hidden-xs hidden-lg" style="position: relative; left: 118px;">
-                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                            </div>
-                            <div class="hidden-sm hidden-xs hidden-md" style="position: relative; left: 142px;">
-                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                            </div>
+                        <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
+                        <div class="col-md-9">
+                            @*Box PLZ*@
+                            <input type="number" class="form-control collapseForm" id="postcode" name="postcode" placeholder="1234" required>
+                        </div>
+                        <label for="telephone" class="col-md-3 control-label collapseForm">Telefon:</label>
+                        <div class="col-md-9">
+                            @*Box Telefon*@
+                            <input type="text" class="form-control collapseForm" id="telephone" name="telephone" placeholder="0123 4567890" required>
+                        </div>
+                        <label for="bDay" class="col-md-3 control-label collapseForm">Geburtstag:</label>
+                        <div class="col-md-9 form-inline">
+                            @*Box Geburtstag*@
+                            <select class="form-control collapseForm" id="bDay" name="bDay" required>
+                                <option value="" selected disabled hidden>Tag</option>
+                                @{
+                                    for (int i = 1; i < 32; i++)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                            <select class="form-control collapseForm" id="bMonth" name="bMonth" required>
+                                <option value="" selected disabled hidden>Monat</option>
+                                @{
+                                    string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+                                    for (int i = 0; i <= months.Length - 2; i++)
+                                    {
+                                        <option value="@(i+1)">@months[i]</option>
+                                    }
+                                }
+                            </select>
+                            <select class="form-control collapseForm" id="bYear" name="bYear" required>
+                                <option value="" selected disabled hidden>Jahr</option>
+                                @{
+                                    DateTime today = new DateTime();
+                                    today = DateTime.Today;
+                                    for (int i = today.Year - 17; i > today.Year - 130; i--)
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <label for="pass" class="col-md-3 control-label collapseForm">Reisepassnummer::</label>
+                        <div class="col-md-9">
+                            @*Box ReisepassNr*@
+                            <input type="number" class="form-control collapseForm" id="pass" name="pass" placeholder="012345" required>
+                        </div>
+                        <label for="emailRegister" class="col-md-3 control-label collapseForm">Email:</label>
+                        <div class="col-md-9">
+                            @*Box Email*@
+                            <input type="text" class="form-control collapseForm" id="emailRegister" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Register'), ValidateInput('Register')">
+                        </div>
+                        <label for="emailConfirmation" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
+                        <div class="col-md-9">
+                            @*Box Email bestätigen*@
+                            <input type="text" class="form-control collapseForm" id="emailConfirmation" placeholder="max.mustermann@kundt.at" onkeyup="EmailConfirmation(), ValidateInput('Register')">
+                        </div>
+                        <label for="passwordRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
+                        <div class="col-md-9">
+                            @*Box Passwort*@
+                            <input type="password" class="form-control collapseForm" id="passwordRegister" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Register'), ValidateInput('Register')">
+                        </div>
+                        <label for="passwordConfirmation" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
+                        <div class="col-md-9">
+                            @*Box Passwort bestätigen*@
+                            <input type="password" class="form-control collapseForm" id="passwordConfirmation" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordConfirmationCheck(), ValidateInput('Register')">
+                        </div>
+                    </div>
+                    @*Button Registieren2*@
+                    <div class="row">
+
+                        <div class="hidden-md hidden-lg" style="position: relative; left: 15px;">
+                            <button type="submit" id="submitRegisterMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
+                        </div>
+                        <div class="hidden-sm hidden-xs" style="position: relative; left: 118px;">
+                            <button type="submit" id="submitRegister" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
+>>>>>>> origin/saruman
                         </div>
                     </div>
                 </form>

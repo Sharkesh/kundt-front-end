@@ -63,43 +63,94 @@
         border-radius: 4px;
     }
 
-        .buttonOrangeStep2 span {
+    .filterButton {
+        background-color: white;
+        border: #dbdbdb;
+        color: #dbdbdb;
+        font-size: 15px;
+        height: 40px;
+        width: 150px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .filterButton span {
             cursor: pointer;
             display: inline-block;
             position: relative;
-            transition: 0.5s;
+            transition: 0.3s;
         }
 
-            .buttonOrangeStep2 span:after {
-                content: '\00bb';
+            .filterButton span:after {
+                
                 position: absolute;
                 opacity: 0;
                 top: 0;
-                right: -30px;
-                transition: 0.5s;
+                transition: 0.3s;
                 font-size: 15px;
             }
 
-        .buttonOrangeStep2:hover span {
-            padding-right: 15px;
+        .filterButton:hover span {
+            font-size: 18px;
         }
 
-            .buttonOrangeStep2:hover span:after {
+            .filterButton:hover span:after {
                 opacity: 1;
-                right: 0;
+                bottom: 0;
             }
 
-        .buttonOrangeStep2:hover {
-            background-color: #f99b1c;
-            border: none;
-            color: #ffffff;
+        .filterButton:hover {
+            background-color: white;
+            border: #f99b1c;
+            color: #f99b1c;
             font-size: 15px;
-            height: 50px;
-            width: 200px;
+            height: 40px;
+            width: 150px;
             font-weight: 700;
             letter-spacing: .5px;
             text-align: center;
         }
+
+    .buttonOrangeStep2 span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+        .buttonOrangeStep2 span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -30px;
+            transition: 0.5s;
+            font-size: 15px;
+        }
+
+    .buttonOrangeStep2:hover span {
+        padding-right: 15px;
+    }
+
+        .buttonOrangeStep2:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+    .buttonOrangeStep2:hover {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+    }
 
     .buttonOrangeReturnStep2 {
         background-color: #f99b1c;
@@ -590,49 +641,75 @@
     @*ProgressBar Implementation End*@
     @* Filterung *@
     <div class="hidden-xs hidden-sm hidden-md col-lg-9" style="display:inline-block">
-        <form method="post">
-            <ul class="ulStep2">
-                @*<li><label><a href="#" class="filterStep2">Alle anzeigen</a></label></li>*@
-                <li id="" class="filterStep2">
-                    <input id="filterAll" type="checkbox" class="" value="alle" checked="checked" style="">
-                    <label for="filterAll">
-                        <span class="">
-                            Alle anzeigen
-                        </span>
-                    </label>
-                </li>
-                <li id="" class="filterStep2">
-                    <input id="filter-small" type="checkbox" class="" value="kleinwagen" checked="" style="display:none">
-                    <label for="filter-small">
-                        <span class="">
-                            Kleinwagen
-                        </span>
-                    </label>
-                </li>
-                <li id="" class="filterStep2">
-                    <input id="filter-middle" type="checkbox" class="" value="mittelklasse" checked="" style="display:none">
-                    <label for="filter-middle">
-                        <span class="">
-                            Mittelklasse
-                        </span>
-                    </label>
-                </li>
-                <li id="" class="filterStep2">
-                    <input id="filter-luxus" type="checkbox" class="" value="luxusklasse" checked="" style="display:none">
-                    <label for="filter-luxus">
-                        <span class="">
-                            Luxusklasse
-                        </span>
-                    </label>
-                </li>
-            </ul>
+        @*<form id="test" method="post">
+                <ul class="ulStep2">
+
+                    <li id="test" class="filterStep2">
+                        <input formaction="@Url.Action("Step2","Home",Model)" id="filterAll" type="checkbox" name="KlasseFilter" value="" checked="checked" style="">
+                        <label for="filterAll">
+                            <span class="">
+                                Alle anzeigen
+                            </span>
+                        </label>
+                    </li>
+                    <li id="test" class="filterStep2">
+                        <input formaction="@Url.Action("Step2","Home",Model)" id="filter-small" type="checkbox" name="KlasseFilter" value="kleinwagen" checked="" style="display:none">
+                        <label for="filter-small">
+                            <span class="">
+                                Kleinwagen
+                            </span>
+                        </label>
+                    </li>
+                    <li id="test" class="filterStep2">
+                        <input id="filter-middle" type="checkbox" name="KlasseFilter" value="mittelklasse" checked="" style="display:none">
+                        <label for="filter-middle">
+                            <span class="">
+                                Mittelklasse
+                            </span>
+                        </label>
+                    </li>
+                    <li id="test" class="filterStep2">
+                        <input id="filter-luxus" type="checkbox" name="KlasseFilter" value="luxusklasse" checked="" style="display:none">
+                        <label for="filter-luxus">
+                            <span class="">
+                                Luxusklasse
+                            </span>
+                        </label>
+                    </li>
+                </ul>
+            </form>*@
+        @*Testing post with filter*@
+        <form action="@Url.Action("Step2","Home", Model)" method="post">
+            <input type="hidden" value="" name="KlasseFilter" />
+            <button class="filterButton" style="float:left">
+                <span>Alle anzeigen</span>
+            </button>
         </form>
+        <form action="@Url.Action("Step2","Home", Model)" method="post">
+            <input type="hidden" value="kleinwagen" name="KlasseFilter" />
+            <button class="filterButton" style="float:left">
+                <span>Kleinwagen</span>
+            </button>
+        </form>
+        <form action="@Url.Action("Step2","Home", Model)" method="post">
+            <input type="hidden" value="mittelklasse" name="KlasseFilter" />
+            <button class="filterButton" style="float:left">
+                <span>Mittelklasse</span>
+            </button>
+        </form>
+        <form action="@Url.Action("Step2","Home", Model)" method="post">
+            <input type="hidden" value="luxusklasse" name="KlasseFilter" />
+            <button class="filterButton" style="float:left">
+                <span>Luxusklasse</span>
+            </button>
+        </form>
+
     </div>
     <div class="hidden-xs hidden-sm hidden-md col-lg-3">
-        <form class="form-inline">
+        <form method="post" class="form-inline">
             <div class="form-group">
                 <select id="lunch" class="selectpicker" title="Sitzanzahl">
-                    <option>Alle anzeigen</option>
+                    <option> Alle anzeigen</option>
                     <option>2 Sitze</option>
                     <option>3 Sitze</option>
                     <option>4 Sitze</option>
