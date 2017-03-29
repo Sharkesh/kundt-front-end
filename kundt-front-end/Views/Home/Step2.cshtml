@@ -45,9 +45,6 @@
         margin: auto;
     }
 
-    .filterActive {
-        /*ajx implementieren*/
-    }
     /*#region Buttons*/
     .buttonOrangeStep2 {
         background-color: #f99b1c;
@@ -63,7 +60,7 @@
         border-radius: 4px;
     }
 
-    .filterButton {
+    /*.filterButton {
         background-color: white;
         border: #dbdbdb;
         color: #dbdbdb;
@@ -112,7 +109,7 @@
             font-weight: 700;
             letter-spacing: .5px;
             text-align: center;
-        }
+        }*/
 
     .buttonOrangeStep2 span {
         cursor: pointer;
@@ -228,6 +225,8 @@
         border: 1px solid #CCC;
         color: darkgrey;
         cursor: pointer;
+        margin-right:10px;
+        font-weight:bold;
     }
 
         .filterStep2:hover {
@@ -641,69 +640,31 @@
     @*ProgressBar Implementation End*@
     @* Filterung *@
     <div class="hidden-xs hidden-sm hidden-md col-lg-9" style="display:inline-block">
-        @*<form id="test" method="post">
-                <ul class="ulStep2">
-
-                    <li id="test" class="filterStep2">
-                        <input formaction="@Url.Action("Step2","Home",Model)" id="filterAll" type="checkbox" name="KlasseFilter" value="" checked="checked" style="">
-                        <label for="filterAll">
-                            <span class="">
-                                Alle anzeigen
-                            </span>
-                        </label>
-                    </li>
-                    <li id="test" class="filterStep2">
-                        <input formaction="@Url.Action("Step2","Home",Model)" id="filter-small" type="checkbox" name="KlasseFilter" value="kleinwagen" checked="" style="display:none">
-                        <label for="filter-small">
-                            <span class="">
-                                Kleinwagen
-                            </span>
-                        </label>
-                    </li>
-                    <li id="test" class="filterStep2">
-                        <input id="filter-middle" type="checkbox" name="KlasseFilter" value="mittelklasse" checked="" style="display:none">
-                        <label for="filter-middle">
-                            <span class="">
-                                Mittelklasse
-                            </span>
-                        </label>
-                    </li>
-                    <li id="test" class="filterStep2">
-                        <input id="filter-luxus" type="checkbox" name="KlasseFilter" value="luxusklasse" checked="" style="display:none">
-                        <label for="filter-luxus">
-                            <span class="">
-                                Luxusklasse
-                            </span>
-                        </label>
-                    </li>
-                </ul>
-            </form>*@
         @*Testing post with filter*@
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="" name="KlasseFilter" />
-            <button class="filterButton" style="float:left">
+            <button class="filterStep2" style="float:left">
                 <span>Alle anzeigen</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="kleinwagen" name="KlasseFilter" />
-            <button class="filterButton" style="float:left">
+            <button class="filterStep2" style="float:left">
                 <span>Kleinwagen</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="mittelklasse" name="KlasseFilter" />
-            <button class="filterButton" style="float:left">
+            <button class="filterStep2" style="float:left">
                 <span>Mittelklasse</span>
             </button>
         </form>
         <form action="@Url.Action("Step2","Home", Model)" method="post">
             <input type="hidden" value="luxusklasse" name="KlasseFilter" />
-            <button class="filterButton" style="float:left">
+            <button class="filterStep2" style="float:left">
                 <span>Luxusklasse</span>
             </button>
         </form>
-
     </div>
     <div class="hidden-xs hidden-sm hidden-md col-lg-3">
         <form method="post" class="form-inline">

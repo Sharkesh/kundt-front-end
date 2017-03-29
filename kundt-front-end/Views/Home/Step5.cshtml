@@ -61,6 +61,8 @@
         border-style: none;
         opacity: 0.3;
         border-bottom: solid 1px;
+        border-left: solid 1px;
+        border-left-color: antiquewhite;
         border-bottom-color: antiquewhite;
         margin: auto 0% auto 1%;
     }
@@ -136,7 +138,7 @@
     }
 
     .containerBar {
-        width: 35%;
+        width: 65%;
         margin-left: 0px;
         border-left: solid 3px;
         border-left-color: #f99b1c;
@@ -146,8 +148,7 @@
         margin-left: 10px;
     }
     /* Progress-Bar Ende */
-
-    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
+    /*#region Buttons*/
     .buttonOrangeForwardStep3 {
         background-color: #f99b1c;
         border: none;
@@ -255,26 +256,27 @@
     .col-lg-6 > p > span {
         float: right;
     }
+    /*#endregion*/
 </style>
 
 <div class="container" style="margin-top:20px;">
     @* Progress Bar *@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <form action="@Url.Action("Step2","Home")">
+            <form action="@Url.Action("Step2", "Home")">
                 <button class="myButton">1</button>
             </form>
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
-            <form action="@Url.Action("Step3","Home")">
+            <form action="@Url.Action("Step3", "Home")">
                 <button class="myButton">2</button>
             </form>
             <h5>Detailansicht</h5>
         </div>
         <div class="col-sm-2">
-            <form action="@Url.Action("Step4","Home")">
-                <button class="myButton">3</button>
+            <form action="@Url.Action("Step4", "Home")">
+                <button class="myButtonOp opacity noCurs">3</button>
             </form>
             <h5>Anmeldung</h5>
         </div>
@@ -295,17 +297,17 @@
     </div>
     <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center;padding-bottom:20px;height:45px;">
         <div class="col-xs-2 col-xs-offset-1">
-            <form action="@Url.Action("Step2","Home")">
+            <form action="@Url.Action("Step2", "Home")">
                 <button class="miniButton">1</button>
             </form>
         </div>
         <div class="col-xs-2">
-            <form action="@Url.Action("Step3","Home")">
+            <form action="@Url.Action("Step3", "Home")">
                 <button class="miniButton">2</button>
             </form>
         </div>
         <div class="col-xs-2">
-            <form action="@Url.Action("Step4","Home")">
+            <form action="@Url.Action("Step4", "Home")">
                 <button class="miniButton">3</button>
             </form>
         </div>
@@ -373,8 +375,7 @@
                     <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
                     <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
                     <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
-                    <p><b>Geburtsdatum: </b><span>@Html.DisplayFor(model=> model.kunde.GebDatum)</span></p>
-                    @*<p><b>Geb. Datum: </b><span> @Html.DisplayFor(model => model.kunde.GebDatum.ToShortDateString()) </span></p>*@
+                    <p><b>Geburtsdatum: </b><span>@Html.DisplayFor(model => model.kunde.GebDatum)</span></p>
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
@@ -391,6 +392,13 @@
             <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
                     <form action="@Url.Action("Step3","Home")">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                         <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
                     </form>
                 </div>
@@ -410,7 +418,14 @@
             <div class="row">
                 <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                     <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                        <form action="@Url.Action("Step3", "Home", new { id = System.Web.HttpContext.Current.Session["IDAuto"] })">
+                        <form action="@Url.Action("Step3", "Home"@*, new { id = System.Web.HttpContext.Current.Session["IDAuto"] }*@)">
+                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                            <input type="hidden" value="@Model.userID" name="userID" />
+                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                            <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                             <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
                         </form>
                     </div>
