@@ -20,7 +20,7 @@ namespace kundt_front_end.Controllers
         /// ConnectionString
         /// </summary>
         public static SqlConnection con = new SqlConnection("Data Source=192.168.188.2;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!;MultipleActiveResultSets=True;Application Name=EntityFramework");
-        //public static SqlConnection con = new SqlConnection("Data Source=NOTEBOOK;Initial Catalog=it22Autoverleih;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-3EF0DR7;Initial Catalog=it22Autoverleih;Integrated Security=True");
 
         /// <summary>
         /// GET: Login
@@ -123,20 +123,20 @@ namespace kundt_front_end.Controllers
                 //Bei fehler zurück zum Login
             }
 
-            string source = parseUrl(Convert.ToString(Request.UrlReferrer));
+            //string source = parseUrl(Convert.ToString(Request.UrlReferrer));
 
-            //TempData["fromLogin"] = msc;
-            return RedirectToAction(source, "Home", null);
+            ////TempData["fromLogin"] = msc;
+            //return RedirectToAction(source, "Home", null);
 
-            //return Redirect(Convert.ToString(Request.UrlReferrer));
+            return Redirect(Convert.ToString(Request.UrlReferrer));
         }
 
-        private string parseUrl(string url)
-        {
-            return "Index";
-            //liefert urpsrung in form 'view' mit
-            //return view
-        }
+        //private string parseUrl(string url)
+        //{
+        //    return url.Substring(url.LastIndexOf('/')+1);
+        //    //liefert urpsrung in form 'view' mit
+        //    //return view
+        //}
 
         /// <summary>
         /// GET: Login/Registrierung

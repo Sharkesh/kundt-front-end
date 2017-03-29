@@ -3,6 +3,11 @@
     ViewBag.Title = "Step4";
 }
 <style>
+    .h4Step3 {
+        padding-top: 5px;
+        color: #002f41;
+    }
+
     .buttonOrangeForwardStep3 {
         background-color: #f99b1c;
         border: none;
@@ -264,7 +269,7 @@
         }
 
         25% {
-            background-color: orange;
+            background-color: #f99b1c;
         }
 
         50% {
@@ -272,7 +277,7 @@
         }
 
         75% {
-            background-color: orange;
+            background-color: #f99b1c;
         }
 
         100% {
@@ -323,45 +328,45 @@
     /* Progress-Bar Ende */
 </style>
 
-<script>
-        // Get the modal
-        function openModal() {
+@*<script>
+            // Get the modal
+            function openModal() {
 
 
-            var modal = document.getElementById('myModal');
+                var modal = document.getElementById('myModal');
 
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
+                // Get the button that opens the modal
+                var btn = document.getElementById("myBtn");
 
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
 
-            // When the user clicks on the button, open the modal
-            btn.onclick = function () {
-                modal.style.display = "block";
-            }
+                // When the user clicks on the button, open the modal
+                btn.onclick = function () {
+                    modal.style.display = "block";
+                }
 
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function () {
-                modal.style.display = "none";
-            }
-
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function (event) {
-                if (event.target == modal) {
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function () {
                     modal.style.display = "none";
                 }
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+                }
             }
-        }
 
 
 
 
-        /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
+            /*! grunt-grunticon Stylesheet Loader - v2.1.2 | https://github.com/filamentgroup/grunticon | (c) 2015 Scott Jehl, Filament Group, Inc. | MIT license. */
 
-        (function (e) { function t(t, n, r, o) { "use strict"; function a() { for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0); e ? i.media = r || "all" : setTimeout(a) } var i = e.document.createElement("link"), l = n || e.document.getElementsByTagName("script")[0], u = e.document.styleSheets; return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i } var n = function (r, o) { "use strict"; if (r && 3 === r.length) { var a = e.navigator, i = e.Image, l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")), u = new i; u.onerror = function () { n.method = "png", n.href = r[2], t(r[2]) }, u.onload = function () { var e = 1 === u.width && 1 === u.height, a = r[e && l ? 0 : e ? 1 : 2]; n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o) }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon" } }; n.loadCSS = t, e.grunticon = n })(this); (function (e, t) { "use strict"; var n = t.document, r = "grunticon:", o = function (e) { if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e(); else { var t = !1; n.addEventListener("readystatechange", function () { t || (t = !0, e()) }, !1) } }, a = function (e) { return t.document.querySelector('link[href$="' + e + '"]') }, c = function (e) { var t, n, o, a, c, i, u = {}; if (t = e.sheet, !t) return u; n = t.cssRules ? t.cssRules : t.rules; for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i); return u }, i = function (e) { var t, o, a; o = "data-grunticon-embed"; for (var c in e) if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length) for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o); return t }, u = function (t) { "svg" === e.method && o(function () { i(c(a(e.href))), "function" == typeof t && t() }) }; e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u })(grunticon, this);
-</script>
-<noscript><link href="~/Content/icons.fallback.css" rel="stylesheet"></noscript>
+            (function (e) { function t(t, n, r, o) { "use strict"; function a() { for (var e, n = 0; u.length > n; n++) u[n].href && u[n].href.indexOf(t) > -1 && (e = !0); e ? i.media = r || "all" : setTimeout(a) } var i = e.document.createElement("link"), l = n || e.document.getElementsByTagName("script")[0], u = e.document.styleSheets; return i.rel = "stylesheet", i.href = t, i.media = "only x", i.onload = o || null, l.parentNode.insertBefore(i, l), a(), i } var n = function (r, o) { "use strict"; if (r && 3 === r.length) { var a = e.navigator, i = e.Image, l = !(!document.createElementNS || !document.createElementNS("http://www.w3.org/2000/svg", "svg").createSVGRect || !document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image", "1.1") || e.opera && -1 === a.userAgent.indexOf("Chrome") || -1 !== a.userAgent.indexOf("Series40")), u = new i; u.onerror = function () { n.method = "png", n.href = r[2], t(r[2]) }, u.onload = function () { var e = 1 === u.width && 1 === u.height, a = r[e && l ? 0 : e ? 1 : 2]; n.method = e && l ? "svg" : e ? "datapng" : "png", n.href = a, t(a, null, null, o) }, u.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==", document.documentElement.className += " grunticon" } }; n.loadCSS = t, e.grunticon = n })(this); (function (e, t) { "use strict"; var n = t.document, r = "grunticon:", o = function (e) { if (n.attachEvent ? "complete" === n.readyState : "loading" !== n.readyState) e(); else { var t = !1; n.addEventListener("readystatechange", function () { t || (t = !0, e()) }, !1) } }, a = function (e) { return t.document.querySelector('link[href$="' + e + '"]') }, c = function (e) { var t, n, o, a, c, i, u = {}; if (t = e.sheet, !t) return u; n = t.cssRules ? t.cssRules : t.rules; for (var l = 0; n.length > l; l++) o = n[l].cssText, a = r + n[l].selectorText, c = o.split(");")[0].match(/US\-ASCII\,([^"']+)/), c && c[1] && (i = decodeURIComponent(c[1]), u[a] = i); return u }, i = function (e) { var t, o, a; o = "data-grunticon-embed"; for (var c in e) if (a = c.slice(r.length), t = n.querySelectorAll(a + "[" + o + "]"), t.length) for (var i = 0; t.length > i; i++) t[i].innerHTML = e[c], t[i].style.backgroundImage = "none", t[i].removeAttribute(o); return t }, u = function (t) { "svg" === e.method && o(function () { i(c(a(e.href))), "function" == typeof t && t() }) }; e.embedIcons = i, e.getCSS = a, e.getIcons = c, e.ready = o, e.svgLoadedCallback = u, e.embedSVG = u })(grunticon, this);
+    </script>*@
+@*<noscript><link href="~/Content/icons.fallback.css" rel="stylesheet"></noscript>*@
 
 
 
@@ -417,119 +422,63 @@
             <button class="miniButtonOp noCurs">5</button>
         </div>
     </div>
-    <div class="row" style="border-left: 3px solid orange; padding-left: 0px; margin-left: 5px; margin-top: 20px;">
-        <div class="col-xs-12 col-md-4" style="padding-left: 0px;">
+    <div class="row">
+        <div style="padding-top:20px;"></div>
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
+            <h3 style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)
+            <p style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="width:350px" />
 
-            <div class="row">
-                <div class="col-md-12">
-                    <ul>
-                        @*Autoname hier*@
-                        <li class="noLiMarker">
-                            <h3>@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke) @Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</h3>
-                            <p>@Html.DisplayFor(m => m.gebuchtesAuto.tblKategorie.Kategorie)</p>
-                        </li>
-                        @*Autobild hier*@
-                        <li class="noLiMarker">
-                            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" />
-                        </li>
-
-                        @*Abholung hier*@
-                        <li class="noLiMarker">
-                            <h4>Abholung</h4>
-                            <p>
-                                Wien am @System.Web.HttpContext.Current.Session["sessionVon"]
-                            </p>
-                        </li>
-                        @*Rückgabe hier*@
-                        <li class="noLiMarker">
-                            <h4>Rückgabe</h4>
-                            <p>
-                                Wien am @System.Web.HttpContext.Current.Session["sessionBis"]
-                            </p>
-                        </li>
-                        @*Mietdauer hier
-                            <li class="noLiMarker">
-                                <h4>Mietdauer</h4>
-                                <p>
-                                    1 Tag
-                                </p>
-                            </li>*@
-
-                        @*Preis*@
-                        <li class="noLiMarker">
-                            <h4>Preis</h4>
-                            <p>
-                                € 185,67
-                            </p>
-                        </li>
-                        @*Fahrzeugausstattung hier*@                @*margin-bottom unklar *@
-                        <li class="noLiMarker">
-                            <h4>Fahrzeugausstattung</h4>
-                            @*<div class="col-lg-1 fa fa-snowflake-o"></div>
-                                <div class="col-lg-10">Klimaanlage</div>
-
-                                <div class="col-lg-1 fa fa-cogs"></div>
-                                <div class="col-lg-10">Manuelle Schaltung</div>
-
-                                <div class="col-lg-1 fa fa-money"></div>
-                                <div class="col-lg-10" style="margin-bottom:10px;">4 Türen</div>*@
-                            @*@for (int i = 0; i < Model.tblAusstattung.Count; i++)
-                            {
-                                <p>@Html.DisplayFor(model => model.tblAusstattung.ElementAt(i).Ausstattung)</p>
-                            }*@
-                        </li>
-                        @*Platzangebot hier*@
-                        <li class="noLiMarker">
-
-                            <h4>Platzangebot</h4>
-
-
-                            <div class="col-lg-1 fa fa-suitcase"></div>
-                            <div class="col-lg-10">2 große Koffer</div>
-
-                            <div class="col-lg-1 fa fa-shopping-bag"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">2 Hangebäckstücke</div>
-                        </li>
-                        @*Mindestalter fahrer hier*@
-                        <li class="noLiMarker">
-                            <h4>Midestalter Fahrer</h4>
-                            <div class="col-lg-1 icon-car" style="width: 20px; height: 20px;"></div>
-                            <div class="col-lg-10" style="margin-bottom:10px;">21 Jahre</div>
-
-                        </li>
-
-                        @*Inklusivleistungen und Exteras*@
-                        <li class="noLiMarker">
-                            <h4>Mindestdauer Führerscheinbesitz</h4>
-                            <p>
-                                2 Jahr(e)
-                            </p>
-                        </li>
-                        @*Rechte/Pflichten (AGB)
-                            <li class="noLiMarker">
-                                <h4>AGB</h4>
-
-                                <!-- Trigger/Open The Modal -->
-                                <button class="fa fa-file-text-o" id="myBtn" onclick="openModal()"></button>
-
-                                <!-- The Modal -->
-                                <div id="myModal" class="modal">
-
-                                    <!-- Modal content -->
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <p>Hier steht die AGB</p>
-                                    </div>
-                                </div>
-                            </li>*@
-                    </ul>
+            @*div-Bereich unterhalb img*@
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
                 </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
+                @*<div>
+                    <h3 class="h3Step3">Sonderausstattung</h3>
+                    <ul>
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
+                        {
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
+                        }
+                    </ul>
+                </div>*@
             </div>
         </div>
-
-
+        @*sichtbar auf kleinem Format (xs)*@
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+            <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <h4 class="h4Step3">Abholung</h4>
+                <p>Wien am @Model.date_von.ToShortDateString())</p>
+                <h4 class="h4Step3">Rückgabe</h4>
+                <p>Wien am @Model.date_bis.ToShortDateString())</p>
+                <h4 class="h4Step3">Mietdauer</h4>
+                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                <h4 class="h4Step3">Preis</h4>
+                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+            </div>
+        </div>
         @*Erste Box für Login Anfang*@
-        <div class="col-xs-12 col-md-8 formFeldLinks">
+        <div class="col-xs-12 col-md-8 col-lg-7">
             <div class="form-horizontal" style="padding: 20px;">
                 @if (ViewBag.registerResult > 0)
                 {
@@ -581,21 +530,19 @@
                             }
                         }
                     }
-                    @*<div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <div class="checkbox" style="margin-top: -10px;">
-                                    <label>
-                                        <input type="checkbox"> Angemeldet bleiben
-                                    </label>
-                                </div>
-                            </div>
-                        </div>*@
                     <div class="container">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="row">
                                 <div class="hidden-sm hidden-xs col-md-12">
                                     @*Buttons Zurück, Registieren, Login*@
                                     <a href="@Url.Action("Step3","Home", new { id = System.Web.HttpContext.Current.Session["IDAuto"]})" method="post">
+                                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                        <input type="hidden" value="@Model.userID" name="userID" />
+                                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                                         <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
                                     </a>
                                     @*</form>*@
@@ -606,6 +553,13 @@
                                     @*Buttons Zurück, Registieren, Login*@
                                     <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
                                         <a href="@Url.Action("Step3", "Home", new {  id = System.Web.HttpContext.Current.Session["IDAuto"]})" method="post">
+                                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                            <input type="hidden" value="@Model.userID" name="userID" />
+                                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                                            <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                                             <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
                                         </a>
                                     </div>
@@ -619,145 +573,141 @@
                             </div>
                         </div>
                     </div>
-                </form>
-
-                @*Erste Box für Login Ende*@
+                </form> @*Erste Box für Login Ende*@
             </div>
-
-            @*Zweite Box für Regestrieren Anfang*@
-            <form class="form-horizontal" style="margin-left: 15px;" action="@Url.Action("Registrierung", "Login")" method="post">
-                <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
-                    <div class="form-group" style="margin-top: 35px;">
-                        @if (ViewBag.registerResult == -1)
-                        {
+            <div>
+                <form class="form-horizontal" style="margin-left:15px;" action="@Url.Action("Registrierung", "Login")" method="post">
+                    @*Zweite Box für Regestrieren Anfang*@
+                    <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
+                        <div class="form-group" style="margin-top: 35px;">
+                            @if (ViewBag.registerResult == -1)
+                            {
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <p class="text-danger" id="errorMessage">Es existiert bereits ein Account mit dieser Email!</p>
                                 </div>
                             </div>
-                        }
-                        <label for="sex" class="col-md-3 control-label collapseForm">Anrede:</label>
-                        <div class="col-md-9">
-                            @*Box Anrede*@
-                            <select id="sex" name="sex" class="form-control collapseForm">
-                                <option value="" selected disabled hidden>Anrede</option>
-                                <option value="Herr">Herr</option>
-                                <option value="Frau">Frau</option>
-                            </select>
-                        </div>
-                        <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
-                        <div class="col-md-9">
-                            @*Box Vorname*@
-                            <input type="text" class="form-control collapseForm" id="prename" name="prename" placeholder="Max">
-                        </div>
-                        <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
-                        <div class="col-md-9">
-                            @*Box Nachname*@
-                            <input type="text" class="form-control collapseForm" id="sirname" name="sirname" placeholder="Mustermann">
-                        </div>
-                        @if (ViewBag.registerResult == -2)
-                        {
+                            }
+                            <label for="sex" class="col-md-3 control-label collapseForm">Anrede:</label>
+                            <div class="col-md-9">
+                                @*Box Anrede*@
+                                <select id="sex" name="sex" class="form-control collapseForm">
+                                    <option value="" selected disabled hidden>Anrede</option>
+                                    <option value="Herr">Herr</option>
+                                    <option value="Frau">Frau</option>
+                                </select>
+                            </div>
+                            <label for="prename" class="col-md-3 control-label collapseForm">Vorname:</label>
+                            <div class="col-md-9">
+                                @*Box Vorname*@
+                                <input type="text" class="form-control collapseForm" id="prename" name="prename" placeholder="Max">
+                            </div>
+                            <label for="sirname" class="col-md-3 control-label collapseForm">Nachname:</label>
+                            <div class="col-md-9">
+                                @*Box Nachname*@
+                                <input type="text" class="form-control collapseForm" id="sirname" name="sirname" placeholder="Mustermann">
+                            </div>
+                            @if (ViewBag.registerResult == -2)
+                            {
                             <div class="col-md-offset-3 col-md-9">
                                 <p class="text-danger" id="errorMessage">Die eingegebene PLZ oder der eingegebene Ort ist nicht korrekt.</p>
                             </div>
-                        }
-                        <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
-                        <div class="col-md-9">
-                            @*Box Adresse*@
-                            <input type="text" class="form-control collapseForm" id="adress" name="adress" placeholder="Musterstraße 23">
-                        </div>
-                        <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
-                        <div class="col-md-9">
-                            @*Box Ort*@
-                            <input type="text" class="form-control collapseForm" id="city" name="city" placeholder="Wien">
-                        </div>
-                        <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
-                        <div class="col-md-9">
-                            @*Box PLZ*@
-                            <input type="text" class="form-control collapseForm" id="postcode" name="postcode" placeholder="1234">
-                        </div>
-                        <label for="telephone" class="col-md-3 control-label collapseForm">Telefon:</label>
-                        <div class="col-md-9">
-                            @*Box Telefon*@
-                            <input type="text" class="form-control collapseForm" id="telephone" name="telephone" placeholder="0123 4567890">
-                        </div>
-                        <label for="bDay" class="col-md-3 control-label collapseForm">Geburtstag:</label>
-                        <div class="col-md-9 form-inline">
-                            @*Box Telefon*@
-                            <select class="form-control collapseForm" id="bDay" name="bDay">
-                                <option value="" selected disabled hidden>Tag</option>
-                                @{
-                                    for (int i = 1; i < 32; i++)
-                                    {
-                                        <option value="@i">@i</option>
+                            }
+                            <label for="adress" class="col-md-3 control-label collapseForm">Adresse:</label>
+                            <div class="col-md-9">
+                                @*Box Adresse*@
+                                <input type="text" class="form-control collapseForm" id="adress" name="adress" placeholder="Musterstraße 23">
+                            </div>
+                            <label for="city" class="col-md-3 control-label collapseForm">Ort:</label>
+                            <div class="col-md-9">
+                                @*Box Ort*@
+                                <input type="text" class="form-control collapseForm" id="city" name="city" placeholder="Wien">
+                            </div>
+                            <label for="postcode" class="col-md-3 control-label collapseForm">PLZ:</label>
+                            <div class="col-md-9">
+                                @*Box PLZ*@
+                                <input type="text" class="form-control collapseForm" id="postcode" name="postcode" placeholder="1234">
+                            </div>
+                            <label for="telephone" class="col-md-3 control-label collapseForm">Telefon:</label>
+                            <div class="col-md-9">
+                                @*Box Telefon*@
+                                <input type="text" class="form-control collapseForm" id="telephone" name="telephone" placeholder="0123 4567890">
+                            </div>
+                            <label for="bDay" class="col-md-3 control-label collapseForm">Geburtstag:</label>
+                            <div class="col-md-9 form-inline">
+                                @*Box Telefon*@
+                                <select class="form-control collapseForm" id="bDay" name="bDay">
+                                    <option value="" selected disabled hidden>Tag</option>
+                                    @{
+                                        for (int i = 1; i < 32; i++)
+                                        {
+                                    <option value="@i">@i</option>
+                                        }
                                     }
-                                }
-                            </select>
-                            <select class="form-control collapseForm" id="bMonth" name="bMonth">
-                                <option value="" selected disabled hidden>Monat</option>
-                                @{
-                                    string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
-                                    for (int i = 0; i <= months.Length - 2; i++)
-                                    {
-                                        <option value="@(i+1)">@months[i]</option>
+                                </select>
+                                <select class="form-control collapseForm" id="bMonth" name="bMonth">
+                                    <option value="" selected disabled hidden>Monat</option>
+                                    @{
+                                        string[] months = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames;
+                                        for (int i = 0; i <= months.Length - 2; i++)
+                                        {
+                                    <option value="@(i+1)">@months[i]</option>
+                                        }
                                     }
-                                }
-                            </select>
-                            <select class="form-control collapseForm" id="bYear" name="bYear">
-                                <option value="" selected disabled hidden>Jahr</option>
-                                @{
-                                    DateTime today = new DateTime();
-                                    today = DateTime.Today;
-                                    for (int i = today.Year - 17; i > today.Year - 130; i--)
-                                    {
-                                        <option value="@i">@i</option>
+                                </select>
+                                <select class="form-control collapseForm" id="bYear" name="bYear">
+                                    <option value="" selected disabled hidden>Jahr</option>
+                                    @{
+                                        DateTime today = new DateTime();
+                                        today = DateTime.Today;
+                                        for (int i = today.Year - 17; i > today.Year - 130; i--)
+                                        {
+                                    <option value="@i">@i</option>
+                                        }
                                     }
-                                }
-                            </select>
+                                </select>
+                            </div>
+                            <label for="pass" class="col-md-3 control-label collapseForm">Reisepassnummer:</label>
+                            <div class="col-md-9">
+                                @*Box ReisepassNr*@
+                                <input type="text" class="form-control collapseForm" id="pass" name="pass" placeholder="012345">
+                            </div>
+                            <label for="emailRegister" class="col-md-3 control-label collapseForm">Email:</label>
+                            <div class="col-md-9">
+                                @*Box Email*@
+                                <input type="email" class="form-control collapseForm" id="emailRegister" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Register'), ValidateInput('Register')">
+                            </div>
+                            <label for="emailConfirmation" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
+                            <div class="col-md-9">
+                                @*Box Email bestätigen*@
+                                <input type="email" class="form-control collapseForm" id="emailConfirmation" placeholder="max.mustermann@kundt.at">
+                            </div>
+                            <label for="passwordRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
+                            <div class="col-md-9">
+                                @*Box Passwort*@
+                                <input type="password" class="form-control collapseForm" id="passwordRegister" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Register'), ValidateInput('Register')">
+                            </div>
+                            <label for="passwordConfirmation" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
+                            <div class="col-md-9">
+                                @*Box Passwort bestätigen*@
+                                <input type="password" class="form-control collapseForm" id="passwordConfirmation" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordConfirmationCheck('Register'), ValidateInput('Register')">
+                            </div>
                         </div>
-                        <label for="pass" class="col-md-3 control-label collapseForm">Reisepassnummer::</label>
-                        <div class="col-md-9">
-                            @*Box ReisepassNr*@
-                            <input type="text" class="form-control collapseForm" id="pass" name="pass" placeholder="012345">
-                        </div>
-                        <label for="emailRegister" class="col-md-3 control-label collapseForm">Email:</label>
-                        <div class="col-md-9">
-                            @*Box Email*@
-                            <input type="email" class="form-control collapseForm" id="emailRegister" name="email" placeholder="max.mustermann@kundt.at" onkeyup="ValidateEmail('Register'), ValidateInput('Register')">
-                        </div>
-                        <label for="emailConfirmation" class="col-md-3 control-label collapseForm">Email bestätigen:</label>
-                        <div class="col-md-9">
-                            @*Box Email bestätigen*@
-                            <input type="email" class="form-control collapseForm" id="emailConfirmation" placeholder="max.mustermann@kundt.at">
-                        </div>
-                        <label for="passwordRegister" class="col-md-3 control-label collapseForm">Passwort:</label>
-                        <div class="col-md-9">
-                            @*Box Passwort*@
-                            <input type="password" class="form-control collapseForm" id="passwordRegister" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Register'), ValidateInput('Register')">
-                        </div>
-                        <label for="passwordConfirmation" class="col-md-3 control-label collapseForm">Passwort bestätigen:</label>
-                        <div class="col-md-9">
-                            @*Box Passwort bestätigen*@
-                            <input type="password" class="form-control collapseForm" id="passwordConfirmation" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordConfirmationCheck('Register'), ValidateInput('Register')">
+                        @*Button Regestieren2*@
+                        <div class="row">
+                            <div class="hidden-md hidden-lg" style="position: relative; left: 15px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
+                            <div class="hidden-sm hidden-xs hidden-lg" style="position: relative; left: 118px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
+                            <div class="hidden-sm hidden-xs hidden-md" style="position: relative; left: 142px;">
+                                <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
+                            </div>
                         </div>
                     </div>
-                    @*Button Regestieren2*@
-                    <div class="row">
-
-                        <div class="hidden-md hidden-lg" style="position: relative; left: 15px;">
-                            <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                        </div>
-                        <div class="hidden-sm hidden-xs hidden-lg" style="position: relative; left: 118px;">
-                            <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                        </div>
-                        <div class="hidden-sm hidden-xs hidden-md" style="position: relative; left: 142px;">
-                            <button type="submit" class="buttonOrangeForwardStep3" style="width: 280px;"><span>Registrieren</span></button>
-                        </div>
-
-                    </div>
-
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
         @*Zweite Box für Regestrieren Ende*@
     </div>

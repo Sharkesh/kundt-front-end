@@ -257,7 +257,7 @@
     }
 </style>
 
-<div class="container">
+<div class="container" style="margin-top:20px;">
     @* Progress Bar *@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
@@ -288,7 +288,7 @@
         </div>
 
         <div class="row">
-            <div class="container-fluid containerBar" style="width:67%; margin-left:0px">
+            <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
             </div>
         </div>
@@ -320,7 +320,7 @@
 
     <div class="paddingSmallStep3"></div>
     <div class="row">
-        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px; height:100%;">
             <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
             <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="width:350px" />
@@ -353,9 +353,9 @@
             <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
-                <p>Wien am @Model.date_von_string</p>
+                <p>Wien am @Model.date_von.ToShortDateString()</p>
                 <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien am @Model.date_bis_string</p>
+                <p>Wien am @Model.date_bis.ToShortDateString()</p>
                 <h4 class="h4Step3">Mietdauer</h4>
                 <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
                 <h4 class="h4Step3">Preis</h4>
@@ -373,12 +373,12 @@
                     <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
                     <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
                     <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
+                    <p><b>Geburtsdatum: </b><span>@Html.DisplayFor(model=> model.kunde.GebDatum)</span></p>
                     @*<p><b>Geb. Datum: </b><span> @Html.DisplayFor(model => model.kunde.GebDatum.ToShortDateString()) </span></p>*@
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
                 <div class="col-xs-6 col-sm-6 col-lg-6">
-                    <p><br /></p>
                     <p><b>Straße: </b><span>@Html.DisplayFor(model => model.kunde.Strasse)</span></p>
                     <p><b>PLZ: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
                     <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>

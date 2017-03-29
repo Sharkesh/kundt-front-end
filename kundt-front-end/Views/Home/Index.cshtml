@@ -239,9 +239,9 @@
                    
                     <input type="hidden" id="UserID" name="userID" value="@Model.userID" />
                     <label id="label_von">Von:</label>
-                    <input type="text" id="date_von" name="date_von_string" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_von" name="date_von_string" placeholder="DD.MM.YYYY" required />
                     <label id="label_bis">Bis:</label>
-                    <input type="text" id="date_bis" name="date_bis_string" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_bis" name="date_bis_string" placeholder="DD.MM.YYYY" required />
                     <button id="buttonOrange" class="buttonOrange">Search</button>
                 </form>
             </div>
@@ -292,13 +292,13 @@
             <center class="hidden-lg hidden-md">
                 <div class="col-sm-5 col-xs-12">
                     <label id="label_von">Von:</label>
-                    <input type="text" id="date_von_mobile" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_von_mobile" placeholder="dd.mm.jjjj" required />
                 </div>
             </center>
             <center class="hidden-lg hidden-md">
                 <div class="col-sm-5 col-xs-12">
                     <label id="label_bis">Bis:</label>
-                    <input type="text" id="date_bis_mobile" placeholder="dd.mm.jjjj" />
+                    <input type="text" id="date_bis_mobile" placeholder="dd.mm.jjjj" required />
                 </div>
             </center>
 
