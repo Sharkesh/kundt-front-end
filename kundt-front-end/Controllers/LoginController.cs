@@ -20,8 +20,10 @@ namespace kundt_front_end.Controllers
         /// ConnectionString
         /// </summary>
         //public static SqlConnection con = new SqlConnection("Data Source=192.168.188.2;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!;MultipleActiveResultSets=True;Application Name=EntityFramework");
-        public static SqlConnection con = new SqlConnection("Data Source=NOTEBOOK;Initial Catalog=it22Autoverleih;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=NOTEBOOK;Initial Catalog=it22Autoverleih;Integrated Security=True");
         //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-3EF0DR7;Initial Catalog=it22Autoverleih;Integrated Security=True");
+
+        public static SqlConnection con = new SqlConnection("Data Source=ADMIN-PC;Initial Catalog=it22Autoverleih;Integrated Security=True");
 
         /// <summary>
         /// GET: Login

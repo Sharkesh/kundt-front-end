@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Rotativa;
 
 namespace kundt_front_end.Controllers
 {
@@ -106,8 +107,16 @@ namespace kundt_front_end.Controllers
             //tblKundeController kuco = new tblKundeController();
             return View(msc); //Get Object with ID
         }
+
+        public ActionResult Print()
+        {
+            ModelStepClass msc = (ModelStepClass)TempData["msc"];
+            return new ActionAsPdf("Step5",msc);
+        }
+
         public ActionResult Step6(ModelStepClass msc)
         {
+            TempData["msc"] = msc;
             //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
             //Waere natuerlich schoen, wenn man noch herausfindet warum
 
