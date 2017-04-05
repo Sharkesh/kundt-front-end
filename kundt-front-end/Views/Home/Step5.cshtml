@@ -418,7 +418,7 @@
             <div class="row">
                 <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
                     <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                        <form action="@Url.Action("Step3", "Home"@*, new { id = System.Web.HttpContext.Current.Session["IDAuto"] }*@)">
+                        <form action="@Url.Action("Step3", "Home")">
                             <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                             <input type="hidden" value="@Model.userID" name="userID" />
                             <input type="hidden" value="@Model.date_von_string" name="date_von_string" />

@@ -59,18 +59,20 @@ namespace kundt_front_end.Controllers
             //ViewModel.StepID = msc.StepID;
             return View(msc);
         }
-        public ActionResult Step3(/*int? id,*/ModelStepClass msc/*, DateTime? date_von, DateTime? date_bis*//*, int Ergebnis*/) //Get Object with ID
+        public ActionResult Step3(ModelStepClass msc) //Get Object with ID
         {
             //msc.StepID = 3;
-
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
+            
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
-            return View(/*afec.Step3b(id)*/msc);
+            return View(msc);
         }
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
+            msc.kunde.GebDatum = Convert.ToDateTime(msc.kunde.GebDatum_string);
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
@@ -96,9 +98,9 @@ namespace kundt_front_end.Controllers
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
             //msc.StepID = 5;
 
+            msc.kunde.GebDatum = Convert.ToDateTime(msc.kunde.GebDatum_string);
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
             //if (System.Web.HttpContext.Current.Session["IDAuto"] != null)
             //{
             //    id = (int)System.Web.HttpContext.Current.Session["IDAuto"];

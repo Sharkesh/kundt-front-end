@@ -609,7 +609,6 @@
             <button class="myButtonOp noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
-
         <div class="row">
             <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
@@ -752,10 +751,9 @@
                                 <li>Alle Kilometer inkl.</li>
                                 <li>Wintertaugliche Bereifung inkl.</li>
                             </ul>
-                            <div class="fontsizeStep2 paddingSmallTopStep2">@Html.DisplayFor(m => auto.Mietpreis) pro Tag</div>
+                            <div class="fontsizeStep2 paddingSmallTopStep2">@Html.DisplayFor(m => auto.Mietpreis) € pro Tag</div>
                             <div class="fontsizeStep2">@(Model.Mietdauer * auto.Mietpreis) € Gesamt</div>
                             <div class="paddingSmallTopStep2">
-
                                 <form action="@Url.Action("Step3","Home", Model)" method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />

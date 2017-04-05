@@ -537,7 +537,7 @@
                         <div class="col-md-offset-2 col-md-10">
                             <div class="hidden-sm hidden-xs col-md-12">
                                 @*Buttons Zurück, Registieren, Login*@
-                                <a href="@Url.Action("Step3","Home", new { id = System.Web.HttpContext.Current.Session["IDAuto"]})" method="post">
+                                <a href="@Url.Action("Step3", "Home")" method="post">
                                     <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />
                                     <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
@@ -554,7 +554,7 @@
                             <div class="hidden-lg hidden-md">
                                 @*Buttons Zurück, Registieren, Login*@
                                 <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
-                                    <a href="@Url.Action("Step3", "Home", new {  id = System.Web.HttpContext.Current.Session["IDAuto"]})" method="post">
+                                    <a href="@Url.Action("Step3", "Home")" method="post">
                                         <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                                         <input type="hidden" value="@Model.userID" name="userID" />
                                         <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
@@ -701,6 +701,13 @@
                                 <button type="submit" id="submitRegisterMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
                             </div>
                             <div class="hidden-sm hidden-xs" style="position: relative; left: 118px;">
+                                <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                <input type="hidden" value="@Model.userID" name="userID" />
+                                <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                                <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                                <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                                <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                                <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                                 <button type="submit" id="submitRegister" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
                             </div>
                         </div>
