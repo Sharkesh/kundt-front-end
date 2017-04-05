@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Rotativa;
 
 namespace kundt_front_end.Controllers
 {
@@ -96,20 +97,35 @@ namespace kundt_front_end.Controllers
         public ActionResult Step5()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
+
             //msc.StepID = 5;
 
             msc.kunde.GebDatum = Convert.ToDateTime(msc.kunde.GebDatum_string);
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+
             //if (System.Web.HttpContext.Current.Session["IDAuto"] != null)
             //{
             //    id = (int)System.Web.HttpContext.Current.Session["IDAuto"];
             //}
             //tblKundeController kuco = new tblKundeController();
+
+            var pdf = new ViewAsPdf("Step5", msc);
+            TempData["pdf"] = pdf;
+
             return View(msc); //Get Object with ID
         }
+
+        public ActionResult Print()
+        {
+            ModelStepClass msc = (ModelStepClass)TempData["msc"];
+            TempData["msc"] = msc;            
+            return new ViewAsPdf("Step5",msc);
+        }
+
         public ActionResult Step6(ModelStepClass msc)
         {
+            TempData["msc"] = msc;
             //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
             //Waere natuerlich schoen, wenn man noch herausfindet warum
 
