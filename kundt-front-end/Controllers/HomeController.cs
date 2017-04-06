@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Rotativa;
+using System.IO;
 
 namespace kundt_front_end.Controllers
 {
@@ -72,8 +73,7 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
-        {
-            msc.kunde.GebDatum = Convert.ToDateTime(msc.kunde.GebDatum_string);
+        {            
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
@@ -100,7 +100,6 @@ namespace kundt_front_end.Controllers
 
             //msc.StepID = 5;
 
-            msc.kunde.GebDatum = Convert.ToDateTime(msc.kunde.GebDatum_string);
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
 
@@ -110,8 +109,13 @@ namespace kundt_front_end.Controllers
             //}
             //tblKundeController kuco = new tblKundeController();
 
-            var pdf = new ViewAsPdf("Step5", msc);
-            TempData["pdf"] = pdf;
+            var pdf = new ViewAsPdf("ViewPDF", msc);
+
+            var file = pdf.BuildPdf(ControllerContext);
+            string path = HttpContext.ApplicationInstance.Server.MapPath("~/Content/PDF/test.pdf");
+            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            fileStream.Write(file, 0, file.Length);
+            fileStream.Close();
 
             return View(msc); //Get Object with ID
         }
@@ -119,8 +123,14 @@ namespace kundt_front_end.Controllers
         public ActionResult Print()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
-            TempData["msc"] = msc;            
-            return new ViewAsPdf("Step5",msc);
+
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
+
+            return new ViewAsPdf("ViewPDF", msc);
         }
 
         public ActionResult Step6(ModelStepClass msc)
