@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Rotativa;
+using System.IO;
 
 namespace kundt_front_end.Controllers
 {
@@ -16,6 +17,7 @@ namespace kundt_front_end.Controllers
         /// GET: Home/Index
         /// </summary>
         /// <returns></returns>
+        [RequireHttps]
         public ActionResult Index()
         {
             ModelStepClass msc = new ModelStepClass();
@@ -30,6 +32,7 @@ namespace kundt_front_end.Controllers
         /// <returns></returns>
         //public ActionResult Step2(DateTime? date_von, DateTime? date_bis)
         [HttpPost]
+        [RequireHttps]
         public ActionResult Step2(ModelStepClass msc)
         {
             // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
@@ -51,7 +54,10 @@ namespace kundt_front_end.Controllers
 
             return View(msc);
         }
-        public ActionResult Step3(ModelStepClass msc) 
+
+        [RequireHttps]
+        public ActionResult Step3(ModelStepClass msc) //Get Object with ID
+
         {
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -61,10 +67,11 @@ namespace kundt_front_end.Controllers
 
             return View(msc);
         }
-        public ActionResult Step4(ModelStepClass msc, List<tblAusstattung> listeAusstattung) //Get Object with ID
-        {
-            //msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            //msc.listeAusstattung = listeAusstattung.ToList();
+
+        [RequireHttps]
+        public ActionResult Step4(ModelStepClass msc) //Get Object with ID
+        {            
+
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
@@ -92,9 +99,11 @@ namespace kundt_front_end.Controllers
             }
             return View(msc);
         }
+        [RequireHttps]
         public ActionResult Step5()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
+
             
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -102,16 +111,42 @@ namespace kundt_front_end.Controllers
             var pdf = new ViewAsPdf("Step5", msc);
             TempData["pdf"] = pdf;
 
+
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+
+
+            var pdf = new ViewAsPdf("ViewPDF", msc);
+
+            var file = pdf.BuildPdf(ControllerContext);
+            string path = HttpContext.ApplicationInstance.Server.MapPath("~/Content/PDF/test.pdf");
+            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            fileStream.Write(file, 0, file.Length);
+            fileStream.Close();
+
             return View(msc); //Get Object with ID
         }
 
+        [RequireHttps]
         public ActionResult Print()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
+
             TempData["msc"] = msc;
             return new ViewAsPdf("Step5", msc);
+
+
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
+
+            return new ViewAsPdf("ViewPDF", msc);
+
         }
 
+        [RequireHttps]
         public ActionResult Step6(ModelStepClass msc)
         {
             TempData["msc"] = msc;
@@ -128,10 +163,12 @@ namespace kundt_front_end.Controllers
 
             return View();
         }
+        [RequireHttps]
         public ActionResult Impressum()
         {
             return View();
         }
+        [RequireHttps]
         public ActionResult AGB()
         {
             return View();
