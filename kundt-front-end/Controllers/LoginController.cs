@@ -19,15 +19,15 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// ConnectionString
         /// </summary>
-        //public static SqlConnection con = new SqlConnection("Data Source=192.168.188.2;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!;MultipleActiveResultSets=True;Application Name=EntityFramework");
+        public static SqlConnection con = new SqlConnection("Data Source=192.168.188.2;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!;MultipleActiveResultSets=True;Application Name=EntityFramework");
         //public static SqlConnection con = new SqlConnection("Data Source=NOTEBOOK;Initial Catalog=it22Autoverleih;Integrated Security=True");
         //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-3EF0DR7;Initial Catalog=it22Autoverleih;Integrated Security=True");
-
-        public static SqlConnection con = new SqlConnection("Data Source=ADMIN-PC;Initial Catalog=it22Autoverleih;Integrated Security=True");
+        //public static SqlConnection con = new SqlConnection("Data Source=ADMIN-PC;Initial Catalog=it22Autoverleih;Integrated Security=True");
 
         /// <summary>
         /// GET: Login
         /// </summary>
+        [RequireHttps]
         public ActionResult Index()
         {
             //Wenn bereits eingeloggt, dann zurück zur Startseite.
@@ -78,6 +78,7 @@ namespace kundt_front_end.Controllers
         /// POST: Login
         /// </summary>
         [HttpPost]
+        [RequireHttps]
         public ActionResult Index(/*ModelStepClass msc,*/string email, string password)
         {
             //PasswordConverter hashed das eingegebene Passwort im SHA256 Format
@@ -144,6 +145,7 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// GET: Login/Registrierung
         /// </summary>
+        [RequireHttps]
         public ActionResult Registrierung()
         {
             return RedirectToAction("Index", "Home", null);
@@ -153,6 +155,7 @@ namespace kundt_front_end.Controllers
         /// POST: Login/Registrierung
         /// </summary>
         [HttpPost]
+        [RequireHttps]
         public ActionResult Registrierung(string sex, string prename, string sirname, string adress, string city, string postcode, string telephone, string bDay, string bMonth, string bYear, string pass, string email, string password)
         {
             //PasswordConverter hashed das eingegebene Passwort im SHA256 Format
@@ -204,6 +207,7 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// GET: Login/Logout/id
         /// </summary>
+        [RequireHttps]
         public ActionResult Logout(int? id)
         {
             //Überprüft ob die mitgegebene ID stimmt
