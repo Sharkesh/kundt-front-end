@@ -17,6 +17,7 @@ namespace kundt_front_end.Controllers
         /// GET: Home/Index
         /// </summary>
         /// <returns></returns>
+        [RequireHttps]
         public ActionResult Index()
         {
             ModelStepClass msc = new ModelStepClass();
@@ -32,6 +33,7 @@ namespace kundt_front_end.Controllers
         /// <returns></returns>
         //public ActionResult Step2(DateTime? date_von, DateTime? date_bis)
         [HttpPost]
+        [RequireHttps]
         public ActionResult Step2(ModelStepClass msc)
         {
             // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
@@ -61,6 +63,7 @@ namespace kundt_front_end.Controllers
             //ViewModel.StepID = msc.StepID;
             return View(msc);
         }
+        [RequireHttps]
         public ActionResult Step3(ModelStepClass msc) //Get Object with ID
         {
             //msc.StepID = 3;
@@ -72,6 +75,7 @@ namespace kundt_front_end.Controllers
 
             return View(msc);
         }
+        [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {            
             //Wenn eingeloggt dann diesen Step überspringen
@@ -94,6 +98,7 @@ namespace kundt_front_end.Controllers
             }
             return View(msc);
         }
+        [RequireHttps]
         public ActionResult Step5()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
@@ -120,6 +125,7 @@ namespace kundt_front_end.Controllers
             return View(msc); //Get Object with ID
         }
 
+        [RequireHttps]
         public ActionResult Print()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
@@ -133,6 +139,7 @@ namespace kundt_front_end.Controllers
             return new ViewAsPdf("ViewPDF", msc);
         }
 
+        [RequireHttps]
         public ActionResult Step6(ModelStepClass msc)
         {
             TempData["msc"] = msc;
@@ -149,10 +156,12 @@ namespace kundt_front_end.Controllers
 
             return View();
         }
+        [RequireHttps]
         public ActionResult Impressum()
         {
             return View();
         }
+        [RequireHttps]
         public ActionResult AGB()
         {
             return View();
