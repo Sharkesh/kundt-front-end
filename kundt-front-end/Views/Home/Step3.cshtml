@@ -337,6 +337,7 @@
 </style>
 
 
+
 <div class="container" style="margin-top:20px">
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
@@ -386,7 +387,7 @@
             <button class="miniButtonOp noCurs">5</button>
         </div>
     </div>
-    @*ProgressBar Implementation End*@    
+    @*ProgressBar Implementation End*@
     <div class="row" style="padding-top:20px;">
         <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
             <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
@@ -439,33 +440,25 @@
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
                             @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
                                 {
-                                    foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
-                                    {
-                                        <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
-                                    }
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
                                 }
+                            }
                         </ul>
-                        <form style="float:left; margin-right:7px"> @* Checkbox muss noch in die eigentliche Form rein *@
+                        <form style="float:left; margin-right:7px" method="post">
                             <h4>Rücktrittsversicherung</h4>
+                            <div class="squaredTwo col-xs-1">
+                                <input formmethod="post" type="checkbox" value="HatRtVersicherung" id="squaredTwo" name="hatRtVersicherung" />
+                                <label for="squaredTwo"></label>
+                            </div>
                         </form>
-                        <div class="squaredTwo col-xs-1">
-                            <input formmethod="post" type="checkbox" value="Rücktrittsversicherung" id="squaredTwo" name="hatRtVersicherung" checked />
-                            <label for="squaredTwo"></label>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <center>
-            @*<div class="row col-sm-12 col-md-12 col-lg-12 col-xl-12 hidden-xs" style="padding-top:475px">
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 hidden-xs">
-                        <button class="buttonOrange">Zurück</button>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 xs-hidden">
-                        <button class="buttonOrange">Weiter</button>
-                    </div>
-                </div>*@
             <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
                 <div class="col-xs-6" style="padding-left:10px">
                     <form action="@Url.Action("Step2","Home")" method="post">
@@ -475,7 +468,6 @@
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                         <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
                     </form>
                 </div>
@@ -487,7 +479,6 @@
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                         <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
                     </form>
                 </div>
@@ -496,7 +487,7 @@
     </div>
     <div class="row">
         <center>
-            <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+            <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs" style="padding-top:20px;">
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                     <form action="@Url.Action("Step2","Home")" method="post">
                         <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
@@ -505,34 +496,24 @@
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
                         <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
                     </form>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
+                <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                     <form action="@Url.Action("Step4", "Home")" method="post">
+                        <input type="hidden" id="hiddensquaredTwo" value="false" name="HatRtVersicherung"/>
                         <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                         <input type="hidden" value="@Model.userID" name="userID" />
                         <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
-                        <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                        <div>
+                            <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                        </div>
                     </form>
                 </div>
             </div>
-            @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
-                    <div class="col-xs-6" style="padding-left:10px">
-                        <button class="buttonOrange" style="height:35px; width:120px">Zurück</button>
-                    </div>
-                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                        <button class="buttonOrange" style="height:35px; width:120px">Weiter</button>
-                    </div>
-                </div>*@
         </center>
     </div>
 </div>
-@*@section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }*@

@@ -23,8 +23,7 @@ namespace kundt_front_end.Models
 
         public tblAuto gebuchtesAuto { get; set; }
 
-        public bool hatRtVersicherung { get; set; }
-
+        public bool HatRtVersicherung { get; set; }
         public int userID { get; set; }
         public tblKunde kunde { get; set; }
 
@@ -32,5 +31,6 @@ namespace kundt_front_end.Models
         public List<pCarAvailableFinal_Result> carTableFilter { get; set; }
         public string SitzanzahlFilter { get; set; }
         public string KlasseFilter { get; set; }
+        public List<tblAusstattung> listeAusstattung { get; set; }
     }
 }
