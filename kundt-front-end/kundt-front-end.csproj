@@ -244,6 +244,7 @@
     <Content Include="Content\img\bmw-x1-5d-weiss-2015.png" />
     <Content Include="Content\img\bmw-x3-5d-weiss-2014.png" />
     <Content Include="Content\img\bmw-x4-5d-grau-2014.png" />
+    <Content Include="Content\img\car_modified.png" />
     <Content Include="Content\img\ford-cmax-5d-rot-2015.png" />
     <Content Include="Content\img\ford-focus-kombi-blau-2015.png" />
     <Content Include="Content\img\ford-galaxy-van-grau-2015.png" />
@@ -278,6 +279,7 @@
     <Content Include="Content\img\kundt_logo.png" />
     <Content Include="Content\img\kundt_logo_with_slogan.png" />
     <Content Include="Content\img\kundt_logo_with_slogan_right.png" />
+    <Content Include="Content\sounds\carhorn.mp3" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -363,6 +365,7 @@
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\CarScript.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
     <Content Include="Scripts\i18n\defaults-bg_BG.js" />

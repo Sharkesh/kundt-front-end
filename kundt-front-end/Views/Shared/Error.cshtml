@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+@*<head>
     <meta name="viewport" content="width=device-width" />
     <title>Error</title>
 </head>
@@ -9,5 +9,101 @@
         <h1>Error.</h1>
         <h2>An error occurred while processing your request.</h2>
     </hgroup>
+</body>*@
+<head>
+    <style>
+        .eye1 {
+            max-height: 0px;
+            max-width: 70px;
+            min-height: 0px;
+            min-width: 70px;
+            background-color: none;
+            border-radius: 30px;
+            position: absolute;
+            top: 31%;
+            left: 42%;
+        }
+
+        .eye2 {
+            max-height: 0px;
+            max-width: 70px;
+            min-height: 0px;
+            min-width: 70px;
+            background-color: none;
+            border-radius: 30px;
+            position: absolute;
+            top: 34%;
+            left: 52%;
+        }
+
+        .incEyes {
+            animation-name: inc;
+            animation-duration: 2.5s;
+
+        }
+
+        @@keyframes inc {
+            0% {
+                opacity: 0;
+            }
+
+            80% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .autoIncoming {
+            animation-name: Incoming;
+            animation-duration: 2s;
+        }
+
+        @@keyframes Incoming {
+            from {
+                height: 0px;
+                width: 0px;
+            }
+
+            to {
+                font-size: 370px;
+                width: 430px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <audio id="audiofile" preload="auto">
+        <source src="~/Content/sounds/carhorn.mp3" />
+    </audio>
+    <div class="container-fluid" style="max-width:1360px; min-width:1024px; margin-top:0px">
+
+        <div class="col-xs-12 jumbotron" style="background-color:darkorange; color:white;">
+            <div class="col-xs-10">
+                <p style="font-size:8em;">:-(</p>
+            </div>
+            <div class="col-xs-2" style="margin-top:30px; ">
+                <p>Error on loading the page...</p>
+                <p></p>
+            </div>
+            <h2 class="col-xs-12">DAS hätte nicht passieren dürfen...</h2>
+        </div>
+        <div class="col-xs-12" style="margin:auto; border-top:solid 3px; border-bottom:solid 3px; border-color:darkorange; position:relative;height:370px;">
+
+            <img src="~/Content/img/car_modified.png" class="imgage-responsive autoIncoming" style="height:370px; width:430px; margin:auto;  display:block; transform:rotate(5deg);" onclick="playSound()" />
+
+            <div class="eye1" id="eyeM1"><div class="incEyes" style="height:30px;min-height:30px;width:30px;min-width:30px;background-color:black; border-radius:30px; margin:auto"></div></div>
+            <div class="eye2" id="eyeM2"><div class="incEyes" style="height:30px;min-height:30px;width:30px;min-width:30px;background-color:black; border-radius:30px; margin:auto"></div></div>
+            <div class="col-xs-6 col-xs-offset-3" style="border-bottom:groove 5px; border-bottom-color:black; position:absolute; top:80%; "></div>
+            <div class="col-xs-3"></div>
+            <div class="col-xs-4 col-xs-offset-4" style="border-bottom:groove 5px; border-bottom-color:black; position:absolute; top:82%; "></div>
+            <div class="col-xs-4"></div>
+        </div>
+        <div class="col-xs-12 jumbotron" style="background-color:darkorange; color:white; margin-top:30px; margin-bottom:0px; text-align:center">
+            <h3><a href="@Request.Url.Scheme://@Request.Url.Authority/" style="color:white;"><b>HIER</b></a> geht's zurück zur Startseite!</h3>
+        </div>
+    </div>
 </body>
 </html>
