@@ -405,7 +405,6 @@
                     <h4 class="h4Step3">Preis</h4>
                     <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
                 </div>
-                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
                 <div class="col-lg-6">
                     <h4 class="h4Step3">Versicherung</h4>
                     @{if (Model.HatRtVersicherung)
@@ -419,16 +418,18 @@
                     }
 
                 </div>
-                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
-                <ul>
-                    @if (Model.gebuchtesAuto.tblAusstattung != null)
-                    {
-                        foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                <div class="col-lg-6">
+                    <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
+                    <ul>
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
                         {
-                            <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
                         }
-                    }
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -529,7 +530,8 @@
                                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                                        <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
+                                        <input type="hidden" id="hiddensquaredTwo" value="false" name="HatRtVersicherung" />
                                         <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
                                     </a>
                                 </div>
@@ -675,6 +677,7 @@
                                 <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                 <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                 <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                                <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                                 <button type="submit" id="submitRegister" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
                             </div>
                         </div>

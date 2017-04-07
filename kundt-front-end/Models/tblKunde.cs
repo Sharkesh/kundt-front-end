@@ -26,8 +26,7 @@ namespace kundt_front_end.Models
         public string Strasse { get; set; }
         public string Telefon { get; set; }
         public string Anrede { get; set; }
-        public DateTime GebDatum { get; set; }
-        public string GebDatum_string { get; set; }
+        public System.DateTime GebDatum { get; set; }
         public string ReisepassNr { get; set; }
         public Nullable<int> FKPLZOrt { get; set; }
     

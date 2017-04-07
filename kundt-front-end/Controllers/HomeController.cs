@@ -83,7 +83,7 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
+            
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
 
@@ -99,9 +99,9 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
         [RequireHttps]
-        public ActionResult Step5()
+        public ActionResult Step5(ModelStepClass msc)
         {
-            ModelStepClass msc = (ModelStepClass)TempData["msc"];
+            //ModelStepClass msc = (ModelStepClass)TempData["msc"];
 
             
             msc.kunde = db.tblKunde.Find(msc.userID);
@@ -125,7 +125,7 @@ namespace kundt_front_end.Controllers
 
             TempData["msc"] = msc;
             return new ViewAsPdf("Step5", msc);
-
+            
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -145,7 +145,7 @@ namespace kundt_front_end.Controllers
             //Waere natuerlich schoen, wenn man noch herausfindet warum
 
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
-            db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
+            db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, msc.HatRtVersicherung, false);
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
 
             //PDF erstellen
