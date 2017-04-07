@@ -57,7 +57,6 @@ namespace kundt_front_end.Controllers
 
         [RequireHttps]
         public ActionResult Step3(ModelStepClass msc) //Get Object with ID
-
         {
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -107,14 +106,6 @@ namespace kundt_front_end.Controllers
             
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
-            var pdf = new ViewAsPdf("Step5", msc);
-            TempData["pdf"] = pdf;
-
-
-            msc.kunde = db.tblKunde.Find(msc.userID);
-            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
 
             var pdf = new ViewAsPdf("ViewPDF", msc);
 
