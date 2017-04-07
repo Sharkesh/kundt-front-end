@@ -103,17 +103,8 @@ namespace kundt_front_end.Controllers
         {
             //ModelStepClass msc = (ModelStepClass)TempData["msc"];
 
-            
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
-            var pdf = new ViewAsPdf("ViewPDF", msc);
-
-            var file = pdf.BuildPdf(ControllerContext);
-            string path = HttpContext.ApplicationInstance.Server.MapPath("~/Content/PDF/test.pdf");
-            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
-            fileStream.Write(file, 0, file.Length);
-            fileStream.Close();
 
             return View(msc); //Get Object with ID
         }
@@ -124,8 +115,7 @@ namespace kundt_front_end.Controllers
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
 
             TempData["msc"] = msc;
-            return new ViewAsPdf("Step5", msc);
-            
+
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -140,6 +130,18 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Step6(ModelStepClass msc)
         {
+
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+
+            var pdf = new ViewAsPdf("ViewPDF", msc);
+            var file = pdf.BuildPdf(ControllerContext);
+            string path = HttpContext.ApplicationInstance.Server.MapPath("~/Content/PDF/test.pdf");
+            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            fileStream.Write(file, 0, file.Length);
+            fileStream.Close();
+
+
             TempData["msc"] = msc;
             //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
             //Waere natuerlich schoen, wenn man noch herausfindet warum
