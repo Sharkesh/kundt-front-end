@@ -69,8 +69,15 @@ namespace kundt_front_end.Controllers
 
         [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
-        {            
-
+        {
+            if (TempData["msc"] != null)
+            {
+                msc = (ModelStepClass)TempData["msc"];
+            }
+            if (System.Web.HttpContext.Current.Session["msc"] != null)
+            {
+                msc = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
+            }
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
@@ -101,7 +108,10 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Step5(ModelStepClass msc)
         {
-            //ModelStepClass msc = (ModelStepClass)TempData["msc"];
+            if (TempData["msc"] != null)
+            {
+                msc = (ModelStepClass)TempData["msc"];
+            }
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);

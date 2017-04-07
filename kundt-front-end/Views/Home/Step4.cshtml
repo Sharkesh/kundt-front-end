@@ -479,6 +479,13 @@
                             <input type="password" class="form-control" id="passwordLogin" name="password" placeholder="⋅⋅⋅⋅⋅⋅⋅⋅⋅" onkeyup="PasswordCheck('Login'), ValidateInput('Login')">
                         </div>
                     </div>
+                    <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                    <input type="hidden" value="@Model.userID" name="userID" />
+                    <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                    <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                    <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                    <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                     @{
                         //Anzeigen der Fehlermeldung.
                         if (TempData["loginResult"] != null)
@@ -513,7 +520,7 @@
                                     <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                     <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                     <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                                    <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                                     <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
                                 </a>
                                 @*</form>*@
