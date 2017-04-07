@@ -381,6 +381,7 @@
           <Parameter Name="varBuchungBis" Type="varchar" Mode="In" />
           <Parameter Name="varVersicherung" Type="bit" Mode="In" />
           <Parameter Name="varStorno" Type="bit" Mode="In" />
+          <Parameter Name="IDBuchung" Type="int" Mode="InOut" />
         </Function>
         <Function Name="pCarAvailable" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
@@ -865,6 +866,7 @@
             <Parameter Name="varBuchungBis" Mode="In" Type="String" />
             <Parameter Name="varVersicherung" Mode="In" Type="Boolean" />
             <Parameter Name="varStorno" Mode="In" Type="Boolean" />
+            <Parameter Name="IDBuchung" Mode="InOut" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="fCarAvailable" IsComposable="true" ReturnType="Collection(it22AutoverleihModel.fCarAvailable_Result)">
             <Parameter Name="vonDate" Mode="In" Type="String" />

@@ -43,7 +43,7 @@ namespace kundt_front_end.Models
         public virtual DbSet<tblTreibstoff> tblTreibstoff { get; set; }
         public virtual DbSet<tblTyp> tblTyp { get; set; }
     
-        public virtual int pBuchungAnlegen(Nullable<int> varIDKunde, Nullable<int> varIDAuto, string varBuchungVon, string varBuchungBis, Nullable<bool> varVersicherung, Nullable<bool> varStorno)
+        public virtual int pBuchungAnlegen(Nullable<int> varIDKunde, Nullable<int> varIDAuto, string varBuchungVon, string varBuchungBis, Nullable<bool> varVersicherung, Nullable<bool> varStorno, ObjectParameter iDBuchung)
         {
             var varIDKundeParameter = varIDKunde.HasValue ?
                 new ObjectParameter("varIDKunde", varIDKunde) :
@@ -69,7 +69,7 @@ namespace kundt_front_end.Models
                 new ObjectParameter("varStorno", varStorno) :
                 new ObjectParameter("varStorno", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pBuchungAnlegen", varIDKundeParameter, varIDAutoParameter, varBuchungVonParameter, varBuchungBisParameter, varVersicherungParameter, varStornoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pBuchungAnlegen", varIDKundeParameter, varIDAutoParameter, varBuchungVonParameter, varBuchungBisParameter, varVersicherungParameter, varStornoParameter, iDBuchung);
         }
     
         [DbFunction("it22AutoverleihEntities", "fCarAvailable")]

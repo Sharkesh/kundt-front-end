@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using Rotativa;
 using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace kundt_front_end.Controllers
 {
@@ -69,7 +72,7 @@ namespace kundt_front_end.Controllers
 
         [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
-        {            
+        {
 
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
@@ -131,14 +134,7 @@ namespace kundt_front_end.Controllers
         {
 
             msc.kunde = db.tblKunde.Find(msc.userID);
-            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
-            var pdf = new ViewAsPdf("ViewPDF", msc);
-            var file = pdf.BuildPdf(ControllerContext);
-            string path = HttpContext.ApplicationInstance.Server.MapPath("~/Content/PDF/test.pdf");
-            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
-            fileStream.Write(file, 0, file.Length);
-            fileStream.Close();
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);            
 
 
             TempData["msc"] = msc;
@@ -146,7 +142,68 @@ namespace kundt_front_end.Controllers
             //Waere natuerlich schoen, wenn man noch herausfindet warum
 
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
-            db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
+            int IDBuchung;
+
+            string constring = "Data Source=sql1;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!";
+            //string constring = ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString;
+            using (SqlConnection con = new SqlConnection(constring))
+            {
+                using (SqlCommand cmd = new SqlCommand("pBuchungAnlegen", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    SqlParameter KundeID = new SqlParameter("@varIDKunde",SqlDbType.Int);
+                    KundeID.Value = msc.userID;
+                    KundeID.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(KundeID);
+
+                    SqlParameter AutoID = new SqlParameter("@varIDAuto", SqlDbType.Int);
+                    AutoID.Value = msc.gebuchtesAutoID;
+                    AutoID.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(AutoID);
+
+                    SqlParameter BuchungVon = new SqlParameter("@varBuchungVon", SqlDbType.VarChar);
+                    BuchungVon.Value = msc.date_von_string;
+                    BuchungVon.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(BuchungVon);
+
+                    SqlParameter BuchungBis = new SqlParameter("@varBuchungBis", SqlDbType.VarChar);
+                    BuchungBis.Value = msc.date_bis_string;
+                    BuchungBis.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(BuchungBis);
+
+                    SqlParameter Versicherung = new SqlParameter("@varVersicherung", SqlDbType.Bit);
+                    Versicherung.Value = msc.HatRtVersicherung;
+                    Versicherung.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(Versicherung);
+
+                    SqlParameter Storno = new SqlParameter("@varStorno", SqlDbType.Bit);
+                    Storno.Value = 0;
+                    Storno.Direction = ParameterDirection.Input;
+                    cmd.Parameters.Add(Storno);
+
+                    SqlParameter outBuchungID = new SqlParameter("@IDBuchung", SqlDbType.Int);
+                    outBuchungID.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outBuchungID);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    IDBuchung = (int)cmd.Parameters["@IDBuchung"].Value;
+                }
+            }
+
+
+            var pdf = new ViewAsPdf("ViewPDF", msc);
+            var file = pdf.BuildPdf(ControllerContext);
+            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/Content/PDF/{0}.pdf",IDBuchung));
+            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+            fileStream.Write(file, 0, file.Length);
+            fileStream.Close();
+
+            //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
+
 
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
 
