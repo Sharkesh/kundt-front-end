@@ -97,7 +97,7 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            
+            msc.kunde = db.tblKunde.Find(msc.userID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
 
