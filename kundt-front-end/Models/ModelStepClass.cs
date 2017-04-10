@@ -20,6 +20,7 @@ namespace kundt_front_end.Models
         public List<tblAuto> autoListe { get; set; }
         public int gebuchtesAutoID { get; set; }
         public decimal Gesamtpreis { get; set; }
+        public int IDBuchung { get; set; }
 
         public tblAuto gebuchtesAuto { get; set; }
 

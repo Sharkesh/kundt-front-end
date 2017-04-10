@@ -66,6 +66,8 @@ namespace kundt_front_end.Controllers
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
+            TempData["msc"] = msc;
+
             return View(msc);
         }
 
@@ -115,6 +117,8 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Step5(ModelStepClass msc)
         {
+
+
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
@@ -133,6 +137,7 @@ namespace kundt_front_end.Controllers
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
 
             TempData["msc"] = msc;
+            int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
 
 
             msc.kunde = db.tblKunde.Find(msc.userID);
@@ -140,6 +145,7 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
+            msc.IDBuchung = BuchungID4PDf;
 
             return new ViewAsPdf("ViewPDF", msc);
 
@@ -161,7 +167,13 @@ namespace kundt_front_end.Controllers
             int IDBuchung;
 
             string constring = "Data Source=sql1;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!";
+
+            /// So könnte man auf mehrere connStrings zugreifen 
+            /// sie bräuchten aber unterschiedliche namen in der WebConfig.
+            /// auf die Namen wird mit ["Name"] zugegriffen.
             //string constring = ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString;
+
+
             using (SqlConnection con = new SqlConnection(constring))
             {
                 using (SqlCommand cmd = new SqlCommand("pBuchungAnlegen", con))
@@ -210,6 +222,7 @@ namespace kundt_front_end.Controllers
                 }
             }
 
+            TempData["BuchungID4PDF"] = IDBuchung;
 
             var pdf = new ViewAsPdf("ViewPDF", msc);
             var file = pdf.BuildPdf(ControllerContext);
