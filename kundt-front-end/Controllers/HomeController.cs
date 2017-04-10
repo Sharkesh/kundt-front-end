@@ -74,6 +74,17 @@ namespace kundt_front_end.Controllers
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
 
+
+
+            if (TempData["msc"] != null)
+            {
+                msc = (ModelStepClass)TempData["msc"];
+            }
+            if (System.Web.HttpContext.Current.Session["msc"] != null)
+            {
+                msc = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
+            }
+
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
@@ -86,7 +97,7 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
+            
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
 
@@ -102,9 +113,12 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
         [RequireHttps]
-        public ActionResult Step5()
+        public ActionResult Step5(ModelStepClass msc)
         {
-            ModelStepClass msc = (ModelStepClass)TempData["msc"];
+            if (TempData["msc"] != null)
+            {
+                msc = (ModelStepClass)TempData["msc"];
+            }
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -118,6 +132,7 @@ namespace kundt_front_end.Controllers
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
 
             TempData["msc"] = msc;
+
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -204,6 +219,12 @@ namespace kundt_front_end.Controllers
 
             //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
 
+
+            //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
+            //Waere natuerlich schoen, wenn man noch herausfindet warum
+
+            ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
+            //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, msc.HatRtVersicherung, false);
 
             ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
 

@@ -252,10 +252,6 @@
             letter-spacing: .5px;
             text-align: center;
         }
-
-    .col-lg-6 > p > span {
-        float: right;
-    }
     /*#endregion*/
 </style>
 
@@ -375,7 +371,7 @@
                     <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
                     <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
                     <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
-                    <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
+                    <p><b>Geburtsdatum: </b><span>@*@Model.kunde.GebDatum.ToShortDateString()*@</span></p>
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
@@ -398,7 +394,7 @@
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                        <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                         <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
                     </form>
                 </div>
@@ -410,7 +406,7 @@
                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                        <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                        <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                         <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
                     </form>
                 </div>
@@ -425,7 +421,7 @@
                             <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                             <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                             <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                            <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                            <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                             <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
                         </form>
                     </div>
@@ -437,7 +433,7 @@
                             <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                             <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                             <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                            <input type="hidden" value="Rücktrittsversicherung" name="hatRtVersicherung" />
+                            <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                             <button class="buttonOrangeForwardStep3"><span>Buchen</span></button>
                         </form>
                     </div>
