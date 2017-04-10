@@ -514,31 +514,39 @@
                             <div class="hidden-sm hidden-xs col-md-12">
                                 @*Buttons Zurück, Registieren, Login*@
                                 <a href="@Url.Action("Step3", "Home")" method="post">
-                                    <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                    @*<input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />
                                     <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
                                     <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                     <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                     <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
+                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />*@
                                     <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
                                 </a>
                                 @*</form>*@
                                 <button type="button" class="buttonOrangeForwardStep3OhneAnimation" style="margin-left:10px; float:left" data-toggle="collapse" data-target="#registrieren" onclick="Bottom()"><span>Registrieren</span></button>
-                                <button type="submit" id="submitLogin" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
+                                <a href="@Url.Action("Step5", "Home")" method="post">
+                                    @*<input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                    <input type="hidden" value="@Model.userID" name="userID" />
+                                    <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                                    <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                                    <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                                    <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />*@
+                                    <button type="submit" id="submitLogin" class="buttonOrangeForwardStep3OhneAnimation" style="float:left; margin-left:10px" value="Login" disabled><span>Login</span></button>
+                                </a>
                             </div>
                             <div class="hidden-lg hidden-md">
                                 @*Buttons Zurück, Registieren, Login*@
                                 <div class="col-sm-12 col-xs-12" style="margin-bottom: 10px;">
                                     <a href="@Url.Action("Step3", "Home")" method="post">
-                                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                        @*<input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                                         <input type="hidden" value="@Model.userID" name="userID" />
                                         <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
                                         <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                         <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                         <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                                        <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
-                                        <input type="hidden" id="hiddensquaredTwo" value="false" name="HatRtVersicherung" />
+                                        <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />*@
                                         <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="width: 280px;"><span>Zurück</span></button>
                                     </a>
                                 </div>

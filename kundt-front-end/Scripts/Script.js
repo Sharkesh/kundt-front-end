@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
-    if ($("#squaredTwo").attr("checked")) {
-        $("#squaredTwo").click(function () {
+    $("#squaredTwo").click(function () {
+        if ($(this).is(":checked"))
+        {
             $("#hiddensquaredTwo").val("true");
-        });
-    } else {
-        $("#squaredTwo").click(function () {
+        }
+        else {
             $("#hiddensquaredTwo").val("false");
-        });
-    }
+        }
+    });
 });

@@ -64,7 +64,6 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             return View(msc);
@@ -74,11 +73,12 @@ namespace kundt_front_end.Controllers
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
 
-
+            bool versicherung = msc.HatRtVersicherung;
 
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
+                msc.HatRtVersicherung = versicherung;
             }
             if (System.Web.HttpContext.Current.Session["msc"] != null)
             {
@@ -119,10 +119,11 @@ namespace kundt_front_end.Controllers
             {
                 msc = (ModelStepClass)TempData["msc"];
             }
-
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
             return View(msc); //Get Object with ID
         }
 
@@ -149,7 +150,7 @@ namespace kundt_front_end.Controllers
         {
 
             msc.kunde = db.tblKunde.Find(msc.userID);
-            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);            
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
 
 
             TempData["msc"] = msc;
@@ -167,7 +168,7 @@ namespace kundt_front_end.Controllers
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    SqlParameter KundeID = new SqlParameter("@varIDKunde",SqlDbType.Int);
+                    SqlParameter KundeID = new SqlParameter("@varIDKunde", SqlDbType.Int);
                     KundeID.Value = msc.userID;
                     KundeID.Direction = ParameterDirection.Input;
                     cmd.Parameters.Add(KundeID);
@@ -212,7 +213,7 @@ namespace kundt_front_end.Controllers
 
             var pdf = new ViewAsPdf("ViewPDF", msc);
             var file = pdf.BuildPdf(ControllerContext);
-            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/Content/PDF/{0}.pdf",IDBuchung));
+            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/Content/PDF/{0}.pdf", IDBuchung));
             var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
             fileStream.Write(file, 0, file.Length);
             fileStream.Close();

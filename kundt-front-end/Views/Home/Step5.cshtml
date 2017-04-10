@@ -349,15 +349,45 @@
             <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html</p>
             <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
-            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="h4Step3">Abholung</h4>
-                <p>Wien am @Model.date_von.ToShortDateString()</p>
-                <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien am @Model.date_bis.ToShortDateString()</p>
-                <h4 class="h4Step3">Mietdauer</h4>
-                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
-                <h4 class="h4Step3">Preis</h4>
-                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>ss="col-lg-6">
+                <h4 class="h4Step3">Versicherung</h4>
+                @{if (Model.HatRtVersicherung)
+                    {
+                        <p>Ja</p>
+                    }
+                    else
+                    {
+                        <p>Nein</p>
+                    }
+                }
+            </div>
+            <div class="col-lg-6">
+                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
+                <ul>
+                    @if (Model.gebuchtesAuto.tblAusstattung != null)
+                    {
+                        foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                        {
+                            <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                        }
+                    }
+                </ul>
             </div>
         </div>
 
@@ -371,7 +401,7 @@
                     <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
                     <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
                     <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
-                    <p><b>Geburtsdatum: </b><span>@*@Model.kunde.GebDatum.ToShortDateString()*@</span></p>
+                    <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
                 </div>
                 @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
 
