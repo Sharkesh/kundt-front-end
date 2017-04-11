@@ -61,7 +61,7 @@
           <Property Name="FKKunde" Type="int" Nullable="false" />
           <Property Name="FKAuto" Type="int" Nullable="false" />
           <Property Name="Tage" Type="int" StoreGeneratedPattern="Computed" />
-          <Property Name="BuchungStatus" Type="varchar" MaxLength="10" />
+          <Property Name="BuchungStatus" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Storno" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="tblEyecatcher">
@@ -357,7 +357,6 @@
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
           <Parameter Name="bisDate" Type="varchar" Mode="In" />
           <Parameter Name="klasse" Type="varchar" Mode="In" />
-          <Parameter Name="sitzanzahl" Type="varchar" Mode="In" />
           <ReturnType>
             <CollectionType>
               <RowType>
@@ -366,7 +365,7 @@
                 <Property Name="Tueren" Type="int" />
                 <Property Name="Sitze" Type="int" />
                 <Property Name="Mietpreis" Type="decimal" Precision="10" Scale="2" />
-                <Property Name="Autobild" Type="varbinary" MaxLength="1" />
+                <Property Name="Autobild" Type="varbinary(max)" />
                 <Property Name="Kategorie" Type="varchar" MaxLength="50" />
                 <Property Name="Typ" Type="varchar" MaxLength="50" />
                 <Property Name="Marke" Type="varchar" MaxLength="50" />
@@ -391,7 +390,6 @@
           <Parameter Name="vonDate" Type="varchar" Mode="In" />
           <Parameter Name="bisDate" Type="varchar" Mode="In" />
           <Parameter Name="klasse" Type="varchar" Mode="In" />
-          <Parameter Name="sitzanzahl" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -525,7 +523,7 @@
           <Property Name="FKKunde" Type="Int32" Nullable="false" />
           <Property Name="FKAuto" Type="Int32" Nullable="false" />
           <Property Name="Tage" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="BuchungStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BuchungStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Storno" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tblAuto" Relationship="Self.FK__tblBuchun__FKAut__6D0D32F4" FromRole="tblBuchung" ToRole="tblAuto" />
           <NavigationProperty Name="tblKunde" Relationship="Self.FK__tblBuchun__FKKun__6C190EBB" FromRole="tblBuchung" ToRole="tblKunde" />
@@ -876,13 +874,11 @@
             <Parameter Name="vonDate" Mode="In" Type="String" />
             <Parameter Name="bisDate" Mode="In" Type="String" />
             <Parameter Name="klasse" Mode="In" Type="String" />
-            <Parameter Name="sitzanzahl" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="fCarAvailableFilterIncluded" IsComposable="true" ReturnType="Collection(it22AutoverleihModel.fCarAvailableFilterIncluded_Result)">
             <Parameter Name="vonDate" Mode="In" Type="String" />
             <Parameter Name="bisDate" Mode="In" Type="String" />
             <Parameter Name="klasse" Mode="In" Type="String" />
-            <Parameter Name="sitzanzahl" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="fCarAvailable_Result">

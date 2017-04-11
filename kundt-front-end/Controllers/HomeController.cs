@@ -10,6 +10,8 @@ using System.IO;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Net.Mail;
+using System.Net;
 
 namespace kundt_front_end.Controllers
 {
@@ -49,7 +51,7 @@ namespace kundt_front_end.Controllers
             klasse = msc.KlasseFilter;
 
 
-            var autoListe = db.pCarAvailableFinal(msc.date_von_string, msc.date_bis_string, klasse, sitze).ToList(); // später auf Eager Loading ändern ?
+            var autoListe = db.pCarAvailableFinal(msc.date_von_string, msc.date_bis_string, klasse).ToList(); // später auf Eager Loading ändern ?
             msc.carTableFilter = autoListe.ToList(); //Filtert verf. Autos mit Filteroptionen
 
 
@@ -74,23 +76,17 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
-            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
-            msc.date_von = Convert.ToDateTime(msc.date_von_string);
-            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            msc.kunde = db.tblKunde.Find(msc.userID);
-            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
-
-            bool versicherung = msc.HatRtVersicherung;
+            //bool versicherung = msc.HatRtVersicherung;
 
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
-                msc.HatRtVersicherung = versicherung;
+                //msc.HatRtVersicherung = versicherung;
             }
             if (System.Web.HttpContext.Current.Session["msc"] != null)
             {
                 msc = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
-                msc.HatRtVersicherung = versicherung;
+                //msc.HatRtVersicherung = versicherung;
             }
 
             //Wenn eingeloggt dann diesen Step überspringen
@@ -101,6 +97,11 @@ namespace kundt_front_end.Controllers
                 TempData["msc"] = msc;
                 return RedirectToAction("Step5");
             }
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             //Deprecated
             if (TempData["registerResult"] != null)
@@ -227,6 +228,33 @@ namespace kundt_front_end.Controllers
             var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
             fileStream.Write(file, 0, file.Length);
             fileStream.Close();
+
+            using (MailMessage mm = new MailMessage("test.sharkesh@gmail.com", msc.kunde.tblLogin.Email))
+            {
+                mm.Subject = "Buchungsbestätigung";
+
+                string body = "<p>Vielen Dank für ihre Buchung,";
+                body += "<br /><br />Ihre Buchungsbestätigung befindet sich im Anhang als PDF.";
+                body += "<br /><br />Ihr Kundt-Autoverleih</p>";
+                //Nachrichten Text wird an das MailMessage Objekt gehängt.
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                Attachment Anhnag = new Attachment(path);
+                mm.Attachments.Add(Anhnag);
+
+
+                NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!");
+
+                SmtpClient smtp = new SmtpClient()
+                {
+                    Host = "smtp.gmail.com",
+                    EnableSsl = true,
+                    UseDefaultCredentials = true,
+                    Credentials = NetworkCred,
+                    Port = 587
+                };
+                smtp.Send(mm);
+            }
 
             //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
 

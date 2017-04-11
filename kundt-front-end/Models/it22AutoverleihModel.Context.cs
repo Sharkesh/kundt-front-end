@@ -86,7 +86,7 @@ namespace kundt_front_end.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailable_Result>("[it22AutoverleihEntities].[fCarAvailable](@vonDate, @bisDate)", vonDateParameter, bisDateParameter);
         }
     
-        public virtual ObjectResult<pCarAvailableFinal_Result> pCarAvailableFinal(string vonDate, string bisDate, string klasse, string sitzanzahl)
+        public virtual ObjectResult<pCarAvailableFinal_Result> pCarAvailableFinal(string vonDate, string bisDate, string klasse)
         {
             var vonDateParameter = vonDate != null ?
                 new ObjectParameter("vonDate", vonDate) :
@@ -100,15 +100,11 @@ namespace kundt_front_end.Models
                 new ObjectParameter("klasse", klasse) :
                 new ObjectParameter("klasse", typeof(string));
     
-            var sitzanzahlParameter = sitzanzahl != null ?
-                new ObjectParameter("sitzanzahl", sitzanzahl) :
-                new ObjectParameter("sitzanzahl", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pCarAvailableFinal_Result>("pCarAvailableFinal", vonDateParameter, bisDateParameter, klasseParameter, sitzanzahlParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<pCarAvailableFinal_Result>("pCarAvailableFinal", vonDateParameter, bisDateParameter, klasseParameter);
         }
     
         [DbFunction("it22AutoverleihEntities", "fCarAvailableFilterIncluded")]
-        public virtual IQueryable<fCarAvailableFilterIncluded_Result> fCarAvailableFilterIncluded(string vonDate, string bisDate, string klasse, string sitzanzahl)
+        public virtual IQueryable<fCarAvailableFilterIncluded_Result> fCarAvailableFilterIncluded(string vonDate, string bisDate, string klasse)
         {
             var vonDateParameter = vonDate != null ?
                 new ObjectParameter("vonDate", vonDate) :
@@ -122,11 +118,7 @@ namespace kundt_front_end.Models
                 new ObjectParameter("klasse", klasse) :
                 new ObjectParameter("klasse", typeof(string));
     
-            var sitzanzahlParameter = sitzanzahl != null ?
-                new ObjectParameter("sitzanzahl", sitzanzahl) :
-                new ObjectParameter("sitzanzahl", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailableFilterIncluded_Result>("[it22AutoverleihEntities].[fCarAvailableFilterIncluded](@vonDate, @bisDate, @klasse, @sitzanzahl)", vonDateParameter, bisDateParameter, klasseParameter, sitzanzahlParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailableFilterIncluded_Result>("[it22AutoverleihEntities].[fCarAvailableFilterIncluded](@vonDate, @bisDate, @klasse)", vonDateParameter, bisDateParameter, klasseParameter);
         }
     }
 }
