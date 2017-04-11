@@ -20,10 +20,11 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// ConnectionString
         /// </summary>
-        public static SqlConnection con = new SqlConnection("Data Source=sql1;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!");
-        //public static SqlConnection con = new SqlConnection("Data Source=NOTEBOOK;Initial Catalog=it22Autoverleih;Integrated Security=True");
-        //public static SqlConnection con = new SqlConnection("Data Source=DESKTOP-3EF0DR7;Initial Catalog=it22Autoverleih;Integrated Security=True");
-        //public static SqlConnection con = new SqlConnection("Data Source=ADMIN-PC;Initial Catalog=it22Autoverleih;Integrated Security=True");
+        public static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"")+1, 156);
+        /// <summary>
+        /// Connection
+        /// </summary>
+        public static SqlConnection con = new SqlConnection(conString);
 
         /// <summary>
         /// GET: Login
@@ -83,7 +84,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Index(string email, string password, ModelStepClass msc)
         {
             //PasswordConverter hashed das eingegebene Passwort im SHA256 Format
-            password = Helpers.Login.PasswordConverter(password);
+            password = Logic.Helpers.HashPassword(password);
 
             //Verbindung zur Datenbank per Connecton string wird definiert
             //Stored Procedure Validate_User wird definiert
@@ -151,7 +152,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Registrierung(string sex, string prename, string sirname, string adress, string city, string postcode, string telephone, string bDay, string bMonth, string bYear, string pass, string email, string password, ModelStepClass msc)
         {
             //PasswordConverter hashed das eingegebene Passwort im SHA256 Format
-            password = Helpers.Login.PasswordConverter(password);
+            password = Logic.Helpers.HashPassword(password);
             string GebDatum = $"{bDay}.{bMonth}.{bYear}";
             int userId = 0;
             //Stored Procedure Insert_User wird definiert
@@ -181,7 +182,7 @@ namespace kundt_front_end.Controllers
             }
             if (userId > 0)
             {
-                Helpers.Login.SendActivationEmail(userId, email);
+                Logic.Helpers.SendActivationEmail(userId, email);
             }
             else
             {
@@ -221,23 +222,23 @@ namespace kundt_front_end.Controllers
     }
 }
 
-namespace kundt_front_end.Helpers
+namespace kundt_front_end.Logic
 {
     /// <summary>
     /// Sammlung aus Methoden die zur Hilfe bei Login verwendet werden können.
     /// </summary>
-    public class Login
+    public class Helpers
     {
         /// <summary>
         /// ConnectionString
         /// </summary>
         public static SqlConnection con = Controllers.LoginController.con;
         /// <summary>
-        /// Wandelt den Mitgelieferten String in einen SHA256 Code als String um.
+        /// Wandelt den Mitgelieferten String in einen SHA256 Hash um.
         /// </summary>
-        /// <param name="originalPassword">Ein String der in SHA256 konvertiert werden soll.</param>
-        /// <returns>Die Zeichenfolge in SHA256 Format als String</returns>
-        public static string PasswordConverter(string originalPassword)
+        /// <param name="originalPassword">Ein String der in SHA256 gehashed werden soll.</param>
+        /// <returns>Die Zeichenfolge in SHA256 Hash als String</returns>
+        public static string HashPassword(string originalPassword)
         {
             SHA256 sha256 = new SHA256CryptoServiceProvider();
             Byte[] originalBytes = ASCIIEncoding.Default.GetBytes(originalPassword);
