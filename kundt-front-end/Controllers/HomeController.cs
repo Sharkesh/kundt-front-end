@@ -74,6 +74,11 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             bool versicherung = msc.HatRtVersicherung;
 
@@ -85,6 +90,7 @@ namespace kundt_front_end.Controllers
             if (System.Web.HttpContext.Current.Session["msc"] != null)
             {
                 msc = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
+                msc.HatRtVersicherung = versicherung;
             }
 
             //Wenn eingeloggt dann diesen Step überspringen
@@ -95,13 +101,6 @@ namespace kundt_front_end.Controllers
                 TempData["msc"] = msc;
                 return RedirectToAction("Step5");
             }
-
-            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
-            msc.date_von = Convert.ToDateTime(msc.date_von_string);
-            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            msc.kunde = db.tblKunde.Find(msc.userID);
-            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
-
 
             //Deprecated
             if (TempData["registerResult"] != null)
@@ -114,11 +113,10 @@ namespace kundt_front_end.Controllers
             }
             return View(msc);
         }
+
         [RequireHttps]
         public ActionResult Step5(ModelStepClass msc)
         {
-
-
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
@@ -138,7 +136,6 @@ namespace kundt_front_end.Controllers
 
             TempData["msc"] = msc;
             int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
-
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);

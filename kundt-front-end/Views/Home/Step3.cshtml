@@ -501,7 +501,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                     <form action="@Url.Action("Step4", "Home")" method="post">
-                        <input type="hidden" id="hiddensquaredTwo" value="false" name="HatRtVersicherung"/>
+                        <input type="hidden" id="hiddensquaredTwo" value="@Model.HatRtVersicherung" name="HatRtVersicherung"/>
                         <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                         <input type="hidden" value="@Model.userID" name="userID" />
                         <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
