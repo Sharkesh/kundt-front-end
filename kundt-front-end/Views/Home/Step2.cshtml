@@ -665,20 +665,7 @@
             </button>
         </form>
     </div>
-    <div class="hidden-xs hidden-sm hidden-md col-lg-3">
-        <form method="post" class="form-inline">
-            <div class="form-group">
-                <select id="lunch" class="selectpicker" title="Sitzanzahl">
-                    <option> Alle anzeigen</option>
-                    <option>2 Sitze</option>
-                    <option>3 Sitze</option>
-                    <option>4 Sitze</option>
-                    <option>5 Sitze</option>
-                    <option>Mehr als 5</option>
-                </select>
-            </div>
-        </form>
-    </div>
+
     <center>
         <div class="hidden-lg">
             <div class="panel-group">
@@ -698,26 +685,26 @@
                 </div>
             </div>
         </div>
-        <div class="hidden-lg">
-            <div class="panel-group">
-                <div class="panel">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse2">Sitzanzahl</a>
-                        </h4>
-                    </div>
-                    <div id="collapse2" class="panel-collapse collapse">
-                        <ul class="list-group">
-                            <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">2 Sitze</a></li>
-                            <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">3 Sitze</a></li>
-                            <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">4 Sitze</a></li>
-                            <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">5 Sitze</a></li>
-                            <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">Mehr als 5 Sitze</a></li>
-                        </ul>
+        @*<div class="hidden-lg">
+                <div class="panel-group">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse2">Sitzanzahl</a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <ul class="list-group">
+                                <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">2 Sitze</a></li>
+                                <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">3 Sitze</a></li>
+                                <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">4 Sitze</a></li>
+                                <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">5 Sitze</a></li>
+                                <li class="list-group-item" style="padding:10px;"><a href="#" class="filterSmallStep2" style="display:block;width:100%;height:100%;margin:0px;">Mehr als 5 Sitze</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>*@
     </center>
     @*Filterung Ende *@
 
@@ -725,7 +712,7 @@
 
     @foreach (var auto in Model.carTableFilter)
     {
-        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;"></div>
+        <div style="border-bottom:1px solid #CCC;padding-bottom:40px;padding-top:10px;"></div>
         <div class="row">
             <div class="paddingtopStep2">
                 <ul class="ulStep2">
@@ -746,11 +733,11 @@
                                     <b>nix gucken</b>
                                 }
                             }
-                            @*<img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive imgStep2" />*@
                         </div>
                         <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
                             <h3 class="h3step2">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
                             <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
+                            <h5>Sitzanzahl @Html.DisplayFor(m => auto.Sitze)</h5>
                             <div>Dieses Angebot enthält:</div>
                             <ul>
                                 <li>Alle Kilometer inkl.</li>
