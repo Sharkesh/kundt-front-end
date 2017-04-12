@@ -252,6 +252,11 @@
             letter-spacing: .5px;
             text-align: center;
         }
+
+    .okZeichen1 {
+        list-style-image: url(../../../../Content/img/ok-sign.png);
+        padding-bottom: 10px;
+    }
     /*#endregion*/
 </style>
 
@@ -351,30 +356,30 @@
                     <h4 class="h4Step3">Preis</h4>
                     <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
                 </div>
-                <div>
-                <h4 class="h4Step3">Versicherung</h4>
-                @{if (Model.HatRtVersicherung)
-                    {
-                        <p>Ja</p>
-                    }
-                    else
-                    {
-                        <p>Nein</p>
-                    }
-                }
-            </div>
-            <div>
-                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
-                <ul>
-                    @if (Model.gebuchtesAuto.tblAusstattung != null)
-                    {
-                        foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Sonderausstattung</h4>
+                    <ul>
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
                         {
-                            <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Versicherung</h4>
+                    @{if (Model.HatRtVersicherung)
+                        {
+                            <p>Ja</p>
+                        }
+                        else
+                        {
+                            <p>Nein</p>
                         }
                     }
-                </ul>
-            </div>
+                </div>
             </div>
         </div>
 
