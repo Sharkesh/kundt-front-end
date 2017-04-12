@@ -289,23 +289,24 @@
             @*Standort:
                 <input type="text" id="standort" />*@
 
+            <form action="@Url.Action("Step2","Home")" method="post">
+                <center class="hidden-lg hidden-md">
+                    <div class="col-sm-5 col-xs-12">
+                        <label id="label_von">Von:</label>
+                        <input type="text" id="date_von_mobile" name="date_von_string" placeholder="DD.MM.YYYY" required />
+                    </div>
+                </center>
+                <center class="hidden-lg hidden-md">
+                    <div class="col-sm-5 col-xs-12">
+                        <label id="label_bis">Bis:</label>
+                        <input type="text" id="date_bis_mobile" name="date_bis_string" placeholder="DD.MM.YYYY" required />
+                    </div>
+                </center>
 
-            <center class="hidden-lg hidden-md">
-                <div class="col-sm-5 col-xs-12">
-                    <label id="label_von">Von:</label>
-                    <input type="text" id="date_von_mobile" placeholder="DD.MM.YYYY" required />
+                <div class="col-sm-2 col-xs-12">
+                    <button id="buttonOrange" class="buttonOrange_mobile glyphicon glyphicon-search"></button>
                 </div>
-            </center>
-            <center class="hidden-lg hidden-md">
-                <div class="col-sm-5 col-xs-12">
-                    <label id="label_bis">Bis:</label>
-                    <input type="text" id="date_bis_mobile" placeholder="DD.MM.YYYY" required />
-                </div>
-            </center>
-
-            <div class="col-sm-2 col-xs-12">
-                <button class="buttonOrange_mobile glyphicon glyphicon-search"></button>
-            </div>
+            </form>
         </div>
         <div>
             <img src="~/Content/img/Bild3.jpg" alt="Bild3" style="width: 100%;" class="img-responsive" />

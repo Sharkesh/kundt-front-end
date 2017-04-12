@@ -41,8 +41,17 @@ namespace kundt_front_end.Controllers
         public ActionResult Step2(ModelStepClass msc)
         {
             // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
-            msc.date_von = Convert.ToDateTime(msc.date_von_string);
-            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+           
+            if (msc.date_von_string != null && msc.date_bis_string != null)
+            {
+                msc.date_von = Convert.ToDateTime(msc.date_von_string);
+                msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            }
+            else
+            {
+                return RedirectToAction("index");
+            }
+            
             //procs und Validierung der übergebenen Daten
             string sitze = null;
             string klasse = null;
