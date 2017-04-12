@@ -273,7 +273,19 @@
                     </center>
                 </div>
                 <div class="col-xs-12">
-                    <center><img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" /></center>
+                    <center>
+                        @{
+                            if (Model.gebuchtesAuto.AutoBild != null)
+                            {
+                                var image = Convert.ToBase64String(Model.gebuchtesAuto.AutoBild);
+                                @Html.Raw("<img src=\"data:image/png;base64," + image + "\" class=\"img-responsive\" />");
+                            }
+                            else
+                            {
+                                <b>nix gucken</b>
+                            }
+                        }
+                    </center>
                 </div>
 
                 <div class="TextAufzählungStep3 ">

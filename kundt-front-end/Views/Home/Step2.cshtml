@@ -735,7 +735,18 @@
                             <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-                            <img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive imgStep2" />
+                            @{
+                                if (auto.Autobild != null)
+                                {
+                                    var image = Convert.ToBase64String(auto.Autobild);
+                                    @Html.Raw("<img src=\"data:image/png;base64," + image + "\" class=\"img-responsive imgStep2\" />");
+                                }
+                                else
+                                {
+                                    <b>nix gucken</b>
+                                }
+                            }
+                            @*<img src="~/Content/img/opel-astra-5d-rot-2016.png" class="img-responsive imgStep2" />*@
                         </div>
                         <div class="col-xs-12 col-lg-5 visible-lg hidden-xs hidden-sm hidden-md">
                             <h3 class="h3step2">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
@@ -780,5 +791,5 @@
                 </ul>
             </div>
         </div>
-    }
+                                }
 </div>
