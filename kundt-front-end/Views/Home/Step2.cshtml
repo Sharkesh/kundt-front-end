@@ -640,25 +640,25 @@
     @* Filterung *@
     <div class="hidden-xs hidden-sm hidden-md col-lg-9" style="display:inline-block">
         @*Testing post with filter*@
-        <form action="@Url.Action("Step2","Home", Model)" method="post">
+        <form action="@Url.Action("Step2","Home")" method="post">
             <input type="hidden" value="" name="KlasseFilter" />
             <button class="filterStep2" style="float:left">
                 <span>Alle anzeigen</span>
             </button>
         </form>
-        <form action="@Url.Action("Step2","Home", Model)" method="post">
+        <form action="@Url.Action("Step2","Home")" method="post">
             <input type="hidden" value="kleinwagen" name="KlasseFilter" />
             <button class="filterStep2" style="float:left">
                 <span>Kleinwagen</span>
             </button>
         </form>
-        <form action="@Url.Action("Step2","Home", Model)" method="post">
+        <form action="@Url.Action("Step2","Home")" method="post">
             <input type="hidden" value="mittelklasse" name="KlasseFilter" />
             <button class="filterStep2" style="float:left">
                 <span>Mittelklasse</span>
             </button>
         </form>
-        <form action="@Url.Action("Step2","Home", Model)" method="post">
+        <form action="@Url.Action("Step2","Home")" method="post">
             <input type="hidden" value="luxusklasse" name="KlasseFilter" />
             <button class="filterStep2" style="float:left">
                 <span>Luxusklasse</span>
