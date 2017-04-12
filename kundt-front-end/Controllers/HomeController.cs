@@ -68,32 +68,20 @@ namespace kundt_front_end.Controllers
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
-            TempData["msc"] = msc;
-
             return View(msc);
         }
 
         [RequireHttps]
         public ActionResult Step4(ModelStepClass msc) //Get Object with ID
         {
-            //bool versicherung = msc.HatRtVersicherung;
-
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
-                //msc.HatRtVersicherung = versicherung;
-            }
-            if (System.Web.HttpContext.Current.Session["msc"] != null)
-            {
-                msc = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
-                //msc.HatRtVersicherung = versicherung;
             }
 
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
             {
-                System.Web.HttpContext.Current.Session["IDAuto"] = (int)msc.gebuchtesAutoID;
-
                 TempData["msc"] = msc;
                 return RedirectToAction("Step5");
             }

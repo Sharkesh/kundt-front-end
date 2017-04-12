@@ -59,6 +59,11 @@ namespace kundt_front_end.Controllers
                         if (rowsAffected == 1)
                         {
                             TempData["activationResult"] = ViewBag.activationResult = 0; //Activation successful
+                            if (System.Web.HttpContext.Current.Session["msc"] != null)
+                            {
+                                TempData["msc"] = (ModelStepClass)System.Web.HttpContext.Current.Session["msc"];
+                                System.Web.HttpContext.Current.Session["msc"] = null;
+                            }
                         }
                         else
                         {
@@ -117,7 +122,6 @@ namespace kundt_front_end.Controllers
                     System.Web.HttpContext.Current.Session["IDUser"] = ViewBag.loginResult;
                     System.Web.HttpContext.Current.Session["Email"] = email;
                     msc.userID = ViewBag.loginResult;
-                    System.Web.HttpContext.Current.Session["msc"] = null;
                 }
                 else
                 {
@@ -183,6 +187,7 @@ namespace kundt_front_end.Controllers
             if (userId > 0)
             {
                 Logic.Helpers.SendActivationEmail(userId, email);
+                System.Web.HttpContext.Current.Session["msc"] = msc;
             }
             else
             {
@@ -192,7 +197,6 @@ namespace kundt_front_end.Controllers
 
             //Bei einem Redirect funktioniert ViewBag NICHT! Deshalb TempData.
             TempData["registerResult"] = userId;
-            System.Web.HttpContext.Current.Session["msc"] = msc;
             TempData["msc"] = msc;
 
             //Theoretisch einfach das Selbe wie beim Login(?)
