@@ -447,16 +447,36 @@
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
             <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
             <p style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
-            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="margin:0px" />
+            <div style="text-align:center" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
-                <p>Wien am @Model.date_von.ToShortDateString())</p>
+                <p>Wien am @Model.date_von.ToShortDateString()</p>
                 <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien am @Model.date_bis.ToShortDateString())</p>
+                <p>Wien am @Model.date_bis.ToShortDateString()</p>
                 <h4 class="h4Step3">Mietdauer</h4>
                 <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
                 <h4 class="h4Step3">Preis</h4>
                 <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                <h4 class="h4Step3">Versicherung</h4>
+                    @{if (Model.HatRtVersicherung)
+                        {
+                            <p>Ja</p>
+                        }
+                        else
+                        {
+                            <p>Nein</p>
+                        }
+                    }
+                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
+                    
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
+                        {
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <p class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</p>
+                            }
+                        }
+                    
             </div>
         </div>
         @*Erste Box für Login Anfang*@
@@ -523,14 +543,14 @@
                         <div class="col-md-offset-2 col-md-10">
                             <div class="hidden-sm hidden-xs col-md-12">
                                 @*Buttons Zurück, Registieren, Login*@
-                                <a href="@Url.Action("Step3", "Home")" method="post">
-                                    @*<input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                                <a href="@Url.Action("Step3", "Home", Model)" method="post">
+                                    <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                                     <input type="hidden" value="@Model.userID" name="userID" />
                                     <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
                                     <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
                                     <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
                                     <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />*@
+                                    <input type="hidden" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                                     <button type="button" @*type="submit"*@ class="buttonOrangeReturnStep3" style="margin-left:-100px; float:left"><span>Zurück</span></button>
                                 </a>
                                 @*</form>*@
