@@ -316,7 +316,7 @@
                             <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
                             <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
                             <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
-                            <p><b>Geburtsdatum: </b><span>@Html.DisplayFor(model => model.kunde.GebDatum)</span></p>
+                            <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
                         </div>
 
                         <div class="col-xs-6">

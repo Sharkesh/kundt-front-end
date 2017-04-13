@@ -154,6 +154,7 @@ namespace kundt_front_end.Controllers
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
 
             TempData["msc"] = msc;
@@ -220,6 +221,7 @@ namespace kundt_front_end.Controllers
             }
 
             TempData["BuchungID4PDF"] = IDBuchung;
+            msc.IDBuchung = IDBuchung;
 
             var pdf = new ViewAsPdf("ViewPDF", msc);
             var file = pdf.BuildPdf(ControllerContext);
