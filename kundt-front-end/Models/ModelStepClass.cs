@@ -8,7 +8,8 @@ namespace kundt_front_end.Models
 {
     public class ModelStepClass
     {
-        // public int StepID { get; set; }
+        public bool notAgain { get; set; }
+
         public DateTime date_von { get; set; }
         public DateTime date_bis { get; set; }
 
