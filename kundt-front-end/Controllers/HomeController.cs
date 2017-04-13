@@ -25,6 +25,9 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Index()
         {
+            // Falls noch ein TempData vorhanden, wird es gelöscht
+            TempData["msc"] = null;
+
             ModelStepClass msc = new ModelStepClass();
             msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
             return View(msc);
@@ -41,7 +44,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Step2(ModelStepClass msc)
         {
             // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
-           
+
             if (msc.date_von_string != null && msc.date_bis_string != null)
             {
                 msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -51,7 +54,7 @@ namespace kundt_front_end.Controllers
             {
                 return RedirectToAction("index");
             }
-            
+
             //procs und Validierung der übergebenen Daten
             string sitze = null;
             string klasse = null;
@@ -131,8 +134,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Print()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
-
-            TempData["msc"] = msc;
+            
             int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
 
             msc.kunde = db.tblKunde.Find(msc.userID);
