@@ -33,5 +33,6 @@ namespace kundt_front_end.Models
         public string SitzanzahlFilter { get; set; }
         public string KlasseFilter { get; set; }
         public List<tblAusstattung> listeAusstattung { get; set; }
+        public List<tblEyecatcher> tec { get; set; }
     }
 }

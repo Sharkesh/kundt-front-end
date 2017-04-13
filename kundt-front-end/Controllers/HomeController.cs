@@ -29,7 +29,9 @@ namespace kundt_front_end.Controllers
             TempData["msc"] = null;
 
             ModelStepClass msc = new ModelStepClass();
+           
             msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
+            msc.tec = db.tblEyecatcher.ToList();
             return View(msc);
         }
         /// <summary>
