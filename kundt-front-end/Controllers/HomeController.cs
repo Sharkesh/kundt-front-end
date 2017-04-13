@@ -149,6 +149,55 @@ namespace kundt_front_end.Controllers
         }
 
         [RequireHttps]
+        public ActionResult SendMail_Again()
+        {
+            ModelStepClass msc = (ModelStepClass)TempData["msc"];
+
+            int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
+
+            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
+            msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
+            msc.date_von = Convert.ToDateTime(msc.date_von_string);
+            msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
+            msc.IDBuchung = BuchungID4PDf;
+
+            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/App_Data/PDF/{0}.pdf", msc.IDBuchung));
+
+            using (MailMessage mm = new MailMessage("test.sharkesh@gmail.com", msc.kunde.tblLogin.Email))
+            {
+                mm.Subject = "Buchungsbestätigung";
+
+                string body = "<p>Vielen Dank für ihre Buchung,";
+                body += "<br /><br />Ihre Buchungsbestätigung befindet sich im Anhang als PDF.";
+                body += "<br /><br />Ihr Kundt-Autoverleih</p>";
+                //Nachrichten Text wird an das MailMessage Objekt gehängt.
+                mm.Body = body;
+                mm.IsBodyHtml = true;
+                Attachment Anhnag = new Attachment(path);
+                mm.Attachments.Add(Anhnag);
+
+
+                NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!");
+
+                SmtpClient smtp = new SmtpClient()
+                {
+                    Host = "smtp.gmail.com",
+                    EnableSsl = true,
+                    UseDefaultCredentials = true,
+                    Credentials = NetworkCred,
+                    Port = 587
+                };
+                smtp.Send(mm);
+            }
+
+            TempData["msc"] = msc;
+
+            return RedirectToAction("Step6");
+
+        }
+
+        [RequireHttps]
         public ActionResult Step6(ModelStepClass msc)
         {
 
@@ -224,7 +273,7 @@ namespace kundt_front_end.Controllers
 
             var pdf = new ViewAsPdf("ViewPDF", msc);
             var file = pdf.BuildPdf(ControllerContext);
-            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/Content/PDF/{0}.pdf", IDBuchung));
+            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/App_Data/PDF/{0}.pdf", IDBuchung));
             var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
             fileStream.Write(file, 0, file.Length);
             fileStream.Close();

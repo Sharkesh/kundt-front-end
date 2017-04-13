@@ -485,8 +485,7 @@
     <Content Include="Views\Home\ViewPDF.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\PDF\" />
+    <Folder Include="App_Data\PDF\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
