@@ -152,8 +152,7 @@ namespace kundt_front_end.Controllers
 
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-
-
+            
             TempData["msc"] = msc;
             //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
             //Waere natuerlich schoen, wenn man noch herausfindet warum
