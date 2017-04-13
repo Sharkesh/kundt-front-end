@@ -22,7 +22,6 @@ namespace kundt_front_end.Models
         public int gebuchtesAutoID { get; set; }
         public decimal Gesamtpreis { get; set; }
         public int IDBuchung { get; set; }
-        public DateTime DateToday { get; }
         public tblAuto gebuchtesAuto { get; set; }
 
         public bool HatRtVersicherung { get; set; }
