@@ -1,137 +1,513 @@
-﻿
+﻿@model kundt_front_end.Models.ModelStepClass
+
 @{
     ViewBag.Title = "Step5";
 }
 <style>
-    /*Style Bereich Anfang*/
-    .paddingSmallStep5 {
-        padding-top: 20px;
+    /* Progress-Bar */
+    .miniButton {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
     }
 
-</style> @*Style Bereich Ende*@
-
-<script>
-    //Script Bereich Anfang
-    function BackToStep4() {
-
-        window.location.href = "http://localhost:57095/Home/Step4";
-
+    .miniButtonOp {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+        opacity: 0.3;
     }
 
-    function ToStep5() {
-
-        window.location.href = "http://localhost:57095/Home/Step6";
+    .myButton {
+        color: white;
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
     }
 
-</script> @*Script Bereich Ende*@
+    .myButtonOp {
+        color: white;
+        height: 45px;
+        width: 45px;
+        background-color: #f99b1c;
+        border-radius: 45px;
+        font-size: 25px;
+        border-style: none;
+        opacity: 0.3;
+        border-bottom: solid 1px;
+        border-left: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
 
-@*Header*@
-<div class="container">
-    <div class="paddingSmallStep5">
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:80%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
-        </div>
-    </div>
+    .myButton:active {
+        height: 42px;
+        width: 42px;
+        border-radius: 42px;
+        font-size: 22px;
+        animation-name: anima01;
+        animation-iteration-count: infinite;
+        animation-duration: 2.5s;
+        margin: 2% 0% auto 1%;
+    }
 
-    <h2>Step5</h2>
-    <div class="row">
-        @*Erste Einteilung in 12 rows Anfang*@
-    <div class="col-lg-6">
-        <div class="row">
-            @*Zweite Reihe Rows ANFANG*@
-            @*Die ERSTEN 4 Reihen Anfang*@
-            <form>
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Vorname:</label>
-                        <input type="text" class="form-control" id="Vorname" placeholder="Vorname">
-                    </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">Nachname:</label>
-                        <input type="text" class="form-control" id="Nachname" placeholder="Nachname">
-                    </div>
-                </div>
+    .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
+        outline: none;
+    }
 
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Ort:</label>
-                        <input type="text" class="form-control" id="Ort" placeholder="Ort">
-                    </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">PLZ:</label>
-                        <input type="text" class="form-control" id="PLZ" placeholder="PLZ">
-                    </div>
-                </div>
+    .noCurs {
+        cursor: default;
+    }
 
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Adresse:</label>
-                        <input type="text" class="form-control" id="Adresse" placeholder="Adresse">
-                    </div>
-                    <div class="form-group col-lg-offset-6">
-                        <label for="exampleInputEmail1">Nummer:</label>
-                        <input type="text" class="form-control" id="Nummer" placeholder="Nummer">
-                    </div>
-                </div>
+    .opacity {
+        opacity: 1.0;
+    }
 
-                <div>
-                    <div class="form-group col-lg-6">
-                        <label for="exampleInputEmail1">Email:</label>
-                        <input type="text" class="form-control" id="Email" placeholder="Email">
-                    </div>
-                </div>
+    @@keyframes anima01 {
+        0% {
+            background-color: #f99b1c;
+        }
 
-                <div class="col-lg-offset-12">
-                    <div class="form-group ">
-                        <label for="exampleInputEmail1">Preis Details:</label>
-                        <input type="text" class="form-control" id="PreisDetails" placeholder="PreisDetails">
-                    </div>
-                </div>
+        25% {
+            background-color: orange;
+        }
 
+        50% {
+            background-color: #f99b1c;
+        }
 
-                <div class="form-group col-lg-6">
-                    <label for="exampleInputEmail1">Voller Preis:</label>
-                    <input type="text" class="form-control" id="VollerPreis" placeholder="VollerPreis">
-                </div>
+        75% {
+            background-color: orange;
+        }
 
+        100% {
+            background-color: #f99b1c;
+        }
+    }
 
+    @@keyframes anima02 {
+        from {
+            width: 75%;
+        }
 
+        to {
+            width: 100%;
+        }
+    }
 
+    .myBorder {
+        /*border-color: #f99b1c;*/
+        padding: 15px 10px 5px 10px;
+    }
+
+    .myBar01 {
+        height: 6px;
+        margin-top: 18px;
+        background-color: #f99b1c;
+        animation-name: anima02;
+        animation-duration: 3s;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .containerBar {
+        width: 65%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
+    }
+    /* Progress-Bar Ende */
+    /*#region Buttons*/
+    .buttonOrangeForwardStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeForwardStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeForwardStep3 span:after {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeForwardStep3:hover span {
+            padding-right: 15px;
+        }
+
+            .buttonOrangeForwardStep3:hover span:after {
+                opacity: 1;
+                right: 0;
+            }
+
+        .buttonOrangeForwardStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .buttonOrangeReturnStep3 {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeReturnStep3 span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+            .buttonOrangeReturnStep3 span:after {
+                content: '\00ab';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                left: -30px;
+                transition: 0.5s;
+                font-size: 15px;
+            }
+
+        .buttonOrangeReturnStep3:hover span {
+            padding-left: 15px;
+        }
+
+            .buttonOrangeReturnStep3:hover span:after {
+                opacity: 1;
+                left: 0;
+            }
+
+        .buttonOrangeReturnStep3:hover {
+            background-color: #f99b1c;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+        }
+
+    .okZeichen1 {
+        list-style-image: url(../../../../Content/img/ok-sign.png);
+        padding-bottom: 10px;
+    }
+    /*#endregion*/
+</style>
+
+<div class="container" style="margin-top:20px;">
+    @* Progress Bar *@
+    <div class="myBorder hidden-xs" style="text-align:center">
+        <div class="col-sm-2 col-sm-offset-1">
+            <form action="@Url.Action("Step2", "Home")">
+                <button class="myButton">1</button>
             </form>
-        </div>@*Zweite Reihe Rows ENDE*@
-    </div> @*Die ERSTEN 8 Reihen Ende*@
-
-    <div class="col-lg-offset-2">
-        <div class="col-lg-4">
-            @*Die DRITTE Reihe Anfang*@
-            <div>
-                <img src="~/Content/img/bmw-3er-kombi-grau-2015.png" />
-                Hier die Vorschau für ihr Bestelltes Auto!
-
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-
-            </div>
+            <h5>Fahrzeug wählen</h5>
         </div>
-    </div> @*Die DRITTE Reihe Ende*@
-</div> @*Erste Einteilung in 12 rows Ende*@
-
-<div style="margin-bottom:50px">
-    <div style="margin-top:50px">
-        <div class="col-lg-offset-2 randnachoben">
-            <div class="col-lg-2">
-                <button class="btn btn-default" type="submit" id="GoToStep4" onclick="BackToStep4()">Zurück </button>
-            </div>
+        <div class="col-sm-2">
+            <form action="@Url.Action("Step3", "Home")">
+                <button class="myButton">2</button>
+            </form>
+            <h5>Detailansicht</h5>
         </div>
-        <div class="col-lg-offset-4">
-            <div class="col-lg-2">
-                <button class="btn btn-default" type="submit" id="GoToStep5" onclick="ToStep5()">Bestätigen </button>
+        <div class="col-sm-2">
+            <form action="@Url.Action("Step4", "Home")">
+                <button class="myButtonOp opacity noCurs">3</button>
+            </form>
+            <h5>Anmeldung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp opacity noCurs">4</button>
+            <h5>Buchung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">5</button>
+            <h5>Abschluss</h5>
+        </div>
+
+        <div class="row">
+            <div class="container-fluid containerBar">
+                <div class="myBar01"></div>
             </div>
         </div>
     </div>
+    <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center;padding-bottom:20px;height:45px;">
+        <div class="col-xs-2 col-xs-offset-1">
+            <form action="@Url.Action("Step2", "Home")">
+                <button class="miniButton">1</button>
+            </form>
+        </div>
+        <div class="col-xs-2">
+            <form action="@Url.Action("Step3", "Home")">
+                <button class="miniButton">2</button>
+            </form>
+        </div>
+        <div class="col-xs-2">
+            <form action="@Url.Action("Step4", "Home")">
+                <button class="miniButton">3</button>
+            </form>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp opacity noCurs">4</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">5</button>
+        </div>
+    </div>
+    @* Progressbar Ende *@
+
+    <div class="paddingSmallStep3"></div>
+    <div class="row">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px; height:100%;">
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            @{
+                if (Model.gebuchtesAuto.AutoBild != null)
+                {
+                    var image = Convert.ToBase64String(Model.gebuchtesAuto.AutoBild);
+                    @Html.Raw("<img src=\"data:image/png;base64," + image + "\" class=\"img-responsive\" style=\"width:350px\" />");
+                }
+                else
+                {
+                    <b>nix gucken</b>
+                }
+            }
+
+            @*div-Bereich unterhalb img*@
+            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von_string</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis_string</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Sonderausstattung</h4>
+                    <ul>
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
+                        {
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Versicherung</h4>
+                    @{if (Model.HatRtVersicherung)
+                        {
+                            <p>Ja</p>
+                        }
+                        else
+                        {
+                            <p>Nein</p>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        @*sichtbar auf kleinem Format (xs)*@
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
+            <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
+                <h4 class="h4Step3">Versicherung</h4>
+                @{if (Model.HatRtVersicherung)
+                    {
+                        <p>Ja</p>
+                    }
+                    else
+                    {
+                        <p>Nein</p>
+                    }
+                }
+            </div>
+            <div class="col-lg-6">
+                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
+                <ul>
+                    @if (Model.gebuchtesAuto.tblAusstattung != null)
+                    {
+                        foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                        {
+                            <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+
+        @*Aufzählung rechts*@
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-lg-12">
+                    <h2>Ihre Daten</h2>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
+                    <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
+                    <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
+                    <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
+                </div>
+                @*<div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">*@
+
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <p><b>Straße: </b><span>@Html.DisplayFor(model => model.kunde.Strasse)</span></p>
+                    <p><b>PLZ: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
+                    <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>
+                    <p><b>Reisepassnr.: </b><span>@Html.DisplayFor(model => model.kunde.ReisepassNr)</span></p>
+                </div>
+            </div>
+        </div>
+
+        <center>
+            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
+                <div class="col-xs-6" style="padding-left:10px">
+                    <form action="@Url.Action("Step3","Home")">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <input type="hidden" value="@(Model.HatRtVersicherung ? "true" : "false")" name="HatRtVersicherung" />
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
+                </div>
+                <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
+                    <form action="@Url.Action("Step6","Home")">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <input type="hidden" value="@(Model.HatRtVersicherung ? "true" : "false")" name="HatRtVersicherung" />
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Bestätigen</span></button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+                    <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
+                        <form action="@Url.Action("Step3", "Home")">
+                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                            <input type="hidden" value="@Model.userID" name="userID" />
+                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                            <input type="hidden" value="@(Model.HatRtVersicherung ? "true" : "false")" name="HatRtVersicherung" />
+                            <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
+                        <form action="@Url.Action("Step6","Home")">
+                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                            <input type="hidden" value="@Model.userID" name="userID" />
+                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                            <input type="hidden" value="@(Model.HatRtVersicherung ? "true" : "false")" name="HatRtVersicherung" />
+                            <button class="buttonOrangeForwardStep3"><span>Buchen</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </div>
 </div>
-
-
-</div>
-
-@*Footer*@

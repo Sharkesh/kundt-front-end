@@ -1,9 +1,10 @@
-﻿
+﻿@model kundt_front_end.Models.ModelStepClass
+
 @{
-    ViewBag.Title = "Step3";
+//ViewBag.Title = "Step3";
 }
+
 <style>
-    /*Bis zum nächsten Kommentar, die nächsten Zeilen bitte hier im Style-Tag lassen*/
     .buttonOrangeForwardStep3 {
         background-color: #f99b1c;
         border: none;
@@ -139,8 +140,39 @@
         padding-top: 30px;
     }
     /*ProgressBar als Zähler*/
+    .miniButton {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+    }
+
+    .miniButtonOp {
+        color: white;
+        height: 35px;
+        width: 35px;
+        background-color: #f99b1c;
+        border-radius: 35px;
+        font-size: 18px;
+        border-style: none;
+        border-left: solid 1px;
+        border-bottom: solid 1px;
+        border-left-color: antiquewhite;
+        border-bottom-color: antiquewhite;
+        margin: auto 0% auto 1%;
+        opacity: 0.3;
+    }
+
     .myButton {
-        color:white; 
+        color: white;
         height: 45px;
         width: 45px;
         background-color: #f99b1c;
@@ -155,7 +187,7 @@
     }
 
     .myButtonOp {
-        color:white; 
+        color: white;
         height: 45px;
         width: 45px;
         background-color: #f99b1c;
@@ -163,138 +195,250 @@
         font-size: 25px;
         border-style: none;
         opacity: 0.3;
+        border-left: solid 1px;
         border-bottom: solid 1px;
+        border-left-color: antiquewhite;
         border-bottom-color: antiquewhite;
         margin: auto 0% auto 1%;
     }
 
     .myButton:active {
-        height: 40px;
-        width: 40px;
-        border-radius: 40px;
+        height: 42px;
+        width: 42px;
+        border-radius: 42px;
         font-size: 22px;
         animation-name: anima01;
         animation-iteration-count: infinite;
         animation-duration: 2.5s;
+        margin: 2% 0% auto 1%;
     }
 
-    .myButton:focus {
+    .myButtonOp:focus, .myButton:focus, .miniButton:focus, .miniButtonOp:focus {
         outline: none;
     }
 
-    .myButtonOp:focus {
-        outline: none;
+    .noCurs {
+        cursor: default;
     }
 
-    /*keyframes anima01 {
-            0% {
-                background-color: darkorange;
-            }
+    .opacity {
+        opacity: 1.0;
+    }
 
-            25% {
-                background-color: orange;
-            }
+    @@keyframes anima01 {
+        0% {
+            background-color: #f99b1c;
+        }
 
-            50% {
-                background-color: darkorange;
-            }
+        25% {
+            background-color: orange;
+        }
 
-            75% {
-                background-color: orange;
-            }
+        50% {
+            background-color: #f99b1c;
+        }
 
-            100% {
-                background-color: darkorange;
-            }
-        }*/
+        75% {
+            background-color: orange;
+        }
+
+        100% {
+            background-color: #f99b1c;
+        }
+    }
+
+    @@keyframes anima02 {
+        from {
+            width: 50%;
+        }
+
+        to {
+            width: 100%;
+        }
+    }
 
     .myBorder {
-        
-        border-bottom: solid 1px;
-        border-color: darkorange;
+        /*border-color: #f99b1c;*/
         padding: 15px 10px 5px 10px;
     }
-</style>
-<div class="container-fluid myBorder hidden-xs" style="text-align:center">
-    <div class="col-sm-2 col-sm-offset-1">
-        <button class="myButton">1</button>
-        <h5>Fahrzeug wählen</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButton">2</button>
-        <h5>Detailansicht</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButton">3</button>
-        <h5>Anmeldung</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButtonOp">4</button>
-        <h5>Buchung</h5>
-    </div>
-    <div class="col-sm-2">
-        <button class="myButtonOp">5</button>
-        <h5>Abschluss</h5>
-    </div>
-</div>
-<div class="container-fluid myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
-    <div class="col-xs-2 col-xs-offset-1">
-        <button class="myButton">1</button>        
-    </div>
-    <div class="col-xs-2">
-        <button class="myButton">2</button>        
-    </div>
-    <div class="col-xs-2">
-        <button class="myButton">3</button>        
-    </div>
-    <div class="col-xs-2">
-        <button class="myButtonOp">4</button>        
-    </div>
-    <div class="col-xs-2">
-        <button class="myButtonOp">5</button>        
-    </div>
-</div>
-<div class="container">
-    <div class="paddingSmallStep3">
-        @*<div class="progress">
-                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width:40%;background-color:#008ad0" aria-valuenow="20" aria-valuemin="0" aria-valuemax="50"></div>
-            </div>*@
 
+    .myBar01 {
+        height: 6px;
+        margin-top: 18px;
+        background-color: #f99b1c;
+        animation-name: anima02;
+        animation-duration: 3s;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+    }
+
+    .containerBar {
+        width: 35%;
+        margin-left: 0px;
+        border-left: solid 3px;
+        border-left-color: #f99b1c;
+        padding-left: 0px;
+        height: 43px;
+        border-radius: 1px;
+        margin-left: 10px;
+    }
+
+
+    /* .Checkbox */
+    .squaredTwo {
+        padding: 0px;
+        margin-top: 6px;
+        width: 28px;
+        height: 28px;
+        position: relative;
+        background: #f99b1c;
+        border-radius: 2px;
+    }
+
+        .squaredTwo label {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            background: #FFFFFF;
+            border-radius: 2px;
+        }
+
+            .squaredTwo label:after {
+                content: '';
+                width: 14px;
+                height: 8px;
+                position: absolute;
+                top: 5px;
+                left: 3px;
+                border: 3px solid #f99b1c;
+                border-top: none;
+                border-right: none;
+                background: transparent;
+                opacity: 0;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+            .squaredTwo label:hover::after {
+                opacity: 0.3;
+            }
+
+        .squaredTwo input[type=checkbox] {
+            visibility: hidden;
+        }
+
+            .squaredTwo input[type=checkbox]:checked + label:after {
+                opacity: 1;
+            }
+    /* end .Checkbox */
+</style>
+
+
+
+<div class="container" style="margin-top:20px">
+    @*ProgressBar Implementation Begin*@
+    <div class="myBorder hidden-xs" style="text-align:center">
+        <div class="col-sm-2 col-sm-offset-1">
+            <form action="@Url.Action("Step2", "Home")" method="post">
+                <button class="myButton">1</button>
+                <h5>Fahrzeug wählen</h5>
+            </form>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp opacity noCurs">2</button>
+            <h5>Detailansicht</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">3</button>
+            <h5>Anmeldung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">4</button>
+            <h5>Buchung</h5>
+        </div>
+        <div class="col-sm-2">
+            <button class="myButtonOp noCurs">5</button>
+            <h5>Abschluss</h5>
+        </div>
+
+        <div class="row">
+            <div class="container-fluid containerBar">
+                <div class="myBar01"></div>
+            </div>
+        </div>
     </div>
-    <h2 style="margin-top:0px; margin-left:20px; padding-bottom:10px">Detailansicht</h2>
-    <div class="row">
-        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:darkorange; margin-left:20px">
-            <h3 class="h3Step3" style="margin-bottom:0px">Alfa Romeo Giulia</h3>
-            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
-            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="width:350px" />
+    <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
+        <div class="col-xs-2 col-xs-offset-1">
+            <button class="miniButton">1</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp opacity noCurs">2</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">3</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">4</button>
+        </div>
+        <div class="col-xs-2">
+            <button class="miniButtonOp noCurs">5</button>
+        </div>
+    </div>
+    @*ProgressBar Implementation End*@
+    <div class="row" style="padding-top:20px;">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px">
+            <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            @{
+                if (Model.gebuchtesAuto.AutoBild != null)
+                {
+                    var image = Convert.ToBase64String(Model.gebuchtesAuto.AutoBild);
+                    @Html.Raw("<img src=\"data:image/png;base64," + image + "\" class=\"img-responsive\" style=\"width:350px\" />");
+                }
+                else
+                {
+                    <b>nix gucken</b>
+                }
+            }
 
             @*div-Bereich unterhalb img*@
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="h4Step3">Abholung</h4>
-                <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
-                <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
-                <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-lg-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
             </div>
         </div>
 
         @*sichtbar auf kleinem Format (xs)*@
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <h3 style="margin-top:0px; margin-bottom:0px">Alfa Romeo Giulia</h3>
-            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">Limousine</p>
-            <img src="~/Content/img/alfa-romeo-giulia-silber-2016.png" class="img-responsive" style="max-width:250px" />
+            <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
             <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <h4 class="h4Step3">Abholung</h4>
-                <p>Wien</p>
-                <p>08.02.2017 um 12:00 Uhr </p>
+                <p>Wien am @Model.date_von.ToShortDateString()</p>
                 <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien</p>
-                <p>09.02.2017 um 12:00 Uhr </p>
+                <p>Wien am @Model.date_bis.ToShortDateString()</p>
                 <h4 class="h4Step3">Mietdauer</h4>
-                <p>1 Tag oder so</p>
+                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                <h4 class="h4Step3">Preis</h4>
+                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
             </div>
         </div>
 
@@ -302,66 +446,84 @@
         <div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">
             <div class="col-xs-12 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1">
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-xs-12">
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
-                            <li class="okZeichen1">Klimaautomatik</li>
-                            <li class="okZeichen1">Sitzheizung</li>
-                            <li class="okZeichen1">Scheidenwaschanlage</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
-                            <li class="okZeichen1">Zusatzausstattung</li>
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                {
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                }
+                            }
                         </ul>
-                    </div>
-                    <div class="col-lg-12">
-                        <form>
-                            <h3 class="h3Step3">Rücktrittsversicherung <input class="CBStep3" type="checkbox" /></h3>
-
+                        <form style="float:left; margin-right:7px" method="post">
+                            <h4>Rücktrittsversicherung</h4>
+                            <div class="squaredTwo col-xs-1">
+                                <input formmethod="post" type="checkbox" value="HatRtVersicherung" id="squaredTwo" name="hatRtVersicherung" />
+                                <label for="squaredTwo"></label>
+                            </div>
                         </form>
                     </div>
-
                 </div>
             </div>
-            <center>
-                @*<div class="row col-sm-12 col-md-12 col-lg-12 col-xl-12 hidden-xs" style="padding-top:475px">
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 hidden-xs">
-                            <button class="buttonOrange">Zurück</button>
-                        </div>
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 xs-hidden">
-                            <button class="buttonOrange">Weiter</button>
-                        </div>
-                    </div>*@
-                <div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
-                    <div class="col-xs-6" style="padding-left:10px">
-
-                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
-                    </div>
-                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
-                    </div>
-                </div>
-            </center>
         </div>
+        <center>
+            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
+                <div class="col-xs-6" style="padding-left:10px">
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
+                </div>
+                <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
+                    <form action="@Url.Action("Step4", "Home")" method="post">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <button class="buttonOrangeForwardStep3" style="height:35px; width:120px"><span>Weiter</span></button>
+                    </form>
+                </div>
+            </div>
+        </center>
     </div>
-</div>
-<div class="container">
     <div class="row">
         <center>
-            <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+            <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs" style="padding-top:20px;">
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
-                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    <form action="@Url.Action("Step2","Home")" method="post">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                    </form>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-6 xs-hidden">
-                    <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
+                    <form action="@Url.Action("Step4", "Home")" method="post">
+                        <input type="hidden" id="hiddensquaredTwo" value="@Model.HatRtVersicherung" name="HatRtVersicherung"/>
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <div>
+                            <button class="buttonOrangeForwardStep3"><span>Weiter</span></button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            @*<div class="block col-xs-12 hidden-sm hidden-md hidden-lg " style="padding-top:10px; padding-bottom:50px">
-                    <div class="col-xs-6" style="padding-left:10px">
-                        <button class="buttonOrange" style="height:35px; width:120px">Zurück</button>
-                    </div>
-                    <div class="col-xs-6 hidden-sm hidden-md hidden-lg" style="padding-right:10px">
-                        <button class="buttonOrange" style="height:35px; width:120px">Weiter</button>
-                    </div>
-                </div>*@
         </center>
     </div>
 </div>
