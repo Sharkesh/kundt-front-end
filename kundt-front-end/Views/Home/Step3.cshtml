@@ -342,10 +342,8 @@
     @*ProgressBar Implementation Begin*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <form action="@Url.Action("Step2", "Home")" method="post">
-                <button class="myButton">1</button>
-                <h5>Fahrzeug wählen</h5>
-            </form>
+            <button class="myButtonOp opacity noCurs">1</button>
+            <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
             <button class="myButtonOp opacity noCurs">2</button>
@@ -372,7 +370,7 @@
     </div>
     <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
         <div class="col-xs-2 col-xs-offset-1">
-            <button class="miniButton">1</button>
+            <button class="miniButtonOp opacity noCurs">1</button>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp opacity noCurs">2</button>
@@ -511,7 +509,7 @@
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                     <form action="@Url.Action("Step4", "Home")" method="post">
-                        <input type="hidden" id="hiddensquaredTwo" value="@Model.HatRtVersicherung" name="HatRtVersicherung"/>
+                        <input type="hidden" id="hiddensquaredTwo" value="@Model.HatRtVersicherung" name="HatRtVersicherung" />
                         <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
                         <input type="hidden" value="@Model.userID" name="userID" />
                         <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
