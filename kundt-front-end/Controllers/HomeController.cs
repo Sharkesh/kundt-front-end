@@ -17,11 +17,13 @@ namespace kundt_front_end.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Datenbank Objekt für EF
+        /// </summary>
         private it22AutoverleihEntities db = new it22AutoverleihEntities();
         /// <summary>
         /// GET: Home/Index
         /// </summary>
-        /// <returns></returns>
         [RequireHttps]
         public ActionResult Index()
         {
@@ -35,15 +37,11 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// POST: Home/Step2
         /// </summary>
-        /// <param name="date_von"></param>
-        /// <param name="date_bis"></param>
-        /// <returns></returns>
-        //public ActionResult Step2(DateTime? date_von, DateTime? date_bis)
         [HttpPost]
         [RequireHttps]
         public ActionResult Step2(ModelStepClass msc)
         {
-            // anstatt von hidden Fields, exestierende Daten mittels tempdata mitschleifen
+            msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
 
             if (msc.date_von_string != null && msc.date_bis_string != null)
             {
@@ -72,9 +70,14 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
 
+        /// <summary>
+        /// POST: Home/Step3
+        /// </summary>
+        [HttpPost]
         [RequireHttps]
         public ActionResult Step3(ModelStepClass msc) //Get Object with ID
         {
+            msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
@@ -83,13 +86,18 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
 
+        /// <summary>
+        /// GET/POST: Home/Step4
+        /// </summary>
         [RequireHttps]
-        public ActionResult Step4(ModelStepClass msc) //Get Object with ID
+        public ActionResult Step4(ModelStepClass msc)
         {
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
             }
+
+            msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
 
             //Wenn eingeloggt dann diesen Step überspringen
             if (System.Web.HttpContext.Current.Session["IDUser"] != null && (int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
@@ -103,7 +111,6 @@ namespace kundt_front_end.Controllers
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
-            //Deprecated
             if (TempData["registerResult"] != null)
             {
                 ViewBag.registerResult = TempData["registerResult"];
@@ -115,6 +122,9 @@ namespace kundt_front_end.Controllers
             return View(msc);
         }
 
+        /// <summary>
+        /// GET: Home/Step5
+        /// </summary>
         [RequireHttps]
         public ActionResult Step5(ModelStepClass msc)
         {
@@ -122,6 +132,7 @@ namespace kundt_front_end.Controllers
             {
                 msc = (ModelStepClass)TempData["msc"];
             }
+            msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.kunde = db.tblKunde.Find(msc.userID);
@@ -134,7 +145,7 @@ namespace kundt_front_end.Controllers
         public ActionResult Print()
         {
             ModelStepClass msc = (ModelStepClass)TempData["msc"];
-            
+
             int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
 
             msc.kunde = db.tblKunde.Find(msc.userID);
@@ -197,6 +208,9 @@ namespace kundt_front_end.Controllers
 
         }
 
+        /// <summary>
+        /// GET: Home/Step6
+        /// </summary>
         [RequireHttps]
         public ActionResult Step6(ModelStepClass msc)
         {
@@ -206,13 +220,10 @@ namespace kundt_front_end.Controllers
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             TempData["msc"] = msc;
-            //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
-            //Waere natuerlich schoen, wenn man noch herausfindet warum
 
-            ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
             int IDBuchung;
 
-            string constring = "Data Source=sql1;Initial Catalog=it22Autoverleih;Persist Security Info=True;User ID=it22;Password=123user!";
+            string constring = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
 
             /// So könnte man auf mehrere connStrings zugreifen 
             /// sie bräuchten aber unterschiedliche namen in der WebConfig.
@@ -288,8 +299,8 @@ namespace kundt_front_end.Controllers
                 //Nachrichten Text wird an das MailMessage Objekt gehängt.
                 mm.Body = body;
                 mm.IsBodyHtml = true;
-                Attachment Anhnag = new Attachment(path);
-                mm.Attachments.Add(Anhnag);
+                Attachment Anhang = new Attachment(path);
+                mm.Attachments.Add(Anhang);
 
 
                 NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!");
@@ -304,29 +315,25 @@ namespace kundt_front_end.Controllers
                 };
                 smtp.Send(mm);
             }
-
-            //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, false, false);
-
-
-            //MSC enthaelt keinen Gesamtpreis, ist aber auch nicht wichtig zum Erstellen der Buchung
-            //Waere natuerlich schoen, wenn man noch herausfindet warum
-
-            ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
-            //db.pBuchungAnlegen(msc.userID, msc.gebuchtesAutoID, msc.date_von_string, msc.date_bis_string, msc.HatRtVersicherung, false);
-
-            ////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht////Versicherung funzt noch nicht
-
             //PDF erstellen
 
             //Email mit pdf verschicken
 
             return View();
         }
+
+        /// <summary>
+        /// GET: Home/Impressum
+        /// </summary>
         [RequireHttps]
         public ActionResult Impressum()
         {
             return View();
         }
+
+        /// <summary>
+        /// GET: Home/AGB
+        /// </summary>
         [RequireHttps]
         public ActionResult AGB()
         {

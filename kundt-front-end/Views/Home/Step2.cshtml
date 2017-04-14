@@ -1,7 +1,7 @@
 ﻿@model kundt_front_end.Models.ModelStepClass
 
 @{
-    ViewBag.Title = "Step2";
+    ViewBag.Title = "Kundt Autoverleih Autoauswahl";
 }
 
 <style>
@@ -754,7 +754,6 @@
                             <div class="paddingSmallTopStep2">
                                 <form action="@Url.Action("Step3","Home", Model)" method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />
-                                    <input type="hidden" value="@Model.userID" name="userID" />
                                     <button class="buttonOrangeStep2">
                                         <span>Fahrzeug wählen</span>
                                     </button>
@@ -767,7 +766,6 @@
                             <div class="paddingtopStep2">
                                 <form action="@Url.Action("Step3","Home", Model)" method="post">
                                     <input type="hidden" value="@auto.IDAuto" name="gebuchtesAutoID" />
-                                    <input type="hidden" value="@Model.userID" name="userID" />
                                     <button class="buttonOrangeStep2">
                                         <span>Fahrzeug wählen</span>
                                     </button>
@@ -778,5 +776,5 @@
                 </ul>
             </div>
         </div>
-                                }
+    }
 </div>
