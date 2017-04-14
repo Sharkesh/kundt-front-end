@@ -333,6 +333,55 @@
             .squaredTwo input[type=checkbox]:checked + label:after {
                 opacity: 1;
             }
+
+    .squaredTwo2 {
+        padding: 0px;
+        margin-top: 6px;
+        width: 28px;
+        height: 28px;
+        position: relative;
+        background: #f99b1c;
+        border-radius: 2px;
+    }
+
+        .squaredTwo2 label {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            position: absolute;
+            left: 4px;
+            top: 4px;
+            background: #FFFFFF;
+            border-radius: 2px;
+        }
+
+            .squaredTwo2 label:after {
+                content: '';
+                width: 14px;
+                height: 8px;
+                position: absolute;
+                top: 5px;
+                left: 3px;
+                border: 3px solid #f99b1c;
+                border-top: none;
+                border-right: none;
+                background: transparent;
+                opacity: 0;
+                -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+            }
+
+            .squaredTwo2 label:hover::after {
+                opacity: 0.3;
+            }
+
+        .squaredTwo2 input[type=checkbox] {
+            visibility: hidden;
+        }
+
+            .squaredTwo2 input[type=checkbox]:checked + label:after {
+                opacity: 1;
+            }
     /* end .Checkbox */
 </style>
 
@@ -361,7 +410,6 @@
             <button class="myButtonOp noCurs">5</button>
             <h5>Abschluss</h5>
         </div>
-
         <div class="row">
             <div class="container-fluid containerBar">
                 <div class="myBar01"></div>
@@ -403,7 +451,7 @@
             }
 
             @*div-Bereich unterhalb img*@
-            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="TextAufzählungStep3 hidden-sm hidden-xs hidden-md col-lg-12">
                 <div class="col-lg-6">
                     <h4 class="h4Step3">Abholung</h4>
                     <p>Wien am @Model.date_von.ToShortDateString()</p>
@@ -421,30 +469,51 @@
                     <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
                 </div>
             </div>
+
+            <div class="TextAufzählungStep3 col-sm-12 col-md-12 hidden-lg">
+                <div class="col-md-6">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                </div>
+                <div class="col-md-6">
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
+            </div>
         </div>
 
         @*sichtbar auf kleinem Format (xs)*@
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
-            <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
-            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
-            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="h4Step3">Abholung</h4>
-                <p>Wien am @Model.date_von.ToShortDateString()</p>
-                <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien am @Model.date_bis.ToShortDateString()</p>
-                <h4 class="h4Step3">Mietdauer</h4>
-                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
-                <h4 class="h4Step3">Preis</h4>
-                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+        <center>
+            <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
+                <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+                <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+                <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
+                <div class="TextAufzählungStep3">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                </div>
             </div>
-        </div>
+        </center>
 
         @*Aufzählung rechts*@
         <div class="col-xs-12 col-sm-5 col-sm-offset-2 col-md-5 col-md-offset-2 col-lg-5 col-lg-offset-2" style="padding-left:0px; padding-top:0px">
             <div class="col-xs-12 col-sm-11 col-sm-offset-1 col-md-11 col-md-offset-1 col-lg-11 col-lg-offset-1">
                 <div class="row">
-                    <div class="col-xs-12">
+                    <div class="hidden-xs">
                         <h3 class="h3Step3">Sonderausstattung</h3>
                         <ul>
                             @if (Model.gebuchtesAuto.tblAusstattung != null)
@@ -462,6 +531,30 @@
                                 <label for="squaredTwo"></label>
                             </div>
                         </form>
+                    </div>
+                    <div class="col-xs-12 hidden-lg hidden-md hidden-sm">
+                        <center>
+                            <h3 class="h3Step3">Sonderausstattung</h3>
+                            <ul style="width:130px;text-align:left;">
+                                @if (Model.gebuchtesAuto.tblAusstattung != null)
+                                {
+                                    foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                    {
+                                        <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                    }
+                                }
+                            </ul>
+
+                            <div>
+                                <form method="post">
+                                    <h4>Rücktrittsversicherung</h4>
+                                    <div class="squaredTwo2" style="width:28px;">
+                                        <input formmethod="post" type="checkbox" value="HatRtVersicherung" id="squaredTwo2" name="hatRtVersicherung" />
+                                        <label for="squaredTwo2"></label>
+                                    </div>
+                                </form>
+                            </div>
+                        </center>
                     </div>
                 </div>
             </div>

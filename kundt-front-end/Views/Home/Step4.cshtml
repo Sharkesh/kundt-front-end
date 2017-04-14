@@ -7,6 +7,7 @@
         padding-top: 5px;
         color: #002f41;
     }
+
     .okZeichen1 {
         list-style-image: url(../../../../Content/img/ok-sign.png);
         padding-bottom: 10px;
@@ -337,7 +338,7 @@
 <div class="container" style="margin-top: 20px;">
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-                <button class="myButtonOp opacity noCurs">1</button>
+            <button class="myButtonOp opacity noCurs">1</button>
             <h5>Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
@@ -400,36 +401,164 @@
             }
 
             @*div-Bereich unterhalb img*@
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Abholung</h4>
-                    <p>Wien am @Model.date_von.ToShortDateString()</p>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Rückgabe</h4>
-                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Mietdauer</h4>
-                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Preis</h4>
-                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Sonderausstattung</h4>
-                    <ul>
-                        @if (Model.gebuchtesAuto.tblAusstattung != null)
-                        {
+            <div>
+                <div class="hidden-md hidden-sm col-lg-12 hidden-xs">
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Abholung</h4>
+                        <p>Wien am @Model.date_von.ToShortDateString()</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Rückgabe</h4>
+                        <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Mietdauer</h4>
+                        <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Preis</h4>
+                        <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Sonderausstattung</h4>
+                        <ul>
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
                             foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
                             {
-                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Versicherung</h4>
+                        @{if (Model.HatRtVersicherung)
+                        {
+                        <p>Ja</p>
+                        }
+                        else
+                        {
+                        <p>Nein</p>
+                        }
+                        }
+                    </div>
+                </div>
+                <div class="TextAufzählungStep3 hidden-sm hidden-xs col-md-12 hidden-lg">
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Abholung</h4>
+                        <p>Wien am @Model.date_von.ToShortDateString()</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Rückgabe</h4>
+                        <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Mietdauer</h4>
+                        <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Preis</h4>
+                        <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Sonderausstattung</h4>
+                        <ul>
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                {
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="h4Step3">Versicherung</h4>
+                        @{if (Model.HatRtVersicherung)
+                            {
+                                <p>Ja</p>
+                            }
+                            else
+                            {
+                                <p>Nein</p>
                             }
                         }
-                    </ul>
+                    </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="TextAufzählungStep3 col-xs-12 col-sm-12 hidden-md hidden-lg">
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Abholung</h4>
+                        <p>Wien am @Model.date_von.ToShortDateString()</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Rückgabe</h4>
+                        <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Mietdauer</h4>
+                        <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Preis</h4>
+                        <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Sonderausstattung</h4>
+                        <ul>
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                {
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <h4 class="h4Step3">Versicherung</h4>
+                        @{if (Model.HatRtVersicherung)
+                            {
+                                <p>Ja</p>
+                            }
+                            else
+                            {
+                                <p>Nein</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @*sichtbar auf kleinem Format (xs)*@
+        <center>
+            <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:15px;">
+                <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
+                <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
+                <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="max-width:250px" />
+                <div class="TextAufzählungStep3">
+                    <h4 class="h4Step3">Abholung</h4>
+                    <p>Wien am @Model.date_von.ToShortDateString()</p>
+                    <h4 class="h4Step3">Rückgabe</h4>
+                    <p>Wien am @Model.date_bis.ToShortDateString()</p>
+                    <h4 class="h4Step3">Mietdauer</h4>
+                    <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
+                    <h4 class="h4Step3">Preis</h4>
+                    <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
+                    <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
+                    @if (Model.gebuchtesAuto.tblAusstattung != null)
+                    {
+                        <ul style="width:130px;text-align:left;">
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
+                            {
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                {
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                }
+                            }
+                        </ul>
+                    }
                     <h4 class="h4Step3">Versicherung</h4>
                     @{if (Model.HatRtVersicherung)
                         {
@@ -442,44 +571,7 @@
                     }
                 </div>
             </div>
-        </div>
-
-        @*sichtbar auf kleinem Format (xs)*@
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg">
-            <h3 style="margin-top:0px; margin-bottom:0px; text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
-            <p style="padding-bottom:10px; margin-top:0px;text-align:center">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
-            <img src="~/Content/img/mb-c-klasse-kombi-5d-schwarz-2014.png" class="img-responsive" style="margin:0px" />
-            <div style="text-align:center" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <h4 class="h4Step3">Abholung</h4>
-                <p>Wien am @Model.date_von.ToShortDateString()</p>
-                <h4 class="h4Step3">Rückgabe</h4>
-                <p>Wien am @Model.date_bis.ToShortDateString()</p>
-                <h4 class="h4Step3">Mietdauer</h4>
-                <p>@Html.DisplayFor(d => d.Mietdauer) Tage</p>
-                <h4 class="h4Step3">Preis</h4>
-                <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
-                <h4 class="h4Step3" style="padding-top:10px;">Sonderausstattung</h4>
-                @if (Model.gebuchtesAuto.tblAusstattung != null)
-                {
-                    foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
-                    {
-                        <p class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</p>
-                    }
-                }
-                <h4 class="h4Step3">Versicherung</h4>
-                @{if (Model.HatRtVersicherung)
-                    {
-                        <p>Ja</p>
-                    }
-                    else
-                    {
-                        <p>Nein</p>
-                    }
-                }
-
-
-            </div>
-        </div>
+        </center>
         @*Erste Box für Login Anfang*@
         <div class="col-xs-12 col-md-8 col-lg-7">
             <div class="form-horizontal" style="padding: 20px;">
@@ -716,19 +808,19 @@
                     </form>
                 </div>
             </div>
-                <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
-                    <div class="col-xs-6" style="padding-left:10px">
-                        <form action="@Url.Action("Step3","Home")" method="post">
-                            <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
-                            <input type="hidden" value="@Model.userID" name="userID" />
-                            <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
-                            <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
-                            <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
-                            <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
-                            <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
-                        </form>
-                    </div>
+            <div class="block col-xs-12 hidden-sm hidden-md hidden-lg" style="padding-top:20px; padding-bottom:50px">
+                <div class="col-xs-6" style="padding-left:10px">
+                    <form action="@Url.Action("Step3","Home")" method="post">
+                        <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
+                        <input type="hidden" value="@Model.userID" name="userID" />
+                        <input type="hidden" value="@Model.date_von_string" name="date_von_string" />
+                        <input type="hidden" value="@Model.date_bis_string" name="date_bis_string" />
+                        <input type="hidden" value="@Model.Gesamtpreis" name="Gesamtpreis" />
+                        <input type="hidden" value="@Model.Mietdauer" name="Mietdauer" />
+                        <button class="buttonOrangeReturnStep3" style="height:35px; width:120px"><span>Zurück</span></button>
+                    </form>
                 </div>
+            </div>
         </center>
     </div>
 </div>

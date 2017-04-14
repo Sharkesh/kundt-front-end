@@ -11,9 +11,27 @@
     }
 
     .h2step2 {
-        color: #002f41;
+        color: #000000;
         padding-top: 20px;
         font-size: 2em;
+    }
+
+    .h2step2MD {
+        color: #000000;
+        padding-top: 20px;
+        font-size: 1.8em;
+    }
+
+    .h2step2SM {
+        color: #000000;
+        padding-top: 20px;
+        font-size: 1.6em;
+    }
+
+    .h2step2XS {
+        color: #000000;
+        padding-top: 20px;
+        font-size: 1.4em;
     }
 
     .paddingSmallTopStep2 {
@@ -635,8 +653,17 @@
         </div>
     </div>
 
-    <div class="paddingSmallBotStep2">
+    <div class="paddingSmallBotStep2 hidden-md hidden-sm hidden-xs">
         <h2 class="h2step2">Für den Zeitraum von @(Model.date_von.ToShortDateString()) bis @(Model.date_bis.ToShortDateString()) gibt es folgende Angebote!</h2>
+    </div>
+    <div class="paddingSmallBotStep2 hidden-lg hidden-sm hidden-xs">
+        <h2 class="h2step2MD">Für den Zeitraum von @(Model.date_von.ToShortDateString()) bis @(Model.date_bis.ToShortDateString()) gibt es folgende Angebote!</h2>
+    </div>
+    <div class="paddingSmallBotStep2 hidden-lg hidden-md hidden-xs">
+        <h2 class="h2step2SM">Für den Zeitraum von @(Model.date_von.ToShortDateString()) bis @(Model.date_bis.ToShortDateString()) gibt es folgende Angebote!</h2>
+    </div>
+    <div class="paddingSmallBotStep2 hidden-lg hidden-sm hidden-md" style="padding-top:10px;">
+        <h2 class="h2step2XS">Für den Zeitraum von @(Model.date_von.ToShortDateString()) bis @(Model.date_bis.ToShortDateString()) gibt es folgende Angebote!</h2>
     </div>
     @*ProgressBar Implementation End*@
     @* Filterung *@
@@ -722,8 +749,20 @@
             <div class="paddingtopStep2">
                 <ul class="ulStep2">
                     <li>
-                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg visible-xs visible-md visible-sm centeredStep2">
+                        <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg hidden-xs hidden-md hidden-sm centeredStep2">
                             <h3 class="h3step2">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
+                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
+                        </div>
+                        <div class="col-md-12 hidden-lg hidden-xs visible-md hidden-sm centeredStep2">
+                            <h3 class="h2step2MD">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
+                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
+                        </div>
+                        <div class="col-sm-12 hidden-lg hidden-xs hidden-md visible-sm centeredStep2">
+                            <h3 class="h2step2SM">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
+                            <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
+                        </div>
+                        <div class="col-xs-12 hidden-lg visible-xs hidden-md hidden-sm centeredStep2">
+                            <h3 class="h2step2XS">@Html.DisplayFor(m => auto.Marke) @Html.DisplayFor(m => auto.Typ)</h3>
                             <h5 class="h5Step2">@Html.DisplayFor(m => auto.Kategorie)</h5>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
