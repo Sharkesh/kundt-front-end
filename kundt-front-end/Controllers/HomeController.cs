@@ -31,7 +31,11 @@ namespace kundt_front_end.Controllers
             TempData["msc"] = null;
 
             ModelStepClass msc = new ModelStepClass();
+
+            msc.notAgain = false;
+
             msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
+            msc.tec = db.tblEyecatcher.ToList();
             return View(msc);
         }
         /// <summary>
@@ -142,36 +146,25 @@ namespace kundt_front_end.Controllers
         }
 
         [RequireHttps]
-        public ActionResult Print()
+        public ActionResult Print(ModelStepClass msc)
         {
-            ModelStepClass msc = (ModelStepClass)TempData["msc"];
-
-            int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
-
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
-            msc.IDBuchung = BuchungID4PDf;
 
             return new ViewAsPdf("ViewPDF", msc);
-
         }
 
         [RequireHttps]
-        public ActionResult SendMail_Again()
+        public ActionResult SendMail_Again(ModelStepClass msc)
         {
-            ModelStepClass msc = (ModelStepClass)TempData["msc"];
-
-            int BuchungID4PDf = (int)TempData["BuchungID4PDF"];
-
             msc.kunde = db.tblKunde.Find(msc.userID);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
-            msc.IDBuchung = BuchungID4PDf;
 
             string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/App_Data/PDF/{0}.pdf", msc.IDBuchung));
 
@@ -202,10 +195,7 @@ namespace kundt_front_end.Controllers
                 smtp.Send(mm);
             }
 
-            TempData["msc"] = msc;
-
-            return RedirectToAction("Step6");
-
+            return RedirectToAction("Step6",msc);
         }
 
         /// <summary>
@@ -219,105 +209,102 @@ namespace kundt_front_end.Controllers
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
-            TempData["msc"] = msc;
-
-            int IDBuchung;
-
-            string constring = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
-
-            /// So könnte man auf mehrere connStrings zugreifen 
-            /// sie bräuchten aber unterschiedliche namen in der WebConfig.
-            /// auf die Namen wird mit ["Name"] zugegriffen.
-            //string constring = ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString;
-
-
-            using (SqlConnection con = new SqlConnection(constring))
+            if (msc.notAgain == false)
             {
-                using (SqlCommand cmd = new SqlCommand("pBuchungAnlegen", con))
+                int IDBuchung;
+
+                string constring = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
+
+                using (SqlConnection con = new SqlConnection(constring))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    using (SqlCommand cmd = new SqlCommand("pBuchungAnlegen", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
 
-                    SqlParameter KundeID = new SqlParameter("@varIDKunde", SqlDbType.Int);
-                    KundeID.Value = msc.userID;
-                    KundeID.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(KundeID);
+                        SqlParameter KundeID = new SqlParameter("@varIDKunde", SqlDbType.Int);
+                        KundeID.Value = msc.userID;
+                        KundeID.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(KundeID);
 
-                    SqlParameter AutoID = new SqlParameter("@varIDAuto", SqlDbType.Int);
-                    AutoID.Value = msc.gebuchtesAutoID;
-                    AutoID.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(AutoID);
+                        SqlParameter AutoID = new SqlParameter("@varIDAuto", SqlDbType.Int);
+                        AutoID.Value = msc.gebuchtesAutoID;
+                        AutoID.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(AutoID);
 
-                    SqlParameter BuchungVon = new SqlParameter("@varBuchungVon", SqlDbType.VarChar);
-                    BuchungVon.Value = msc.date_von_string;
-                    BuchungVon.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(BuchungVon);
+                        SqlParameter BuchungVon = new SqlParameter("@varBuchungVon", SqlDbType.VarChar);
+                        BuchungVon.Value = msc.date_von_string;
+                        BuchungVon.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(BuchungVon);
 
-                    SqlParameter BuchungBis = new SqlParameter("@varBuchungBis", SqlDbType.VarChar);
-                    BuchungBis.Value = msc.date_bis_string;
-                    BuchungBis.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(BuchungBis);
+                        SqlParameter BuchungBis = new SqlParameter("@varBuchungBis", SqlDbType.VarChar);
+                        BuchungBis.Value = msc.date_bis_string;
+                        BuchungBis.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(BuchungBis);
 
-                    SqlParameter Versicherung = new SqlParameter("@varVersicherung", SqlDbType.Bit);
-                    Versicherung.Value = msc.HatRtVersicherung;
-                    Versicherung.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(Versicherung);
+                        SqlParameter Versicherung = new SqlParameter("@varVersicherung", SqlDbType.Bit);
+                        Versicherung.Value = msc.HatRtVersicherung;
+                        Versicherung.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(Versicherung);
 
-                    SqlParameter Storno = new SqlParameter("@varStorno", SqlDbType.Bit);
-                    Storno.Value = 0;
-                    Storno.Direction = ParameterDirection.Input;
-                    cmd.Parameters.Add(Storno);
+                        SqlParameter Storno = new SqlParameter("@varStorno", SqlDbType.Bit);
+                        Storno.Value = 0;
+                        Storno.Direction = ParameterDirection.Input;
+                        cmd.Parameters.Add(Storno);
 
-                    SqlParameter outBuchungID = new SqlParameter("@IDBuchung", SqlDbType.Int);
-                    outBuchungID.Direction = ParameterDirection.Output;
-                    cmd.Parameters.Add(outBuchungID);
+                        SqlParameter outBuchungID = new SqlParameter("@IDBuchung", SqlDbType.Int);
+                        outBuchungID.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outBuchungID);
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
 
-                    IDBuchung = (int)cmd.Parameters["@IDBuchung"].Value;
+                        IDBuchung = (int)cmd.Parameters["@IDBuchung"].Value;
+                    }
+                }
+
+                msc.IDBuchung = IDBuchung;
+                msc.notAgain = true;
+                TempData["msc"] = msc;
+
+                var pdf = new ViewAsPdf("ViewPDF", msc);
+                var file = pdf.BuildPdf(ControllerContext);
+                string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/App_Data/PDF/{0}.pdf", IDBuchung));
+                var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
+                fileStream.Write(file, 0, file.Length);
+                fileStream.Close();
+
+                using (MailMessage mm = new MailMessage("test.sharkesh@gmail.com", msc.kunde.tblLogin.Email))
+                {
+                    mm.Subject = "Buchungsbestätigung";
+
+                    string body = "<p>Vielen Dank für ihre Buchung,";
+                    body += "<br /><br />Ihre Buchungsbestätigung befindet sich im Anhang als PDF.";
+                    body += "<br /><br />Ihr Kundt-Autoverleih</p>";
+                    //Nachrichten Text wird an das MailMessage Objekt gehängt.
+                    mm.Body = body;
+                    mm.IsBodyHtml = true;
+                    Attachment Anhnag = new Attachment(path);
+                    mm.Attachments.Add(Anhnag);
+
+
+                    NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!");
+
+                    SmtpClient smtp = new SmtpClient()
+                    {
+                        Host = "smtp.gmail.com",
+                        EnableSsl = true,
+                        UseDefaultCredentials = true,
+                        Credentials = NetworkCred,
+                        Port = 587
+                    };
+                    smtp.Send(mm);
                 }
             }
-
-            TempData["BuchungID4PDF"] = IDBuchung;
-            msc.IDBuchung = IDBuchung;
-
-            var pdf = new ViewAsPdf("ViewPDF", msc);
-            var file = pdf.BuildPdf(ControllerContext);
-            string path = HttpContext.ApplicationInstance.Server.MapPath(String.Format("~/App_Data/PDF/{0}.pdf", IDBuchung));
-            var fileStream = new FileStream(path, FileMode.Create, FileAccess.Write);
-            fileStream.Write(file, 0, file.Length);
-            fileStream.Close();
-
-            using (MailMessage mm = new MailMessage("test.sharkesh@gmail.com", msc.kunde.tblLogin.Email))
-            {
-                mm.Subject = "Buchungsbestätigung";
-
-                string body = "<p>Vielen Dank für ihre Buchung,";
-                body += "<br /><br />Ihre Buchungsbestätigung befindet sich im Anhang als PDF.";
-                body += "<br /><br />Ihr Kundt-Autoverleih</p>";
-                //Nachrichten Text wird an das MailMessage Objekt gehängt.
-                mm.Body = body;
-                mm.IsBodyHtml = true;
-                Attachment Anhang = new Attachment(path);
-                mm.Attachments.Add(Anhang);
-
-
-                NetworkCredential NetworkCred = new NetworkCredential("test.sharkesh@gmail.com", "123user!");
-
-                SmtpClient smtp = new SmtpClient()
-                {
-                    Host = "smtp.gmail.com",
-                    EnableSsl = true,
-                    UseDefaultCredentials = true,
-                    Credentials = NetworkCred,
-                    Port = 587
-                };
-                smtp.Send(mm);
-            }
-            //PDF erstellen
-
-            //Email mit pdf verschicken
+			else
+			{
+				TempData["send"] = true;
+			}
 
             return View();
         }

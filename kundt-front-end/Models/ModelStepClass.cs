@@ -8,7 +8,8 @@ namespace kundt_front_end.Models
 {
     public class ModelStepClass
     {
-        // public int StepID { get; set; }
+        public bool notAgain { get; set; }
+
         public DateTime date_von { get; set; }
         public DateTime date_bis { get; set; }
 
@@ -21,7 +22,6 @@ namespace kundt_front_end.Models
         public int gebuchtesAutoID { get; set; }
         public decimal Gesamtpreis { get; set; }
         public int IDBuchung { get; set; }
-        public DateTime DateToday { get; }
         public tblAuto gebuchtesAuto { get; set; }
 
         public bool HatRtVersicherung { get; set; }
@@ -33,5 +33,6 @@ namespace kundt_front_end.Models
         public string SitzanzahlFilter { get; set; }
         public string KlasseFilter { get; set; }
         public List<tblAusstattung> listeAusstattung { get; set; }
+        public List<tblEyecatcher> tec { get; set; }
     }
 }
