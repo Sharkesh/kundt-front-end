@@ -112,7 +112,7 @@ namespace kundt_front_end.Controllers
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
-            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.kunde = db.tblKunde.Find(Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]));
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
 
             if (TempData["registerResult"] != null)
@@ -135,11 +135,10 @@ namespace kundt_front_end.Controllers
             if (TempData["msc"] != null)
             {
                 msc = (ModelStepClass)TempData["msc"];
-            }
-            msc.userID = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
+            }            
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
-            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.kunde = db.tblKunde.Find(Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]));
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
             return View(msc); //Get Object with ID
@@ -148,7 +147,7 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult Print(ModelStepClass msc)
         {
-            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.kunde = db.tblKunde.Find(Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]));
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -160,7 +159,7 @@ namespace kundt_front_end.Controllers
         [RequireHttps]
         public ActionResult SendMail_Again(ModelStepClass msc)
         {
-            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.kunde = db.tblKunde.Find(Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]));
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.date_bis = Convert.ToDateTime(msc.date_bis_string);
             msc.date_von = Convert.ToDateTime(msc.date_von_string);
@@ -194,6 +193,7 @@ namespace kundt_front_end.Controllers
                 };
                 smtp.Send(mm);
             }
+            TempData["sendMSG"] = true;
 
             return RedirectToAction("Step6",msc);
         }
@@ -205,9 +205,10 @@ namespace kundt_front_end.Controllers
         public ActionResult Step6(ModelStepClass msc)
         {
 
-            msc.kunde = db.tblKunde.Find(msc.userID);
+            msc.kunde = db.tblKunde.Find(Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]));
             msc.gebuchtesAuto = db.tblAuto.Find(msc.gebuchtesAutoID);
             msc.Gesamtpreis = msc.gebuchtesAuto.MietPreis * msc.Mietdauer;
+
 
             if (msc.notAgain == false)
             {
@@ -222,7 +223,7 @@ namespace kundt_front_end.Controllers
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         SqlParameter KundeID = new SqlParameter("@varIDKunde", SqlDbType.Int);
-                        KundeID.Value = msc.userID;
+                        KundeID.Value = Convert.ToInt32(System.Web.HttpContext.Current.Session["IDUser"]);
                         KundeID.Direction = ParameterDirection.Input;
                         cmd.Parameters.Add(KundeID);
 
