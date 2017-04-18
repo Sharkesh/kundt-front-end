@@ -307,7 +307,7 @@ namespace kundt_front_end.Controllers
 				TempData["send"] = true;
 			}
 
-            return View();
+            return View(msc);
         }
 
         /// <summary>
