@@ -43,7 +43,6 @@ namespace kundt_front_end.Controllers
             {
                 string activationCode = Request.RawUrl.Substring(Request.RawUrl.LastIndexOf('=') + 1);
                 //Und der eintrag in der UserActivation Tabelle gelöscht. Damit ist der User Aktiviert.
-                //using (SqlCommand cmd = new SqlCommand("DELETE FROM UserActivation WHERE convert(nvarchar(300), ActivationCode) = @ActivationCode")) 
                 using (SqlCommand cmd = new SqlCommand("Validate_Activation"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -119,9 +118,8 @@ namespace kundt_front_end.Controllers
                 //Session Variablen werden je nach Rolle gesetzt.
                 if (ViewBag.role == 'K')
                 {
-                    System.Web.HttpContext.Current.Session["IDUser"] = ViewBag.loginResult;
+                    System.Web.HttpContext.Current.Session["IDUser"] = msc.userID = ViewBag.loginResult;
                     System.Web.HttpContext.Current.Session["Email"] = email;
-                    msc.userID = ViewBag.loginResult;
                 }
                 else
                 {
@@ -199,7 +197,6 @@ namespace kundt_front_end.Controllers
             TempData["registerResult"] = userId;
             TempData["msc"] = msc;
 
-            //Theoretisch einfach das Selbe wie beim Login(?)
             return Redirect(Convert.ToString(Request.UrlReferrer));
         }
 
@@ -259,7 +256,6 @@ namespace kundt_front_end.Logic
         public static void SendActivationEmail(int userId, string email)
         {
             string activationCode = Guid.NewGuid().ToString();
-            //using (SqlCommand cmd = new SqlCommand("INSERT INTO UserActivation VALUES(@UserId, @ActivationCode)"))
             using (SqlCommand cmd = new SqlCommand("Insert_Activation"))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter())
