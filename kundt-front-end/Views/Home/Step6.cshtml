@@ -226,19 +226,41 @@
     }
 
     /* CSS Progress-Bar Ende */
+
+    /*CSS Dialog-Box*/
+    .no-close .ui-dialog-titlebar-close {
+        display: none;
+    }
+
+    .ui-widget-header {
+        background: #008ad0;
+    }
+
+    body > div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.no-close.ui-dialog-buttons > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button {
+        background: #f99b1c;
+        color: white;
+        font: bold;
+    }
+    /*CSS Dialog-Box Ende*/
 </style>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script>
-  $( function() {
-    $( "#dialog-message" ).dialog({
-      modal: true,
-      buttons: {
-        Ok: function() {
-          $( this ).dialog( "close" );
-        }
-      }
+    $(function () {
+        $("#dialog-message").dialog({
+            dialogClass: "no-close",
+            draggable: false,
+            modal: true,
+            resizable: false,
+            buttons: [
+          {
+              text: "OK",
+              click: function () {
+                  $(this).dialog("close");
+              }
+          }
+            ]
+        });
     });
-  } );
 </script>
 <div class="container" style="margin-top: 20px">
     @*Progress Bar*@
@@ -291,12 +313,13 @@
     <div class="hidden-xs jumbotron text-center" style="margin-top:10%; border:solid 3px; border-color:#f99b1c; background-color:white">
         <h1>Vielen Dank für Ihre Buchung!</h1>
         <p><h4>Sie erhalten in Kürze eine Buchungsbestätigung per Email</h4></p>
-        <p><h4><a href="@Url.Action("Print", "Home",Model)" style="color:#f99b1c"><span class="glyphicon glyphicon-save-file" style="font-size:large"></span> Buchungsdetails als PDF herunterladen</a></h4></p>
+        <p><h4><a href="@Url.Action("Print", "Home",Model)" target="_blank" style="color:#f99b1c"><span class="glyphicon glyphicon-save-file" style="font-size:large"></span> Buchungsdetails als PDF herunterladen</a></h4></p>
     </div>
     <div class="col-xs-12 hidden-sm hidden-md hidden-lg jumbotron text-center" style="background-color:white">
         <h1>Vielen Dank für Ihre Buchung!</h1>
         <p><h4>Sie erhalten in Kürze eine Buchungsbestätigung per Email</h4></p>
         <p><h4><a href="@Url.Action("Print", "Home",Model)" style="color:#f99b1c"><span class="glyphicon glyphicon-save-file" style="font-size:large"></span> Buchungsdetails als PDF herunterladen</a></h4></p>
+
     </div>
     <div class="col-xs-12 text-center">
         <p style="font-size:small"><a href="@Url.Action("SendMail_Again","Home",Model)">Email-Bestätigung erneut senden</a></p>
@@ -313,6 +336,7 @@
                 Ihre Bestätigungs-Mail wurde erneut verschickt!
             </p>
         </div>
+        TempData["send"] = null;
     }
     <div class="hidden-xs hidden-sm abschlussGebucht glyphicon glyphicon-ok-circle"></div>
 </div>

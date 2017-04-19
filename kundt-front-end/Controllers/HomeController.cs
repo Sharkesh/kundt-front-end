@@ -192,7 +192,7 @@ namespace kundt_front_end.Controllers
                 };
                 smtp.Send(mm);
             }
-            TempData["sendMSG"] = true;
+            TempData["send"] = true;
 
             return RedirectToAction("Step6",msc);
         }
@@ -301,10 +301,6 @@ namespace kundt_front_end.Controllers
                     smtp.Send(mm);
                 }
             }
-			else
-			{
-				TempData["send"] = true;
-			}
 
             return View(msc);
         }
