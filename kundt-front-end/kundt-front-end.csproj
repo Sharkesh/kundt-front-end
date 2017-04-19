@@ -236,7 +236,9 @@
     <Content Include="Content\img\Bild2.jpg" />
     <Content Include="Content\img\Bild3.jpg" />
     <Content Include="Content\img\car_modified.png" />
+    <Content Include="Content\img\dromedar.jpg" />
     <Content Include="Content\img\ok-sign.png" />
+    <Content Include="Content\img\sixtLogo.png" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />

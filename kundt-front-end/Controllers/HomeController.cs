@@ -77,7 +77,6 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// POST: Home/Step3
         /// </summary>
-        [HttpPost]
         [RequireHttps]
         public ActionResult Step3(ModelStepClass msc) //Get Object with ID
         {
