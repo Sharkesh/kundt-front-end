@@ -334,6 +334,9 @@
         margin-top: 5px;
         font-size: 1.4em;
     }
+
+    .col-xs-12{
+    }
 </style>
 
 <div class="container" style="margin-top: 20px;">
@@ -665,8 +668,8 @@
                     </div>
                 </form> @*Erste Box für Login Ende*@
             </div>
-            <div>
-                <form class="form-horizontal" style="margin-left:15px;" action="@Url.Action("Registrierung", "Login")" method="post">
+            <div class="col-xs-12">
+                <form class="form-horizontal col-xs-12" style="margin-left:15px;" action="@Url.Action("Registrierung", "Login")" method="post">
                     @*Zweite Box für Regestrieren Anfang*@
                     <div id="registrieren" class="collapse" style="border-top: 1px solid black;">
                         <div class="form-group" style="margin-top: 35px;">
@@ -785,7 +788,6 @@
                         </div>
                         @*Button Registieren2*@
                         <div class="row">
-
                             <div class="hidden-md hidden-lg" style="position: relative; left: 15px;">
                                 <button type="submit" id="submitRegisterMobile" class="buttonOrangeForwardStep3OhneAnimation" style="width: 280px;" disabled><span>Registrieren</span></button>
                             </div>
@@ -801,6 +803,8 @@
                         </div>
                     </div>
                 </form>
+
+
             </div>
         </div>
         @*Zweite Box für Regestrieren Ende*@
