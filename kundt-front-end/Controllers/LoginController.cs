@@ -20,11 +20,12 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// ConnectionString
         /// </summary>
-        public static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"")+1, 156);
+        private static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"")+1, 156);
         /// <summary>
         /// Connection
         /// </summary>
         public static SqlConnection con = new SqlConnection(conString);
+        private it22AutoverleihEntities db = new it22AutoverleihEntities();
 
         /// <summary>
         /// GET: Login
@@ -219,6 +220,51 @@ namespace kundt_front_end.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [RequireHttps]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit()
+        {
+            if (System.Web.HttpContext.Current.Session["IDUser"] != null)
+            {
+                tblKunde k = db.tblKunde.Find((int)System.Web.HttpContext.Current.Session["IDUser"]);
+                if (k == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.FKPLZOrt = new SelectList(db.tblPLZOrt, "IDPLZOrt", "PLZ", k.FKPLZOrt);
+                ViewBag.IDKunde = new SelectList(db.tblLogin, "IDLogin", "Email", k.IDKunde);
+                return View(k);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
+        }
+
+        [HttpPost]
+        [RequireHttps]
+        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,FKPLZOrt")] tblKunde k)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(k).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Edit");
+            }
+            ViewBag.FKPLZOrt = new SelectList(db.tblPLZOrt, "IDPLZOrt", "PLZ", k.FKPLZOrt);
+            ViewBag.IDKunde = new SelectList(db.tblLogin, "IDLogin", "Email", k.IDKunde);
+            return View(k);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
