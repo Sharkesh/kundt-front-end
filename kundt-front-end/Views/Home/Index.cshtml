@@ -266,13 +266,13 @@
                     if (item.Eyecatcher != null)
                     {
                         var image = Convert.ToBase64String(item.Eyecatcher);
-                        @Html.Raw("<img src=\"data:;base64," + image + "\"/>")
+                        @Html.Raw("<img src=\"data:;base64," + image + "\"style=\"width: 100 %; \" class=\"img - responsive\" />")
                     }
-                    else
-                    {
+                                else
+                                {
                         <b>nix gucken</b>
-                    }
-                }
+                                }
+                            }
 
            </div>
 
