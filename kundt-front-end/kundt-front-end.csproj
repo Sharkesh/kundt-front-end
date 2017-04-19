@@ -248,6 +248,7 @@
     <Content Include="Content\img\kundt_logo_with_slogan.png" />
     <Content Include="Content\img\kundt_logo_with_slogan_right.png" />
     <Content Include="Content\sounds\carhorn.mp3" />
+    <Content Include="Content\img\Tesla-logo-2003-2500x2500.png" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
