@@ -116,7 +116,7 @@
 
     .h3step2XS {
         color: #000000;
-        margin-top:5px;
+        margin-top: 5px;
         font-size: 1.4em;
     }
 
@@ -560,7 +560,7 @@
                             </ul>
                             <div>
                                 <form method="post">
-                                    <h4  class="h3step2XS">Rücktrittsversicherung</h4>
+                                    <h4 class="h3step2XS">Rücktrittsversicherung</h4>
                                     <div class="squaredTwo2" style="width:28px;">
                                         <input formmethod="post" type="checkbox" value="HatRtVersicherung" id="squaredTwo2" name="hatRtVersicherung" />
                                         <label for="squaredTwo2"></label>
@@ -627,3 +627,7 @@
         </center>
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/Checkbox.js")
+}

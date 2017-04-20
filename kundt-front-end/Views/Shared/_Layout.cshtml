@@ -92,7 +92,7 @@
                                 }
                                 else if ((int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
                                 {
-                                    <li><a style="font-size:1.5em;">@System.Web.HttpContext.Current.Session["Email"]</a></li>
+                                    <li><a href="@Url.Action("Edit","Login")" style="font-size:1.5em;">@System.Web.HttpContext.Current.Session["Email"]</a></li>
                                     <li>@Html.ActionLink("Logout", "Logout", "Login", new { id = (int)System.Web.HttpContext.Current.Session["IDUser"] }, null)</li>
                                 }
                             }
@@ -121,10 +121,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery-ui")
-    @Scripts.Render("~/Scripts/JS-Kundt-Index.js")
-    @Scripts.Render("~/Scripts/LoginScript.js")
-    @Scripts.Render("~/Scripts/Script.js")
-    @Scripts.Render("~/Scripts/CarScript.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
