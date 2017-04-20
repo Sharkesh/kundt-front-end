@@ -223,7 +223,6 @@ namespace kundt_front_end.Controllers
         }
 
         [RequireHttps]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit()
         {
             if (System.Web.HttpContext.Current.Session["IDUser"] != null)
@@ -245,6 +244,7 @@ namespace kundt_front_end.Controllers
 
         [HttpPost]
         [RequireHttps]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,FKPLZOrt")] tblKunde k)
         {
             if (ModelState.IsValid)
