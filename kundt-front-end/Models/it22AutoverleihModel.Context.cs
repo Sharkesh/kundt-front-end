@@ -120,5 +120,50 @@ namespace kundt_front_end.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailableFilterIncluded_Result>("[it22AutoverleihEntities].[fCarAvailableFilterIncluded](@vonDate, @bisDate, @klasse)", vonDateParameter, bisDateParameter, klasseParameter);
         }
+    
+        public virtual int pEditCustumer(Nullable<int> iDKunde, string vorname, string nachname, string strasse, string telefon, string anrede, Nullable<System.DateTime> gebDatum, string reisepassNr, string pLZ, string ort)
+        {
+            var iDKundeParameter = iDKunde.HasValue ?
+                new ObjectParameter("IDKunde", iDKunde) :
+                new ObjectParameter("IDKunde", typeof(int));
+    
+            var vornameParameter = vorname != null ?
+                new ObjectParameter("Vorname", vorname) :
+                new ObjectParameter("Vorname", typeof(string));
+    
+            var nachnameParameter = nachname != null ?
+                new ObjectParameter("Nachname", nachname) :
+                new ObjectParameter("Nachname", typeof(string));
+    
+            var strasseParameter = strasse != null ?
+                new ObjectParameter("Strasse", strasse) :
+                new ObjectParameter("Strasse", typeof(string));
+    
+            var telefonParameter = telefon != null ?
+                new ObjectParameter("Telefon", telefon) :
+                new ObjectParameter("Telefon", typeof(string));
+    
+            var anredeParameter = anrede != null ?
+                new ObjectParameter("Anrede", anrede) :
+                new ObjectParameter("Anrede", typeof(string));
+    
+            var gebDatumParameter = gebDatum.HasValue ?
+                new ObjectParameter("GebDatum", gebDatum) :
+                new ObjectParameter("GebDatum", typeof(System.DateTime));
+    
+            var reisepassNrParameter = reisepassNr != null ?
+                new ObjectParameter("ReisepassNr", reisepassNr) :
+                new ObjectParameter("ReisepassNr", typeof(string));
+    
+            var pLZParameter = pLZ != null ?
+                new ObjectParameter("PLZ", pLZ) :
+                new ObjectParameter("PLZ", typeof(string));
+    
+            var ortParameter = ort != null ?
+                new ObjectParameter("Ort", ort) :
+                new ObjectParameter("Ort", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pEditCustumer", iDKundeParameter, vornameParameter, nachnameParameter, strasseParameter, telefonParameter, anredeParameter, gebDatumParameter, reisepassNrParameter, pLZParameter, ortParameter);
+        }
     }
 }

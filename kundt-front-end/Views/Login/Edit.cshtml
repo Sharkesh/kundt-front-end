@@ -7,7 +7,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>tblKunde</h4>
         <hr />
@@ -17,8 +17,20 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Anrede, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })
+                <select id="Anrede" name="Anrede" class="form-control" required>
+                    @if (Model.Anrede == "Herr")
+                    {
+                        <option selected value="Herr">Herr</option>
+                        <option value="Frau">Frau</option>
+                    }
+                    else
+                    {
+                        <option value="Herr">Herr</option>
+                        <option selected value="Frau">Frau</option>
+                    }
+                </select>
+                @*@Html.EditorFor(model => model.Anrede, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -39,6 +51,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.GebDatum, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p style="margin-top: 7px;">@Model.GebDatum.ToShortDateString()</p>
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.GebDatum)
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Strasse, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Strasse, new { htmlAttributes = new { @class = "form-control" } })
@@ -57,18 +77,56 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReisepassNr, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReisepassNr, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ReisepassNr, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
                 @Html.ValidationMessageFor(model => model.ReisepassNr, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FKPLZOrt, "FKPLZOrt", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label for="plz" class="control-label col-md-2">PLZ:</label>
             <div class="col-md-10">
-                @Html.DropDownList("FKPLZOrt", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FKPLZOrt, "", new { @class = "text-danger" })
+                <input type="number" class="form-control text-box single-line" id="plz" name="plz" placeholder="1234" required value="@Model.tblPLZOrt.PLZ" />
+                @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
+                {
+                    <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
+                }
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="stadt" class="control-label col-md-2">Ort:</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control text-box single-line" id="ort" name="ort" placeholder="Wien" required value="@Model.tblPLZOrt.Ort" />
+                @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
+                {
+                    <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
+                }
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.tblPLZOrt.PLZ, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tblPLZOrt.PLZ, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tblPLZOrt.PLZ, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.tblPLZOrt.Ort, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tblPLZOrt.Ort, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.tblPLZOrt.Ort, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                    @Html.LabelFor(model => model.FKPLZOrt, "FKPLZOrt", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("FKPLZOrt", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.FKPLZOrt, "", new { @class = "text-danger" })
+                    </div>
+                </div>*@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

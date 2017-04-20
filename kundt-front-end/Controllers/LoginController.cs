@@ -20,7 +20,7 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// ConnectionString
         /// </summary>
-        private static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"")+1, 156);
+        private static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
         /// <summary>
         /// Connection
         /// </summary>
@@ -232,8 +232,6 @@ namespace kundt_front_end.Controllers
                 {
                     return HttpNotFound();
                 }
-                ViewBag.FKPLZOrt = new SelectList(db.tblPLZOrt, "IDPLZOrt", "PLZ", k.FKPLZOrt);
-                ViewBag.IDKunde = new SelectList(db.tblLogin, "IDLogin", "Email", k.IDKunde);
                 return View(k);
             }
             else
@@ -245,16 +243,17 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         [RequireHttps]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,FKPLZOrt")] tblKunde k)
+        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,GebDatum")] tblKunde k, string plz, string ort)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(k).State = EntityState.Modified;
-                db.SaveChanges();
+                int result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort);
+                if (result == -1)
+                {
+                    TempData["editResult"] = -1;
+                }
                 return RedirectToAction("Edit");
             }
-            ViewBag.FKPLZOrt = new SelectList(db.tblPLZOrt, "IDPLZOrt", "PLZ", k.FKPLZOrt);
-            ViewBag.IDKunde = new SelectList(db.tblLogin, "IDLogin", "Email", k.IDKunde);
             return View(k);
         }
 
