@@ -239,16 +239,13 @@
     <Content Include="Content\img\Bild3.jpg" />
     <Content Include="Content\img\bmw-i8-2d-weiss-2015.png" />
     <Content Include="Content\img\car_modified.png" />
-    <Content Include="Content\img\dromedar.jpg" />
     <Content Include="Content\img\ok-sign.png" />
-    <Content Include="Content\img\sixtLogo.png" />
     <Content Include="Content\jquery-ui.min.css" />
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\img\images.png" />
     <Content Include="Content\img\kundt_logo.png" />
     <Content Include="Content\img\kundt_logo_with_slogan.png" />
-    <Content Include="Content\img\kundt_logo_with_slogan_right.png" />
     <Content Include="Content\sounds\carhorn.mp3" />
     <Content Include="Content\img\Tesla-logo-2003-2500x2500.png" />
     <Content Include="Content\themes\base\accordion.css" />
