@@ -14,7 +14,7 @@
 
     /* CSS Suchmaske Desktop Anfang */
     .searchMask {
-        background-color: lightgrey;
+        background-color: #FFF;
         padding: 10px;
         border-radius: 5px;
     }
@@ -36,7 +36,7 @@
         font-size: 15px;
         font-weight: 700;
         width: 50px;
-        letter-spacing: 4.9px;
+        letter-spacing: 3px;
         text-align: center;
         width: auto;
         text-transform: uppercase;
@@ -46,18 +46,19 @@
     }
 
     #date_von, #date_bis, .buttonOrange {
-        font-size: 15px;
+        font-size: 1.2em;
         height: 50px;
         width: 170px;
         font-weight: 700;
         text-align: center;
         text-transform: uppercase;
         border: none;
-        letter-spacing: 6px;
+        letter-spacing: 3px;
         margin-left: 10px;
         margin-right: 10px;
         color: black;
         border-radius: 4px;
+        background-color: #CCC;
     }
 
     .buttonOrange {
@@ -69,11 +70,11 @@
             background-color: #f99b1c;
             border: none;
             color: #ffffff;
-            font-size: 15px;
+            font-size: 1.2em;
             height: 50px;
             width: 170px;
             font-weight: 700;
-            letter-spacing: 6px;
+            letter-spacing: 3px;
             text-align: center;
             text-transform: uppercase;
             opacity: 0.8;
@@ -95,7 +96,7 @@
             font-size: 15px;
             font-weight: 700;
             width: 50px;
-            letter-spacing: 4.9px;
+            letter-spacing: 3px;
             text-align: center;
             width: auto;
             text-transform: uppercase;
@@ -104,15 +105,16 @@
         }
 
         #date_von, #date_bis, .buttonOrange {
-            font-size: 15px;
+            font-size: 1.2em;
             height: 50px;
             width: 150px;
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
             border: none;
-            letter-spacing: 6px;
+            letter-spacing: 3px;
             margin: 0px;
+            background-color: #CCC;
         }
 
         .buttonOrange {
@@ -123,11 +125,11 @@
                 background-color: #f99b1c;
                 border: none;
                 color: #ffffff;
-                font-size: 15px;
+                font-size: 1.2em;
                 height: 50px;
                 width: 150px;
                 font-weight: 700;
-                letter-spacing: 6px;
+                letter-spacing: 3px;
                 text-align: center;
                 text-transform: uppercase;
                 opacity: 0.8;
@@ -142,14 +144,15 @@
 
     /* CSS Suchmaske Mobile Anfang */
     #date_von_mobile, #date_bis_mobile, .buttonOrange_mobile {
-        font-size: 15px;
+        font-size: 1.2em;
         height: 50px;
         width: 170px;
         font-weight: 700;
         text-align: center;
         text-transform: uppercase;
         border: none;
-        letter-spacing: 6px;
+        letter-spacing: 3px;
+        background-color: #CCC;
     }
 
     .buttonOrange_mobile {
@@ -159,7 +162,7 @@
     }
 
     #searchMaskMobile {
-        background-color: lightgrey;
+        background-color: #FFF;
     }
 
     .col-xs-12 > #date_von_mobile {
@@ -167,6 +170,7 @@
         padding-right: 0px;
         padding-left: 0px;
         margin: auto;
+        background-color: #CCC;
     }
 
     .col-xs-12 > #date_bis_mobile {
@@ -174,6 +178,7 @@
         padding-right: 0px;
         padding-left: 0px;
         margin: auto;
+        background-color: #CCC;
     }
 
     .col-xs-12 > .buttonOrange_mobile {
@@ -201,6 +206,7 @@
             padding-left: 0px;
             margin: auto;
             padding-right: 0px;
+            background-color: #CCC;
         }
 
         .col-sm-5 > #date_bis_mobile {
@@ -209,6 +215,7 @@
             padding-left: 0px;
             margin: auto;
             padding-right: 0px;
+            background-color: #CCC;
         }
 
         .col-sm-2 > .buttonOrange_mobile {
@@ -245,7 +252,7 @@
                     <input type="text" id="date_von" name="date_von_string" placeholder="DD.MM.YYYY" required />
                     <label id="label_bis">Bis:</label>
                     <input type="text" id="date_bis" name="date_bis_string" placeholder="DD.MM.YYYY" required />
-                    <button id="buttonOrange" class="buttonOrange">Suchen!</button>
+                    <button id="buttonOrange" class="buttonOrange" style="background-color: #f99b1c">Suchen!</button>
                 </form>
             </div>
         </div>
