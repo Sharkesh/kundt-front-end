@@ -101,7 +101,7 @@ namespace kundt_front_end.Controllers
                 cmd.Connection = con;
                 con.Open();
                 //Aufruf der Prozedur
-                //Rückabe Werte: -2: Acc nicht Aktivert; -1: Eingegebene Daten falsch; >0: Die zugehörige UserId
+                //Rückabe Werte: -3: Acc Deaktiviert; -2: Acc nicht Aktivert; -1: Eingegebene Daten falsch; >0: Die zugehörige UserId
                 ViewBag.loginResult = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
             }
