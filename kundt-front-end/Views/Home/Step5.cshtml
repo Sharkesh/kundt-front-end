@@ -263,6 +263,19 @@
         margin-top: 5px;
         font-size: 1.4em;
     }
+
+    .h3Step3 {
+        margin-top: 0px;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .h4Step3 {
+        padding-top: 5px;
+        color: #002f41;
+    }
     /*#endregion*/
 </style>
 
@@ -314,10 +327,8 @@
         </div>
     </div>
     @* Progressbar Ende *@
-
-    <div class="paddingSmallStep3"></div>
-    <div class="row">
-        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px; height:100%;">
+    <div class="row" style="padding-top:20px;">
+        <div class="hidden-xs col-sm-4 col-md-4 col-lg-4" style="border-left:solid 3px; border-color:#f99b1c; margin-left:20px;">
             <h3 class="h3Step3" style="margin-bottom:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.tblMarke.Marke)</h3>
             <p class="TextAufzählungStep3" style="padding-bottom:10px; margin-top:0px">@Html.DisplayFor(m => m.gebuchtesAuto.tblTyp.Typ)</p>
             @{
@@ -333,7 +344,7 @@
             }
 
             @*div-Bereich unterhalb img*@
-            <div class="TextAufzählungStep3 col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="TextAufzählungStep3 hidden-sm hidden-xs hidden-md col-lg-12">
                 <div class="col-lg-6">
                     <h4 class="h4Step3">Abholung</h4>
                     <p>Wien am @Model.date_von_string</p>
@@ -351,29 +362,29 @@
                     <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
                 </div>
                 @*<div class="col-lg-6">
-                    <h4 class="h4Step3">Sonderausstattung</h4>
-                    <ul>
-                        @if (Model.gebuchtesAuto.tblAusstattung != null)
-                        {
-                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                        <h4 class="h4Step3">Sonderausstattung</h4>
+                        <ul>
+                            @if (Model.gebuchtesAuto.tblAusstattung != null)
                             {
-                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                                {
+                                    <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <h4 class="h4Step3">Versicherung</h4>
+                        @{if (Model.HatRtVersicherung)
+                            {
+                                <p>Ja</p>
+                            }
+                            else
+                            {
+                                <p>Nein</p>
                             }
                         }
-                    </ul>
-                </div>
-                <div class="col-lg-6">
-                    <h4 class="h4Step3">Versicherung</h4>
-                    @{if (Model.HatRtVersicherung)
-                        {
-                            <p>Ja</p>
-                        }
-                        else
-                        {
-                            <p>Nein</p>
-                        }
-                    }
-                </div>*@
+                    </div>*@
             </div>
         </div>
 
@@ -432,23 +443,7 @@
         @*Aufzählung rechts*@
         <div class="hidden-xs col-sm-7 col-md-7 col-lg-7" style="padding-top:10px;">
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-lg-12">
-                    <h2>Ihre Daten</h2>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-lg-6">
-                    <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
-                    <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
-                    <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
-                    <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
-                </div>
-
-                <div class="col-xs-6 col-sm-6 col-lg-6">
-                    <p><b>Straße: </b><span>@Html.DisplayFor(model => model.kunde.Strasse)</span></p>
-                    <p><b>PLZ/Ort: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
-                    <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>
-                    <p><b>Reisepassnr.: </b><span>@Html.DisplayFor(model => model.kunde.ReisepassNr)</span></p>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-top:15px;">
+                <div class="col-lg-5 col-md-5 col-sm-5" style="margin-top:48px">
                     <h4 class="h4Step3">Sonderausstattung</h4>
                     <ul>
                         @if (Model.gebuchtesAuto.tblAusstattung != null)
@@ -459,8 +454,6 @@
                             }
                         }
                     </ul>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-top:15px;">
                     <h4 class="h4Step3">Versicherung</h4>
                     @{if (Model.HatRtVersicherung)
                         {
@@ -471,6 +464,19 @@
                             <p>Nein</p>
                         }
                     }
+                </div>
+
+                <div class="col-xs-6 col-sm-6 col-lg-6">
+                    <h2>Ihre Daten</h2>
+                    <p><b>Anrede: </b><span>@Html.DisplayFor(model => model.kunde.Anrede)</span></p>
+                    <p><b>Vorname: </b><span>@Html.DisplayFor(model => model.kunde.Vorname)</span></p>
+                    <p><b>Nachname: </b><span>@Html.DisplayFor(model => model.kunde.Nachname)</span></p>
+                    <p><b>Geburtsdatum: </b><span>@Model.kunde.GebDatum.ToShortDateString()</span></p>
+
+                    <p><b>Straße: </b><span>@Html.DisplayFor(model => model.kunde.Strasse)</span></p>
+                    <p><b>PLZ/Ort: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
+                    <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>
+                    <p><b>Reisepassnr.: </b><span>@Html.DisplayFor(model => model.kunde.ReisepassNr)</span></p>
                 </div>
             </div>
         </div>
@@ -524,7 +530,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs">
+                <div class="row col-sm-12 col-md-12 col-lg-12 hidden-xs" style="padding-top:20px;">
                     <div class="col-sm-6 col-md-6 col-lg-6 hidden-xs">
                         <form action="@Url.Action("Step3", "Home")">
                             <input type="hidden" value="@Model.gebuchtesAutoID" name="gebuchtesAutoID" />
