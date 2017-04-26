@@ -257,6 +257,7 @@
         list-style-image: url(../../../../Content/img/ok-sign.png);
         padding-bottom: 10px;
     }
+
     .h3step2XS {
         color: #000000;
         margin-top: 5px;
@@ -349,7 +350,7 @@
                     <h4 class="h4Step3">Preis</h4>
                     <p>@Html.DisplayFor(d => d.Gesamtpreis) Euro</p>
                 </div>
-                <div class="col-lg-6">
+                @*<div class="col-lg-6">
                     <h4 class="h4Step3">Sonderausstattung</h4>
                     <ul>
                         @if (Model.gebuchtesAuto.tblAusstattung != null)
@@ -372,7 +373,7 @@
                             <p>Nein</p>
                         }
                     }
-                </div>
+                </div>*@
             </div>
         </div>
 
@@ -429,7 +430,7 @@
         </center>
 
         @*Aufzählung rechts*@
-        <div class="hidden-xs col-sm-7 col-md-7 col-lg-7">
+        <div class="hidden-xs col-sm-7 col-md-7 col-lg-7" style="padding-top:10px;">
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-lg-12">
                     <h2>Ihre Daten</h2>
@@ -446,6 +447,30 @@
                     <p><b>PLZ/Ort: </b><span>@Html.DisplayFor(model => model.kunde.tblPLZOrt.PLZ) @Html.DisplayFor(model => model.kunde.tblPLZOrt.Ort)</span></p>
                     <p><b>Telefon: </b><span>@Html.DisplayFor(model => model.kunde.Telefon)</span></p>
                     <p><b>Reisepassnr.: </b><span>@Html.DisplayFor(model => model.kunde.ReisepassNr)</span></p>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-top:15px;">
+                    <h4 class="h4Step3">Sonderausstattung</h4>
+                    <ul>
+                        @if (Model.gebuchtesAuto.tblAusstattung != null)
+                        {
+                            foreach (var ausstattung in Model.gebuchtesAuto.tblAusstattung)
+                            {
+                                <li class="okZeichen1">@Html.DisplayFor(a => ausstattung.Ausstattung)</li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6" style="padding-top:15px;">
+                    <h4 class="h4Step3">Versicherung</h4>
+                    @{if (Model.HatRtVersicherung)
+                        {
+                            <p>Ja</p>
+                        }
+                        else
+                        {
+                            <p>Nein</p>
+                        }
+                    }
                 </div>
             </div>
         </div>
