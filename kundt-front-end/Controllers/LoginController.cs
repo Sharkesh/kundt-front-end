@@ -256,10 +256,8 @@ namespace kundt_front_end.Controllers
                 var result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort, password, newPassword);
                 int resultValue = result.SingleOrDefault().Value;
 
-                if (resultValue < 0)
-                {
-                    TempData["editResult"] = resultValue;
-                }
+                
+                TempData["editResult"] = resultValue;
                 return RedirectToAction("Edit");
             }
             return View(k);

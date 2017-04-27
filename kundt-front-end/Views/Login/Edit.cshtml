@@ -138,11 +138,26 @@
             text-align: center;
         }
 
-    .col-xs-12 {
+    .headingFormat {
+        display: none;
+        margin: auto auto auto auto;
+        color: white;
+        background-color: green;
+        vertical-align: middle;
+        padding: 0px;
+        border-radius: 4px;
+        box-shadow: lightgray 1px 1px 0px;
+        text-align: center;
     }
 </style>
 
 <div class="container">
+    @if (TempData["editResult"] != null && (int)TempData["editResult"] > 0)
+    {
+        <div id="success" class="headingFormat">
+            <h2 style="padding:5px;">Änderungen Gesichert!</h2>
+        </div>
+    }
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

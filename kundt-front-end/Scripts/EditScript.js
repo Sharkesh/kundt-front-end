@@ -60,3 +60,8 @@ function ValidateInput() {
         $('#submit').prop('disabled', false);
     }
 }
+
+$(document).ready(function () {
+    $("#success").fadeIn("slow");
+    $("#success").delay(3000).fadeOut("slow");
+});
