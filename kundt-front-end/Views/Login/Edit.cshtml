@@ -1,7 +1,7 @@
 ﻿@model kundt_front_end.Models.tblKunde
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Kundt Autoverleih Eigene Daten Bearbeiten";
 }
 
 
@@ -56,6 +56,34 @@
             font-weight: 700;
             letter-spacing: .5px;
             text-align: center;
+        }
+
+    .buttonOrangeForwardStep3OhneAnimation {
+        background-color: #f99b1c;
+        border: none;
+        color: #ffffff;
+        font-size: 15px;
+        height: 50px;
+        width: 200px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-align: center;
+        display: inline-block;
+        border-radius: 4px;
+    }
+
+        .buttonOrangeForwardStep3OhneAnimation:disabled {
+            background-color: #CCC;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            height: 50px;
+            width: 200px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-align: center;
+            display: inline-block;
+            border-radius: 4px;
         }
 
     .buttonOrangeReturnStep3 {
@@ -119,140 +147,150 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+        <div class="form-horizontal col-md-12">
             <h3 style="padding-bottom:15px;padding-left:50px;">Ihre Daten</h3>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.IDKunde)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <select id="Anrede" name="Anrede" class="form-control" required>
-                        @if (Model.Anrede == "Herr")
-                        {
-                            <option selected value="Herr">Herr</option>
-                            <option value="Frau">Frau</option>
-                        }
-                        else
-                        {
-                            <option value="Herr">Herr</option>
-                            <option selected value="Frau">Frau</option>
-                        }
-                    </select>
-                    @*@Html.EditorFor(model => model.Anrede, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Anrede, "", new { @class = "text-danger" })*@
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.GebDatum, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <p style="margin-top: 7px;">@Model.GebDatum.ToShortDateString()</p>
-                </div>
-            </div>
-            @Html.HiddenFor(model => model.GebDatum)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Strasse, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Strasse, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Strasse, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ReisepassNr, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.ReisepassNr, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
-                    @Html.ValidationMessageFor(model => model.ReisepassNr, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="plz" class="control-label col-md-2">PLZ:</label>
-                <div class="col-md-10">
-                    <input type="number" class="form-control text-box single-line" id="plz" name="plz" placeholder="1234" required value="@Model.tblPLZOrt.PLZ" />
-                    @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
-                {
-                        <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
-                    }
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="stadt" class="control-label col-md-2">Ort:</label>
-                <div class="col-md-10">
-                    <input type="text" class="form-control text-box single-line" id="ort" name="ort" placeholder="Wien" required value="@Model.tblPLZOrt.Ort" />
-                    @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
-                {
-                        <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
-                    }
-                </div>
-            </div>
-
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.tblPLZOrt.PLZ, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.tblPLZOrt.PLZ, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.tblPLZOrt.PLZ, "", new { @class = "text-danger" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Anrede, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <select id="Anrede" name="Anrede" class="form-control" required>
+                            @if (Model.Anrede == "Herr")
+                            {
+                                <option selected value="Herr">Herr</option>
+                                <option value="Frau">Frau</option>
+                            }
+                            else
+                            {
+                                <option value="Herr">Herr</option>
+                                <option selected value="Frau">Frau</option>
+                            }
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.tblPLZOrt.Ort, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.tblPLZOrt.Ort, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.tblPLZOrt.Ort, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.Vorname, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Vorname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Vorname, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                        @Html.LabelFor(model => model.FKPLZOrt, "FKPLZOrt", htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.DropDownList("FKPLZOrt", null, htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.FKPLZOrt, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.Nachname, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Nachname, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Nachname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GebDatum, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <p style="margin-top: 7px;">@Model.GebDatum.ToShortDateString()</p>
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.GebDatum)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Strasse, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Strasse, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Strasse, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Telefon, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Telefon, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Telefon, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ReisepassNr, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.ReisepassNr, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                        @Html.ValidationMessageFor(model => model.ReisepassNr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="plz" class="control-label col-md-4">PLZ:</label>
+                    <div class="col-md-8">
+                        <input type="number" class="form-control text-box single-line" id="plz" name="plz" placeholder="1234" required value="@Model.tblPLZOrt.PLZ" />
+                        @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
+                        {
+                            <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="stadt" class="control-label col-md-4">Ort:</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control text-box single-line" id="ort" name="ort" placeholder="Wien" required value="@Model.tblPLZOrt.Ort" />
+                        @if (TempData["editResult"] != null && (int)TempData["editResult"] == -1)
+                        {
+                            <span class="text-danger">Angegebene PLZ/Ort ist Ungültig.</span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p class="text-center">(Passwort Felder leer lassen wenn Passwort nicht geändert werden soll.)</p>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="control-label col-md-4">Aktuelles Passwort:</label>
+                    <div class="col-md-8">
+                        <input type="password" id="password" name="password" class="form-control text-box single-line" onkeyup="PasswordCheck(''), ValidateInput()" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordEdit" class="control-label col-md-4">Neues Passwort:</label>
+                    <div class="col-md-8">
+                        <input type="password" id="passwordEdit" name="newPassword" class="form-control text-box single-line" onkeyup="PasswordCheck('Edit'), ValidateInput()" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordConfirmation" class="control-label col-md-4">Passwort bestätigen:</label>
+                    <div class="col-md-8">
+                        <input type="password" id="passwordConfirmation" name="checkPassword" class="form-control text-box single-line" onkeyup="PasswordConfirmationCheck(), ValidateInput()" />
+                    </div>
+                </div>
+
+                @if (TempData["editResult"] != null && (int)TempData["editResult"] == -2)
+                {
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-8">
+                            <span class="text-danger">Das Angegebene Passwort ist Ungültig.</span>
                         </div>
-                    </div>*@
-
-            <div class="col-sm-6 col-md-6 col-lg-3 hidden-xs" style="padding-top:20px;">
-                <form action="@Url.Action("Index","Home")">
-                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
-                </form>
-            </div>
-
-            <div class="form-group col-lg-3" style="padding-top:20px;">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" value="Aktualisieren" class="buttonOrangeForwardStep3"><span>Aktualisieren</span></button>
-                </div>
+                    </div>
+                }
             </div>
         </div>
+        <center>
+            <div class="col-md-6" style="padding-top:20px;">
+                <a href="@Url.Action("Index","Home")">
+                    <button class="buttonOrangeReturnStep3"><span>Zurück</span></button>
+                </a>
+            </div>
+
+            <div class="col-md-6" style="padding-top:20px;">
+                <button type="submit" id="submit" value="Aktualisieren" class="buttonOrangeForwardStep3"><span>Aktualisieren</span></button>
+            </div>
+        </center>
     }
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/EditScript.js")
 }

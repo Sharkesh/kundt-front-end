@@ -334,6 +334,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\CarScript.js" />
+    <Content Include="Scripts\EditScript.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
     <Content Include="Scripts\i18n\defaults-bg_BG.js" />

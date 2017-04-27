@@ -121,7 +121,7 @@ namespace kundt_front_end.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fCarAvailableFilterIncluded_Result>("[it22AutoverleihEntities].[fCarAvailableFilterIncluded](@vonDate, @bisDate, @klasse)", vonDateParameter, bisDateParameter, klasseParameter);
         }
     
-        public virtual int pEditCustumer(Nullable<int> iDKunde, string vorname, string nachname, string strasse, string telefon, string anrede, Nullable<System.DateTime> gebDatum, string reisepassNr, string pLZ, string ort)
+        public virtual ObjectResult<Nullable<int>> pEditCustumer(Nullable<int> iDKunde, string vorname, string nachname, string strasse, string telefon, string anrede, Nullable<System.DateTime> gebDatum, string reisepassNr, string pLZ, string ort, string password, string newPassword)
         {
             var iDKundeParameter = iDKunde.HasValue ?
                 new ObjectParameter("IDKunde", iDKunde) :
@@ -163,7 +163,15 @@ namespace kundt_front_end.Models
                 new ObjectParameter("Ort", ort) :
                 new ObjectParameter("Ort", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pEditCustumer", iDKundeParameter, vornameParameter, nachnameParameter, strasseParameter, telefonParameter, anredeParameter, gebDatumParameter, reisepassNrParameter, pLZParameter, ortParameter);
+            var passwordParameter = password != null ?
+                new ObjectParameter("Password", password) :
+                new ObjectParameter("Password", typeof(string));
+    
+            var newPasswordParameter = newPassword != null ?
+                new ObjectParameter("NewPassword", newPassword) :
+                new ObjectParameter("NewPassword", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("pEditCustumer", iDKundeParameter, vornameParameter, nachnameParameter, strasseParameter, telefonParameter, anredeParameter, gebDatumParameter, reisepassNrParameter, pLZParameter, ortParameter, passwordParameter, newPasswordParameter);
         }
     }
 }

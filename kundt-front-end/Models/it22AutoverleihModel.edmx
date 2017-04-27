@@ -402,6 +402,8 @@
           <Parameter Name="ReisepassNr" Type="varchar" Mode="In" />
           <Parameter Name="PLZ" Type="varchar" Mode="In" />
           <Parameter Name="Ort" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="NewPassword" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="it22AutoverleihModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
@@ -892,7 +894,7 @@
             <Parameter Name="bisDate" Mode="In" Type="String" />
             <Parameter Name="klasse" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="pEditCustumer">
+          <FunctionImport Name="pEditCustumer" ReturnType="Collection(Int32)">
             <Parameter Name="IDKunde" Mode="In" Type="Int32" />
             <Parameter Name="Vorname" Mode="In" Type="String" />
             <Parameter Name="Nachname" Mode="In" Type="String" />
@@ -903,6 +905,8 @@
             <Parameter Name="ReisepassNr" Mode="In" Type="String" />
             <Parameter Name="PLZ" Mode="In" Type="String" />
             <Parameter Name="Ort" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="NewPassword" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="fCarAvailable_Result">

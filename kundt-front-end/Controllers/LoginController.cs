@@ -243,14 +243,22 @@ namespace kundt_front_end.Controllers
         [HttpPost]
         [RequireHttps]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,GebDatum")] tblKunde k, string plz, string ort)
+        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,GebDatum")] tblKunde k, string plz, string ort, string password, string newPassword)
         {
             if (ModelState.IsValid)
             {
-                int result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort);
-                if (result == -1)
+                if (password != "" && newPassword != "")
                 {
-                    TempData["editResult"] = -1;
+                    password = Logic.Helpers.HashPassword(password);
+                    newPassword = Logic.Helpers.HashPassword(newPassword);
+                }
+
+                var result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort, password, newPassword);
+                int resultValue = result.SingleOrDefault().Value;
+
+                if (resultValue < 0)
+                {
+                    TempData["editResult"] = resultValue;
                 }
                 return RedirectToAction("Edit");
             }
