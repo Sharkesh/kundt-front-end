@@ -1,16 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 @*<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>*@
+        <meta name="viewport" content="width=device-width" />
+        <title>Error</title>
+    </head>
+    <body>
+        <hgroup>
+            <h1>Error.</h1>
+            <h2>An error occurred while processing your request.</h2>
+        </hgroup>
+    </body>*@
 <head>
+    <title>Kuntd Autoverleih Fehler!</title>
     <style>
         .eye1 {
             max-height: 0px;
@@ -39,7 +40,6 @@
         .incEyes {
             animation-name: inc;
             animation-duration: 2.5s;
-
         }
 
         @@keyframes inc {
@@ -107,3 +107,7 @@
     </div>
 </body>
 </html>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/CarScript.js")
+}

@@ -20,11 +20,12 @@ namespace kundt_front_end.Controllers
         /// <summary>
         /// ConnectionString
         /// </summary>
-        public static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"")+1, 156);
+        private static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
         /// <summary>
         /// Connection
         /// </summary>
         public static SqlConnection con = new SqlConnection(conString);
+        private it22AutoverleihEntities db = new it22AutoverleihEntities();
 
         /// <summary>
         /// GET: Login
@@ -43,7 +44,6 @@ namespace kundt_front_end.Controllers
             {
                 string activationCode = Request.RawUrl.Substring(Request.RawUrl.LastIndexOf('=') + 1);
                 //Und der eintrag in der UserActivation Tabelle gelöscht. Damit ist der User Aktiviert.
-                //using (SqlCommand cmd = new SqlCommand("DELETE FROM UserActivation WHERE convert(nvarchar(300), ActivationCode) = @ActivationCode")) 
                 using (SqlCommand cmd = new SqlCommand("Validate_Activation"))
                 {
                     using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -101,7 +101,7 @@ namespace kundt_front_end.Controllers
                 cmd.Connection = con;
                 con.Open();
                 //Aufruf der Prozedur
-                //Rückabe Werte: -2: Acc nicht Aktivert; -1: Eingegebene Daten falsch; >0: Die zugehörige UserId
+                //Rückabe Werte: -3: Acc Deaktiviert; -2: Acc nicht Aktivert; -1: Eingegebene Daten falsch; >0: Die zugehörige UserId
                 ViewBag.loginResult = Convert.ToInt32(cmd.ExecuteScalar());
                 con.Close();
             }
@@ -119,9 +119,8 @@ namespace kundt_front_end.Controllers
                 //Session Variablen werden je nach Rolle gesetzt.
                 if (ViewBag.role == 'K')
                 {
-                    System.Web.HttpContext.Current.Session["IDUser"] = ViewBag.loginResult;
+                    System.Web.HttpContext.Current.Session["IDUser"] = msc.userID = ViewBag.loginResult;
                     System.Web.HttpContext.Current.Session["Email"] = email;
-                    msc.userID = ViewBag.loginResult;
                 }
                 else
                 {
@@ -199,7 +198,6 @@ namespace kundt_front_end.Controllers
             TempData["registerResult"] = userId;
             TempData["msc"] = msc;
 
-            //Theoretisch einfach das Selbe wie beim Login(?)
             return Redirect(Convert.ToString(Request.UrlReferrer));
         }
 
@@ -222,6 +220,56 @@ namespace kundt_front_end.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [RequireHttps]
+        public ActionResult Edit()
+        {
+            if (System.Web.HttpContext.Current.Session["IDUser"] != null)
+            {
+                tblKunde k = db.tblKunde.Find((int)System.Web.HttpContext.Current.Session["IDUser"]);
+                if (k == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(k);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home", null);
+            }
+        }
+
+        [HttpPost]
+        [RequireHttps]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "IDKunde,Vorname,Nachname,Strasse,Telefon,Anrede,ReisepassNr,GebDatum")] tblKunde k, string plz, string ort, string password, string newPassword)
+        {
+            if (ModelState.IsValid)
+            {
+                if (password != "" && newPassword != "")
+                {
+                    password = Logic.Helpers.HashPassword(password);
+                    newPassword = Logic.Helpers.HashPassword(newPassword);
+                }
+
+                var result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort, password, newPassword);
+                int resultValue = result.SingleOrDefault().Value;
+
+                
+                TempData["editResult"] = resultValue;
+                return RedirectToAction("Edit");
+            }
+            return View(k);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }
@@ -259,7 +307,6 @@ namespace kundt_front_end.Logic
         public static void SendActivationEmail(int userId, string email)
         {
             string activationCode = Guid.NewGuid().ToString();
-            //using (SqlCommand cmd = new SqlCommand("INSERT INTO UserActivation VALUES(@UserId, @ActivationCode)"))
             using (SqlCommand cmd = new SqlCommand("Insert_Activation"))
             {
                 using (SqlDataAdapter sda = new SqlDataAdapter())

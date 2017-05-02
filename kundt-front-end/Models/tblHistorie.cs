@@ -17,7 +17,7 @@ namespace kundt_front_end.Models
         public int IDHistorie { get; set; }
         public int FKMitarbeiter { get; set; }
         public int FKBuchung { get; set; }
-        public Nullable<System.DateTime> AenderungsDatum { get; set; }
+        public System.DateTime AenderungsDatum { get; set; }
     
         public virtual tblBuchung tblBuchung { get; set; }
         public virtual tblMitarbeiter tblMitarbeiter { get; set; }

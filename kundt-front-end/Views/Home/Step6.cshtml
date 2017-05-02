@@ -1,6 +1,6 @@
 ﻿@model kundt_front_end.Models.ModelStepClass
 @{
-    ViewBag.Title = "Step6";
+    ViewBag.Title = "Kundt Autoverleih Abschluss";
 }
 <style>
     .paddingSmallStep6 {
@@ -226,29 +226,64 @@
     }
 
     /* CSS Progress-Bar Ende */
+
+    /*CSS Dialog-Box*/
+    .no-close .ui-dialog-titlebar-close {
+        display: none;
+    }
+
+    .ui-widget-header {
+        background: #008ad0;
+    }
+
+    body > div.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front.no-close.ui-dialog-buttons > div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix > div > button {
+        background: #f99b1c;
+        color: white;
+        font: bold;
+    }
+    /*CSS Dialog-Box Ende*/
 </style>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $("#dialog-message").dialog({
+            dialogClass: "no-close",
+            draggable: false,
+            modal: true,
+            resizable: false,
+            buttons: [
+          {
+              text: "OK",
+              click: function () {
+                  $(this).dialog("close");
+              }
+          }
+            ]
+        });
+    });
+</script>
 <div class="container" style="margin-top: 20px">
     @*Progress Bar*@
     <div class="myBorder hidden-xs" style="text-align:center">
         <div class="col-sm-2 col-sm-offset-1">
-            <button class="myButton">1</button>
-            <h5>Fahrzeug wählen</h5>
+            <button class="myButtonOp opacity noCurs">1</button>
+            <h5 style="font-weight:bold;">Fahrzeug wählen</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">2</button>
-            <h5>Detailansicht</h5>
+            <button class="myButtonOp opacity noCurs">2</button>
+            <h5 style="font-weight:bold;">Detailansicht</h5>
         </div>
         <div class="col-sm-2">
             <button class="myButton">3</button>
-            <h5>Anmeldung</h5>
+            <h5 style="font-weight:bold;">Anmeldung</h5>
         </div>
         <div class="col-sm-2">
-            <button class="myButton">4</button>
-            <h5>Buchung</h5>
+            <button class="myButtonOp opacity noCurs">4</button>
+            <h5 style="font-weight:bold;">Buchung</h5>
         </div>
         <div class="col-sm-2">
             <button class="myButtonOp opacity noCurs">5</button>
-            <h5>Abschluss</h5>
+            <h5 style="font-weight:bold;"   >Abschluss</h5>
         </div>
 
         <div class="row">
@@ -259,30 +294,50 @@
     </div>
     <div class="myBorder hidden-sm hidden-md hidden-lg hidden-xl" style="text-align:center">
         <div class="col-xs-2 col-xs-offset-1">
-            <button class="miniButton">1</button>
+            <button class="miniButtonOp opacity noCurs">1</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">2</button>
+            <button class="miniButtonOp opacity noCurs">2</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">3</button>
+            <button class="miniButtonOp opacity noCurs">3</button>
         </div>
         <div class="col-xs-2">
-            <button class="miniButton">4</button>
+            <button class="miniButtonOp opacity noCurs">4</button>
         </div>
         <div class="col-xs-2">
             <button class="miniButtonOp opacity noCurs">5</button>
         </div>
     </div>
     @*Progress Bar Ende*@
-    <div class="col-xs-12 jumbotron text-center" style="margin-top:10%; border:solid 3px; border-color:#f99b1c; background-color:white">
+    <div class="hidden-xs jumbotron text-center" style="margin-top:10%; border:solid 3px; border-color:#f99b1c; background-color:white">
+        <h1>Vielen Dank für Ihre Buchung!</h1>
+        <p><h4>Sie erhalten in Kürze eine Buchungsbestätigung per Email</h4></p>
+        <p><h4><a href="@Url.Action("Print", "Home",Model)" target="_blank" style="color:#f99b1c"><span class="glyphicon glyphicon-save-file" style="font-size:large"></span> Buchungsdetails als PDF herunterladen</a></h4></p>
+    </div>
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg jumbotron text-center" style="background-color:white">
         <h1>Vielen Dank für Ihre Buchung!</h1>
         <p><h4>Sie erhalten in Kürze eine Buchungsbestätigung per Email</h4></p>
         <p><h4><a href="@Url.Action("Print", "Home",Model)" style="color:#f99b1c"><span class="glyphicon glyphicon-save-file" style="font-size:large"></span> Buchungsdetails als PDF herunterladen</a></h4></p>
+
     </div>
     <div class="col-xs-12 text-center">
-        <p style="font-size:small"><a href="#">Email-Bestätigung erneut senden</a></p>
+        <p style="font-size:small"><a href="@Url.Action("SendMail_Again","Home",Model)">Email-Bestätigung erneut senden</a></p>
     </div>
+    @if (TempData["send"] == null)
+    {
+
+    }
+    else if ((bool)TempData["send"] == true)
+    {
+        <div id="dialog-message" title="E-Mail Bestätigung">
+            <p>
+                <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+                Ihre Bestätigungs-Mail wurde erneut verschickt!
+            </p>
+        </div>
+        TempData["send"] = null;
+    }
     <div class="hidden-xs hidden-sm abschlussGebucht glyphicon glyphicon-ok-circle"></div>
 </div>
 

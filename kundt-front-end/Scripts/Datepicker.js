@@ -104,12 +104,3 @@ $("#date_von_mobile").datepicker({
         var dataObject_moblie_von = $(this).datepicker('getDate');
     }
 }, $.datepicker.regional['de-AT']);
-
-
-function getDateVon() {
-    return $('#date_von').datepicker('getDate');
-}
-
-function getDateBis() {
-    return $('#date_bis').datepicker('getDate');
-}

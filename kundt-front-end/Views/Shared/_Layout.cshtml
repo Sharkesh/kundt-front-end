@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
+    <link rel="SHORTCUT ICON" href="~/favicon.ico" />
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/font-awesome.min.css")
     @Scripts.Render("~/bundles/modernizr")
@@ -80,7 +81,7 @@
                             <span class="icon-bar"></span>
                         </button>
                         <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                            <img alt="Brand" src="~/Content/img/kundt_logo_with_slogan_right.png" />
+                            <img alt="Brand" src="~/Content/img/kundt_logo_with_slogan.png" />
                         </a>
                     </div>
                     <div class="navbar-collapse collapse">
@@ -91,7 +92,7 @@
                                 }
                                 else if ((int)System.Web.HttpContext.Current.Session["IDUser"] > 0)
                                 {
-                                    <li><a style="font-size:1.5em;">@System.Web.HttpContext.Current.Session["Email"]</a></li>
+                                    <li><a href="@Url.Action("Edit","Login")" style="font-size:1.5em;">@System.Web.HttpContext.Current.Session["Email"]</a></li>
                                     <li>@Html.ActionLink("Logout", "Logout", "Login", new { id = (int)System.Web.HttpContext.Current.Session["IDUser"] }, null)</li>
                                 }
                             }
@@ -120,10 +121,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery-ui")
-    @Scripts.Render("~/Scripts/JS-Kundt-Index.js")
-    @Scripts.Render("~/Scripts/LoginScript.js")
-    @Scripts.Render("~/Scripts/Script.js")
-    @*@Scripts.Render("~/Scripts/CarScript.js")*@
     @RenderSection("scripts", required: false)
 </body>
 </html>
