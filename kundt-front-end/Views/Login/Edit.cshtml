@@ -139,23 +139,41 @@
         }
 
     .headingFormat {
-        display: none;
-        margin: auto auto auto auto;
+        /*display: inline-block;*/        
         color: white;
         background-color: green;
-        vertical-align: middle;
-        padding: 0px;
+        /*vertical-align: middle;*/
+        padding-top: -15px;
+        margin: 0px;  
         border-radius: 4px;
         box-shadow: lightgray 1px 1px 0px;
         text-align: center;
+        position:absolute;
+        left:30%;
+        right:30%;
+        width:40%;
+        font-size:30px;
+    }
+
+    .AnimaAppend{
+        animation-name:AnimaAppend1;
+        animation-duration:5.5s;
+        animation-iteration-count:1;                      
+    }
+
+    @@keyframes AnimaAppend1 {
+        0% {height:0%; max-height:0px;}
+        20% {height:100%; max-height:40px}
+        60% {height:100%; max-height:40px}        
+        100% {height:0%; max-height:0px;}
     }
 </style>
 
 <div class="container">
     @if (TempData["editResult"] != null && (int)TempData["editResult"] > 0)
     {
-        <div id="success" class="headingFormat">
-            <h2 style="padding:5px;">Änderungen Gesichert!</h2>
+        <div id="success" class="headingFormat AnimaAppend">
+            Änderungen Gesichert!
         </div>
     }
     @using (Html.BeginForm())
