@@ -36,6 +36,7 @@ $("#date_bis").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    firstDay: 1,
     minDate: new Date(),
     onSelect: function () {
         var dataObject_bis = $(this).datepicker('getDate');
@@ -58,6 +59,7 @@ $("#date_von").datepicker({
     dayNames: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
     dayNamesShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
     dayNamesMin: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+    firstDay: 1,
     onSelect: function () {
         $('#date_bis').datepicker('option', 'minDate', $("#date_von").datepicker("getDate"));
         var dataObject_von = $(this).datepicker('getDate');
