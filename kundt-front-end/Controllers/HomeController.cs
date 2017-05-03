@@ -213,9 +213,7 @@ namespace kundt_front_end.Controllers
             {
                 int IDBuchung;
 
-                string constring = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
-
-                using (SqlConnection con = new SqlConnection(constring))
+                using (SqlConnection con = new SqlConnection(Logic.Helpers.GetConnectionString()))
                 {
                     using (SqlCommand cmd = new SqlCommand("pBuchungAnlegen", con))
                     {

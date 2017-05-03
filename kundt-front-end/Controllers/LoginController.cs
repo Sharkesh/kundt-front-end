@@ -18,13 +18,9 @@ namespace kundt_front_end.Controllers
     public class LoginController : Controller
     {
         /// <summary>
-        /// ConnectionString
-        /// </summary>
-        private static string conString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.Substring(System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString.IndexOf("\"") + 1, 156);
-        /// <summary>
         /// Connection
         /// </summary>
-        public static SqlConnection con = new SqlConnection(conString);
+        public static SqlConnection con = new SqlConnection(Logic.Helpers.GetConnectionString());
         private it22AutoverleihEntities db = new it22AutoverleihEntities();
 
         /// <summary>
@@ -256,7 +252,7 @@ namespace kundt_front_end.Controllers
                 var result = db.pEditCustumer(k.IDKunde, k.Vorname, k.Nachname, k.Strasse, k.Telefon, k.Anrede, k.GebDatum, k.ReisepassNr, plz, ort, password, newPassword);
                 int resultValue = result.SingleOrDefault().Value;
 
-                
+
                 TempData["editResult"] = resultValue;
                 return RedirectToAction("Edit");
             }
@@ -344,6 +340,15 @@ namespace kundt_front_end.Logic
                 };
                 smtp.Send(mm);
             }
+        }
+
+        public static string GetConnectionString()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["it22AutoverleihEntities"].ConnectionString;
+            int first = connectionString.IndexOf("\"") + 1;
+            int last = connectionString.LastIndexOf("\"");
+            int length = last - first;
+            return connectionString.Substring(first, length);
         }
     }
 }
